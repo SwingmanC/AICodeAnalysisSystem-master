@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+
+    <title>源代码误报智能分析</title>
+
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet"/>
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet"/>
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
+    <link href="/css/animate.css" rel="stylesheet"/>
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
+    <link href="/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
+    <script src="/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
+
+    <!-- Peity -->
+    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/hplus.js?v=2.2.0"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Peity -->
+    <script src="/js/demo/peity-demo.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.user.username}"></strong>
+                             </span>  <span class="text-muted text-xs block">南京大学 <b class="caret"></b></span> </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="#">修改头像</a>
+                            </li>
+                            <li><a href="/view/modify">个人资料</a>
+                            </li>
+                            <li><a href="#">联系我们</a>
+                            </li>
+                            <li><a href="#">信箱</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="/logout">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        H+
+                    </div>
+                </li>
+                <li>
+                    <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                </li>
+                <li class="active">
+                    <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-book"></i> <span class="nav-label">漏洞库管理</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a th:href="@{'/view/issue/'+${session.report.id}}">
+                        <i class="fa fa-sign-out"></i> 返回
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-8">
+                <h2></h2>
+            </div>
+            <div class="col-lg-4">
+                <h2 style="text-align: right">
+                </h2>
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>警报详情</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table>
+                                <tr>
+                                    <td>警报类型：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="category" th:value="${issue.category}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>优先级：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="priority" th:value="${issue.priority}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>领域：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="kingdom" th:value="${issue.kingdom}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>警报所在文件：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="filePath"  th:value="${issue.filePath}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>警报所在方法：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="targetFunction" th:value="${issue.targetFunction}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>起始行：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="startLine" th:value="${issue.startLine}" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>警报描述：</td>
+                                    <td style="width: 350px;"><textarea class="form-control" id="description" th:text="${issue.description}" readonly></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>代码段：</td>
+                                    <td style="width: 350px;"><textarea class="form-control" id="snippet" th:text="${issue.snippet}" readonly></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>修复建议：</td>
+                                    <td style="width: 350px;"><textarea class="form-control" id="recommendation" th:text="${issue.recommendation}" readonly></textarea></td>
+                                </tr>
+                            </table>
+                            <style>
+                                td{
+                                    padding-bottom: 10px;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script th:inline="javascript">
+        $(document).ready(function () {
+        });
+    </script>
+</body>
+
+</html>

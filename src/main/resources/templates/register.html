@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+
+    <title>源代码误报智能分析</title>
+
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+<!--                <h1 class="logo-name">H+</h1>-->
+
+            </div>
+            <h3>欢迎注册</h3>
+            <p>创建一个新账户</p>
+            <form class="m-t" role="form" action="/register" onsubmit="return check();">
+                <div class="form-group">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="repeatPassword" id="repeatPassword" class="form-control" placeholder="请再次输入密码" required="">
+                </div>
+<!--                <div class="form-group text-left">-->
+<!--                    <div class="checkbox i-checks">-->
+<!--                        <label class="no-padding">-->
+<!--                            <input type="checkbox"><i></i> 我同意注册协议</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div>
+                    <span><font th:if="${session.RegisterMsg != null}" th:text="${session.RegisterMsg}" color="red"></font></span>
+                </div>
+                <input type="submit" class="btn btn-primary block full-width m-b" value="注 册"/>
+
+                <p class="text-muted text-center"><small>已经有账户了？</small><a href="/index">点此登录</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="/js/layer/layer.js"></script>
+    <script>
+        function check() {
+            let userName = $("#username").val();
+            let password = $("#password").val();
+            let repeatPassword = $("#repeatPassword").val();
+            if (userName === null || password === null || repeatPassword === null){
+                layer.msg("请补全信息",{
+                    time:1500
+                });
+                return false;
+            }
+            else if (password !== repeatPassword){
+                layer.msg("两次密码输入不一致",{
+                    time:1500
+                });
+                return false;
+            }
+            return true;
+        }
+        function register() {
+            let userName = $("#username").val();
+            let password = $("#password").val();
+            let repeatPassword = $("#repeatPassword").val();
+            if (password !== repeatPassword)
+                layer.msg("两次密码输入不一致",{
+                    time:1500
+                });
+            else{
+                $.ajax({
+                    url:'/register',
+                    type:'post',
+                    data:{
+                        'username':userName,
+                        'password':password
+                    },
+                    dataType:'json',
+                    success:function (msg) {
+                        console.log(msg);
+                        if (msg === 0)
+                            layer.msg("该用户已存在",{
+                                time:1500
+                            });
+                        else{
+                            layer.msg("注册成功");
+                            setTimeout(function () {
+                                window.location.href = "/view/login"
+                            },2000);
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

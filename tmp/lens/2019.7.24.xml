@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1634708391000" analysisTimestamp="1635339932489" release="">
+  <Project projectName="">
+    <Jar>/Users/sunchen/IntelliJProject/AICodeAnalysisSystem-master/data/jsfnsc/lens/2019.7.24</Jar>
+  </Project>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.DateTime">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="40" end="51" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.DateTime" name="getDate" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="50" end="50" startBytecode="0" endBytecode="46" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.DateTime" name="date" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.DateTime" start="50" end="50" startBytecode="4" endBytecode="4" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.DateTime">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="40" end="51" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.DateTime" name="&lt;init&gt;" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="40" end="40" startBytecode="0" endBytecode="61" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.DateTime" name="date" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Field>
+    <LocalVariable name="date" register="1" pc="6" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.lens.api.DateTime" start="40" end="40" startBytecode="6" endBytecode="6" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.DateTime">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="40" end="51" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.DateTime" name="setDate" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" start="51" end="51" startBytecode="0" endBytecode="57" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.DateTime" name="date" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.DateTime" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+    </Field>
+    <LocalVariable name="date" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.lens.api.DateTime" start="51" end="51" startBytecode="2" endBytecode="2" sourcefile="DateTime.java" sourcepath="org/apache/lens/api/DateTime.java"/>
+  </BugInstance>
+  <BugInstance type="DM_CONVERT_CASE" priority="3" rank="20" abbrev="Dm" category="I18N">
+    <Class classname="org.apache.lens.api.SupportedOperations">
+      <SourceLine classname="org.apache.lens.api.SupportedOperations" start="34" end="53" sourcefile="SupportedOperations.java" sourcepath="org/apache/lens/api/SupportedOperations.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.SupportedOperations" name="&lt;init&gt;" signature="([Ljava/lang/Object;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.SupportedOperations" start="46" end="50" startBytecode="0" endBytecode="208" sourcefile="SupportedOperations.java" sourcepath="org/apache/lens/api/SupportedOperations.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.SupportedOperations" start="48" end="48" startBytecode="44" endBytecode="44" sourcefile="SupportedOperations.java" sourcepath="org/apache/lens/api/SupportedOperations.java"/>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.SupportedOperations">
+      <SourceLine classname="org.apache.lens.api.SupportedOperations" start="34" end="53" sourcefile="SupportedOperations.java" sourcepath="org/apache/lens/api/SupportedOperations.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="MS_MUTABLE_COLLECTION_PKGPROTECT" priority="2" rank="18" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.ToXMLString">
+      <SourceLine classname="org.apache.lens.api.ToXMLString" start="33" end="84" sourcefile="ToXMLString.java" sourcepath="org/apache/lens/api/ToXMLString.java"/>
+    </Class>
+    <Field classname="org.apache.lens.api.ToXMLString" name="JAXB_CONTEXTS" signature="Ljava/util/Map;" isStatic="true">
+      <SourceLine classname="org.apache.lens.api.ToXMLString" sourcefile="ToXMLString.java" sourcepath="org/apache/lens/api/ToXMLString.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.ToXMLString" start="34" end="34" startBytecode="7" endBytecode="7" sourcefile="ToXMLString.java" sourcepath="org/apache/lens/api/ToXMLString.java"/>
+  </BugInstance>
+  <BugInstance type="DM_CONVERT_CASE" priority="3" rank="20" abbrev="Dm" category="I18N">
+    <Class classname="org.apache.lens.api.ToYAMLString">
+      <SourceLine classname="org.apache.lens.api.ToYAMLString" start="37" end="122" sourcefile="ToYAMLString.java" sourcepath="org/apache/lens/api/ToYAMLString.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.ToYAMLString" name="toPascalCase" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.ToYAMLString" start="114" end="114" startBytecode="0" endBytecode="82" sourcefile="ToYAMLString.java" sourcepath="org/apache/lens/api/ToYAMLString.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.ToYAMLString" start="114" end="114" startBytecode="13" endBytecode="13" sourcefile="ToYAMLString.java" sourcepath="org/apache/lens/api/ToYAMLString.java"/>
+  </BugInstance>
+  <BugInstance type="UI_INHERITANCE_UNSAFE_GETRESOURCE" priority="3" rank="19" abbrev="UI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.jaxb.LensJAXBContext">
+      <SourceLine classname="org.apache.lens.api.jaxb.LensJAXBContext" start="42" end="137" sourcefile="LensJAXBContext.java" sourcepath="org/apache/lens/api/jaxb/LensJAXBContext.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.jaxb.LensJAXBContext" name="createUnmarshaller" signature="()Ljavax/xml/bind/Unmarshaller;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.LensJAXBContext" start="73" end="87" startBytecode="0" endBytecode="271" sourcefile="LensJAXBContext.java" sourcepath="org/apache/lens/api/jaxb/LensJAXBContext.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.jaxb.LensJAXBContext" start="78" end="78" startBytecode="38" endBytecode="38" sourcefile="LensJAXBContext.java" sourcepath="org/apache/lens/api/jaxb/LensJAXBContext.java"/>
+  </BugInstance>
+  <BugInstance type="DM_CONVERT_CASE" priority="3" rank="20" abbrev="Dm" category="I18N">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="47" end="389" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" name="appendInternal" signature="(Lorg/jvnet/jaxb2_commons/locator/ObjectLocator;Ljava/lang/StringBuilder;Ljava/lang/Object;)Ljava/lang/StringBuilder;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="223" end="333" startBytecode="0" endBytecode="2173" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="322" end="322" startBytecode="916" endBytecode="916" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+  </BugInstance>
+  <BugInstance type="MS_MUTABLE_COLLECTION_PKGPROTECT" priority="2" rank="18" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="47" end="389" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Field classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" name="WRAPPER_TYPES" signature="Ljava/util/Set;" isStatic="true">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="54" end="54" startBytecode="116" endBytecode="116" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+  </BugInstance>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="47" end="389" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" name="getNameableContext" signature="(Ljava/lang/Object;)Lorg/apache/lens/api/jaxb/YAMLToStringStrategy$NameableContext;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="200" end="218" startBytecode="0" endBytecode="320" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <Method classname="java.lang.Class" name="getMethod" signature="(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="java.lang.Class" start="1783" end="1788" startBytecode="0" endBytecode="117" sourcefile="Class.java" sourcepath="java/lang/Class.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="204" end="204" startBytecode="33" endBytecode="33" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy" start="210" end="210" startBytecode="94" endBytecode="94" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+  </BugInstance>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="2" rank="18" abbrev="RCN" category="STYLE">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="151" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="101" startBytecode="0" endBytecode="447" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <LocalVariable name="this$heading" register="11" pc="188" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" name="getHeading" signature="()Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="111" end="127" startBytecode="0" endBytecode="310" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="101" startBytecode="190" endBytecode="190" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+  </BugInstance>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="2" rank="18" abbrev="RCN" category="STYLE">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="151" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" name="hashCode" signature="()I" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="101" startBytecode="0" endBytecode="483" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <LocalVariable name="$heading" register="7" pc="120" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" name="getHeading" signature="()Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="111" end="127" startBytecode="0" endBytecode="310" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="101" startBytecode="122" endBytecode="122" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" rank="18" abbrev="UrF" category="PERFORMANCE">
+    <Class classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="101" end="151" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Class>
+    <Field classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" name="heading" signature="Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" start="126" end="126" startBytecode="165" endBytecode="165" sourcefile="YAMLToStringStrategy.java" sourcepath="org/apache/lens/api/jaxb/YAMLToStringStrategy.java"/>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XBaseCube">
+      <SourceLine classname="org.apache.lens.api.metastore.XBaseCube" start="55" end="330" sourcefile="XBaseCube.java" sourcepath="org/apache/lens/api/metastore/XBaseCube.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XBaseCube" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XBaseCube" start="261" end="262" startBytecode="0" endBytecode="78" sourcefile="XBaseCube.java" sourcepath="org/apache/lens/api/metastore/XBaseCube.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XChainColumn">
+      <SourceLine classname="org.apache.lens.api.metastore.XChainColumn" start="49" end="245" sourcefile="XChainColumn.java" sourcepath="org/apache/lens/api/metastore/XChainColumn.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XChainColumn" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XChainColumn" start="204" end="205" startBytecode="0" endBytecode="78" sourcefile="XChainColumn.java" sourcepath="org/apache/lens/api/metastore/XChainColumn.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XColumn">
+      <SourceLine classname="org.apache.lens.api.metastore.XColumn" start="55" end="351" sourcefile="XColumn.java" sourcepath="org/apache/lens/api/metastore/XColumn.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XColumn" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XColumn" start="290" end="291" startBytecode="0" endBytecode="78" sourcefile="XColumn.java" sourcepath="org/apache/lens/api/metastore/XColumn.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XColumns">
+      <SourceLine classname="org.apache.lens.api.metastore.XColumns" start="53" end="164" sourcefile="XColumns.java" sourcepath="org/apache/lens/api/metastore/XColumns.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XColumns" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XColumns" start="132" end="133" startBytecode="0" endBytecode="78" sourcefile="XColumns.java" sourcepath="org/apache/lens/api/metastore/XColumns.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XCube">
+      <SourceLine classname="org.apache.lens.api.metastore.XCube" start="68" end="263" sourcefile="XCube.java" sourcepath="org/apache/lens/api/metastore/XCube.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XCube" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XCube" start="222" end="223" startBytecode="0" endBytecode="78" sourcefile="XCube.java" sourcepath="org/apache/lens/api/metastore/XCube.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDerivedCube">
+      <SourceLine classname="org.apache.lens.api.metastore.XDerivedCube" start="56" end="280" sourcefile="XDerivedCube.java" sourcepath="org/apache/lens/api/metastore/XDerivedCube.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDerivedCube" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDerivedCube" start="221" end="222" startBytecode="0" endBytecode="78" sourcefile="XDerivedCube.java" sourcepath="org/apache/lens/api/metastore/XDerivedCube.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDimAttrNames">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttrNames" start="58" end="170" sourcefile="XDimAttrNames.java" sourcepath="org/apache/lens/api/metastore/XDimAttrNames.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDimAttrNames" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttrNames" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XDimAttrNames.java" sourcepath="org/apache/lens/api/metastore/XDimAttrNames.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDimAttribute">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttribute" start="63" end="526" sourcefile="XDimAttribute.java" sourcepath="org/apache/lens/api/metastore/XDimAttribute.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDimAttribute" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttribute" start="399" end="400" startBytecode="0" endBytecode="78" sourcefile="XDimAttribute.java" sourcepath="org/apache/lens/api/metastore/XDimAttribute.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDimAttributes">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttributes" start="58" end="170" sourcefile="XDimAttributes.java" sourcepath="org/apache/lens/api/metastore/XDimAttributes.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDimAttributes" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimAttributes" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XDimAttributes.java" sourcepath="org/apache/lens/api/metastore/XDimAttributes.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDimension">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimension" start="64" end="407" sourcefile="XDimension.java" sourcepath="org/apache/lens/api/metastore/XDimension.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDimension" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimension" start="336" end="337" startBytecode="0" endBytecode="78" sourcefile="XDimension.java" sourcepath="org/apache/lens/api/metastore/XDimension.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XDimensionTable">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimensionTable" start="70" end="407" sourcefile="XDimensionTable.java" sourcepath="org/apache/lens/api/metastore/XDimensionTable.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XDimensionTable" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XDimensionTable" start="336" end="337" startBytecode="0" endBytecode="78" sourcefile="XDimensionTable.java" sourcepath="org/apache/lens/api/metastore/XDimensionTable.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XExprColumn">
+      <SourceLine classname="org.apache.lens.api.metastore.XExprColumn" start="56" end="251" sourcefile="XExprColumn.java" sourcepath="org/apache/lens/api/metastore/XExprColumn.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XExprColumn" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XExprColumn" start="185" end="186" startBytecode="0" endBytecode="78" sourcefile="XExprColumn.java" sourcepath="org/apache/lens/api/metastore/XExprColumn.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XExprSpec">
+      <SourceLine classname="org.apache.lens.api.metastore.XExprSpec" start="59" end="257" sourcefile="XExprSpec.java" sourcepath="org/apache/lens/api/metastore/XExprSpec.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XExprSpec" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XExprSpec" start="216" end="217" startBytecode="0" endBytecode="78" sourcefile="XExprSpec.java" sourcepath="org/apache/lens/api/metastore/XExprSpec.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XExpressions">
+      <SourceLine classname="org.apache.lens.api.metastore.XExpressions" start="57" end="168" sourcefile="XExpressions.java" sourcepath="org/apache/lens/api/metastore/XExpressions.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XExpressions" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XExpressions" start="136" end="137" startBytecode="0" endBytecode="78" sourcefile="XExpressions.java" sourcepath="org/apache/lens/api/metastore/XExpressions.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XFact">
+      <SourceLine classname="org.apache.lens.api.metastore.XFact" start="62" end="258" sourcefile="XFact.java" sourcepath="org/apache/lens/api/metastore/XFact.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XFact" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XFact" start="217" end="218" startBytecode="0" endBytecode="78" sourcefile="XFact.java" sourcepath="org/apache/lens/api/metastore/XFact.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XFactTable">
+      <SourceLine classname="org.apache.lens.api.metastore.XFactTable" start="57" end="323" sourcefile="XFactTable.java" sourcepath="org/apache/lens/api/metastore/XFactTable.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XFactTable" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XFactTable" start="254" end="255" startBytecode="0" endBytecode="78" sourcefile="XFactTable.java" sourcepath="org/apache/lens/api/metastore/XFactTable.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XField">
+      <SourceLine classname="org.apache.lens.api.metastore.XField" start="65" end="310" sourcefile="XField.java" sourcepath="org/apache/lens/api/metastore/XField.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XField" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XField" start="259" end="260" startBytecode="0" endBytecode="78" sourcefile="XField.java" sourcepath="org/apache/lens/api/metastore/XField.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XFields">
+      <SourceLine classname="org.apache.lens.api.metastore.XFields" start="58" end="170" sourcefile="XFields.java" sourcepath="org/apache/lens/api/metastore/XFields.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XFields" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XFields" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XFields.java" sourcepath="org/apache/lens/api/metastore/XFields.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XFlattenedColumn">
+      <SourceLine classname="org.apache.lens.api.metastore.XFlattenedColumn" start="58" end="352" sourcefile="XFlattenedColumn.java" sourcepath="org/apache/lens/api/metastore/XFlattenedColumn.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XFlattenedColumn" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XFlattenedColumn" start="291" end="292" startBytecode="0" endBytecode="78" sourcefile="XFlattenedColumn.java" sourcepath="org/apache/lens/api/metastore/XFlattenedColumn.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XFlattenedColumns">
+      <SourceLine classname="org.apache.lens.api.metastore.XFlattenedColumns" start="59" end="171" sourcefile="XFlattenedColumns.java" sourcepath="org/apache/lens/api/metastore/XFlattenedColumns.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XFlattenedColumns" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XFlattenedColumns" start="139" end="140" startBytecode="0" endBytecode="78" sourcefile="XFlattenedColumns.java" sourcepath="org/apache/lens/api/metastore/XFlattenedColumns.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinChain">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinChain" start="63" end="242" sourcefile="XJoinChain.java" sourcepath="org/apache/lens/api/metastore/XJoinChain.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinChain" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinChain" start="187" end="188" startBytecode="0" endBytecode="78" sourcefile="XJoinChain.java" sourcepath="org/apache/lens/api/metastore/XJoinChain.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinChains">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinChains" start="58" end="170" sourcefile="XJoinChains.java" sourcepath="org/apache/lens/api/metastore/XJoinChains.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinChains" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinChains" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XJoinChains.java" sourcepath="org/apache/lens/api/metastore/XJoinChains.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinEdge">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinEdge" start="57" end="203" sourcefile="XJoinEdge.java" sourcepath="org/apache/lens/api/metastore/XJoinEdge.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinEdge" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinEdge" start="172" end="173" startBytecode="0" endBytecode="78" sourcefile="XJoinEdge.java" sourcepath="org/apache/lens/api/metastore/XJoinEdge.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinEdges">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinEdges" start="58" end="170" sourcefile="XJoinEdges.java" sourcepath="org/apache/lens/api/metastore/XJoinEdges.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinEdges" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinEdges" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XJoinEdges.java" sourcepath="org/apache/lens/api/metastore/XJoinEdges.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinPath">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinPath" start="55" end="151" sourcefile="XJoinPath.java" sourcepath="org/apache/lens/api/metastore/XJoinPath.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinPath" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinPath" start="130" end="131" startBytecode="0" endBytecode="78" sourcefile="XJoinPath.java" sourcepath="org/apache/lens/api/metastore/XJoinPath.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XJoinPaths">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinPaths" start="58" end="170" sourcefile="XJoinPaths.java" sourcepath="org/apache/lens/api/metastore/XJoinPaths.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XJoinPaths" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XJoinPaths" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XJoinPaths.java" sourcepath="org/apache/lens/api/metastore/XJoinPaths.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XMeasure">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasure" start="58" end="537" sourcefile="XMeasure.java" sourcepath="org/apache/lens/api/metastore/XMeasure.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XMeasure" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasure" start="422" end="423" startBytecode="0" endBytecode="78" sourcefile="XMeasure.java" sourcepath="org/apache/lens/api/metastore/XMeasure.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XMeasureNames">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasureNames" start="58" end="170" sourcefile="XMeasureNames.java" sourcepath="org/apache/lens/api/metastore/XMeasureNames.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XMeasureNames" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasureNames" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XMeasureNames.java" sourcepath="org/apache/lens/api/metastore/XMeasureNames.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XMeasures">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasures" start="58" end="170" sourcefile="XMeasures.java" sourcepath="org/apache/lens/api/metastore/XMeasures.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XMeasures" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XMeasures" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XMeasures.java" sourcepath="org/apache/lens/api/metastore/XMeasures.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XNativeTable">
+      <SourceLine classname="org.apache.lens.api.metastore.XNativeTable" start="66" end="496" sourcefile="XNativeTable.java" sourcepath="org/apache/lens/api/metastore/XNativeTable.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XNativeTable" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XNativeTable" start="405" end="406" startBytecode="0" endBytecode="78" sourcefile="XNativeTable.java" sourcepath="org/apache/lens/api/metastore/XNativeTable.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XPartSpec">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartSpec" start="54" end="166" sourcefile="XPartSpec.java" sourcepath="org/apache/lens/api/metastore/XPartSpec.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartSpec" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartSpec" start="134" end="135" startBytecode="0" endBytecode="78" sourcefile="XPartSpec.java" sourcepath="org/apache/lens/api/metastore/XPartSpec.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XPartSpecElement">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartSpecElement" start="52" end="198" sourcefile="XPartSpecElement.java" sourcepath="org/apache/lens/api/metastore/XPartSpecElement.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartSpecElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartSpecElement" start="167" end="168" startBytecode="0" endBytecode="78" sourcefile="XPartSpecElement.java" sourcepath="org/apache/lens/api/metastore/XPartSpecElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XPartition">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="71" end="717" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartition" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="586" end="587" startBytecode="0" endBytecode="78" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NM_CONFUSING" priority="3" rank="19" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.metastore.XPartition">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="71" end="717" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartition" name="getSerdeClassname" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="349" end="349" startBytecode="0" endBytecode="46" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Method>
+    <Class classname="org.apache.lens.api.metastore.XStorageTableDesc">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="89" end="1258" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorageTableDesc" name="getSerdeClassName" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="571" end="571" startBytecode="0" endBytecode="46" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NM_CONFUSING" priority="3" rank="19" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.metastore.XPartition">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="71" end="717" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartition" name="setSerdeClassname" signature="(Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartition" start="361" end="362" startBytecode="0" endBytecode="61" sourcefile="XPartition.java" sourcepath="org/apache/lens/api/metastore/XPartition.java"/>
+    </Method>
+    <Class classname="org.apache.lens.api.metastore.XStorageTableDesc">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="89" end="1258" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorageTableDesc" name="setSerdeClassName" signature="(Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="583" end="584" startBytecode="0" endBytecode="61" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XPartitionList">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartitionList" start="57" end="168" sourcefile="XPartitionList.java" sourcepath="org/apache/lens/api/metastore/XPartitionList.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XPartitionList" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XPartitionList" start="136" end="137" startBytecode="0" endBytecode="78" sourcefile="XPartitionList.java" sourcepath="org/apache/lens/api/metastore/XPartitionList.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XProperties">
+      <SourceLine classname="org.apache.lens.api.metastore.XProperties" start="57" end="168" sourcefile="XProperties.java" sourcepath="org/apache/lens/api/metastore/XProperties.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XProperties" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XProperties" start="136" end="137" startBytecode="0" endBytecode="78" sourcefile="XProperties.java" sourcepath="org/apache/lens/api/metastore/XProperties.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XProperty">
+      <SourceLine classname="org.apache.lens.api.metastore.XProperty" start="52" end="198" sourcefile="XProperty.java" sourcepath="org/apache/lens/api/metastore/XProperty.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XProperty" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XProperty" start="167" end="168" startBytecode="0" endBytecode="78" sourcefile="XProperty.java" sourcepath="org/apache/lens/api/metastore/XProperty.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSegment">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegment" start="57" end="203" sourcefile="XSegment.java" sourcepath="org/apache/lens/api/metastore/XSegment.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSegment" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegment" start="172" end="173" startBytecode="0" endBytecode="78" sourcefile="XSegment.java" sourcepath="org/apache/lens/api/metastore/XSegment.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSegmentation">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegmentation" start="67" end="353" sourcefile="XSegmentation.java" sourcepath="org/apache/lens/api/metastore/XSegmentation.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSegmentation" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegmentation" start="292" end="293" startBytecode="0" endBytecode="78" sourcefile="XSegmentation.java" sourcepath="org/apache/lens/api/metastore/XSegmentation.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSegments">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegments" start="58" end="170" sourcefile="XSegments.java" sourcepath="org/apache/lens/api/metastore/XSegments.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSegments" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSegments" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XSegments.java" sourcepath="org/apache/lens/api/metastore/XSegments.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSkewColList">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewColList" start="57" end="168" sourcefile="XSkewColList.java" sourcepath="org/apache/lens/api/metastore/XSkewColList.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSkewColList" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewColList" start="136" end="137" startBytecode="0" endBytecode="78" sourcefile="XSkewColList.java" sourcepath="org/apache/lens/api/metastore/XSkewColList.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSkewedInfo">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewedInfo" start="62" end="306" sourcefile="XSkewedInfo.java" sourcepath="org/apache/lens/api/metastore/XSkewedInfo.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSkewedInfo" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewedInfo" start="232" end="233" startBytecode="0" endBytecode="78" sourcefile="XSkewedInfo.java" sourcepath="org/apache/lens/api/metastore/XSkewedInfo.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XSkewedValueLocation">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewedValueLocation" start="57" end="203" sourcefile="XSkewedValueLocation.java" sourcepath="org/apache/lens/api/metastore/XSkewedValueLocation.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XSkewedValueLocation" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XSkewedValueLocation" start="172" end="173" startBytecode="0" endBytecode="78" sourcefile="XSkewedValueLocation.java" sourcepath="org/apache/lens/api/metastore/XSkewedValueLocation.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XStorage">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorage" start="57" end="252" sourcefile="XStorage.java" sourcepath="org/apache/lens/api/metastore/XStorage.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorage" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorage" start="211" end="212" startBytecode="0" endBytecode="78" sourcefile="XStorage.java" sourcepath="org/apache/lens/api/metastore/XStorage.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XStorageTableDesc">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="89" end="1258" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorageTableDesc" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableDesc" start="982" end="983" startBytecode="0" endBytecode="78" sourcefile="XStorageTableDesc.java" sourcepath="org/apache/lens/api/metastore/XStorageTableDesc.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XStorageTableElement">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableElement" start="58" end="254" sourcefile="XStorageTableElement.java" sourcepath="org/apache/lens/api/metastore/XStorageTableElement.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorageTableElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTableElement" start="213" end="214" startBytecode="0" endBytecode="78" sourcefile="XStorageTableElement.java" sourcepath="org/apache/lens/api/metastore/XStorageTableElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XStorageTables">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTables" start="58" end="170" sourcefile="XStorageTables.java" sourcepath="org/apache/lens/api/metastore/XStorageTables.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XStorageTables" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XStorageTables" start="138" end="139" startBytecode="0" endBytecode="78" sourcefile="XStorageTables.java" sourcepath="org/apache/lens/api/metastore/XStorageTables.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XTableReference">
+      <SourceLine classname="org.apache.lens.api.metastore.XTableReference" start="49" end="249" sourcefile="XTableReference.java" sourcepath="org/apache/lens/api/metastore/XTableReference.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XTableReference" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XTableReference" start="208" end="209" startBytecode="0" endBytecode="78" sourcefile="XTableReference.java" sourcepath="org/apache/lens/api/metastore/XTableReference.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XTimePartSpec">
+      <SourceLine classname="org.apache.lens.api.metastore.XTimePartSpec" start="54" end="166" sourcefile="XTimePartSpec.java" sourcepath="org/apache/lens/api/metastore/XTimePartSpec.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XTimePartSpec" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XTimePartSpec" start="134" end="135" startBytecode="0" endBytecode="78" sourcefile="XTimePartSpec.java" sourcepath="org/apache/lens/api/metastore/XTimePartSpec.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XTimePartSpecElement">
+      <SourceLine classname="org.apache.lens.api.metastore.XTimePartSpecElement" start="54" end="201" sourcefile="XTimePartSpecElement.java" sourcepath="org/apache/lens/api/metastore/XTimePartSpecElement.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XTimePartSpecElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XTimePartSpecElement" start="170" end="171" startBytecode="0" endBytecode="78" sourcefile="XTimePartSpecElement.java" sourcepath="org/apache/lens/api/metastore/XTimePartSpecElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XUpdatePeriodTableDescriptor">
+      <SourceLine classname="org.apache.lens.api.metastore.XUpdatePeriodTableDescriptor" start="58" end="205" sourcefile="XUpdatePeriodTableDescriptor.java" sourcepath="org/apache/lens/api/metastore/XUpdatePeriodTableDescriptor.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XUpdatePeriodTableDescriptor" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XUpdatePeriodTableDescriptor" start="174" end="175" startBytecode="0" endBytecode="78" sourcefile="XUpdatePeriodTableDescriptor.java" sourcepath="org/apache/lens/api/metastore/XUpdatePeriodTableDescriptor.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XUpdatePeriods">
+      <SourceLine classname="org.apache.lens.api.metastore.XUpdatePeriods" start="61" end="240" sourcefile="XUpdatePeriods.java" sourcepath="org/apache/lens/api/metastore/XUpdatePeriods.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XUpdatePeriods" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XUpdatePeriods" start="187" end="188" startBytecode="0" endBytecode="78" sourcefile="XUpdatePeriods.java" sourcepath="org/apache/lens/api/metastore/XUpdatePeriods.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.metastore.XVirtualFactTable">
+      <SourceLine classname="org.apache.lens.api.metastore.XVirtualFactTable" start="55" end="277" sourcefile="XVirtualFactTable.java" sourcepath="org/apache/lens/api/metastore/XVirtualFactTable.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.metastore.XVirtualFactTable" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.metastore.XVirtualFactTable" start="218" end="219" startBytecode="0" endBytecode="78" sourcefile="XVirtualFactTable.java" sourcepath="org/apache/lens/api/metastore/XVirtualFactTable.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.FailedAttempt">
+      <SourceLine classname="org.apache.lens.api.query.FailedAttempt" start="30" end="66" sourcefile="FailedAttempt.java" sourcepath="org/apache/lens/api/query/FailedAttempt.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.InMemoryQueryResult">
+      <SourceLine classname="org.apache.lens.api.query.InMemoryQueryResult" start="42" end="73" sourcefile="InMemoryQueryResult.java" sourcepath="org/apache/lens/api/query/InMemoryQueryResult.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.query.LensPreparedQuery">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="61" end="114" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.LensPreparedQuery" name="getPreparedTime" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="86" end="86" startBytecode="0" endBytecode="46" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.query.LensPreparedQuery" name="preparedTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="86" end="86" startBytecode="4" endBytecode="4" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.query.LensPreparedQuery">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="61" end="114" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.LensPreparedQuery" name="&lt;init&gt;" signature="(Lorg/apache/lens/api/query/QueryPrepareHandle;Ljava/lang/String;Ljava/util/Date;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/apache/lens/api/LensConf;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="61" end="61" startBytecode="0" endBytecode="155" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.query.LensPreparedQuery" name="preparedTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+    </Field>
+    <LocalVariable name="preparedTime" register="3" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.lens.api.query.LensPreparedQuery" start="61" end="61" startBytecode="16" endBytecode="16" sourcefile="LensPreparedQuery.java" sourcepath="org/apache/lens/api/query/LensPreparedQuery.java"/>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.PersistentQueryResult">
+      <SourceLine classname="org.apache.lens.api.query.PersistentQueryResult" start="44" end="88" sourcefile="PersistentQueryResult.java" sourcepath="org/apache/lens/api/query/PersistentQueryResult.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.QueryResultSetMetadata">
+      <SourceLine classname="org.apache.lens.api.query.QueryResultSetMetadata" start="48" end="60" sourcefile="QueryResultSetMetadata.java" sourcepath="org/apache/lens/api/query/QueryResultSetMetadata.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="DM_CONVERT_CASE" priority="3" rank="20" abbrev="Dm" category="I18N">
+    <Class classname="org.apache.lens.api.query.ResultColumn">
+      <SourceLine classname="org.apache.lens.api.query.ResultColumn" start="46" end="84" sourcefile="ResultColumn.java" sourcepath="org/apache/lens/api/query/ResultColumn.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.ResultColumn" name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.ResultColumn" start="74" end="75" startBytecode="0" endBytecode="78" sourcefile="ResultColumn.java" sourcepath="org/apache/lens/api/query/ResultColumn.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.query.ResultColumn" start="74" end="74" startBytecode="3" endBytecode="3" sourcefile="ResultColumn.java" sourcepath="org/apache/lens/api/query/ResultColumn.java"/>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.ResultColumn">
+      <SourceLine classname="org.apache.lens.api.query.ResultColumn" start="46" end="84" sourcefile="ResultColumn.java" sourcepath="org/apache/lens/api/query/ResultColumn.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="RI_REDUNDANT_INTERFACES" priority="3" rank="20" abbrev="RI" category="STYLE">
+    <Class classname="org.apache.lens.api.query.ResultColumnType">
+      <SourceLine classname="org.apache.lens.api.query.ResultColumnType" start="32" end="122" sourcefile="ResultColumnType.java" sourcepath="org/apache/lens/api/query/ResultColumnType.java"/>
+    </Class>
+    <Class classname="java.io.Serializable" role="INTERFACE_TYPE">
+      <SourceLine classname="java.io.Serializable" sourcefile="Serializable.java" sourcepath="java/io/Serializable.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.query.ResultRow">
+      <SourceLine classname="org.apache.lens.api.query.ResultRow" start="45" end="65" sourcefile="ResultRow.java" sourcepath="org/apache/lens/api/query/ResultRow.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.query.save.Parameter">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="35" end="79" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.save.Parameter" name="getDefaultValue" signature="()[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="56" end="56" startBytecode="0" endBytecode="46" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.query.save.Parameter" name="defaultValue" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Field>
+    <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="56" end="56" startBytecode="4" endBytecode="4" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.query.save.Parameter">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="35" end="79" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.save.Parameter" name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lorg/apache/lens/api/query/save/ParameterDataType;Lorg/apache/lens/api/query/save/ParameterCollectionType;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="36" end="36" startBytecode="0" endBytecode="123" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.query.save.Parameter" name="defaultValue" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Field>
+    <LocalVariable name="defaultValue" register="3" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="36" end="36" startBytecode="16" endBytecode="16" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="org.apache.lens.api.query.save.Parameter">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="35" end="79" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.query.save.Parameter" name="setDefaultValue" signature="([Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="35" end="35" startBytecode="0" endBytecode="57" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Method>
+    <Field classname="org.apache.lens.api.query.save.Parameter" name="defaultValue" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.query.save.Parameter" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+    </Field>
+    <LocalVariable name="defaultValue" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.lens.api.query.save.Parameter" start="35" end="35" startBytecode="2" endBytecode="2" sourcefile="Parameter.java" sourcepath="org/apache/lens/api/query/save/Parameter.java"/>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.result.LensErrorTO">
+      <SourceLine classname="org.apache.lens.api.result.LensErrorTO" start="41" end="120" sourcefile="LensErrorTO.java" sourcepath="org/apache/lens/api/result/LensErrorTO.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
+    <Class classname="org.apache.lens.api.result.QueryCostTO">
+      <SourceLine classname="org.apache.lens.api.result.QueryCostTO" start="46" end="71" sourcefile="QueryCostTO.java" sourcepath="org/apache/lens/api/result/QueryCostTO.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.MapType">
+      <SourceLine classname="org.apache.lens.api.scheduler.MapType" start="57" end="203" sourcefile="MapType.java" sourcepath="org/apache/lens/api/scheduler/MapType.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.MapType" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.MapType" start="172" end="173" startBytecode="0" endBytecode="78" sourcefile="MapType.java" sourcepath="org/apache/lens/api/scheduler/MapType.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.ResourcePath">
+      <SourceLine classname="org.apache.lens.api.scheduler.ResourcePath" start="57" end="203" sourcefile="ResourcePath.java" sourcepath="org/apache/lens/api/scheduler/ResourcePath.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.ResourcePath" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.ResourcePath" start="172" end="173" startBytecode="0" endBytecode="78" sourcefile="ResourcePath.java" sourcepath="org/apache/lens/api/scheduler/ResourcePath.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XExecution">
+      <SourceLine classname="org.apache.lens.api.scheduler.XExecution" start="59" end="204" sourcefile="XExecution.java" sourcepath="org/apache/lens/api/scheduler/XExecution.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XExecution" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XExecution" start="173" end="174" startBytecode="0" endBytecode="78" sourcefile="XExecution.java" sourcepath="org/apache/lens/api/scheduler/XExecution.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XFrequency">
+      <SourceLine classname="org.apache.lens.api.scheduler.XFrequency" start="62" end="259" sourcefile="XFrequency.java" sourcepath="org/apache/lens/api/scheduler/XFrequency.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XFrequency" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XFrequency" start="218" end="219" startBytecode="0" endBytecode="78" sourcefile="XFrequency.java" sourcepath="org/apache/lens/api/scheduler/XFrequency.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XJob">
+      <SourceLine classname="org.apache.lens.api.scheduler.XJob" start="70" end="434" sourcefile="XJob.java" sourcepath="org/apache/lens/api/scheduler/XJob.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XJob" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XJob" start="352" end="353" startBytecode="0" endBytecode="78" sourcefile="XJob.java" sourcepath="org/apache/lens/api/scheduler/XJob.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XJobQuery">
+      <SourceLine classname="org.apache.lens.api.scheduler.XJobQuery" start="60" end="221" sourcefile="XJobQuery.java" sourcepath="org/apache/lens/api/scheduler/XJobQuery.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XJobQuery" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XJobQuery" start="179" end="180" startBytecode="0" endBytecode="78" sourcefile="XJobQuery.java" sourcepath="org/apache/lens/api/scheduler/XJobQuery.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XSessionType">
+      <SourceLine classname="org.apache.lens.api.scheduler.XSessionType" start="58" end="285" sourcefile="XSessionType.java" sourcepath="org/apache/lens/api/scheduler/XSessionType.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XSessionType" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XSessionType" start="222" end="223" startBytecode="0" endBytecode="78" sourcefile="XSessionType.java" sourcepath="org/apache/lens/api/scheduler/XSessionType.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="EQ_UNUSUAL" priority="2" rank="17" abbrev="Eq" category="STYLE">
+    <Class classname="org.apache.lens.api.scheduler.XTrigger">
+      <SourceLine classname="org.apache.lens.api.scheduler.XTrigger" start="55" end="150" sourcefile="XTrigger.java" sourcepath="org/apache/lens/api/scheduler/XTrigger.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.scheduler.XTrigger" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.scheduler.XTrigger" start="129" end="130" startBytecode="0" endBytecode="78" sourcefile="XTrigger.java" sourcepath="org/apache/lens/api/scheduler/XTrigger.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="RV_CHECK_FOR_POSITIVE_INDEXOF" priority="3" rank="20" abbrev="RV" category="STYLE">
+    <Class classname="org.apache.lens.api.util.PathValidator">
+      <SourceLine classname="org.apache.lens.api.util.PathValidator" start="38" end="137" sourcefile="PathValidator.java" sourcepath="org/apache/lens/api/util/PathValidator.java"/>
+    </Class>
+    <Method classname="org.apache.lens.api.util.PathValidator" name="getValidPath" signature="(Ljava/io/File;ZZ)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.lens.api.util.PathValidator" start="64" end="78" startBytecode="0" endBytecode="270" sourcefile="PathValidator.java" sourcepath="org/apache/lens/api/util/PathValidator.java"/>
+    </Method>
+    <SourceLine classname="org.apache.lens.api.util.PathValidator" start="64" end="64" startBytecode="9" endBytecode="9" sourcefile="PathValidator.java" sourcepath="org/apache/lens/api/util/PathValidator.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="29">
+    <MissingClass>com.google.common.base.Optional</MissingClass>
+    <MissingClass>com.google.common.base.Preconditions</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableCollection</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableList</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableMap</MissingClass>
+    <MissingClass>com.google.common.collect.ImmutableSet</MissingClass>
+    <MissingClass>com.google.common.collect.Lists</MissingClass>
+    <MissingClass>com.google.common.collect.Maps</MissingClass>
+    <MissingClass>com.google.common.collect.Sets</MissingClass>
+    <MissingClass>com.typesafe.config.Config</MissingClass>
+    <MissingClass>com.typesafe.config.ConfigFactory</MissingClass>
+    <MissingClass>javax.ws.rs.core.Response$Status</MissingClass>
+    <MissingClass>javax.ws.rs.core.Response$Status$Family</MissingClass>
+    <MissingClass>javax.ws.rs.core.Response$StatusType</MissingClass>
+    <MissingClass>javax.ws.rs.ext.ContextResolver</MissingClass>
+    <MissingClass>org.apache.commons.lang.StringUtils</MissingClass>
+    <MissingClass>org.apache.commons.lang.Validate</MissingClass>
+    <MissingClass>org.glassfish.jersey.moxy.json.MoxyJsonConfig</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.Equals</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.EqualsStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.HashCodeStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.JAXBHashCodeStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.ToString</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.lang.ToStringStrategy</MissingClass>
+    <MissingClass>org.jvnet.jaxb2_commons.locator.util.LocatorUtils</MissingClass>
+    <MissingClass>org.slf4j.Logger</MissingClass>
+    <MissingClass>org.slf4j.LoggerFactory</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Wed, 20 Oct 2021 13:39:51 +0800" total_classes="168" referenced_classes="307" total_bugs="92" total_size="7871" num_packages="12" java_version="1.8.0_301" vm_version="25.301-b09" cpu_seconds="43.71" clock_seconds="15.07" peak_mbytes="440.80" alloc_mbytes="3641.00" gc_seconds="0.39" priority_3="19" priority_2="73">
+    <PackageStats package="org.apache.lens.api" total_bugs="7" total_types="13" total_size="278" priority_3="3" priority_2="4">
+      <ClassStats class="org.apache.lens.api.APIResult" sourceFile="APIResult.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.APIResult$Status" sourceFile="APIResult.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.DateTime" sourceFile="DateTime.java" interface="false" size="10" bugs="3" priority_2="3"/>
+      <ClassStats class="org.apache.lens.api.LensConf" sourceFile="LensConf.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.LensSessionHandle" sourceFile="LensSessionHandle.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.Priority" sourceFile="Priority.java" interface="false" size="18" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.StringList" sourceFile="StringList.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.SupportedOperations" sourceFile="SupportedOperations.java" interface="false" size="19" bugs="2" priority_3="2"/>
+      <ClassStats class="org.apache.lens.api.ToXMLString" sourceFile="ToXMLString.java" interface="false" size="38" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.ToYAMLString" sourceFile="ToYAMLString.java" interface="false" size="54" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.ToYAMLString$1" sourceFile="ToYAMLString.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.ToYAMLString$FieldNameAndValue" sourceFile="ToYAMLString.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.UUIDAdapter" sourceFile="UUIDAdapter.java" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.auth" total_bugs="0" total_types="2" total_size="26">
+      <ClassStats class="org.apache.lens.api.auth.AuthHeader" sourceFile="AuthHeader.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.auth.AuthScheme" sourceFile="AuthScheme.java" interface="false" size="22" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.error" total_bugs="0" total_types="7" total_size="157">
+      <ClassStats class="org.apache.lens.api.error.ErrorCollection" sourceFile="ErrorCollection.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.ErrorCollectionFactory" sourceFile="ErrorCollectionFactory.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.ErrorMap" sourceFile="ErrorMap.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.InvalidStateTransitionException" sourceFile="InvalidStateTransitionException.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.LensCommonErrorCode" sourceFile="LensCommonErrorCode.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.LensError" sourceFile="LensError.java" interface="false" size="24" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.error.LensHttpStatus" sourceFile="LensHttpStatus.java" interface="false" size="37" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.jaxb" total_bugs="7" total_types="9" total_size="381" priority_3="3" priority_2="4">
+      <ClassStats class="org.apache.lens.api.jaxb.LensJAXBContext" sourceFile="LensJAXBContext.java" interface="false" size="59" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.jaxb.LensJAXBContext$1" sourceFile="LensJAXBContext.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.LensJAXBContext$LensValidationEventCollector" sourceFile="LensJAXBContext.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.LensJAXBContextResolver" sourceFile="LensJAXBContextResolver.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.LensJAXBValidationException" sourceFile="LensJAXBValidationException.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.YAMLToStringStrategy" sourceFile="YAMLToStringStrategy.java" interface="false" size="173" bugs="3" priority_3="2" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.jaxb.YAMLToStringStrategy$NameableContext" sourceFile="YAMLToStringStrategy.java" interface="true" size="4" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.YAMLToStringStrategy$ReflectiveNameableContext" sourceFile="YAMLToStringStrategy.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.jaxb.YAMLToStringStrategy$XFieldNameableContext" sourceFile="YAMLToStringStrategy.java" interface="false" size="55" bugs="3" priority_2="3"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.metastore" total_bugs="54" total_types="58" total_size="4998" priority_3="2" priority_2="52">
+      <ClassStats class="org.apache.lens.api.metastore.ObjectFactory" sourceFile="ObjectFactory.java" interface="false" size="191" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.metastore.SchemaTraverser" sourceFile="SchemaTraverser.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.metastore.SchemaTraverser$SchemaEntityProcessor" sourceFile="SchemaTraverser.java" interface="true" size="1" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.metastore.XBaseCube" sourceFile="XBaseCube.java" interface="false" size="115" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XChainColumn" sourceFile="XChainColumn.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XColumn" sourceFile="XColumn.java" interface="false" size="116" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XColumns" sourceFile="XColumns.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XCube" sourceFile="XCube.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDerivedCube" sourceFile="XDerivedCube.java" interface="false" size="98" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDimAttrNames" sourceFile="XDimAttrNames.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDimAttribute" sourceFile="XDimAttribute.java" interface="false" size="180" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDimAttributes" sourceFile="XDimAttributes.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDimension" sourceFile="XDimension.java" interface="false" size="133" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XDimensionTable" sourceFile="XDimensionTable.java" interface="false" size="133" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XExprColumn" sourceFile="XExprColumn.java" interface="false" size="90" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XExprSpec" sourceFile="XExprSpec.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XExpressions" sourceFile="XExpressions.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XFact" sourceFile="XFact.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XFactTable" sourceFile="XFactTable.java" interface="false" size="115" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XField" sourceFile="XField.java" interface="false" size="99" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XFields" sourceFile="XFields.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XFlattenedColumn" sourceFile="XFlattenedColumn.java" interface="false" size="116" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XFlattenedColumns" sourceFile="XFlattenedColumns.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinChain" sourceFile="XJoinChain.java" interface="false" size="85" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinChains" sourceFile="XJoinChains.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinEdge" sourceFile="XJoinEdge.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinEdges" sourceFile="XJoinEdges.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinPath" sourceFile="XJoinPath.java" interface="false" size="48" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XJoinPaths" sourceFile="XJoinPaths.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XMeasure" sourceFile="XMeasure.java" interface="false" size="187" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XMeasureNames" sourceFile="XMeasureNames.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XMeasureType" sourceFile="XMeasureType.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.metastore.XMeasures" sourceFile="XMeasures.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XNativeTable" sourceFile="XNativeTable.java" interface="false" size="167" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XPartSpec" sourceFile="XPartSpec.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XPartSpecElement" sourceFile="XPartSpecElement.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XPartition" sourceFile="XPartition.java" interface="false" size="235" bugs="3" priority_3="2" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XPartitionList" sourceFile="XPartitionList.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XProperties" sourceFile="XProperties.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XProperty" sourceFile="XProperty.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSegment" sourceFile="XSegment.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSegmentation" sourceFile="XSegmentation.java" interface="false" size="116" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSegments" sourceFile="XSegments.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSkewColList" sourceFile="XSkewColList.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSkewedInfo" sourceFile="XSkewedInfo.java" interface="false" size="97" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XSkewedValueLocation" sourceFile="XSkewedValueLocation.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XStorage" sourceFile="XStorage.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XStorageTableDesc" sourceFile="XStorageTableDesc.java" interface="false" size="413" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XStorageTableElement" sourceFile="XStorageTableElement.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XStorageTables" sourceFile="XStorageTables.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XTableReference" sourceFile="XTableReference.java" interface="false" size="84" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XTimePartSpec" sourceFile="XTimePartSpec.java" interface="false" size="53" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XTimePartSpecElement" sourceFile="XTimePartSpecElement.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XUpdatePeriod" sourceFile="XUpdatePeriod.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.metastore.XUpdatePeriodTableDescriptor" sourceFile="XUpdatePeriodTableDescriptor.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XUpdatePeriods" sourceFile="XUpdatePeriods.java" interface="false" size="75" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.XVirtualFactTable" sourceFile="XVirtualFactTable.java" interface="false" size="98" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.metastore.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.parse" total_bugs="0" total_types="1" total_size="2">
+      <ClassStats class="org.apache.lens.api.parse.Parser" sourceFile="Parser.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.query" total_bugs="10" total_types="20" total_size="512" priority_3="8" priority_2="2">
+      <ClassStats class="org.apache.lens.api.query.FailedAttempt" sourceFile="FailedAttempt.java" interface="false" size="36" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.InMemoryQueryResult" sourceFile="InMemoryQueryResult.java" interface="false" size="25" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.LensPreparedQuery" sourceFile="LensPreparedQuery.java" interface="false" size="26" bugs="2" priority_2="2"/>
+      <ClassStats class="org.apache.lens.api.query.LensQuery" sourceFile="LensQuery.java" interface="false" size="72" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.PersistentQueryResult" sourceFile="PersistentQueryResult.java" interface="false" size="26" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.QueryCostType" sourceFile="QueryCostType.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryHandle" sourceFile="QueryHandle.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryHandleWithResultSet" sourceFile="QueryHandleWithResultSet.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryPlan" sourceFile="QueryPlan.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryPrepareHandle" sourceFile="QueryPrepareHandle.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryResult" sourceFile="QueryResult.java" interface="false" size="3" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryResultSetMetadata" sourceFile="QueryResultSetMetadata.java" interface="false" size="8" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.QueryStatus" sourceFile="QueryStatus.java" interface="false" size="86" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryStatus$1" sourceFile="QueryStatus.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QueryStatus$Status" sourceFile="QueryStatus.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.QuerySubmitResult" sourceFile="QuerySubmitResult.java" interface="false" size="3" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.ResultColumn" sourceFile="ResultColumn.java" interface="false" size="16" bugs="2" priority_3="2"/>
+      <ClassStats class="org.apache.lens.api.query.ResultColumnType" sourceFile="ResultColumnType.java" interface="false" size="48" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.ResultRow" sourceFile="ResultRow.java" interface="false" size="10" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.query.SubmitOp" sourceFile="SubmitOp.java" interface="false" size="19" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.query.save" total_bugs="3" total_types="8" total_size="183" priority_2="3">
+      <ClassStats class="org.apache.lens.api.query.save.ListResponse" sourceFile="ListResponse.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.Parameter" sourceFile="Parameter.java" interface="false" size="41" bugs="3" priority_2="3"/>
+      <ClassStats class="org.apache.lens.api.query.save.ParameterCollectionType" sourceFile="ParameterCollectionType.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.ParameterDataType" sourceFile="ParameterDataType.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.ParameterParserResponse" sourceFile="ParameterParserResponse.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.ResourceModifiedResponse" sourceFile="ResourceModifiedResponse.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.ResourceModifiedResponse$Action" sourceFile="ResourceModifiedResponse.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.query.save.SavedQuery" sourceFile="SavedQuery.java" interface="false" size="35" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.result" total_bugs="2" total_types="6" total_size="123" priority_3="2">
+      <ClassStats class="org.apache.lens.api.result.LensAPIResult" sourceFile="LensAPIResult.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.result.LensErrorTO" sourceFile="LensErrorTO.java" interface="false" size="50" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.lens.api.result.NoErrorPayload" sourceFile="NoErrorPayload.java" interface="false" size="6" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.result.NoResultData" sourceFile="NoResultData.java" interface="false" size="3" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.result.PrettyPrintable" sourceFile="PrettyPrintable.java" interface="true" size="2" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.result.QueryCostTO" sourceFile="QueryCostTO.java" interface="false" size="14" bugs="1" priority_3="1"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.scheduler" total_bugs="8" total_types="37" total_size="1070" priority_2="8">
+      <ClassStats class="org.apache.lens.api.scheduler.MapType" sourceFile="MapType.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.ObjectFactory" sourceFile="ObjectFactory.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.ResourcePath" sourceFile="ResourcePath.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobEvent" sourceFile="SchedulerJobEvent.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobHandle" sourceFile="SchedulerJobHandle.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInfo" sourceFile="SchedulerJobInfo.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceEvent" sourceFile="SchedulerJobInstanceEvent.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceHandle" sourceFile="SchedulerJobInstanceHandle.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceInfo" sourceFile="SchedulerJobInstanceInfo.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceRun" sourceFile="SchedulerJobInstanceRun.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState" sourceFile="SchedulerJobInstanceState.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$1" sourceFile="SchedulerJobInstanceState.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$2" sourceFile="SchedulerJobInstanceState.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$3" sourceFile="SchedulerJobInstanceState.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$4" sourceFile="SchedulerJobInstanceState.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$5" sourceFile="SchedulerJobInstanceState.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$6" sourceFile="SchedulerJobInstanceState.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$7" sourceFile="SchedulerJobInstanceState.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$8" sourceFile="SchedulerJobInstanceState.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobInstanceState$9" sourceFile="SchedulerJobInstanceState.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState" sourceFile="SchedulerJobState.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$1" sourceFile="SchedulerJobState.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$2" sourceFile="SchedulerJobState.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$3" sourceFile="SchedulerJobState.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$4" sourceFile="SchedulerJobState.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$5" sourceFile="SchedulerJobState.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobState$6" sourceFile="SchedulerJobState.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.SchedulerJobStats" sourceFile="SchedulerJobStats.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.StateTransitioner" sourceFile="StateTransitioner.java" interface="true" size="2" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XExecution" sourceFile="XExecution.java" interface="false" size="65" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XFrequency" sourceFile="XFrequency.java" interface="false" size="82" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XFrequencyEnum" sourceFile="XFrequencyEnum.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XJob" sourceFile="XJob.java" interface="false" size="138" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XJobQuery" sourceFile="XJobQuery.java" interface="false" size="70" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XSessionType" sourceFile="XSessionType.java" interface="false" size="92" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.XTrigger" sourceFile="XTrigger.java" interface="false" size="48" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.lens.api.scheduler.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.session" total_bugs="0" total_types="2" total_size="50">
+      <ClassStats class="org.apache.lens.api.session.SessionPerUserInfo" sourceFile="SessionPerUserInfo.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.session.UserSessionInfo" sourceFile="UserSessionInfo.java" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="org.apache.lens.api.util" total_bugs="1" total_types="5" total_size="91" priority_3="1">
+      <ClassStats class="org.apache.lens.api.util.CommonUtils" sourceFile="CommonUtils.java" interface="false" size="23" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.util.CommonUtils$1" sourceFile="CommonUtils.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.util.CommonUtils$EntryParser" sourceFile="CommonUtils.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.util.MoxyJsonConfigurationContextResolver" sourceFile="MoxyJsonConfigurationContextResolver.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="org.apache.lens.api.util.PathValidator" sourceFile="PathValidator.java" interface="false" size="44" bugs="1" priority_3="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1101" invocations="1133" avgMicrosecondsPerInvocation="972" maxMicrosecondsPerInvocation="61444" standardDeviationMircosecondsPerInvocation="3555"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="952" invocations="307" avgMicrosecondsPerInvocation="3103" maxMicrosecondsPerInvocation="145950" standardDeviationMircosecondsPerInvocation="12361"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="852" invocations="307" avgMicrosecondsPerInvocation="2777" maxMicrosecondsPerInvocation="50731" standardDeviationMircosecondsPerInvocation="6795"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="621" invocations="1852" avgMicrosecondsPerInvocation="335" maxMicrosecondsPerInvocation="30167" standardDeviationMircosecondsPerInvocation="1150"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="599" invocations="1864" avgMicrosecondsPerInvocation="321" maxMicrosecondsPerInvocation="15339" standardDeviationMircosecondsPerInvocation="1026"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="562" invocations="2248" avgMicrosecondsPerInvocation="250" maxMicrosecondsPerInvocation="45680" standardDeviationMircosecondsPerInvocation="1665"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="468" invocations="1804" avgMicrosecondsPerInvocation="259" maxMicrosecondsPerInvocation="17407" standardDeviationMircosecondsPerInvocation="964"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="466" invocations="1852" avgMicrosecondsPerInvocation="251" maxMicrosecondsPerInvocation="12336" standardDeviationMircosecondsPerInvocation="828"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="432" invocations="1865" avgMicrosecondsPerInvocation="231" maxMicrosecondsPerInvocation="8970" standardDeviationMircosecondsPerInvocation="721"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="418" invocations="1852" avgMicrosecondsPerInvocation="226" maxMicrosecondsPerInvocation="17963" standardDeviationMircosecondsPerInvocation="726"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="326" invocations="1141" avgMicrosecondsPerInvocation="286" maxMicrosecondsPerInvocation="8957" standardDeviationMircosecondsPerInvocation="618"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="295" invocations="384" avgMicrosecondsPerInvocation="770" maxMicrosecondsPerInvocation="31070" standardDeviationMircosecondsPerInvocation="2241"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="287" invocations="1308" avgMicrosecondsPerInvocation="219" maxMicrosecondsPerInvocation="15368" standardDeviationMircosecondsPerInvocation="686"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="279" invocations="307" avgMicrosecondsPerInvocation="908" maxMicrosecondsPerInvocation="48721" standardDeviationMircosecondsPerInvocation="3296"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="262" invocations="168" avgMicrosecondsPerInvocation="1559" maxMicrosecondsPerInvocation="20175" standardDeviationMircosecondsPerInvocation="3365"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="260" invocations="27723" avgMicrosecondsPerInvocation="9" maxMicrosecondsPerInvocation="7763" standardDeviationMircosecondsPerInvocation="102"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="251" invocations="168" avgMicrosecondsPerInvocation="1495" maxMicrosecondsPerInvocation="23330" standardDeviationMircosecondsPerInvocation="2951"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="233" invocations="168" avgMicrosecondsPerInvocation="1387" maxMicrosecondsPerInvocation="108681" standardDeviationMircosecondsPerInvocation="8423"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="232" invocations="307" avgMicrosecondsPerInvocation="758" maxMicrosecondsPerInvocation="15995" standardDeviationMircosecondsPerInvocation="2061"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="202" invocations="1009" avgMicrosecondsPerInvocation="201" maxMicrosecondsPerInvocation="10369" standardDeviationMircosecondsPerInvocation="686"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="201" invocations="1862" avgMicrosecondsPerInvocation="108" maxMicrosecondsPerInvocation="32288" standardDeviationMircosecondsPerInvocation="811"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="198" invocations="307" avgMicrosecondsPerInvocation="647" maxMicrosecondsPerInvocation="16754" standardDeviationMircosecondsPerInvocation="1864"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="192" invocations="1852" avgMicrosecondsPerInvocation="103" maxMicrosecondsPerInvocation="75538" standardDeviationMircosecondsPerInvocation="1766"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="186" invocations="168" avgMicrosecondsPerInvocation="1108" maxMicrosecondsPerInvocation="12144" standardDeviationMircosecondsPerInvocation="1967"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="159" invocations="307" avgMicrosecondsPerInvocation="518" maxMicrosecondsPerInvocation="10725" standardDeviationMircosecondsPerInvocation="1199"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="156" invocations="307" avgMicrosecondsPerInvocation="508" maxMicrosecondsPerInvocation="15020" standardDeviationMircosecondsPerInvocation="1402"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="139" invocations="307" avgMicrosecondsPerInvocation="455" maxMicrosecondsPerInvocation="98297" standardDeviationMircosecondsPerInvocation="5707"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="135" invocations="168" avgMicrosecondsPerInvocation="809" maxMicrosecondsPerInvocation="24818" standardDeviationMircosecondsPerInvocation="2544"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

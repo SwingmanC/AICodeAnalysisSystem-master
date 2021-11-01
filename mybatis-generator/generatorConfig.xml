@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <properties resource="application.properties" />
+    <!-- 指定数据连接驱动jar地址 -->
+    <classPathEntry location="E:\repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar" />
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <!--可以使用``包括字段名，避免字段名与sql保留字冲突报错-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 自动生成toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ai_code?serverTimezone=UTC"
+                        userId="root"
+                        password="1234" />
+
+
+        <javaModelGenerator targetPackage="org.nju.demo.entity" targetProject="src/main/java" />
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="org.nju.demo.dao" targetProject="src/main/java" />
+        <!--表名-->
+<!--        <table tableName="a_user">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+<!--        </table>-->
+<!--        <table tableName="project">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+<!--        </table>-->
+<!--        <table tableName="report">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+<!--        </table>-->
+        <table tableName="f_issue">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+<!--        <table tableName="f_violation">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+<!--        </table>-->
+<!--        <table tableName="category">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+<!--        </table>-->
+    </context>
+</generatorConfiguration>

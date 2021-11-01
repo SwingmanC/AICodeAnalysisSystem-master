@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+
+    <title>源代码误报智能分析</title>
+
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet"/>
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet"/>
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
+    <link href="/css/animate.css" rel="stylesheet"/>
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <!-- Peity -->
+    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/hplus.js?v=2.2.0"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Peity -->
+    <script src="/js/demo/peity-demo.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.user.username}"></strong>
+                             </span>  <span class="text-muted text-xs block">南京大学 <b class="caret"></b></span> </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="#">修改头像</a>
+                            </li>
+                            <li><a href="/view/modify">个人资料</a>
+                            </li>
+                            <li><a href="#">联系我们</a>
+                            </li>
+                            <li><a href="#">信箱</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="/logout">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        H+
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                </li>
+                <li>
+                    <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-book"></i> <span class="nav-label">漏洞库管理</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="/view/projects">
+                        <i class="fa fa-sign-out"></i> 返回
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2 th:text="${session.project.projectName}"></h2>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">上传新版本</a>
+                            <div class="ibox-tools">
+                                <div>
+                                    <h5>请选择静态分析工具：</h5>
+                                    <select id="tools">
+                                        <option value="1">FindBugs</option>
+                                    </select>
+                                </div>
+<!--                                <a class="collapse-link">-->
+<!--                                    <i class="fa fa-chevron-up"></i>-->
+<!--                                </a>-->
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-hover" id="versionTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">上传新版本</h3>
+                    </div>
+                    <form id="version_info" action="/addVersion" enctype="multipart/form-data" method="post">
+                        <div class="modal-body">
+                            <div class="container">
+                                <table>
+                                    <tr>
+                                        <td><label for="version">版本信息：</label></td>
+                                        <td style="width: 350px;"><input type="text" class="form-control" id="version" name="version" required/></td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td><label for="lastId">对比版本：</label></td>-->
+<!--                                        <td style="width: 350px;">-->
+<!--                                            <select id="lastId" name="lastId" class="form-control" >-->
+<!--                                                <option value="0" selected>请选择</option>-->
+<!--                                                <option th:each="version:${versionList}" th:value="${version.id}" th:text="${version.version}"></option>-->
+<!--                                            </select>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+                                    <tr>
+                                        <td><label for="javaFiles">附件上传：</label></td>
+                                        <td style="width: 350px;"><input id="javaFiles" name="javaFiles" type="file" webkitdirectory multiple required onchange="uploadDir(this)"/><br/></td>
+                                    </tr>
+                                </table>
+                                <style>
+                                    td{
+                                        padding-bottom: 10px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <input type="submit" class="btn btn-primary" id="add_submit" value="提交"/>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">选择对比版本</h3>
+                    </div>
+                    <form id="edit_info" action="#">
+                        <div class="modal-body">
+                            <div class="container">
+                                <div id="version_id" hidden></div>
+                                <table>
+                                    <tr>
+                                        <td><label for="lastId">对比版本：</label></td>
+                                        <td style="width: 350px;">
+                                            <select id="lastId" name="lastId" class="form-control" >
+                                                <option value="0" selected>无</option>
+                                                <option th:each="version:${versionList}" th:value="${version.id}" th:text="${version.version}"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <style>
+                                    td{
+                                        padding-bottom: 10px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-primary" id="edit_submit" onclick="edit()">提交</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div class="footer">
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("#versionTable").bootstrapTable({
+            url:"/versions",  //请求地址
+            striped : true, //是否显示行间隔色
+            pageNumber : 1, //初始化加载第一页
+            pagination : true,//是否分页
+            sidePagination : 'client',//server:服务器端分页|client：前端分页
+            pageSize : 5,//单页记录数
+            pageList : [1, 5, 10],//可选择单页记录数
+            showRefresh : true,//刷新按钮
+            columns : [ {
+                title : '#',
+                field : 'id',
+                sortable : true
+            },{
+                title : '版本信息',
+                field : 'version',
+                sortable : true
+            },{
+                title : '文件路径',
+                field : 'filePath',
+                sortable : true
+            },{
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    });
+    function operateFormatter(value, row, index) {
+        let read_path = "/view/violations/"+row.id;
+        let edit_path = "#";
+        let scan_path = "#";
+        let delete_path = "#";
+        return "<a class='btn btn-default' href=\""+read_path+"\">查看</a>"+"  "+
+            "<a class='btn btn-primary' href=\""+edit_path+"\" role='button' data-toggle='modal' data-target='#editModal' onclick='value(\""+row.id+"\")'>编辑</a>"+"  "+
+            "<a class='btn btn-warning' href=\""+scan_path+"\" onclick='scan(\""+row.id+"\")'>扫描</a>"+"  "+
+            "<a class='btn btn-danger' href=\""+delete_path+"\">删除</a>";
+    }
+    function scan(versionId) {
+        layer.open({
+            title: false,
+            content: '分析中，请等待',
+            anim:3,
+            btn:['中止'],
+            yes:function(index,layero){
+
+            },
+            cancel:function(){ return false }
+        });
+        $.ajax({
+            url:'/f_scan',
+            type:'GET',
+            data:{
+                "versionId":versionId
+            },
+            dataType:'json',
+            success:function (msg) {
+                if(msg === 0) layer.msg("扫描失败");
+                if (msg === 2) layer.msg("该版本已扫描");
+                if (msg === 3) layer.msg("请选择对比版本");
+                else{
+                    layer.msg("扫描成功");
+                    setTimeout(function(){
+                        location.reload();
+                    },3000);
+                }
+            }
+        })
+    }
+    // function add() {
+    //     let version = $("#version").val();
+    //     let lastId = Number($("#lastId").val());
+    //     let formData = new FormData();
+    //     formData.append("version",version);
+    //     formData.append("lastId",lastId);
+    //     formData.append("javaFiles",$("#javaFiles")[0].files[0])
+    //     $.ajax({
+    //         url:'/addVersion',
+    //         type: 'get',
+    //         cache: false,
+    //         data: formData,
+    //         processData: false,
+    //         contentType: false,
+    //         success:function(msg){
+    //             layer.msg("上传成功");
+    //             setTimeout(function(){
+    //                 self.location="/view/versions/"+[[${session.project.id}]];
+    //             },2000);
+    //         }
+    //     })
+    // }
+    function value(id) {
+        $("#version_id").val(id);
+    }
+    function edit() {
+        let lastId = Number($("#lastId").val());
+        let versionId = Number($("#version_id").val());
+        if (lastId === versionId)
+            layer.msg("请重新选择对比版本",{
+            time:2000
+        });
+        else{
+            $.ajax({
+                url:'/editVersion',
+                type:'get',
+                data:{
+                    "versionId":versionId,
+                    "lastId":lastId
+                },
+                dataType: 'json',
+                success:function (msg) {
+                    layer.msg("修改成功");
+                    setTimeout(function(){
+                        location.reload();
+                    },1500);
+                }
+            })
+        }
+    }
+    // function extract(versionId) {
+    //     $.ajax({
+    //         url:'/extract',
+    //         type:'get',
+    //         data:{
+    //             "versionId":versionId,
+    //         },
+    //         dataType: 'json',
+    //         success:function (msg) {
+    //             if (msg === 0) layer.msg("该版本特征已提取");
+    //             else{
+    //                 layer.msg("提取完成");
+    //                 setTimeout(function () {
+    //                     location.reload();
+    //                 },1500);
+    //             }
+    //         }
+    //     })
+    // }
+    function uploadDir(inputTag) {
+        const files = inputTag.files;
+        for (let file of files) {
+            console.log(file.webkitRelativePath);
+        }
+    }
+</script>
+</body>
+
+</html>
