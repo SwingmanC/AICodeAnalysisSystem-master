@@ -3,12 +3,15 @@ package org.nju.demo.controller;
 import freemarker.template.TemplateException;
 import org.nju.demo.entity.*;
 import org.nju.demo.pojo.DocWarning;
+import org.nju.demo.pojo.Violation;
 import org.nju.demo.service.*;
 import org.nju.demo.utils.CmdUtil;
 import org.nju.demo.utils.DocUtil;
+import org.nju.demo.utils.SortUtil;
 import org.nju.demo.utils.XMLUtil;
 import org.nju.demo.utils.algorithm.Match;
 import org.nju.demo.utils.algorithm.impl.ExactMatch;
+import org.nju.demo.vo.ViolationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -36,13 +40,13 @@ public class MainController {
     private FViolationService fViolationService;
 
     @Autowired
-    private FeatureService featureService;
-
-    @Autowired
     private FIssueService fIssueService;
 
     @Autowired
-    private  ReportService reportService;
+    private ReportService reportService;
+
+    @Autowired
+    private PatternService patternService;
 
     @Autowired
     private HttpSession session;
@@ -115,16 +119,44 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/f_violations")
-    public List<FViolation> getFViolations(){
+    public List<ViolationVO> getFViolations(){
         AVersion version = (AVersion) session.getAttribute("version");
-        return fViolationService.getFViolationsByVersionId(version.getId());
+        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        List<ViolationVO> violationVOList = new ArrayList<>();
+        for(FViolation violation : violationList){
+            ViolationVO violationVO = new ViolationVO();
+            Pattern pattern = patternService.getPatternByPatternName(violation.getType());
+            violationVO.setId(violation.getId());
+            violationVO.setType(violation.getType());
+            violationVO.setClassname(violation.getClassname());
+            violationVO.setMethodName(violation.getMethodName());
+            violationVO.setPriority(violation.getPriority());
+            violationVO.setLikelihood(pattern.getLikelihood());
+            violationVO.setState(violation.getState());
+            violationVOList.add(violationVO);
+        }
+        return violationVOList;
     }
 
     @ResponseBody
     @RequestMapping("/f_true_violations")
-    public List<FViolation> getTrueFViolations(){
+    public List<ViolationVO> getTrueFViolations(){
         AVersion version = (AVersion) session.getAttribute("version");
-        return fViolationService.getTrueFViolations(version.getId());
+        List<FViolation> violationList = fViolationService.getTrueFViolations(version.getId());
+        List<ViolationVO> violationVOList = new ArrayList<>();
+        for(FViolation violation : violationList){
+            ViolationVO violationVO = new ViolationVO();
+            Pattern pattern = patternService.getPatternByPatternName(violation.getType());
+            violationVO.setId(violation.getId());
+            violationVO.setType(violation.getType());
+            violationVO.setClassname(violation.getClassname());
+            violationVO.setMethodName(violation.getMethodName());
+            violationVO.setPriority(violation.getPriority());
+            violationVO.setLikelihood(pattern.getLikelihood());
+            violationVO.setState(violation.getState());
+            violationVOList.add(violationVO);
+        }
+        return violationVOList;
     }
 
     @ResponseBody
@@ -306,21 +338,27 @@ public class MainController {
         return fIssueService.getIssueByReportId(report.getId());
     }
 
-    /**
-     * 特征提取接口**/
-//    @ResponseBody
-//    @RequestMapping("/extract")
-//    public int extract(@RequestParam("versionId") int versionId) throws IOException {
-//        if (featureService.getFeatureByVersionId(versionId) != null) return 0;
-//
-//        Project project = (Project) session.getAttribute("project");
-//        AVersion aVersion = versionService.getVersion(versionId);
-//
-//        String filePath = CmdUtil.generateFeature(project.getProjectName(),aVersion.getVersion(),aVersion.getFilePath());
-//        Feature feature = new Feature();
-//        feature.setVersionId(versionId);
-//        feature.setFilePath(filePath);
-//        return featureService.addFeature(feature);
-//    }
+    @RequestMapping("/compute")
+    public String compute(){
+        AVersion version = (AVersion) session.getAttribute("version");
+        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        Map<String,Double> likelihoods = SortUtil.computeLikelihood(violationList);
+        for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
+            String patternName = entry.getKey();
+            Double likelihood = entry.getValue();
+            Pattern pattern = patternService.getPatternByPatternName(patternName);
+            long n = patternService.countByCategoryId(pattern.getCategoryId());
+            Double variance = SortUtil.computeVariance(likelihood,n);
+//            System.out.println(likelihood+" "+variance+" "+n);
+            Double lastLikelihood = pattern.getLikelihood();
+            Double lastVariance = pattern.getVariance();
+            if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
+            else pattern.setLikelihood((likelihood+lastLikelihood)/2);
+            if (lastVariance == 0) pattern.setVariance(variance);
+            else pattern.setVariance((variance+lastVariance)/2);
+            patternService.updatePattern(pattern);
+        }
+        return "redirect:/view/violations/"+version.getId();
+    }
 
 }

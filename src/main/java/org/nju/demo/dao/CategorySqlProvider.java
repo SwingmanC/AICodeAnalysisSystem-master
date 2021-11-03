@@ -1,13 +1,12 @@
 package org.nju.demo.dao;
 
-import org.nju.demo.entity.Category;
-import org.nju.demo.entity.CategoryExample;
-import org.nju.demo.entity.CategoryExample.Criteria;
-import org.nju.demo.entity.CategoryExample.Criterion;
-import org.apache.ibatis.jdbc.SQL;
-
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.jdbc.SQL;
+import org.nju.demo.entity.Category;
+import org.nju.demo.entity.CategoryExample.Criteria;
+import org.nju.demo.entity.CategoryExample.Criterion;
+import org.nju.demo.entity.CategoryExample;
 
 public class CategorySqlProvider {
 
@@ -33,6 +32,14 @@ public class CategorySqlProvider {
             sql.VALUES("category_name", "#{categoryName,jdbcType=VARCHAR}");
         }
         
+        if (record.getLikelihood() != null) {
+            sql.VALUES("likelihood", "#{likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.VALUES("variance", "#{variance,jdbcType=DOUBLE}");
+        }
+        
         return sql.toString();
     }
 
@@ -44,6 +51,8 @@ public class CategorySqlProvider {
             sql.SELECT("id");
         }
         sql.SELECT("category_name");
+        sql.SELECT("likelihood");
+        sql.SELECT("variance");
         sql.FROM("category");
         applyWhere(sql, example, false);
         
@@ -69,6 +78,14 @@ public class CategorySqlProvider {
             sql.SET("category_name = #{record.categoryName,jdbcType=VARCHAR}");
         }
         
+        if (record.getLikelihood() != null) {
+            sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -79,9 +96,32 @@ public class CategorySqlProvider {
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("category_name = #{record.categoryName,jdbcType=VARCHAR}");
+        sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
         
         CategoryExample example = (CategoryExample) parameter.get("example");
         applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(Category record) {
+        SQL sql = new SQL();
+        sql.UPDATE("category");
+        
+        if (record.getCategoryName() != null) {
+            sql.SET("category_name = #{categoryName,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLikelihood() != null) {
+            sql.SET("likelihood = #{likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.SET("variance = #{variance,jdbcType=DOUBLE}");
+        }
+        
+        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        
         return sql.toString();
     }
 

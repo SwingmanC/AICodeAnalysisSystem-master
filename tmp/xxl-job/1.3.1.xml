@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1634708391000" analysisTimestamp="1635908041491" release="">
+  <Project projectName="">
+    <Jar>/Users/sunchen/IntelliJProject/AICodeAnalysisSystem-master/data/jsfnsc/xxl-job/1.3.1</Jar>
+  </Project>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
+    <Class classname="com.xxl.job.admin.controller.JobLogController">
+      <SourceLine classname="com.xxl.job.admin.controller.JobLogController" start="34" end="165" sourcefile="JobLogController.java" sourcepath="com/xxl/job/admin/controller/JobLogController.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.controller.JobLogController" name="pageList" signature="(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.controller.JobLogController" start="54" end="75" startBytecode="0" endBytecode="457" sourcefile="JobLogController.java" sourcepath="com/xxl/job/admin/controller/JobLogController.java"/>
+    </Method>
+    <LocalVariable name="temp" register="8" pc="23" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="java.lang.String" name="split" signature="(Ljava/lang/String;)[Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="java.lang.String" start="2422" end="2422" startBytecode="0" endBytecode="30" sourcefile="String.java" sourcepath="java/lang/String.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.controller.JobLogController" start="58" end="58" startBytecode="25" endBytecode="25" sourcefile="JobLogController.java" sourcepath="com/xxl/job/admin/controller/JobLogController.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="2" rank="17" abbrev="ST" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" start="17" end="60" sourcefile="XxlJobLogCallbackServer.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServer.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" name="start" signature="(I)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" start="28" end="60" startBytecode="0" endBytecode="139" sourcefile="XxlJobLogCallbackServer.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServer.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" name="trigger_log_address" signature="Ljava/lang/String;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" sourcefile="XxlJobLogCallbackServer.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServer.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" start="29" end="29" startBytecode="17" endBytecode="17" sourcefile="XxlJobLogCallbackServer.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServer.java"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" rank="20" abbrev="SIC" category="PERFORMANCE">
+    <Class classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer$1">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer$1" start="32" end="57" sourcefile="XxlJobLogCallbackServer.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServer.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="DM_BOXED_PRIMITIVE_FOR_PARSING" priority="1" rank="16" abbrev="Bx" category="PERFORMANCE">
+    <Class classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler" start="22" end="55" sourcefile="XxlJobLogCallbackServerHandler.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServerHandler.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler" name="handle" signature="(Ljava/lang/String;Lorg/eclipse/jetty/server/Request;Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler" start="27" end="55" startBytecode="0" endBytecode="453" sourcefile="XxlJobLogCallbackServerHandler.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServerHandler.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="intValue" signature="()I" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer" start="893" end="893" startBytecode="0" endBytecode="28" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="parseInt" signature="(Ljava/lang/String;)I" isStatic="true" role="SHOULD_CALL"/>
+    <SourceLine classname="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler" start="39" end="39" startBytecode="87" endBytecode="87" sourcefile="XxlJobLogCallbackServerHandler.java" sourcepath="com/xxl/job/admin/core/callback/XxlJobLogCallbackServerHandler.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobInfo">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="9" end="164" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobInfo" name="getAddTime" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="91" end="91" startBytecode="0" endBytecode="46" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobInfo" name="addTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="91" end="91" startBytecode="4" endBytecode="4" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobInfo">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="9" end="164" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobInfo" name="getUpdateTime" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="99" end="99" startBytecode="0" endBytecode="46" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobInfo" name="updateTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="99" end="99" startBytecode="4" endBytecode="4" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobInfo">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="9" end="164" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobInfo" name="setAddTime" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="95" end="96" startBytecode="0" endBytecode="61" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobInfo" name="addTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Field>
+    <LocalVariable name="addTime" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="95" end="95" startBytecode="2" endBytecode="2" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobInfo">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="9" end="164" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobInfo" name="setUpdateTime" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="103" end="104" startBytecode="0" endBytecode="61" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobInfo" name="updateTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+    </Field>
+    <LocalVariable name="updateTime" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobInfo" start="103" end="103" startBytecode="2" endBytecode="2" sourcefile="XxlJobInfo.java" sourcepath="com/xxl/job/admin/core/model/XxlJobInfo.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobLog">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="9" end="111" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobLog" name="getHandleTime" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="91" end="91" startBytecode="0" endBytecode="46" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobLog" name="handleTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="91" end="91" startBytecode="4" endBytecode="4" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobLog">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="9" end="111" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobLog" name="getTriggerTime" signature="()Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="73" end="73" startBytecode="0" endBytecode="46" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobLog" name="triggerTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="73" end="73" startBytecode="4" endBytecode="4" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobLog">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="9" end="111" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobLog" name="setHandleTime" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="94" end="95" startBytecode="0" endBytecode="61" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobLog" name="handleTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Field>
+    <LocalVariable name="handleTime" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="94" end="94" startBytecode="2" endBytecode="2" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.model.XxlJobLog">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="9" end="111" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.model.XxlJobLog" name="setTriggerTime" signature="(Ljava/util/Date;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="76" end="77" startBytecode="0" endBytecode="61" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.model.XxlJobLog" name="triggerTime" signature="Ljava/util/Date;" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+    </Field>
+    <LocalVariable name="triggerTime" register="1" pc="2" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="com.xxl.job.admin.core.model.XxlJobLog" start="76" end="76" startBytecode="2" endBytecode="2" sourcefile="XxlJobLog.java" sourcepath="com/xxl/job/admin/core/model/XxlJobLog.java"/>
+  </BugInstance>
+  <BugInstance type="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" priority="3" rank="19" abbrev="RV" category="BAD_PRACTICE">
+    <Class classname="com.xxl.job.admin.core.thread.JobMonitorHelper">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper" start="24" end="85" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.thread.JobMonitorHelper" name="monitor" signature="(I)V" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper" start="84" end="85" startBytecode="0" endBytecode="60" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Method>
+    <Method classname="java.util.concurrent.LinkedBlockingQueue" name="offer" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.concurrent.LinkedBlockingQueue" start="411" end="431" startBytecode="0" endBytecode="279" sourcefile="LinkedBlockingQueue.java" sourcepath="java/util/concurrent/LinkedBlockingQueue.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper" start="84" end="84" startBytecode="10" endBytecode="10" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+  </BugInstance>
+  <BugInstance type="DM_NUMBER_CTOR" priority="2" rank="18" abbrev="Bx" category="PERFORMANCE">
+    <Class classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="34" end="77" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" name="run" signature="()V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="38" end="77" startBytecode="0" endBytecode="615" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="&lt;init&gt;" signature="(I)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer" start="849" end="851" startBytecode="0" endBytecode="41" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+    </Method>
+    <Method classname="java.lang.Integer" name="valueOf" signature="(I)Ljava/lang/Integer;" isStatic="true" role="SHOULD_CALL">
+      <SourceLine classname="java.lang.Integer" start="830" end="832" startBytecode="0" endBytecode="72" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="58" end="58" startBytecode="188" endBytecode="188" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+  </BugInstance>
+  <BugInstance type="UCF_USELESS_CONTROL_FLOW" priority="3" rank="20" abbrev="UCF" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="34" end="77" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" name="run" signature="()V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="38" end="77" startBytecode="0" endBytecode="615" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.core.thread.JobMonitorHelper$1" start="51" end="51" startBytecode="118" endBytecode="118" sourcefile="JobMonitorHelper.java" sourcepath="com/xxl/job/admin/core/thread/JobMonitorHelper.java"/>
+  </BugInstance>
+  <BugInstance type="MS_CANNOT_BE_FINAL" priority="2" rank="18" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="44" end="283" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Class>
+    <Field classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="xxlJobInfoDao" signature="Lcom/xxl/job/admin/dao/IXxlJobInfoDao;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="MS_CANNOT_BE_FINAL" priority="2" rank="18" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="44" end="283" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Class>
+    <Field classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="xxlJobLogDao" signature="Lcom/xxl/job/admin/dao/IXxlJobLogDao;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" rank="15" abbrev="ST" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="44" end="283" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="setApplicationContext" signature="(Lorg/springframework/context/ApplicationContext;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="75" end="77" startBytecode="0" endBytecode="88" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="xxlJobInfoDao" signature="Lcom/xxl/job/admin/dao/IXxlJobInfoDao;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="76" end="76" startBytecode="25" endBytecode="25" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" rank="15" abbrev="ST" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="44" end="283" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="setApplicationContext" signature="(Lorg/springframework/context/ApplicationContext;)V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="75" end="77" startBytecode="0" endBytecode="88" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" name="xxlJobLogDao" signature="Lcom/xxl/job/admin/dao/IXxlJobLogDao;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.util.DynamicSchedulerUtil" start="75" end="75" startBytecode="11" endBytecode="11" sourcefile="DynamicSchedulerUtil.java" sourcepath="com/xxl/job/admin/core/util/DynamicSchedulerUtil.java"/>
+  </BugInstance>
+  <BugInstance type="DMI_THREAD_PASSED_WHERE_RUNNABLE_EXPECTED" priority="2" rank="17" abbrev="Dm" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.MailUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="22" end="179" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.MailUtil" name="main" signature="([Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="159" end="179" startBytecode="0" endBytecode="134" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Method>
+    <Method classname="java.util.concurrent.ExecutorService" name="execute" signature="(Ljava/lang/Runnable;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.concurrent.ExecutorService" sourcefile="ExecutorService.java" sourcepath="java/util/concurrent/ExecutorService.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="161" end="161" startBytecode="27" endBytecode="27" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+  </BugInstance>
+  <BugInstance type="NP_ALWAYS_NULL" priority="1" rank="5" abbrev="NP" category="CORRECTNESS">
+    <Class classname="com.xxl.job.admin.core.util.MailUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="22" end="179" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.MailUtil" name="sendMailSpring" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z[Ljava/io/File;)Z" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="70" end="99" startBytecode="0" endBytecode="412" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Method>
+    <LocalVariable name="javaMailSender" register="5" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="72" end="72" startBytecode="5" endBytecode="5" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java" role="SOURCE_LINE_DEREF"/>
+  </BugInstance>
+  <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="3" rank="19" abbrev="NP" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.MailUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="22" end="179" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.MailUtil" name="sendMailSpring" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z[Ljava/io/File;)Z" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="70" end="99" startBytecode="0" endBytecode="63" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Method>
+    <LocalVariable name="javaMailSender" register="5" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" start="72" end="72" startBytecode="3" endBytecode="3" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="3" rank="20" abbrev="ST" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.MailUtil$1">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil$1" start="161" end="176" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.MailUtil$1" name="run" signature="()V" isStatic="false">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil$1" start="164" end="176" startBytecode="0" endBytecode="128" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Method>
+    <Field classname="com.xxl.job.admin.core.util.MailUtil" name="total" signature="I" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.MailUtil" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+    </Field>
+    <SourceLine classname="com.xxl.job.admin.core.util.MailUtil$1" start="174" end="174" startBytecode="36" endBytecode="36" sourcefile="MailUtil.java" sourcepath="com/xxl/job/admin/core/util/MailUtil.java"/>
+  </BugInstance>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="2" rank="18" abbrev="RCN" category="STYLE">
+    <Class classname="com.xxl.job.admin.core.util.PropertiesUtil">
+      <SourceLine classname="com.xxl.job.admin.core.util.PropertiesUtil" start="16" end="59" sourcefile="PropertiesUtil.java" sourcepath="com/xxl/job/admin/core/util/PropertiesUtil.java"/>
+    </Class>
+    <Method classname="com.xxl.job.admin.core.util.PropertiesUtil" name="getString" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="true">
+      <SourceLine classname="com.xxl.job.admin.core.util.PropertiesUtil" start="50" end="54" startBytecode="0" endBytecode="95" sourcefile="PropertiesUtil.java" sourcepath="com/xxl/job/admin/core/util/PropertiesUtil.java"/>
+    </Method>
+    <LocalVariable name="prop" register="1" pc="6" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <Method classname="com.xxl.job.admin.core.util.PropertiesUtil" name="loadProperties" signature="(Ljava/lang/String;)Ljava/util/Properties;" isStatic="true" role="METHOD_RETURN_VALUE_OF">
+      <SourceLine classname="com.xxl.job.admin.core.util.PropertiesUtil" start="27" end="46" startBytecode="0" endBytecode="500" sourcefile="PropertiesUtil.java" sourcepath="com/xxl/job/admin/core/util/PropertiesUtil.java"/>
+    </Method>
+    <SourceLine classname="com.xxl.job.admin.core.util.PropertiesUtil" start="51" end="51" startBytecode="7" endBytecode="7" sourcefile="PropertiesUtil.java" sourcepath="com/xxl/job/admin/core/util/PropertiesUtil.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="49">
+    <MissingClass>com.xxl.job.core.handler.HandlerRepository$NameSpaceEnum</MissingClass>
+    <MissingClass>com.xxl.job.core.util.HttpUtil</MissingClass>
+    <MissingClass>com.xxl.job.core.util.HttpUtil$RemoteCallBack</MissingClass>
+    <MissingClass>com.xxl.job.core.util.IpUtil</MissingClass>
+    <MissingClass>com.xxl.job.core.util.JacksonUtil</MissingClass>
+    <MissingClass>javax.mail.internet.MimeUtility</MissingClass>
+    <MissingClass>javax.servlet.http.Cookie</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>org.apache.commons.lang.ArrayUtils</MissingClass>
+    <MissingClass>org.apache.commons.lang.StringUtils</MissingClass>
+    <MissingClass>org.apache.commons.lang.time.DateUtils</MissingClass>
+    <MissingClass>org.eclipse.jetty.server.Request</MissingClass>
+    <MissingClass>org.eclipse.jetty.server.Server</MissingClass>
+    <MissingClass>org.eclipse.jetty.server.handler.AbstractHandler</MissingClass>
+    <MissingClass>org.eclipse.jetty.server.handler.HandlerCollection</MissingClass>
+    <MissingClass>org.eclipse.jetty.server.nio.SelectChannelConnector</MissingClass>
+    <MissingClass>org.eclipse.jetty.util.thread.ExecutorThreadPool</MissingClass>
+    <MissingClass>org.mybatis.spring.SqlSessionTemplate</MissingClass>
+    <MissingClass>org.quartz.CronExpression</MissingClass>
+    <MissingClass>org.quartz.CronScheduleBuilder</MissingClass>
+    <MissingClass>org.quartz.CronTrigger</MissingClass>
+    <MissingClass>org.quartz.JobBuilder</MissingClass>
+    <MissingClass>org.quartz.JobDataMap</MissingClass>
+    <MissingClass>org.quartz.JobDetail</MissingClass>
+    <MissingClass>org.quartz.JobExecutionContext</MissingClass>
+    <MissingClass>org.quartz.JobKey</MissingClass>
+    <MissingClass>org.quartz.Scheduler</MissingClass>
+    <MissingClass>org.quartz.SchedulerException</MissingClass>
+    <MissingClass>org.quartz.Trigger</MissingClass>
+    <MissingClass>org.quartz.Trigger$TriggerState</MissingClass>
+    <MissingClass>org.quartz.TriggerBuilder</MissingClass>
+    <MissingClass>org.quartz.TriggerKey</MissingClass>
+    <MissingClass>org.quartz.impl.matchers.GroupMatcher</MissingClass>
+    <MissingClass>org.quartz.impl.triggers.CronTriggerImpl</MissingClass>
+    <MissingClass>org.slf4j.Logger</MissingClass>
+    <MissingClass>org.slf4j.LoggerFactory</MissingClass>
+    <MissingClass>org.springframework.context.ApplicationContext</MissingClass>
+    <MissingClass>org.springframework.context.ApplicationContextAware</MissingClass>
+    <MissingClass>org.springframework.mail.javamail.JavaMailSender</MissingClass>
+    <MissingClass>org.springframework.mail.javamail.JavaMailSenderImpl</MissingClass>
+    <MissingClass>org.springframework.mail.javamail.MimeMessageHelper</MissingClass>
+    <MissingClass>org.springframework.scheduling.quartz.QuartzJobBean</MissingClass>
+    <MissingClass>org.springframework.ui.Model</MissingClass>
+    <MissingClass>org.springframework.util.Assert</MissingClass>
+    <MissingClass>org.springframework.web.method.HandlerMethod</MissingClass>
+    <MissingClass>org.springframework.web.servlet.HandlerExceptionResolver</MissingClass>
+    <MissingClass>org.springframework.web.servlet.ModelAndView</MissingClass>
+    <MissingClass>org.springframework.web.servlet.handler.HandlerInterceptorAdapter</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Wed, 20 Oct 2021 13:39:51 +0800" total_classes="31" referenced_classes="87" total_bugs="24" total_size="1192" num_packages="12" java_version="1.8.0_301" vm_version="25.301-b09" cpu_seconds="44.53" clock_seconds="30.82" peak_mbytes="197.04" alloc_mbytes="3641.00" gc_seconds="0.46" priority_3="6" priority_2="14" priority_1="4">
+    <PackageStats package="com.xxl.job.admin.controller" total_bugs="1" total_types="4" total_size="262" priority_3="1">
+      <ClassStats class="com.xxl.job.admin.controller.IndexController" sourceFile="IndexController.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.controller.JobCodeController" sourceFile="JobCodeController.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.controller.JobInfoController" sourceFile="JobInfoController.java" interface="false" size="136" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.controller.JobLogController" sourceFile="JobLogController.java" interface="false" size="66" bugs="1" priority_3="1"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.controller.annotation" total_bugs="0" total_types="1" total_size="2">
+      <ClassStats class="com.xxl.job.admin.controller.annotation.PermessionLimit" sourceFile="PermessionLimit.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.controller.interceptor" total_bugs="0" total_types="2" total_size="36">
+      <ClassStats class="com.xxl.job.admin.controller.interceptor.CookieInterceptor" sourceFile="CookieInterceptor.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.controller.interceptor.PermissionInterceptor" sourceFile="PermissionInterceptor.java" interface="false" size="25" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.controller.resolver" total_bugs="0" total_types="1" total_size="17">
+      <ClassStats class="com.xxl.job.admin.controller.resolver.WebExceptionResolver" sourceFile="WebExceptionResolver.java" interface="false" size="17" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.callback" total_bugs="3" total_types="3" total_size="65" priority_3="1" priority_2="1" priority_1="1">
+      <ClassStats class="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer" sourceFile="XxlJobLogCallbackServer.java" interface="false" size="17" bugs="1" priority_2="1"/>
+      <ClassStats class="com.xxl.job.admin.core.callback.XxlJobLogCallbackServer$1" sourceFile="XxlJobLogCallbackServer.java" interface="false" size="23" bugs="1" priority_3="1"/>
+      <ClassStats class="com.xxl.job.admin.core.callback.XxlJobLogCallbackServerHandler" sourceFile="XxlJobLogCallbackServerHandler.java" interface="false" size="25" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.constant" total_bugs="0" total_types="2" total_size="29">
+      <ClassStats class="com.xxl.job.admin.core.constant.Constants" sourceFile="Constants.java" interface="false" size="3" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.core.constant.Constants$JobGroupEnum" sourceFile="Constants.java" interface="false" size="26" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.jobbean" total_bugs="0" total_types="1" total_size="41">
+      <ClassStats class="com.xxl.job.admin.core.jobbean.RemoteHttpJobBean" sourceFile="RemoteHttpJobBean.java" interface="false" size="41" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.model" total_bugs="8" total_types="4" total_size="267" priority_2="8">
+      <ClassStats class="com.xxl.job.admin.core.model.ReturnT" sourceFile="ReturnT.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.core.model.XxlJobInfo" sourceFile="XxlJobInfo.java" interface="false" size="101" bugs="4" priority_2="4"/>
+      <ClassStats class="com.xxl.job.admin.core.model.XxlJobLog" sourceFile="XxlJobLog.java" interface="false" size="83" bugs="4" priority_2="4"/>
+      <ClassStats class="com.xxl.job.admin.core.model.XxlJobLogGlue" sourceFile="XxlJobLogGlue.java" interface="false" size="47" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.thread" total_bugs="3" total_types="2" total_size="59" priority_3="2" priority_2="1">
+      <ClassStats class="com.xxl.job.admin.core.thread.JobMonitorHelper" sourceFile="JobMonitorHelper.java" interface="false" size="24" bugs="1" priority_3="1"/>
+      <ClassStats class="com.xxl.job.admin.core.thread.JobMonitorHelper$1" sourceFile="JobMonitorHelper.java" interface="false" size="35" bugs="2" priority_3="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.core.util" total_bugs="9" total_types="5" total_size="293" priority_3="2" priority_2="4" priority_1="3">
+      <ClassStats class="com.xxl.job.admin.core.util.CookieUtil" sourceFile="CookieUtil.java" interface="false" size="38" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.core.util.DynamicSchedulerUtil" sourceFile="DynamicSchedulerUtil.java" interface="false" size="147" bugs="4" priority_2="2" priority_1="2"/>
+      <ClassStats class="com.xxl.job.admin.core.util.MailUtil" sourceFile="MailUtil.java" interface="false" size="65" bugs="3" priority_3="1" priority_2="1" priority_1="1"/>
+      <ClassStats class="com.xxl.job.admin.core.util.MailUtil$1" sourceFile="MailUtil.java" interface="false" size="11" bugs="1" priority_3="1"/>
+      <ClassStats class="com.xxl.job.admin.core.util.PropertiesUtil" sourceFile="PropertiesUtil.java" interface="false" size="32" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.dao" total_bugs="0" total_types="3" total_size="21">
+      <ClassStats class="com.xxl.job.admin.dao.IXxlJobInfoDao" sourceFile="IXxlJobInfoDao.java" interface="true" size="7" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.dao.IXxlJobLogDao" sourceFile="IXxlJobLogDao.java" interface="true" size="9" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.dao.IXxlJobLogGlueDao" sourceFile="IXxlJobLogGlueDao.java" interface="true" size="5" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.xxl.job.admin.dao.impl" total_bugs="0" total_types="3" total_size="100">
+      <ClassStats class="com.xxl.job.admin.dao.impl.XxlJobInfoDaoImpl" sourceFile="XxlJobInfoDaoImpl.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.dao.impl.XxlJobLogDaoImpl" sourceFile="XxlJobLogDaoImpl.java" interface="false" size="46" bugs="0"/>
+      <ClassStats class="com.xxl.job.admin.dao.impl.XxlJobLogGlueDaoImpl" sourceFile="XxlJobLogGlueDaoImpl.java" interface="false" size="22" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="3131" invocations="689" avgMicrosecondsPerInvocation="4544" maxMicrosecondsPerInvocation="331542" standardDeviationMircosecondsPerInvocation="15372"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="2542" invocations="397" avgMicrosecondsPerInvocation="6404" maxMicrosecondsPerInvocation="306432" standardDeviationMircosecondsPerInvocation="24875"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="2155" invocations="87" avgMicrosecondsPerInvocation="24770" maxMicrosecondsPerInvocation="204623" standardDeviationMircosecondsPerInvocation="45276"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="1875" invocations="87" avgMicrosecondsPerInvocation="21562" maxMicrosecondsPerInvocation="214373" standardDeviationMircosecondsPerInvocation="40315"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="1307" invocations="205" avgMicrosecondsPerInvocation="6380" maxMicrosecondsPerInvocation="151268" standardDeviationMircosecondsPerInvocation="15671"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="1077" invocations="208" avgMicrosecondsPerInvocation="5180" maxMicrosecondsPerInvocation="112211" standardDeviationMircosecondsPerInvocation="14777"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="1031" invocations="207" avgMicrosecondsPerInvocation="4984" maxMicrosecondsPerInvocation="70268" standardDeviationMircosecondsPerInvocation="11704"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="882" invocations="205" avgMicrosecondsPerInvocation="4303" maxMicrosecondsPerInvocation="77199" standardDeviationMircosecondsPerInvocation="9686"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="874" invocations="205" avgMicrosecondsPerInvocation="4267" maxMicrosecondsPerInvocation="195956" standardDeviationMircosecondsPerInvocation="15739"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="761" invocations="694" avgMicrosecondsPerInvocation="1097" maxMicrosecondsPerInvocation="36635" standardDeviationMircosecondsPerInvocation="2367"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="714" invocations="205" avgMicrosecondsPerInvocation="3484" maxMicrosecondsPerInvocation="55792" standardDeviationMircosecondsPerInvocation="7041"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="601" invocations="87" avgMicrosecondsPerInvocation="6912" maxMicrosecondsPerInvocation="139604" standardDeviationMircosecondsPerInvocation="19485"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="592" invocations="87" avgMicrosecondsPerInvocation="6816" maxMicrosecondsPerInvocation="453688" standardDeviationMircosecondsPerInvocation="48723"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="589" invocations="582" avgMicrosecondsPerInvocation="1013" maxMicrosecondsPerInvocation="61610" standardDeviationMircosecondsPerInvocation="3671"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="559" invocations="161" avgMicrosecondsPerInvocation="3475" maxMicrosecondsPerInvocation="59227" standardDeviationMircosecondsPerInvocation="8939"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="516" invocations="224" avgMicrosecondsPerInvocation="2307" maxMicrosecondsPerInvocation="312300" standardDeviationMircosecondsPerInvocation="20855"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="497" invocations="31" avgMicrosecondsPerInvocation="16049" maxMicrosecondsPerInvocation="76695" standardDeviationMircosecondsPerInvocation="19487"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="492" invocations="87" avgMicrosecondsPerInvocation="5655" maxMicrosecondsPerInvocation="76862" standardDeviationMircosecondsPerInvocation="13410"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="446" invocations="117" avgMicrosecondsPerInvocation="3819" maxMicrosecondsPerInvocation="23911" standardDeviationMircosecondsPerInvocation="5127"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="397" invocations="87" avgMicrosecondsPerInvocation="4571" maxMicrosecondsPerInvocation="63150" standardDeviationMircosecondsPerInvocation="10065"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="393" invocations="87" avgMicrosecondsPerInvocation="4518" maxMicrosecondsPerInvocation="72890" standardDeviationMircosecondsPerInvocation="13262"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="376" invocations="87" avgMicrosecondsPerInvocation="4322" maxMicrosecondsPerInvocation="64331" standardDeviationMircosecondsPerInvocation="10106"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

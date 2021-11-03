@@ -233,6 +233,126 @@ public class CategoryExample {
             addCriterion("category_name not between", value1, value2, "categoryName");
             return (Criteria) this;
         }
+
+        public Criteria andLikelihoodIsNull() {
+            addCriterion("likelihood is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodIsNotNull() {
+            addCriterion("likelihood is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodEqualTo(Double value) {
+            addCriterion("likelihood =", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotEqualTo(Double value) {
+            addCriterion("likelihood <>", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodGreaterThan(Double value) {
+            addCriterion("likelihood >", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodGreaterThanOrEqualTo(Double value) {
+            addCriterion("likelihood >=", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodLessThan(Double value) {
+            addCriterion("likelihood <", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodLessThanOrEqualTo(Double value) {
+            addCriterion("likelihood <=", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodIn(List<Double> values) {
+            addCriterion("likelihood in", values, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotIn(List<Double> values) {
+            addCriterion("likelihood not in", values, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodBetween(Double value1, Double value2) {
+            addCriterion("likelihood between", value1, value2, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotBetween(Double value1, Double value2) {
+            addCriterion("likelihood not between", value1, value2, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIsNull() {
+            addCriterion("variance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIsNotNull() {
+            addCriterion("variance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceEqualTo(Double value) {
+            addCriterion("variance =", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotEqualTo(Double value) {
+            addCriterion("variance <>", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceGreaterThan(Double value) {
+            addCriterion("variance >", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceGreaterThanOrEqualTo(Double value) {
+            addCriterion("variance >=", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceLessThan(Double value) {
+            addCriterion("variance <", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceLessThanOrEqualTo(Double value) {
+            addCriterion("variance <=", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIn(List<Double> values) {
+            addCriterion("variance in", values, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotIn(List<Double> values) {
+            addCriterion("variance not in", values, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceBetween(Double value1, Double value2) {
+            addCriterion("variance between", value1, value2, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotBetween(Double value1, Double value2) {
+            addCriterion("variance not between", value1, value2, "variance");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

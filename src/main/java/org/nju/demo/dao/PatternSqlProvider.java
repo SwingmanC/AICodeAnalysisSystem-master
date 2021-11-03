@@ -1,55 +1,64 @@
 package org.nju.demo.dao;
 
-import org.nju.demo.entity.Feature;
-import org.nju.demo.entity.FeatureExample;
-import org.nju.demo.entity.FeatureExample.Criteria;
-import org.nju.demo.entity.FeatureExample.Criterion;
-import org.apache.ibatis.jdbc.SQL;
-
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.jdbc.SQL;
+import org.nju.demo.entity.Pattern;
+import org.nju.demo.entity.PatternExample.Criteria;
+import org.nju.demo.entity.PatternExample.Criterion;
+import org.nju.demo.entity.PatternExample;
 
-public class FeatureSqlProvider {
+public class PatternSqlProvider {
 
-    public String countByExample(FeatureExample example) {
+    public String countByExample(PatternExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("feature");
+        sql.SELECT("count(*)").FROM("pattern");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(FeatureExample example) {
+    public String deleteByExample(PatternExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("feature");
+        sql.DELETE_FROM("pattern");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Feature record) {
+    public String insertSelective(Pattern record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("feature");
+        sql.INSERT_INTO("pattern");
         
-        if (record.getVersionId() != null) {
-            sql.VALUES("version_id", "#{versionId,jdbcType=INTEGER}");
+        if (record.getPatternName() != null) {
+            sql.VALUES("pattern_name", "#{patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFilePath() != null) {
-            sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
+        if (record.getCategoryId() != null) {
+            sql.VALUES("category_id", "#{categoryId,jdbcType=INTEGER}");
+        }
+        
+        if (record.getLikelihood() != null) {
+            sql.VALUES("likelihood", "#{likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.VALUES("variance", "#{variance,jdbcType=DOUBLE}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(FeatureExample example) {
+    public String selectByExample(PatternExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("version_id");
-        sql.SELECT("file_path");
-        sql.FROM("feature");
+        sql.SELECT("pattern_name");
+        sql.SELECT("category_id");
+        sql.SELECT("likelihood");
+        sql.SELECT("variance");
+        sql.FROM("pattern");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -60,22 +69,30 @@ public class FeatureSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Feature record = (Feature) parameter.get("record");
-        FeatureExample example = (FeatureExample) parameter.get("example");
+        Pattern record = (Pattern) parameter.get("record");
+        PatternExample example = (PatternExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("feature");
+        sql.UPDATE("pattern");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getVersionId() != null) {
-            sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFilePath() != null) {
-            sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        if (record.getCategoryId() != null) {
+            sql.SET("category_id = #{record.categoryId,jdbcType=INTEGER}");
+        }
+        
+        if (record.getLikelihood() != null) {
+            sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
         }
         
         applyWhere(sql, example, true);
@@ -84,27 +101,37 @@ public class FeatureSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("feature");
+        sql.UPDATE("pattern");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
-        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        sql.SET("category_id = #{record.categoryId,jdbcType=INTEGER}");
+        sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
         
-        FeatureExample example = (FeatureExample) parameter.get("example");
+        PatternExample example = (PatternExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Feature record) {
+    public String updateByPrimaryKeySelective(Pattern record) {
         SQL sql = new SQL();
-        sql.UPDATE("feature");
+        sql.UPDATE("pattern");
         
-        if (record.getVersionId() != null) {
-            sql.SET("version_id = #{versionId,jdbcType=INTEGER}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFilePath() != null) {
-            sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
+        if (record.getCategoryId() != null) {
+            sql.SET("category_id = #{categoryId,jdbcType=INTEGER}");
+        }
+        
+        if (record.getLikelihood() != null) {
+            sql.SET("likelihood = #{likelihood,jdbcType=DOUBLE}");
+        }
+        
+        if (record.getVariance() != null) {
+            sql.SET("variance = #{variance,jdbcType=DOUBLE}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -112,7 +139,7 @@ public class FeatureSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, FeatureExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, PatternExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

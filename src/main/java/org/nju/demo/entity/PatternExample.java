@@ -3,14 +3,14 @@ package org.nju.demo.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeatureExample {
+public class PatternExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public FeatureExample() {
+    public PatternExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,133 +164,253 @@ public class FeatureExample {
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdIsNull() {
-            addCriterion("version_id is null");
+        public Criteria andPatternNameIsNull() {
+            addCriterion("pattern_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdIsNotNull() {
-            addCriterion("version_id is not null");
+        public Criteria andPatternNameIsNotNull() {
+            addCriterion("pattern_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdEqualTo(Integer value) {
-            addCriterion("version_id =", value, "versionId");
+        public Criteria andPatternNameEqualTo(String value) {
+            addCriterion("pattern_name =", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotEqualTo(Integer value) {
-            addCriterion("version_id <>", value, "versionId");
+        public Criteria andPatternNameNotEqualTo(String value) {
+            addCriterion("pattern_name <>", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdGreaterThan(Integer value) {
-            addCriterion("version_id >", value, "versionId");
+        public Criteria andPatternNameGreaterThan(String value) {
+            addCriterion("pattern_name >", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("version_id >=", value, "versionId");
+        public Criteria andPatternNameGreaterThanOrEqualTo(String value) {
+            addCriterion("pattern_name >=", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdLessThan(Integer value) {
-            addCriterion("version_id <", value, "versionId");
+        public Criteria andPatternNameLessThan(String value) {
+            addCriterion("pattern_name <", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdLessThanOrEqualTo(Integer value) {
-            addCriterion("version_id <=", value, "versionId");
+        public Criteria andPatternNameLessThanOrEqualTo(String value) {
+            addCriterion("pattern_name <=", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdIn(List<Integer> values) {
-            addCriterion("version_id in", values, "versionId");
+        public Criteria andPatternNameLike(String value) {
+            addCriterion("pattern_name like", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotIn(List<Integer> values) {
-            addCriterion("version_id not in", values, "versionId");
+        public Criteria andPatternNameNotLike(String value) {
+            addCriterion("pattern_name not like", value, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdBetween(Integer value1, Integer value2) {
-            addCriterion("version_id between", value1, value2, "versionId");
+        public Criteria andPatternNameIn(List<String> values) {
+            addCriterion("pattern_name in", values, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("version_id not between", value1, value2, "versionId");
+        public Criteria andPatternNameNotIn(List<String> values) {
+            addCriterion("pattern_name not in", values, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathIsNull() {
-            addCriterion("file_path is null");
+        public Criteria andPatternNameBetween(String value1, String value2) {
+            addCriterion("pattern_name between", value1, value2, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathIsNotNull() {
-            addCriterion("file_path is not null");
+        public Criteria andPatternNameNotBetween(String value1, String value2) {
+            addCriterion("pattern_name not between", value1, value2, "patternName");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathEqualTo(String value) {
-            addCriterion("file_path =", value, "filePath");
+        public Criteria andCategoryIdIsNull() {
+            addCriterion("category_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathNotEqualTo(String value) {
-            addCriterion("file_path <>", value, "filePath");
+        public Criteria andCategoryIdIsNotNull() {
+            addCriterion("category_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathGreaterThan(String value) {
-            addCriterion("file_path >", value, "filePath");
+        public Criteria andCategoryIdEqualTo(Integer value) {
+            addCriterion("category_id =", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathGreaterThanOrEqualTo(String value) {
-            addCriterion("file_path >=", value, "filePath");
+        public Criteria andCategoryIdNotEqualTo(Integer value) {
+            addCriterion("category_id <>", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathLessThan(String value) {
-            addCriterion("file_path <", value, "filePath");
+        public Criteria andCategoryIdGreaterThan(Integer value) {
+            addCriterion("category_id >", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathLessThanOrEqualTo(String value) {
-            addCriterion("file_path <=", value, "filePath");
+        public Criteria andCategoryIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("category_id >=", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathLike(String value) {
-            addCriterion("file_path like", value, "filePath");
+        public Criteria andCategoryIdLessThan(Integer value) {
+            addCriterion("category_id <", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathNotLike(String value) {
-            addCriterion("file_path not like", value, "filePath");
+        public Criteria andCategoryIdLessThanOrEqualTo(Integer value) {
+            addCriterion("category_id <=", value, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathIn(List<String> values) {
-            addCriterion("file_path in", values, "filePath");
+        public Criteria andCategoryIdIn(List<Integer> values) {
+            addCriterion("category_id in", values, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathNotIn(List<String> values) {
-            addCriterion("file_path not in", values, "filePath");
+        public Criteria andCategoryIdNotIn(List<Integer> values) {
+            addCriterion("category_id not in", values, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathBetween(String value1, String value2) {
-            addCriterion("file_path between", value1, value2, "filePath");
+        public Criteria andCategoryIdBetween(Integer value1, Integer value2) {
+            addCriterion("category_id between", value1, value2, "categoryId");
             return (Criteria) this;
         }
 
-        public Criteria andFilePathNotBetween(String value1, String value2) {
-            addCriterion("file_path not between", value1, value2, "filePath");
+        public Criteria andCategoryIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("category_id not between", value1, value2, "categoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodIsNull() {
+            addCriterion("likelihood is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodIsNotNull() {
+            addCriterion("likelihood is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodEqualTo(Double value) {
+            addCriterion("likelihood =", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotEqualTo(Double value) {
+            addCriterion("likelihood <>", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodGreaterThan(Double value) {
+            addCriterion("likelihood >", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodGreaterThanOrEqualTo(Double value) {
+            addCriterion("likelihood >=", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodLessThan(Double value) {
+            addCriterion("likelihood <", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodLessThanOrEqualTo(Double value) {
+            addCriterion("likelihood <=", value, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodIn(List<Double> values) {
+            addCriterion("likelihood in", values, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotIn(List<Double> values) {
+            addCriterion("likelihood not in", values, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodBetween(Double value1, Double value2) {
+            addCriterion("likelihood between", value1, value2, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikelihoodNotBetween(Double value1, Double value2) {
+            addCriterion("likelihood not between", value1, value2, "likelihood");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIsNull() {
+            addCriterion("variance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIsNotNull() {
+            addCriterion("variance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceEqualTo(Double value) {
+            addCriterion("variance =", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotEqualTo(Double value) {
+            addCriterion("variance <>", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceGreaterThan(Double value) {
+            addCriterion("variance >", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceGreaterThanOrEqualTo(Double value) {
+            addCriterion("variance >=", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceLessThan(Double value) {
+            addCriterion("variance <", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceLessThanOrEqualTo(Double value) {
+            addCriterion("variance <=", value, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceIn(List<Double> values) {
+            addCriterion("variance in", values, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotIn(List<Double> values) {
+            addCriterion("variance not in", values, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceBetween(Double value1, Double value2) {
+            addCriterion("variance between", value1, value2, "variance");
+            return (Criteria) this;
+        }
+
+        public Criteria andVarianceNotBetween(Double value1, Double value2) {
+            addCriterion("variance not between", value1, value2, "variance");
             return (Criteria) this;
         }
     }
