@@ -7,7 +7,6 @@ public class ViolationVO {
     private String classname;
     private int priority;
     private String methodName;
-    private String state;
     private double likelihood;
 
     public int getId() {
@@ -48,14 +47,6 @@ public class ViolationVO {
 
     public void setMethodName(String methodName) {
         this.methodName = methodName;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public double getLikelihood() {

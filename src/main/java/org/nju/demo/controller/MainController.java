@@ -1,6 +1,7 @@
 package org.nju.demo.controller;
 
 import freemarker.template.TemplateException;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.nju.demo.entity.*;
 import org.nju.demo.pojo.DocWarning;
 import org.nju.demo.pojo.Violation;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.xml.sax.SAXException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
@@ -47,6 +50,9 @@ public class MainController {
 
     @Autowired
     private PatternService patternService;
+
+    @Autowired
+    private TemplateService templateService;
 
     @Autowired
     private HttpSession session;
@@ -132,7 +138,6 @@ public class MainController {
             violationVO.setMethodName(violation.getMethodName());
             violationVO.setPriority(violation.getPriority());
             violationVO.setLikelihood(pattern.getLikelihood());
-            violationVO.setState(violation.getState());
             violationVOList.add(violationVO);
         }
         return violationVOList;
@@ -153,7 +158,6 @@ public class MainController {
             violationVO.setMethodName(violation.getMethodName());
             violationVO.setPriority(violation.getPriority());
             violationVO.setLikelihood(pattern.getLikelihood());
-            violationVO.setState(violation.getState());
             violationVOList.add(violationVO);
         }
         return violationVOList;
@@ -231,6 +235,7 @@ public class MainController {
         Project project = (Project) session.getAttribute("project");
         AVersion aVersion = versionService.getVersion(versionId);
         if (aVersion.getLastId().equals(-1)) return 3;
+        if (!aVersion.getLastId().equals(0) && fViolationService.getFViolationsByVersionId(aVersion.getLastId()).size() == 0) return 4;
 
         try{
             String filePath = CmdUtil.generateFindBugsXML(project.getProjectName(),aVersion.getVersion(),aVersion.getFilePath());
@@ -252,8 +257,23 @@ public class MainController {
 
             if (res != null){
                 for(FViolation violation : res) fViolationService.updateFViolation(violation);
+                Map<String,Double> likelihoods = SortUtil.computeLikelihood(res);
+                for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
+                    String patternName = entry.getKey();
+                    Double likelihood = entry.getValue();
+                    Pattern pattern = patternService.getPatternByPatternName(patternName);
+                    long n = patternService.countByCategoryId(pattern.getCategoryId());
+                    Double variance = SortUtil.computeVariance(likelihood,n);
+                    System.out.println(likelihood+" "+variance+" "+n);
+                    Double lastLikelihood = pattern.getLikelihood();
+                    Double lastVariance = pattern.getVariance();
+                    if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
+                    else pattern.setLikelihood((likelihood+lastLikelihood)/2);
+                    if (lastVariance == 0) pattern.setVariance(variance);
+                    else pattern.setVariance((variance+lastVariance)/2);
+                    patternService.updatePattern(pattern);
+                }
             }
-
             return 1;
         }catch (Exception e){
             e.printStackTrace();
@@ -263,13 +283,17 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/generate")
-    public String generate() throws IOException, TemplateException {
+    public String generate(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateException {
 
         AUser user = (AUser) session.getAttribute("user");
         Project project = (Project) session.getAttribute("project");
         AVersion version = (AVersion) session.getAttribute("version");
 
         List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        ATemplate template = templateService.getUsedTemplate(user.getId());
+
+        if (template == null) return "null";
+
         List<DocWarning> warningList = new ArrayList<>();
         for (FViolation violation : violationList){
             DocWarning warning = new DocWarning();
@@ -289,8 +313,26 @@ public class MainController {
             warning.setAdvice("建议立刻进行修复");
             warningList.add(warning);
         }
-        DocUtil.generateWord(warningList,project.getProjectName(),version.getVersion(),user.getUsername());
-        return user.getUsername()+"/"+project.getProjectName()+"/"+version.getVersion()+".doc";
+        DocUtil.generateWord(warningList,project.getProjectName(),version.getVersion(),user.getUsername(),template.getFilePath());
+
+        String filePath = UPLOADED_FOLDER+"/src/main/resources/static/doc/"+user.getUsername()+"/"+project.getProjectName()+"/"+version.getVersion()+".doc";
+        File file = new File(filePath);
+        StringBuilder sb = new StringBuilder();
+        try{
+            response.setContentType("application/x-download");
+            response.addHeader("Content-Disposition", "attachment;filename="+version.getVersion()+".doc");
+            FileReader fr = new FileReader(file);
+            char[] buffer = new char[23];
+            int length;
+            while ((length = fr.read(buffer)) != -1) {
+                sb.append(buffer,0,length);
+            }
+            fr.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return sb.toString();
     }
 
     @ResponseBody
@@ -302,13 +344,13 @@ public class MainController {
 
     @RequestMapping("/addReport")
     public String addReport(@RequestParam("reportName") String reportName,
-                            @RequestParam("reportFiles") MultipartFile reportFile) throws IOException, ParserConfigurationException, SAXException {
+                            @RequestParam("reportFile") MultipartFile reportFile) throws IOException, ParserConfigurationException, SAXException {
         Report report = new Report();
         AUser user = (AUser) session.getAttribute("user");
 
         if (reportFile != null){
             String fileName = reportFile.getOriginalFilename();
-            String filePath = UPLOADED_FOLDER+"\\report\\"+user.getUsername()+"\\";
+            String filePath = UPLOADED_FOLDER+"/report/"+user.getUsername()+"/";
             File file =  new File(filePath);
             if (!file.exists()) file.mkdirs();
             filePath += fileName;
@@ -338,27 +380,27 @@ public class MainController {
         return fIssueService.getIssueByReportId(report.getId());
     }
 
-    @RequestMapping("/compute")
-    public String compute(){
-        AVersion version = (AVersion) session.getAttribute("version");
-        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
-        Map<String,Double> likelihoods = SortUtil.computeLikelihood(violationList);
-        for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
-            String patternName = entry.getKey();
-            Double likelihood = entry.getValue();
-            Pattern pattern = patternService.getPatternByPatternName(patternName);
-            long n = patternService.countByCategoryId(pattern.getCategoryId());
-            Double variance = SortUtil.computeVariance(likelihood,n);
-//            System.out.println(likelihood+" "+variance+" "+n);
-            Double lastLikelihood = pattern.getLikelihood();
-            Double lastVariance = pattern.getVariance();
-            if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
-            else pattern.setLikelihood((likelihood+lastLikelihood)/2);
-            if (lastVariance == 0) pattern.setVariance(variance);
-            else pattern.setVariance((variance+lastVariance)/2);
-            patternService.updatePattern(pattern);
-        }
-        return "redirect:/view/violations/"+version.getId();
-    }
+//    @RequestMapping("/compute")
+//    public String compute(){
+//        AVersion version = (AVersion) session.getAttribute("version");
+//        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+//        Map<String,Double> likelihoods = SortUtil.computeLikelihood(violationList);
+//        for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
+//            String patternName = entry.getKey();
+//            Double likelihood = entry.getValue();
+//            Pattern pattern = patternService.getPatternByPatternName(patternName);
+//            long n = patternService.countByCategoryId(pattern.getCategoryId());
+//            Double variance = SortUtil.computeVariance(likelihood,n);
+////            System.out.println(likelihood+" "+variance+" "+n);
+//            Double lastLikelihood = pattern.getLikelihood();
+//            Double lastVariance = pattern.getVariance();
+//            if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
+//            else pattern.setLikelihood((likelihood+lastLikelihood)/2);
+//            if (lastVariance == 0) pattern.setVariance(variance);
+//            else pattern.setVariance((variance+lastVariance)/2);
+//            patternService.updatePattern(pattern);
+//        }
+//        return "redirect:/view/violations/"+version.getId();
+//    }
 
 }

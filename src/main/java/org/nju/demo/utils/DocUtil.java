@@ -15,7 +15,7 @@ public class DocUtil {
 
     private static String UPLOADED_FOLDER = System.getProperty("user.dir");
 
-    public static void generateWord(List<DocWarning> warningList, String projectName, String version, String username) throws IOException, TemplateException {
+    public static void generateWord(List<DocWarning> warningList, String projectName, String version, String username,String filePath) throws IOException, TemplateException {
         Map<String,Object> dataMap = new HashMap<>();
         dataMap.put("projectName",projectName);
         dataMap.put("version",version);
@@ -26,16 +26,16 @@ public class DocUtil {
         configuration.setDefaultEncoding("utf-8");
 
         //configuration.setClassForTemplateLoading(this.getClass(),""); //指定路径的第一种方式(根据某个类的相对路径指定)
-        configuration.setDirectoryForTemplateLoading(new File(UPLOADED_FOLDER+"\\report"));
+        configuration.setDirectoryForTemplateLoading(new File(UPLOADED_FOLDER+"/ftl"));
 
         File outFile;// 输出文档路径及名称
-        String path = UPLOADED_FOLDER+"\\src\\main\\resources\\static\\doc\\"+username+"\\"+projectName+"\\";
+        String path = UPLOADED_FOLDER+"/src/main/resources/static/doc/"+username+"/"+projectName+"/";
         outFile = new File(path);
         if (!outFile.exists()) outFile.mkdirs();
         path += version+".doc";
         outFile = new File(path);
         if (!outFile.exists()){
-            Template t = configuration.getTemplate("template.ftl", "utf-8");//以utf-8的编码读取ftl文件
+            Template t = configuration.getTemplate(filePath, "utf-8");//以utf-8的编码读取ftl文件
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile), "utf-8"), 10240);
             t.process(dataMap, out);
             out.close();

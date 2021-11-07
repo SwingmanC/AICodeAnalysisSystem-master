@@ -25,11 +25,8 @@ public class FViolation {
 
     private String state;
 
-    private Integer categoryId;
-
     public FViolation(){
-        this.state = "true";
-        this.categoryId = 1;
+        this.state = "未必对";
     }
 
     public Integer getId() {
@@ -128,14 +125,6 @@ public class FViolation {
         this.state = state;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -154,7 +143,6 @@ public class FViolation {
         sb.append(", startLine=").append(startLine);
         sb.append(", endLine=").append(endLine);
         sb.append(", state=").append(state);
-        sb.append(", categoryId=").append(categoryId);
         sb.append("]");
         return sb.toString();
     }
@@ -182,8 +170,7 @@ public class FViolation {
             && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()))
             && (this.getStartLine() == null ? other.getStartLine() == null : this.getStartLine().equals(other.getStartLine()))
             && (this.getEndLine() == null ? other.getEndLine() == null : this.getEndLine().equals(other.getEndLine()))
-            && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
-            && (this.getCategoryId() == null ? other.getCategoryId() == null : this.getCategoryId().equals(other.getCategoryId()));
+            && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()));
     }
 
     @Override
@@ -202,7 +189,6 @@ public class FViolation {
         result = prime * result + ((getStartLine() == null) ? 0 : getStartLine().hashCode());
         result = prime * result + ((getEndLine() == null) ? 0 : getEndLine().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
-        result = prime * result + ((getCategoryId() == null) ? 0 : getCategoryId().hashCode());
         return result;
     }
 }

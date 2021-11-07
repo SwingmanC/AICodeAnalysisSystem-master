@@ -76,6 +76,9 @@
                     <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
                 </li>
                 <li>
+                    <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
+                </li>
+                <li>
                     <a href="#"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                 </li>
                 <li>
@@ -267,7 +270,7 @@
             title: false,
             content: '分析中，请等待',
             anim:3,
-            btn:['中止'],
+            btn:[],
             yes:function(index,layero){
 
             },
@@ -281,9 +284,10 @@
             },
             dataType:'json',
             success:function (msg) {
-                if(msg === 0) layer.msg("扫描失败");
+                if (msg === 0) layer.msg("扫描失败");
                 if (msg === 2) layer.msg("该版本已扫描");
                 if (msg === 3) layer.msg("请选择对比版本");
+                if (msg === 4) layer.msg("请先扫描历史版本")
                 else{
                     layer.msg("扫描成功");
                     setTimeout(function(){

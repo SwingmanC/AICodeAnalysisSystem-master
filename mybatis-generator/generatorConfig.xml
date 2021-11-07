@@ -40,7 +40,7 @@
 <!--        <table tableName="report">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
 <!--        </table>-->
-        <table tableName="category">
+        <table tableName="a_template">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 <!--        <table tableName="f_violation">-->

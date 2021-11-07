@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
 
@@ -11,7 +13,6 @@
     <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
     <link href="/css/animate.css" rel="stylesheet"/>
     <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
-    <link href="/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
@@ -20,8 +21,6 @@
     <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-    <script src="/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
-    <script src="/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
 
     <!-- Peity -->
     <script src="/js/plugins/peity/jquery.peity.min.js"></script>
@@ -36,9 +35,8 @@
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
 
-    <script src="/js/plugins/echarts/echarts-all.js"></script>
-    <script src="/js/visualization.js"></script>
 </head>
+
 <body>
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
@@ -70,13 +68,13 @@
                         H+
                     </div>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
                 </li>
                 <li>
                     <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
                 </li>
                 <li>
@@ -96,34 +94,28 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a th:href="@{'/view/versions/'+${session.project.id}}">
-                        <i class="fa fa-sign-out"></i> 返回
+                    <a href="/logout">
+                        <i class="fa fa-sign-out"></i> 退出
                     </a>
                 </li>
             </ul>
-
         </nav>
     </div>
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>
-                    <span th:text="${session.project.projectName}"></span>-
-                    <span th:text="${session.version.version}"></span>
-                </h2>
+                <h2>模版列表</h2>
             </div>
             <div class="col-lg-2">
-                <h2 style="text-align: right;">
-                    <a class="btn btn-primary" href="/view/violations/list" role="button">列表</a>
-                </h2>
+
             </div>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>漏洞等级</h5>
+                            <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">上传模版</a>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -131,30 +123,95 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <div class="echarts" id="f_violation_bar"></div>
+                            <table class="table table-hover" id="templateTable"></table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>漏洞类型</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">上传模版</h3>
+                    </div>
+                    <form id="template_info" action="/addTemplate" enctype="multipart/form-data" method="post">
+                        <div class="modal-body">
+                            <div class="container">
+                                <table>
+                                    <tr>
+                                        <td><label for="templateName">模版名称：</label></td>
+                                        <td style="width: 350px;"><input type="text" class="form-control" id="templateName" name="templateName" required/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="templateFile">附件上传：</label></td>
+                                        <td style="width: 350px;"><input id="templateFile" name="templateFile" type="file" required/><br/></td>
+                                    </tr>
+                                </table>
+                                <style>
+                                    td{
+                                        padding-bottom: 10px;
+                                    }
+                                </style>
                             </div>
                         </div>
-                        <div class="ibox-content">
-                            <div class="echarts" id="f_violation_pie"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-primary" id="add_submit" onclick="add()">确认</button>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div class="footer">
+        </div>
+
     </div>
 </div>
 
 
 </div>
-</div>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("#templateTable").bootstrapTable({
+            url:"/templates",  //请求地址
+            striped : true, //是否显示行间隔色
+            pageNumber : 1, //初始化加载第一页
+            pagination : true,//是否分页
+            sidePagination : 'client',//server:服务器端分页|client：前端分页
+            pageSize : 5,//单页记录数
+            pageList : [1, 5, 10],//可选择单页记录数
+            showRefresh : true,//刷新按钮
+            columns : [ {
+                title : '#',
+                field : 'id',
+                sortable : true
+            },{
+                title : '模版名称',
+                field : 'templateName',
+                sortable : true
+            },{
+                title : '是否启用',
+                field : 'state',
+                sortable : true,
+                formatter:strFormatter
+            },{
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    });
+    function operateFormatter(value, row, index) {
+        let path = "/start/"+row.id;
+        return "<a href=\""+path+"\" title='启用该模版'><i class='fa fa-check'></i></a>";
+    }
+    function strFormatter(value,row,index){
+        if (value === 0) return "否";
+        else return "是";
+    }
+</script>
 </body>
+
 </html>

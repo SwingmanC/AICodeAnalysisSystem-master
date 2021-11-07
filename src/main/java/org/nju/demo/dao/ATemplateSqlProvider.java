@@ -3,97 +3,62 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.FViolation;
-import org.nju.demo.entity.FViolationExample.Criteria;
-import org.nju.demo.entity.FViolationExample.Criterion;
-import org.nju.demo.entity.FViolationExample;
+import org.nju.demo.entity.ATemplate;
+import org.nju.demo.entity.ATemplateExample.Criteria;
+import org.nju.demo.entity.ATemplateExample.Criterion;
+import org.nju.demo.entity.ATemplateExample;
 
-public class FViolationSqlProvider {
+public class ATemplateSqlProvider {
 
-    public String countByExample(FViolationExample example) {
+    public String countByExample(ATemplateExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("f_violation");
+        sql.SELECT("count(*)").FROM("a_template");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(FViolationExample example) {
+    public String deleteByExample(ATemplateExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("f_violation");
+        sql.DELETE_FROM("a_template");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(FViolation record) {
+    public String insertSelective(ATemplate record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("f_violation");
+        sql.INSERT_INTO("a_template");
         
-        if (record.getVersionId() != null) {
-            sql.VALUES("version_id", "#{versionId,jdbcType=INTEGER}");
+        if (record.getTemplateName() != null) {
+            sql.VALUES("template_name", "#{templateName,jdbcType=VARCHAR}");
         }
         
-        if (record.getType() != null) {
-            sql.VALUES("`type`", "#{type,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCategory() != null) {
-            sql.VALUES("category", "#{category,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getPriority() != null) {
-            sql.VALUES("priority", "#{priority,jdbcType=INTEGER}");
-        }
-        
-        if (record.getClassname() != null) {
-            sql.VALUES("classname", "#{classname,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSourcePath() != null) {
-            sql.VALUES("source_path", "#{sourcePath,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getMethodName() != null) {
-            sql.VALUES("method_name", "#{methodName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSignature() != null) {
-            sql.VALUES("signature", "#{signature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getStartLine() != null) {
-            sql.VALUES("start_line", "#{startLine,jdbcType=INTEGER}");
-        }
-        
-        if (record.getEndLine() != null) {
-            sql.VALUES("end_line", "#{endLine,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
-            sql.VALUES("`state`", "#{state,jdbcType=VARCHAR}");
+            sql.VALUES("`state`", "#{state,jdbcType=INTEGER}");
+        }
+        
+        if (record.getUserId() != null) {
+            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(FViolationExample example) {
+    public String selectByExample(ATemplateExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("version_id");
-        sql.SELECT("`type`");
-        sql.SELECT("category");
-        sql.SELECT("priority");
-        sql.SELECT("classname");
-        sql.SELECT("source_path");
-        sql.SELECT("method_name");
-        sql.SELECT("signature");
-        sql.SELECT("start_line");
-        sql.SELECT("end_line");
+        sql.SELECT("template_name");
+        sql.SELECT("file_path");
         sql.SELECT("`state`");
-        sql.FROM("f_violation");
+        sql.SELECT("user_id");
+        sql.FROM("a_template");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -104,58 +69,30 @@ public class FViolationSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        FViolation record = (FViolation) parameter.get("record");
-        FViolationExample example = (FViolationExample) parameter.get("example");
+        ATemplate record = (ATemplate) parameter.get("record");
+        ATemplateExample example = (ATemplateExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("f_violation");
+        sql.UPDATE("a_template");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getVersionId() != null) {
-            sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        if (record.getTemplateName() != null) {
+            sql.SET("template_name = #{record.templateName,jdbcType=VARCHAR}");
         }
         
-        if (record.getType() != null) {
-            sql.SET("`type` = #{record.type,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCategory() != null) {
-            sql.SET("category = #{record.category,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getPriority() != null) {
-            sql.SET("priority = #{record.priority,jdbcType=INTEGER}");
-        }
-        
-        if (record.getClassname() != null) {
-            sql.SET("classname = #{record.classname,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSourcePath() != null) {
-            sql.SET("source_path = #{record.sourcePath,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getMethodName() != null) {
-            sql.SET("method_name = #{record.methodName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSignature() != null) {
-            sql.SET("signature = #{record.signature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getStartLine() != null) {
-            sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
-        }
-        
-        if (record.getEndLine() != null) {
-            sql.SET("end_line = #{record.endLine,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
-            sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
+            sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
+        }
+        
+        if (record.getUserId() != null) {
+            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -164,72 +101,37 @@ public class FViolationSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("f_violation");
+        sql.UPDATE("a_template");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
-        sql.SET("`type` = #{record.type,jdbcType=VARCHAR}");
-        sql.SET("category = #{record.category,jdbcType=VARCHAR}");
-        sql.SET("priority = #{record.priority,jdbcType=INTEGER}");
-        sql.SET("classname = #{record.classname,jdbcType=VARCHAR}");
-        sql.SET("source_path = #{record.sourcePath,jdbcType=VARCHAR}");
-        sql.SET("method_name = #{record.methodName,jdbcType=VARCHAR}");
-        sql.SET("signature = #{record.signature,jdbcType=VARCHAR}");
-        sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
-        sql.SET("end_line = #{record.endLine,jdbcType=INTEGER}");
-        sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
+        sql.SET("template_name = #{record.templateName,jdbcType=VARCHAR}");
+        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
+        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         
-        FViolationExample example = (FViolationExample) parameter.get("example");
+        ATemplateExample example = (ATemplateExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(FViolation record) {
+    public String updateByPrimaryKeySelective(ATemplate record) {
         SQL sql = new SQL();
-        sql.UPDATE("f_violation");
+        sql.UPDATE("a_template");
         
-        if (record.getVersionId() != null) {
-            sql.SET("version_id = #{versionId,jdbcType=INTEGER}");
+        if (record.getTemplateName() != null) {
+            sql.SET("template_name = #{templateName,jdbcType=VARCHAR}");
         }
         
-        if (record.getType() != null) {
-            sql.SET("`type` = #{type,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCategory() != null) {
-            sql.SET("category = #{category,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getPriority() != null) {
-            sql.SET("priority = #{priority,jdbcType=INTEGER}");
-        }
-        
-        if (record.getClassname() != null) {
-            sql.SET("classname = #{classname,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSourcePath() != null) {
-            sql.SET("source_path = #{sourcePath,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getMethodName() != null) {
-            sql.SET("method_name = #{methodName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getSignature() != null) {
-            sql.SET("signature = #{signature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getStartLine() != null) {
-            sql.SET("start_line = #{startLine,jdbcType=INTEGER}");
-        }
-        
-        if (record.getEndLine() != null) {
-            sql.SET("end_line = #{endLine,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
-            sql.SET("`state` = #{state,jdbcType=VARCHAR}");
+            sql.SET("`state` = #{state,jdbcType=INTEGER}");
+        }
+        
+        if (record.getUserId() != null) {
+            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -237,7 +139,7 @@ public class FViolationSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, FViolationExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, ATemplateExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

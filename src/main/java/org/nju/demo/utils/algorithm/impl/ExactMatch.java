@@ -24,7 +24,7 @@ public class ExactMatch implements Match {
                         violation.getSourcePath().equals(compare.getSourcePath()) &&
                         violation.getMethodName().equals(compare.getMethodName()) &&
                         violation.getEndLine() - violation.getStartLine() == compare.getEndLine() - compare.getStartLine()){
-                    violation.setState("false");
+                    violation.setState("False");
                     is_exist = 0;
                 }
             }
@@ -37,7 +37,8 @@ public class ExactMatch implements Match {
                         is_file_exist = 0;
                     }
                 }
-                if(is_file_exist == 1) violation.setState("unknown");
+                if(is_file_exist == 1) violation.setState("Unknown");
+                else violation.setState("True");
             }
             violationList.add(violation);
         }

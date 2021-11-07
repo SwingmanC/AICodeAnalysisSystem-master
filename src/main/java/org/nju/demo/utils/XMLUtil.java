@@ -86,7 +86,6 @@ public class XMLUtil {
 	            violation.setSignature(method.getSignature());
 	            violation.setStartLine(method.getStartLine());
 	            violation.setEndLine(method.getEndLine());
-	            violation.setCategoryId(1);
 	            violationList.add(violation);
             }
         }

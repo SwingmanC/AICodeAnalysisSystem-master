@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<BugCollection version="3.0.1" sequence="0" timestamp="1634708391000" analysisTimestamp="1636247450299" release="">
+<BugCollection version="3.0.1" sequence="0" timestamp="1634708391000" analysisTimestamp="1636247414090" release="">
   <Project projectName="">
-    <Jar>/Users/sunchen/IntelliJProject/AICodeAnalysisSystem-master/data/jsfnsc/tika/2020.8.26</Jar>
+    <Jar>/Users/sunchen/IntelliJProject/AICodeAnalysisSystem-master/data/jsfnsc/tika/2020.4.15</Jar>
   </Project>
   <BugInstance type="REC_CATCH_EXCEPTION" priority="2" rank="17" abbrev="REC" category="STYLE">
     <Class classname="org.apache.tika.Tika">
-      <SourceLine classname="org.apache.tika.Tika" start="75" end="706" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
+      <SourceLine classname="org.apache.tika.Tika" start="75" end="737" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
     </Class>
     <Method classname="org.apache.tika.Tika" name="toString" signature="()Ljava/lang/String;" isStatic="false">
-      <SourceLine classname="org.apache.tika.Tika" start="691" end="706" startBytecode="0" endBytecode="397" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
+      <SourceLine classname="org.apache.tika.Tika" start="722" end="737" startBytecode="0" endBytecode="397" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.Tika" start="700" end="700" startBytecode="118" endBytecode="118" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
+    <SourceLine classname="org.apache.tika.Tika" start="731" end="731" startBytecode="118" endBytecode="118" sourcefile="Tika.java" sourcepath="org/apache/tika/Tika.java"/>
   </BugInstance>
   <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.config.Param">
-      <SourceLine classname="org.apache.tika.config.Param" start="59" end="274" sourcefile="Param.java" sourcepath="org/apache/tika/config/Param.java"/>
+      <SourceLine classname="org.apache.tika.config.Param" start="55" end="234" sourcefile="Param.java" sourcepath="org/apache/tika/config/Param.java"/>
     </Class>
   </BugInstance>
   <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" rank="17" abbrev="BC" category="STYLE">
@@ -104,141 +104,121 @@
   </BugInstance>
   <BugInstance type="MS_SHOULD_BE_FINAL" priority="1" rank="16" abbrev="MS" category="MALICIOUS_CODE">
     <Class classname="org.apache.tika.config.TikaConfig">
-      <SourceLine classname="org.apache.tika.config.TikaConfig" start="81" end="559" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig" start="78" end="542" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Field classname="org.apache.tika.config.TikaConfig" name="TIMES_INSTANTIATED" signature="Ljava/util/concurrent/atomic/AtomicInteger;" isStatic="true">
       <SourceLine classname="org.apache.tika.config.TikaConfig" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Field>
-    <SourceLine classname="org.apache.tika.config.TikaConfig" start="116" end="116" startBytecode="7" endBytecode="7" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig" start="109" end="109" startBytecode="7" endBytecode="7" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig">
-      <SourceLine classname="org.apache.tika.config.TikaConfig" start="81" end="559" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig" start="78" end="542" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig" name="updateXMLReaderUtils" signature="(Lorg/w3c/dom/Element;)V" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig" start="298" end="313" startBytecode="0" endBytecode="181" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig" start="284" end="299" startBytecode="0" endBytecode="181" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="attr" register="3" pc="21" role="LOCAL_VARIABLE_VALUE_OF"/>
     <Method classname="org.w3c.dom.Element" name="getAttribute" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
       <SourceLine classname="org.w3c.dom.Element" sourcefile="Element.java" sourcepath="org/w3c/dom/Element.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.config.TikaConfig" start="303" end="303" startBytecode="22" endBytecode="22" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig" start="309" end="309" startBytecode="42" endBytecode="42" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig" start="289" end="289" startBytecode="22" endBytecode="22" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig" start="295" end="295" startBytecode="42" endBytecode="42" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
   </BugInstance>
   <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="3" rank="19" abbrev="NP" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="891" end="970" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="869" end="948" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/detect/Detector;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="935" end="966" startBytecode="0" endBytecode="138" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="913" end="944" startBytecode="0" endBytecode="138" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="detector" register="7" pc="8" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="940" end="940" startBytecode="10" endBytecode="10" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="918" end="918" startBytecode="10" endBytecode="10" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="891" end="970" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="869" end="948" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/detect/Detector;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="935" end="966" startBytecode="0" endBytecode="649" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="913" end="944" startBytecode="0" endBytecode="649" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="detector" register="7" pc="10" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="940" end="940" startBytecode="12" endBytecode="12" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$DetectorXmlLoader" start="918" end="918" startBytecode="12" endBytecode="12" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
   </BugInstance>
   <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="3" rank="19" abbrev="NP" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1091" end="1174" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1069" end="1151" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/detect/EncodingDetector;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1148" end="1169" startBytecode="0" endBytecode="61" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1125" end="1146" startBytecode="0" endBytecode="61" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="encodingDetector" register="7" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1152" end="1152" startBytecode="3" endBytecode="3" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1129" end="1129" startBytecode="3" endBytecode="3" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1091" end="1174" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1069" end="1151" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/detect/EncodingDetector;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1148" end="1169" startBytecode="0" endBytecode="447" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1125" end="1146" startBytecode="0" endBytecode="447" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="encodingDetector" register="7" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1152" end="1152" startBytecode="5" endBytecode="5" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
-  </BugInstance>
-  <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="3" rank="19" abbrev="NP" category="STYLE">
-    <Class classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1178" end="1261" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
-    </Class>
-    <Method classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/metadata/filter/MetadataFilter;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1235" end="1256" startBytecode="0" endBytecode="61" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
-    </Method>
-    <LocalVariable name="metadataFilter" register="7" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1239" end="1239" startBytecode="3" endBytecode="3" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
-  </BugInstance>
-  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
-    <Class classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1178" end="1261" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
-    </Class>
-    <Method classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/metadata/filter/MetadataFilter;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1235" end="1256" startBytecode="0" endBytecode="447" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
-    </Method>
-    <LocalVariable name="metadataFilter" register="7" pc="3" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" start="1239" end="1239" startBytecode="5" endBytecode="5" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" start="1129" end="1129" startBytecode="5" endBytecode="5" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
   </BugInstance>
   <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="3" rank="19" abbrev="NP" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$ParserXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="750" end="887" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="728" end="865" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/parser/Parser;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="805" end="858" startBytecode="0" endBytecode="258" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="783" end="836" startBytecode="0" endBytecode="258" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="parser" register="7" pc="11" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="810" end="810" startBytecode="13" endBytecode="13" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="788" end="788" startBytecode="13" endBytecode="13" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$ParserXmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="750" end="887" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="728" end="865" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" name="createComposite" signature="(Ljava/lang/Class;Ljava/util/List;Ljava/util/Set;Ljava/util/Map;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Lorg/apache/tika/parser/Parser;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="805" end="858" startBytecode="0" endBytecode="940" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="783" end="836" startBytecode="0" endBytecode="940" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="parser" register="7" pc="13" role="LOCAL_VARIABLE_VALUE_OF"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="810" end="810" startBytecode="15" endBytecode="15" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$ParserXmlLoader" start="788" end="788" startBytecode="15" endBytecode="15" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfig$XmlLoader">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="564" end="746" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="547" end="724" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfig$XmlLoader" name="loadOne" signature="(Lorg/w3c/dom/Element;Lorg/apache/tika/mime/MimeTypes;Lorg/apache/tika/config/ServiceLoader;)Ljava/lang/Object;" isStatic="false">
-      <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="614" end="712" startBytecode="0" endBytecode="1582" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="597" end="690" startBytecode="0" endBytecode="1518" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Method>
     <LocalVariable name="initProbHandler" register="5" pc="20" role="LOCAL_VARIABLE_VALUE_OF"/>
     <Method classname="org.w3c.dom.Element" name="getAttribute" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
       <SourceLine classname="org.w3c.dom.Element" sourcefile="Element.java" sourcepath="org/w3c/dom/Element.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="618" end="618" startBytecode="22" endBytecode="22" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfig$XmlLoader" start="601" end="601" startBytecode="22" endBytecode="22" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
   </BugInstance>
   <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfigSerializer">
-      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="53" end="316" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="54" end="318" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfigSerializer" name="addExecutorService" signature="(Lorg/apache/tika/config/TikaConfigSerializer$Mode;Lorg/w3c/dom/Element;Lorg/w3c/dom/Document;Lorg/apache/tika/config/TikaConfig;)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="106" end="111" startBytecode="0" endBytecode="3" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="108" end="113" startBytecode="0" endBytecode="3" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
     </Method>
     <LocalVariable name="executor" register="4" pc="6" role="LOCAL_VARIABLE_NAMED"/>
-    <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="106" end="106" startBytecode="4" endBytecode="4" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="108" end="108" startBytecode="4" endBytecode="4" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
     <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="executor"/>
     <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
     <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
   </BugInstance>
   <BugInstance type="UC_USELESS_VOID_METHOD" priority="3" rank="20" abbrev="UC" category="STYLE">
     <Class classname="org.apache.tika.config.TikaConfigSerializer">
-      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="53" end="316" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="54" end="318" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
     </Class>
     <Method classname="org.apache.tika.config.TikaConfigSerializer" name="addExecutorService" signature="(Lorg/apache/tika/config/TikaConfigSerializer$Mode;Lorg/w3c/dom/Element;Lorg/w3c/dom/Document;Lorg/apache/tika/config/TikaConfig;)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="106" end="111" startBytecode="0" endBytecode="92" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="108" end="113" startBytecode="0" endBytecode="92" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="111" end="111" startBytecode="6" endBytecode="6" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
+    <SourceLine classname="org.apache.tika.config.TikaConfigSerializer" start="113" end="113" startBytecode="6" endBytecode="6" sourcefile="TikaConfigSerializer.java" sourcepath="org/apache/tika/config/TikaConfigSerializer.java"/>
   </BugInstance>
   <BugInstance type="SE_TRANSIENT_FIELD_NOT_RESTORED" priority="3" rank="19" abbrev="Se" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.detect.DefaultDetector">
@@ -495,20 +475,6 @@
       <SourceLine classname="org.apache.tika.embedder.ExternalEmbedder$1" start="432" end="439" sourcefile="ExternalEmbedder.java" sourcepath="org/apache/tika/embedder/ExternalEmbedder.java"/>
     </Class>
   </BugInstance>
-  <BugInstance type="MS_SHOULD_BE_FINAL" priority="3" rank="20" abbrev="MS" category="MALICIOUS_CODE">
-    <Class classname="org.apache.tika.exception.ZeroByteFileException">
-      <SourceLine classname="org.apache.tika.exception.ZeroByteFileException" start="37" end="42" sourcefile="ZeroByteFileException.java" sourcepath="org/apache/tika/exception/ZeroByteFileException.java"/>
-    </Class>
-    <Field classname="org.apache.tika.exception.ZeroByteFileException" name="IGNORE_ZERO_BYTE_FILE_EXCEPTION" signature="Lorg/apache/tika/exception/ZeroByteFileException$IgnoreZeroByteFileException;" isStatic="true">
-      <SourceLine classname="org.apache.tika.exception.ZeroByteFileException" sourcefile="ZeroByteFileException.java" sourcepath="org/apache/tika/exception/ZeroByteFileException.java"/>
-    </Field>
-    <SourceLine classname="org.apache.tika.exception.ZeroByteFileException" start="37" end="37" startBytecode="7" endBytecode="7" sourcefile="ZeroByteFileException.java" sourcepath="org/apache/tika/exception/ZeroByteFileException.java"/>
-  </BugInstance>
-  <BugInstance type="NM_CLASS_NOT_EXCEPTION" priority="2" rank="16" abbrev="Nm" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.exception.ZeroByteFileException$IgnoreZeroByteFileException">
-      <SourceLine classname="org.apache.tika.exception.ZeroByteFileException$IgnoreZeroByteFileException" start="26" end="26" sourcefile="ZeroByteFileException.java" sourcepath="org/apache/tika/exception/ZeroByteFileException.java"/>
-    </Class>
-  </BugInstance>
   <BugInstance type="SE_BAD_FIELD" priority="1" rank="14" abbrev="Se" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.extractor.EmbeddedDocumentUtil">
       <SourceLine classname="org.apache.tika.extractor.EmbeddedDocumentUtil" start="62" end="296" sourcefile="EmbeddedDocumentUtil.java" sourcepath="org/apache/tika/extractor/EmbeddedDocumentUtil.java"/>
@@ -517,7 +483,7 @@
       <SourceLine classname="org.apache.tika.extractor.EmbeddedDocumentUtil" sourcefile="EmbeddedDocumentUtil.java" sourcepath="org/apache/tika/extractor/EmbeddedDocumentUtil.java"/>
     </Field>
     <Type descriptor="Lorg/apache/tika/config/TikaConfig;" role="TYPE_FOUND">
-      <SourceLine classname="org.apache.tika.config.TikaConfig" start="81" end="559" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
+      <SourceLine classname="org.apache.tika.config.TikaConfig" start="78" end="542" sourcefile="TikaConfig.java" sourcepath="org/apache/tika/config/TikaConfig.java"/>
     </Type>
   </BugInstance>
   <BugInstance type="SE_BAD_FIELD" priority="2" rank="16" abbrev="Se" category="BAD_PRACTICE">
@@ -659,15 +625,15 @@
   </BugInstance>
   <BugInstance type="LI_LAZY_INIT_STATIC" priority="3" rank="17" abbrev="LI" category="MT_CORRECTNESS">
     <Class classname="org.apache.tika.io.IOUtils">
-      <SourceLine classname="org.apache.tika.io.IOUtils" start="81" end="1057" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
+      <SourceLine classname="org.apache.tika.io.IOUtils" start="80" end="1285" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
     </Class>
     <Method classname="org.apache.tika.io.IOUtils" name="skip" signature="(Ljava/io/InputStream;J)J" isStatic="true">
-      <SourceLine classname="org.apache.tika.io.IOUtils" start="1005" end="1025" startBytecode="0" endBytecode="50" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
+      <SourceLine classname="org.apache.tika.io.IOUtils" start="1244" end="1264" startBytecode="0" endBytecode="50" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
     </Method>
     <Field classname="org.apache.tika.io.IOUtils" name="SKIP_BYTE_BUFFER" signature="[B" isStatic="true" role="FIELD_ON">
       <SourceLine classname="org.apache.tika.io.IOUtils" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
     </Field>
-    <SourceLine classname="org.apache.tika.io.IOUtils" start="1013" end="1014" startBytecode="33" endBytecode="44" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
+    <SourceLine classname="org.apache.tika.io.IOUtils" start="1252" end="1253" startBytecode="33" endBytecode="44" sourcefile="IOUtils.java" sourcepath="org/apache/tika/io/IOUtils.java"/>
   </BugInstance>
   <BugInstance type="BC_UNCONFIRMED_CAST_OF_RETURN_VALUE" priority="3" rank="20" abbrev="BC" category="STYLE">
     <Class classname="org.apache.tika.io.TaggedIOException">
@@ -691,7 +657,7 @@
   </BugInstance>
   <BugInstance type="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" priority="2" rank="13" abbrev="NP" category="STYLE">
     <Class classname="org.apache.tika.io.TikaInputStream">
-      <SourceLine classname="org.apache.tika.io.TikaInputStream" start="86" end="821" sourcefile="TikaInputStream.java" sourcepath="org/apache/tika/io/TikaInputStream.java"/>
+      <SourceLine classname="org.apache.tika.io.TikaInputStream" start="86" end="824" sourcefile="TikaInputStream.java" sourcepath="org/apache/tika/io/TikaInputStream.java"/>
     </Class>
     <Method classname="org.apache.tika.io.TikaInputStream" name="get" signature="(Ljava/nio/file/Path;Lorg/apache/tika/metadata/Metadata;)Lorg/apache/tika/io/TikaInputStream;" isStatic="true">
       <SourceLine classname="org.apache.tika.io.TikaInputStream" start="235" end="237" startBytecode="0" endBytecode="98" sourcefile="TikaInputStream.java" sourcepath="org/apache/tika/io/TikaInputStream.java"/>
@@ -949,45 +915,6 @@
     <SourceLine classname="org.apache.tika.metadata.Property" start="220" end="220" startBytecode="86" endBytecode="86" sourcefile="Property.java" sourcepath="org/apache/tika/metadata/Property.java"/>
   </BugInstance>
   <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.ClearByMimeMetadataFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.ClearByMimeMetadataFilter" start="39" end="71" sourcefile="ClearByMimeMetadataFilter.java" sourcepath="org/apache/tika/metadata/filter/ClearByMimeMetadataFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.CompositeMetadataFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.CompositeMetadataFilter" start="28" end="37" sourcefile="CompositeMetadataFilter.java" sourcepath="org/apache/tika/metadata/filter/CompositeMetadataFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.DefaultMetadataFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.DefaultMetadataFilter" start="29" end="45" sourcefile="DefaultMetadataFilter.java" sourcepath="org/apache/tika/metadata/filter/DefaultMetadataFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.ExcludeFieldMetadataFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.ExcludeFieldMetadataFilter" start="31" end="51" sourcefile="ExcludeFieldMetadataFilter.java" sourcepath="org/apache/tika/metadata/filter/ExcludeFieldMetadataFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.IncludeFieldMetadataFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.IncludeFieldMetadataFilter" start="31" end="55" sourcefile="IncludeFieldMetadataFilter.java" sourcepath="org/apache/tika/metadata/filter/IncludeFieldMetadataFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="MS_SHOULD_BE_FINAL" priority="1" rank="16" abbrev="MS" category="MALICIOUS_CODE">
-    <Class classname="org.apache.tika.metadata.filter.NoOpFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.NoOpFilter" start="26" end="33" sourcefile="NoOpFilter.java" sourcepath="org/apache/tika/metadata/filter/NoOpFilter.java"/>
-    </Class>
-    <Field classname="org.apache.tika.metadata.filter.NoOpFilter" name="NOOP_FILTER" signature="Lorg/apache/tika/metadata/filter/NoOpFilter;" isStatic="true">
-      <SourceLine classname="org.apache.tika.metadata.filter.NoOpFilter" sourcefile="NoOpFilter.java" sourcepath="org/apache/tika/metadata/filter/NoOpFilter.java"/>
-    </Field>
-    <SourceLine classname="org.apache.tika.metadata.filter.NoOpFilter" start="28" end="28" startBytecode="7" endBytecode="7" sourcefile="NoOpFilter.java" sourcepath="org/apache/tika/metadata/filter/NoOpFilter.java"/>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.metadata.filter.NoOpFilter">
-      <SourceLine classname="org.apache.tika.metadata.filter.NoOpFilter" start="26" end="33" sourcefile="NoOpFilter.java" sourcepath="org/apache/tika/metadata/filter/NoOpFilter.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.mime.AndClause">
       <SourceLine classname="org.apache.tika.mime.AndClause" start="25" end="47" sourcefile="AndClause.java" sourcepath="org/apache/tika/mime/AndClause.java"/>
     </Class>
@@ -1013,37 +940,27 @@
   </BugInstance>
   <BugInstance type="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" priority="2" rank="16" abbrev="RV" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.mime.MimeTypesReader">
-      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="105" end="433" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
+      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="105" end="396" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
     </Class>
     <Method classname="org.apache.tika.mime.MimeTypesReader" name="releaseParser" signature="(Ljavax/xml/parsers/SAXParser;)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="390" end="402" startBytecode="0" endBytecode="161" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
+      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="353" end="365" startBytecode="0" endBytecode="161" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
     </Method>
     <Method classname="java.util.concurrent.ArrayBlockingQueue" name="offer" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.util.concurrent.ArrayBlockingQueue" start="325" end="337" startBytecode="0" endBytecode="168" sourcefile="ArrayBlockingQueue.java" sourcepath="java/util/concurrent/ArrayBlockingQueue.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="398" end="398" startBytecode="21" endBytecode="21" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
+    <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="361" end="361" startBytecode="21" endBytecode="21" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
   </BugInstance>
   <BugInstance type="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" priority="2" rank="16" abbrev="RV" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.mime.MimeTypesReader">
-      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="105" end="433" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
+      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="105" end="396" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
     </Class>
     <Method classname="org.apache.tika.mime.MimeTypesReader" name="setPoolSize" signature="(I)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="414" end="423" startBytecode="0" endBytecode="191" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
+      <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="377" end="386" startBytecode="0" endBytecode="191" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
     </Method>
     <Method classname="java.util.concurrent.ArrayBlockingQueue" name="offer" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.util.concurrent.ArrayBlockingQueue" start="325" end="337" startBytecode="0" endBytecode="168" sourcefile="ArrayBlockingQueue.java" sourcepath="java/util/concurrent/ArrayBlockingQueue.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="417" end="417" startBytecode="33" endBytecode="33" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.mime.MimeTypesReader$MinShouldMatchVal">
-      <SourceLine classname="org.apache.tika.mime.MimeTypesReader$MinShouldMatchVal" start="338" end="353" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
-    </Class>
-  </BugInstance>
-  <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
-    <Class classname="org.apache.tika.mime.MinShouldMatchClause">
-      <SourceLine classname="org.apache.tika.mime.MinShouldMatchClause" start="35" end="74" sourcefile="MinShouldMatchClause.java" sourcepath="org/apache/tika/mime/MinShouldMatchClause.java"/>
-    </Class>
+    <SourceLine classname="org.apache.tika.mime.MimeTypesReader" start="380" end="380" startBytecode="33" endBytecode="33" sourcefile="MimeTypesReader.java" sourcepath="org/apache/tika/mime/MimeTypesReader.java"/>
   </BugInstance>
   <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.mime.OrClause">
@@ -1144,34 +1061,34 @@
   </BugInstance>
   <BugInstance type="SE_BAD_FIELD" priority="2" rank="16" abbrev="Se" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.parser.RecursiveParserWrapper">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper" start="78" end="337" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper" start="77" end="336" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Class>
     <Field classname="org.apache.tika.parser.RecursiveParserWrapper" name="lastParseState" signature="Lorg/apache/tika/parser/RecursiveParserWrapper$ParserState;" isStatic="false">
       <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Field>
     <Type descriptor="Lorg/apache/tika/parser/RecursiveParserWrapper$ParserState;" role="TYPE_FOUND">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="424" end="429" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="420" end="425" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Type>
   </BugInstance>
   <BugInstance type="SE_BAD_FIELD" priority="3" rank="19" abbrev="Se" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" start="341" end="417" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" start="340" end="413" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Class>
     <Field classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" name="parserState" signature="Lorg/apache/tika/parser/RecursiveParserWrapper$ParserState;" isStatic="false">
       <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Field>
     <Type descriptor="Lorg/apache/tika/parser/RecursiveParserWrapper$ParserState;" role="TYPE_FOUND">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="424" end="429" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="420" end="425" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Type>
   </BugInstance>
   <BugInstance type="SE_INNER_CLASS" priority="3" rank="19" abbrev="Se" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" start="341" end="417" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" start="340" end="413" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Class>
   </BugInstance>
   <BugInstance type="SIC_INNER_SHOULD_BE_STATIC" priority="2" rank="18" abbrev="SIC" category="PERFORMANCE">
     <Class classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState">
-      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="424" end="429" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
+      <SourceLine classname="org.apache.tika.parser.RecursiveParserWrapper$ParserState" start="420" end="425" sourcefile="RecursiveParserWrapper.java" sourcepath="org/apache/tika/parser/RecursiveParserWrapper.java"/>
     </Class>
   </BugInstance>
   <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE">
@@ -1289,20 +1206,20 @@
   </BugInstance>
   <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="3" rank="20" abbrev="RCN" category="STYLE">
     <Class classname="org.apache.tika.sax.RecursiveParserWrapperHandler">
-      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="45" end="145" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
+      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="42" end="120" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
     </Class>
     <Method classname="org.apache.tika.sax.RecursiveParserWrapperHandler" name="addContent" signature="(Lorg/xml/sax/ContentHandler;Lorg/apache/tika/metadata/Metadata;)V" isStatic="false">
-      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="134" end="145" startBytecode="0" endBytecode="158" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
+      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="109" end="120" startBytecode="0" endBytecode="158" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
     </Method>
     <LocalVariable name="content" register="3" pc="20" role="LOCAL_VARIABLE_VALUE_OF"/>
     <Method classname="java.lang.Object" name="toString" signature="()Ljava/lang/String;" isStatic="false" role="METHOD_RETURN_VALUE_OF">
       <SourceLine classname="java.lang.Object" start="236" end="236" startBytecode="0" endBytecode="59" sourcefile="Object.java" sourcepath="java/lang/Object.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="140" end="140" startBytecode="21" endBytecode="21" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
+    <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="115" end="115" startBytecode="21" endBytecode="21" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java" role="SOURCE_REDUNDANT_NULL_CHECK"/>
   </BugInstance>
   <BugInstance type="SE_NO_SERIALVERSIONID" priority="3" rank="19" abbrev="SnVI" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.sax.RecursiveParserWrapperHandler">
-      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="45" end="145" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
+      <SourceLine classname="org.apache.tika.sax.RecursiveParserWrapperHandler" start="42" end="120" sourcefile="RecursiveParserWrapperHandler.java" sourcepath="org/apache/tika/sax/RecursiveParserWrapperHandler.java"/>
     </Class>
   </BugInstance>
   <BugInstance type="BC_UNCONFIRMED_CAST_OF_RETURN_VALUE" priority="3" rank="20" abbrev="BC" category="STYLE">
@@ -1353,7 +1270,7 @@
       <SourceLine classname="java.io.InputStream" start="45" end="364" sourcefile="InputStream.java" sourcepath="java/io/InputStream.java"/>
     </Type>
     <Type descriptor="Lorg/apache/tika/io/TikaInputStream;" role="TYPE_EXPECTED">
-      <SourceLine classname="org.apache.tika.io.TikaInputStream" start="86" end="821" sourcefile="TikaInputStream.java" sourcepath="org/apache/tika/io/TikaInputStream.java"/>
+      <SourceLine classname="org.apache.tika.io.TikaInputStream" start="86" end="824" sourcefile="TikaInputStream.java" sourcepath="org/apache/tika/io/TikaInputStream.java"/>
     </Type>
     <LocalVariable name="stream" register="0" pc="16" role="LOCAL_VARIABLE_VALUE_OF"/>
     <SourceLine classname="org.apache.tika.utils.ParserUtils" start="131" end="131" startBytecode="17" endBytecode="17" sourcefile="ParserUtils.java" sourcepath="org/apache/tika/utils/ParserUtils.java"/>
@@ -1372,27 +1289,27 @@
   </BugInstance>
   <BugInstance type="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" priority="2" rank="16" abbrev="RV" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.utils.XMLReaderUtils">
-      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="67" end="1008" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="67" end="994" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
     </Class>
     <Method classname="org.apache.tika.utils.XMLReaderUtils" name="setPoolSize" signature="(I)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="672" end="704" startBytecode="0" endBytecode="536" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="658" end="690" startBytecode="0" endBytecode="536" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
     </Method>
     <Method classname="java.util.concurrent.ArrayBlockingQueue" name="offer" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.util.concurrent.ArrayBlockingQueue" start="325" end="337" startBytecode="0" endBytecode="168" sourcefile="ArrayBlockingQueue.java" sourcepath="java/util/concurrent/ArrayBlockingQueue.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="697" end="697" startBytecode="189" endBytecode="189" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+    <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="683" end="683" startBytecode="189" endBytecode="189" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
   </BugInstance>
   <BugInstance type="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE" priority="3" rank="19" abbrev="RV" category="BAD_PRACTICE">
     <Class classname="org.apache.tika.utils.XMLReaderUtils">
-      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="67" end="1008" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="67" end="994" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
     </Class>
     <Method classname="org.apache.tika.utils.XMLReaderUtils" name="setPoolSize" signature="(I)V" isStatic="true">
-      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="672" end="704" startBytecode="0" endBytecode="536" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+      <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="658" end="690" startBytecode="0" endBytecode="536" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
     </Method>
     <Method classname="java.util.concurrent.ArrayBlockingQueue" name="offer" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.util.concurrent.ArrayBlockingQueue" start="325" end="337" startBytecode="0" endBytecode="168" sourcefile="ArrayBlockingQueue.java" sourcepath="java/util/concurrent/ArrayBlockingQueue.java"/>
     </Method>
-    <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="683" end="683" startBytecode="86" endBytecode="86" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
+    <SourceLine classname="org.apache.tika.utils.XMLReaderUtils" start="669" end="669" startBytecode="86" endBytecode="86" sourcefile="XMLReaderUtils.java" sourcepath="org/apache/tika/utils/XMLReaderUtils.java"/>
   </BugInstance>
   <Errors errors="0" missingClasses="7">
     <MissingClass>org.osgi.framework.BundleActivator</MissingClass>
@@ -1403,9 +1320,9 @@
     <MissingClass>org.slf4j.Logger</MissingClass>
     <MissingClass>org.slf4j.LoggerFactory</MissingClass>
   </Errors>
-  <FindBugsSummary timestamp="Wed, 20 Oct 2021 13:39:51 +0800" total_classes="360" referenced_classes="771" total_bugs="145" total_size="13957" num_packages="22" java_version="1.8.0_301" vm_version="25.301-b09" cpu_seconds="70.31" clock_seconds="22.11" peak_mbytes="667.54" alloc_mbytes="3641.00" gc_seconds="0.39" priority_3="85" priority_2="55" priority_1="5">
-    <PackageStats package="org.apache.tika" total_bugs="1" total_types="2" total_size="158" priority_2="1">
-      <ClassStats class="org.apache.tika.Tika" sourceFile="Tika.java" interface="false" size="157" bugs="1" priority_2="1"/>
+  <FindBugsSummary timestamp="Wed, 20 Oct 2021 13:39:51 +0800" total_classes="345" referenced_classes="756" total_bugs="132" total_size="13597" num_packages="21" java_version="1.8.0_301" vm_version="25.301-b09" cpu_seconds="67.25" clock_seconds="20.24" peak_mbytes="628.07" alloc_mbytes="3641.00" gc_seconds="0.35" priority_3="74" priority_2="54" priority_1="4">
+    <PackageStats package="org.apache.tika" total_bugs="1" total_types="2" total_size="166" priority_2="1">
+      <ClassStats class="org.apache.tika.Tika" sourceFile="Tika.java" interface="false" size="165" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
     <PackageStats package="org.apache.tika.concurrent" total_bugs="0" total_types="3" total_size="12">
@@ -1413,7 +1330,7 @@
       <ClassStats class="org.apache.tika.concurrent.SimpleThreadPoolExecutor" sourceFile="SimpleThreadPoolExecutor.java" interface="false" size="4" bugs="0"/>
       <ClassStats class="org.apache.tika.concurrent.SimpleThreadPoolExecutor$1" sourceFile="SimpleThreadPoolExecutor.java" interface="false" size="5" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.config" total_bugs="21" total_types="29" total_size="1368" priority_3="16" priority_2="4" priority_1="1">
+    <PackageStats package="org.apache.tika.config" total_bugs="19" total_types="28" total_size="1280" priority_3="14" priority_2="4" priority_1="1">
       <ClassStats class="org.apache.tika.config.Field" sourceFile="Field.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="org.apache.tika.config.Initializable" sourceFile="Initializable.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="org.apache.tika.config.InitializableProblemHandler" sourceFile="InitializableProblemHandler.java" interface="true" size="13" bugs="0"/>
@@ -1425,22 +1342,21 @@
       <ClassStats class="org.apache.tika.config.LoadErrorHandler$1" sourceFile="LoadErrorHandler.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.config.LoadErrorHandler$2" sourceFile="LoadErrorHandler.java" interface="false" size="8" bugs="0"/>
       <ClassStats class="org.apache.tika.config.LoadErrorHandler$3" sourceFile="LoadErrorHandler.java" interface="false" size="7" bugs="0"/>
-      <ClassStats class="org.apache.tika.config.Param" sourceFile="Param.java" interface="false" size="151" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.tika.config.Param" sourceFile="Param.java" interface="false" size="123" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.config.ParamField" sourceFile="ParamField.java" interface="false" size="63" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.config.ParamField$1" sourceFile="ParamField.java" interface="false" size="10" bugs="0"/>
       <ClassStats class="org.apache.tika.config.ServiceLoader" sourceFile="ServiceLoader.java" interface="false" size="140" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.config.ServiceLoader$RankedService" sourceFile="ServiceLoader.java" interface="false" size="15" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.config.TikaActivator" sourceFile="TikaActivator.java" interface="false" size="31" bugs="4" priority_3="4"/>
-      <ClassStats class="org.apache.tika.config.TikaConfig" sourceFile="TikaConfig.java" interface="false" size="285" bugs="2" priority_3="1" priority_1="1"/>
+      <ClassStats class="org.apache.tika.config.TikaConfig" sourceFile="TikaConfig.java" interface="false" size="273" bugs="2" priority_3="1" priority_1="1"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$1" sourceFile="TikaConfig.java" interface="false" size="1" bugs="0"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$DetectorXmlLoader" sourceFile="TikaConfig.java" interface="false" size="53" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$EncodingDetectorXmlLoader" sourceFile="TikaConfig.java" interface="false" size="45" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$ExecutorServiceXmlLoader" sourceFile="TikaConfig.java" interface="false" size="41" bugs="0"/>
-      <ClassStats class="org.apache.tika.config.TikaConfig$MetadataFilterXmlLoader" sourceFile="TikaConfig.java" interface="false" size="45" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$ParserXmlLoader" sourceFile="TikaConfig.java" interface="false" size="88" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.config.TikaConfig$TranslatorXmlLoader" sourceFile="TikaConfig.java" interface="false" size="32" bugs="0"/>
-      <ClassStats class="org.apache.tika.config.TikaConfig$XmlLoader" sourceFile="TikaConfig.java" interface="false" size="107" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.config.TikaConfigSerializer" sourceFile="TikaConfigSerializer.java" interface="false" size="165" bugs="2" priority_3="1" priority_2="1"/>
+      <ClassStats class="org.apache.tika.config.TikaConfig$XmlLoader" sourceFile="TikaConfig.java" interface="false" size="103" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.tika.config.TikaConfigSerializer" sourceFile="TikaConfigSerializer.java" interface="false" size="166" bugs="2" priority_3="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.config.TikaConfigSerializer$Mode" sourceFile="TikaConfigSerializer.java" interface="false" size="15" bugs="0"/>
       <ClassStats class="org.apache.tika.config.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
@@ -1477,7 +1393,7 @@
       <ClassStats class="org.apache.tika.embedder.ExternalEmbedder" sourceFile="ExternalEmbedder.java" interface="false" size="199" bugs="6" priority_3="3" priority_2="3"/>
       <ClassStats class="org.apache.tika.embedder.ExternalEmbedder$1" sourceFile="ExternalEmbedder.java" interface="false" size="12" bugs="1" priority_3="1"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.exception" total_bugs="2" total_types="10" total_size="71" priority_3="1" priority_2="1">
+    <PackageStats package="org.apache.tika.exception" total_bugs="0" total_types="9" total_size="65">
       <ClassStats class="org.apache.tika.exception.AccessPermissionException" sourceFile="AccessPermissionException.java" interface="false" size="13" bugs="0"/>
       <ClassStats class="org.apache.tika.exception.CorruptedFileException" sourceFile="CorruptedFileException.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.exception.EncryptedDocumentException" sourceFile="EncryptedDocumentException.java" interface="false" size="13" bugs="0"/>
@@ -1485,8 +1401,7 @@
       <ClassStats class="org.apache.tika.exception.TikaException" sourceFile="TikaException.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.exception.TikaMemoryLimitException" sourceFile="TikaMemoryLimitException.java" interface="false" size="9" bugs="0"/>
       <ClassStats class="org.apache.tika.exception.UnsupportedFormatException" sourceFile="UnsupportedFormatException.java" interface="false" size="4" bugs="0"/>
-      <ClassStats class="org.apache.tika.exception.ZeroByteFileException" sourceFile="ZeroByteFileException.java" interface="false" size="7" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.exception.ZeroByteFileException$IgnoreZeroByteFileException" sourceFile="ZeroByteFileException.java" interface="false" size="3" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.tika.exception.ZeroByteFileException" sourceFile="ZeroByteFileException.java" interface="false" size="4" bugs="0"/>
       <ClassStats class="org.apache.tika.exception.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
     <PackageStats package="org.apache.tika.extractor" total_bugs="5" total_types="10" total_size="245" priority_3="3" priority_2="1" priority_1="1">
@@ -1525,7 +1440,7 @@
       <ClassStats class="org.apache.tika.fork.TimeoutLimits" sourceFile="TimeoutLimits.java" interface="false" size="16" bugs="0"/>
       <ClassStats class="org.apache.tika.fork.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.io" total_bugs="6" total_types="24" total_size="1228" priority_3="4" priority_2="2">
+    <PackageStats package="org.apache.tika.io" total_bugs="6" total_types="24" total_size="1267" priority_3="4" priority_2="2">
       <ClassStats class="org.apache.tika.io.BoundedInputStream" sourceFile="BoundedInputStream.java" interface="false" size="41" bugs="0"/>
       <ClassStats class="org.apache.tika.io.CloseShieldInputStream" sourceFile="CloseShieldInputStream.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.io.ClosedInputStream" sourceFile="ClosedInputStream.java" interface="false" size="5" bugs="0"/>
@@ -1534,7 +1449,7 @@
       <ClassStats class="org.apache.tika.io.EndianUtils$BufferUnderrunException" sourceFile="EndianUtils.java" interface="false" size="5" bugs="0"/>
       <ClassStats class="org.apache.tika.io.FilenameUtils" sourceFile="FilenameUtils.java" interface="false" size="30" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.io.IOExceptionWithCause" sourceFile="IOExceptionWithCause.java" interface="false" size="10" bugs="0"/>
-      <ClassStats class="org.apache.tika.io.IOUtils" sourceFile="IOUtils.java" interface="false" size="253" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.tika.io.IOUtils" sourceFile="IOUtils.java" interface="false" size="290" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.io.InputStreamFactory" sourceFile="InputStreamFactory.java" interface="true" size="2" bugs="0"/>
       <ClassStats class="org.apache.tika.io.LookaheadInputStream" sourceFile="LookaheadInputStream.java" interface="false" size="56" bugs="0"/>
       <ClassStats class="org.apache.tika.io.MappedBufferCleaner" sourceFile="MappedBufferCleaner.java" interface="false" size="66" bugs="0"/>
@@ -1547,7 +1462,7 @@
       <ClassStats class="org.apache.tika.io.TailStream" sourceFile="TailStream.java" interface="false" size="82" bugs="0"/>
       <ClassStats class="org.apache.tika.io.TemporaryResources" sourceFile="TemporaryResources.java" interface="false" size="50" bugs="0"/>
       <ClassStats class="org.apache.tika.io.TemporaryResources$1" sourceFile="TemporaryResources.java" interface="false" size="8" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.io.TikaInputStream" sourceFile="TikaInputStream.java" interface="false" size="215" bugs="1" priority_2="1"/>
+      <ClassStats class="org.apache.tika.io.TikaInputStream" sourceFile="TikaInputStream.java" interface="false" size="217" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.io.TikaInputStream$1" sourceFile="TikaInputStream.java" interface="false" size="8" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.io.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
@@ -1580,7 +1495,7 @@
       <ClassStats class="org.apache.tika.language.translate.EmptyTranslator" sourceFile="EmptyTranslator.java" interface="false" size="9" bugs="0"/>
       <ClassStats class="org.apache.tika.language.translate.Translator" sourceFile="Translator.java" interface="true" size="4" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.metadata" total_bugs="6" total_types="38" total_size="1481" priority_3="3" priority_2="3">
+    <PackageStats package="org.apache.tika.metadata" total_bugs="6" total_types="36" total_size="1414" priority_3="3" priority_2="3">
       <ClassStats class="org.apache.tika.metadata.AccessPermissions" sourceFile="AccessPermissions.java" interface="true" size="19" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.ClimateForcast" sourceFile="ClimateForcast.java" interface="true" size="16" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.CreativeCommons" sourceFile="CreativeCommons.java" interface="true" size="4" bugs="0"/>
@@ -1591,8 +1506,6 @@
       <ClassStats class="org.apache.tika.metadata.HTML" sourceFile="HTML.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.HttpHeaders" sourceFile="HttpHeaders.java" interface="true" size="13" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.IPTC" sourceFile="IPTC.java" interface="true" size="224" bugs="2" priority_3="2"/>
-      <ClassStats class="org.apache.tika.metadata.MachineMetadata" sourceFile="MachineMetadata.java" interface="true" size="43" bugs="0"/>
-      <ClassStats class="org.apache.tika.metadata.MachineMetadata$Endian" sourceFile="MachineMetadata.java" interface="false" size="18" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.Message" sourceFile="Message.java" interface="true" size="33" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.Metadata" sourceFile="Metadata.java" interface="false" size="215" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.metadata.Office" sourceFile="Office.java" interface="true" size="50" bugs="0"/>
@@ -1612,7 +1525,7 @@
       <ClassStats class="org.apache.tika.metadata.TikaCoreProperties$EmbeddedResourceType" sourceFile="TikaCoreProperties.java" interface="false" size="19" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.TikaMimeKeys" sourceFile="TikaMimeKeys.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.WordPerfect" sourceFile="WordPerfect.java" interface="true" size="17" bugs="0"/>
-      <ClassStats class="org.apache.tika.metadata.XMP" sourceFile="XMP.java" interface="true" size="25" bugs="0"/>
+      <ClassStats class="org.apache.tika.metadata.XMP" sourceFile="XMP.java" interface="true" size="19" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.XMPDM" sourceFile="XMPDM.java" interface="true" size="102" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.XMPDM$ChannelTypePropertyConverter" sourceFile="XMPDM.java" interface="false" size="28" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.XMPIdq" sourceFile="XMPIdq.java" interface="true" size="7" bugs="0"/>
@@ -1620,16 +1533,7 @@
       <ClassStats class="org.apache.tika.metadata.XMPRights" sourceFile="XMPRights.java" interface="true" size="15" bugs="0"/>
       <ClassStats class="org.apache.tika.metadata.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.metadata.filter" total_bugs="7" total_types="7" total_size="92" priority_3="6" priority_1="1">
-      <ClassStats class="org.apache.tika.metadata.filter.ClearByMimeMetadataFilter" sourceFile="ClearByMimeMetadataFilter.java" interface="false" size="23" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.metadata.filter.CompositeMetadataFilter" sourceFile="CompositeMetadataFilter.java" interface="false" size="11" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.metadata.filter.DefaultMetadataFilter" sourceFile="DefaultMetadataFilter.java" interface="false" size="14" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.metadata.filter.ExcludeFieldMetadataFilter" sourceFile="ExcludeFieldMetadataFilter.java" interface="false" size="17" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.metadata.filter.IncludeFieldMetadataFilter" sourceFile="IncludeFieldMetadataFilter.java" interface="false" size="17" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.metadata.filter.MetadataFilter" sourceFile="MetadataFilter.java" interface="true" size="2" bugs="0"/>
-      <ClassStats class="org.apache.tika.metadata.filter.NoOpFilter" sourceFile="NoOpFilter.java" interface="false" size="8" bugs="2" priority_3="1" priority_1="1"/>
-    </PackageStats>
-    <PackageStats package="org.apache.tika.mime" total_bugs="10" total_types="24" total_size="1568" priority_3="6" priority_2="4">
+    <PackageStats package="org.apache.tika.mime" total_bugs="8" total_types="22" total_size="1519" priority_3="4" priority_2="4">
       <ClassStats class="org.apache.tika.mime.AndClause" sourceFile="AndClause.java" interface="false" size="18" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.mime.Clause" sourceFile="Clause.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="org.apache.tika.mime.HexCoDec" sourceFile="HexCoDec.java" interface="false" size="34" bugs="0"/>
@@ -1642,11 +1546,9 @@
       <ClassStats class="org.apache.tika.mime.MimeTypeException" sourceFile="MimeTypeException.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.mime.MimeTypes" sourceFile="MimeTypes.java" interface="false" size="228" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.mime.MimeTypesFactory" sourceFile="MimeTypesFactory.java" interface="false" size="52" bugs="0"/>
-      <ClassStats class="org.apache.tika.mime.MimeTypesReader" sourceFile="MimeTypesReader.java" interface="false" size="176" bugs="2" priority_2="2"/>
-      <ClassStats class="org.apache.tika.mime.MimeTypesReader$ClauseRecord" sourceFile="MimeTypesReader.java" interface="false" size="28" bugs="0"/>
-      <ClassStats class="org.apache.tika.mime.MimeTypesReader$MinShouldMatchVal" sourceFile="MimeTypesReader.java" interface="false" size="12" bugs="1" priority_3="1"/>
-      <ClassStats class="org.apache.tika.mime.MimeTypesReaderMetKeys" sourceFile="MimeTypesReaderMetKeys.java" interface="true" size="27" bugs="0"/>
-      <ClassStats class="org.apache.tika.mime.MinShouldMatchClause" sourceFile="MinShouldMatchClause.java" interface="false" size="31" bugs="1" priority_3="1"/>
+      <ClassStats class="org.apache.tika.mime.MimeTypesReader" sourceFile="MimeTypesReader.java" interface="false" size="173" bugs="2" priority_2="2"/>
+      <ClassStats class="org.apache.tika.mime.MimeTypesReader$ClauseRecord" sourceFile="MimeTypesReader.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="org.apache.tika.mime.MimeTypesReaderMetKeys" sourceFile="MimeTypesReaderMetKeys.java" interface="true" size="26" bugs="0"/>
       <ClassStats class="org.apache.tika.mime.OrClause" sourceFile="OrClause.java" interface="false" size="20" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.mime.Patterns" sourceFile="Patterns.java" interface="false" size="96" bugs="0"/>
       <ClassStats class="org.apache.tika.mime.Patterns$1" sourceFile="Patterns.java" interface="false" size="1" bugs="0"/>
@@ -1655,7 +1557,7 @@
       <ClassStats class="org.apache.tika.mime.ProbabilisticMimeDetectionSelector$Builder" sourceFile="ProbabilisticMimeDetectionSelector.java" interface="false" size="55" bugs="0"/>
       <ClassStats class="org.apache.tika.mime.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.parser" total_bugs="15" total_types="34" total_size="894" priority_3="12" priority_2="3">
+    <PackageStats package="org.apache.tika.parser" total_bugs="15" total_types="34" total_size="893" priority_3="12" priority_2="3">
       <ClassStats class="org.apache.tika.parser.AbstractEncodingDetectorParser" sourceFile="AbstractEncodingDetectorParser.java" interface="false" size="20" bugs="0"/>
       <ClassStats class="org.apache.tika.parser.AbstractParser" sourceFile="AbstractParser.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.parser.AutoDetectParser" sourceFile="AutoDetectParser.java" interface="false" size="55" bugs="0"/>
@@ -1686,7 +1588,7 @@
       <ClassStats class="org.apache.tika.parser.PasswordProvider" sourceFile="PasswordProvider.java" interface="true" size="2" bugs="0"/>
       <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper" sourceFile="RecursiveParserWrapper.java" interface="false" size="100" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper$1" sourceFile="RecursiveParserWrapper.java" interface="false" size="1" bugs="0"/>
-      <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" sourceFile="RecursiveParserWrapper.java" interface="false" size="53" bugs="2" priority_3="2"/>
+      <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator" sourceFile="RecursiveParserWrapper.java" interface="false" size="52" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper$ParserState" sourceFile="RecursiveParserWrapper.java" interface="false" size="13" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler" sourceFile="RecursiveParserWrapper.java" interface="false" size="20" bugs="0"/>
       <ClassStats class="org.apache.tika.parser.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
@@ -1715,7 +1617,7 @@
       <ClassStats class="org.apache.tika.parser.multiple.FallbackParser" sourceFile="FallbackParser.java" interface="false" size="18" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.parser.multiple.SupplementingParser" sourceFile="SupplementingParser.java" interface="false" size="20" bugs="1" priority_2="1"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.sax" total_bugs="6" total_types="48" total_size="1842" priority_3="5" priority_2="1">
+    <PackageStats package="org.apache.tika.sax" total_bugs="6" total_types="47" total_size="1821" priority_3="5" priority_2="1">
       <ClassStats class="org.apache.tika.sax.AbstractRecursiveParserWrapperHandler" sourceFile="AbstractRecursiveParserWrapperHandler.java" interface="false" size="64" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.BasicContentHandlerFactory" sourceFile="BasicContentHandlerFactory.java" interface="false" size="58" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.sax.BasicContentHandlerFactory$1" sourceFile="BasicContentHandlerFactory.java" interface="false" size="4" bugs="0"/>
@@ -1735,7 +1637,7 @@
       <ClassStats class="org.apache.tika.sax.LinkContentHandler" sourceFile="LinkContentHandler.java" interface="false" size="65" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.OfflineContentHandler" sourceFile="OfflineContentHandler.java" interface="false" size="6" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.PhoneExtractingContentHandler" sourceFile="PhoneExtractingContentHandler.java" interface="false" size="27" bugs="0"/>
-      <ClassStats class="org.apache.tika.sax.RecursiveParserWrapperHandler" sourceFile="RecursiveParserWrapperHandler.java" interface="false" size="46" bugs="2" priority_3="2"/>
+      <ClassStats class="org.apache.tika.sax.RecursiveParserWrapperHandler" sourceFile="RecursiveParserWrapperHandler.java" interface="false" size="31" bugs="2" priority_3="2"/>
       <ClassStats class="org.apache.tika.sax.RichTextContentHandler" sourceFile="RichTextContentHandler.java" interface="false" size="13" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.SafeContentHandler" sourceFile="SafeContentHandler.java" interface="false" size="79" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.SafeContentHandler$1" sourceFile="SafeContentHandler.java" interface="false" size="7" bugs="0"/>
@@ -1750,7 +1652,6 @@
       <ClassStats class="org.apache.tika.sax.StandardReference$StandardReferenceBuilder" sourceFile="StandardReference.java" interface="false" size="23" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.StandardsExtractingContentHandler" sourceFile="StandardsExtractingContentHandler.java" interface="false" size="34" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.StandardsText" sourceFile="StandardsText.java" interface="false" size="55" bugs="0"/>
-      <ClassStats class="org.apache.tika.sax.StoppingEarlyException" sourceFile="StoppingEarlyException.java" interface="false" size="6" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.TaggedContentHandler" sourceFile="TaggedContentHandler.java" interface="false" size="17" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.TaggedSAXException" sourceFile="TaggedSAXException.java" interface="false" size="12" bugs="1" priority_3="1"/>
       <ClassStats class="org.apache.tika.sax.TeeContentHandler" sourceFile="TeeContentHandler.java" interface="false" size="50" bugs="0"/>
@@ -1780,7 +1681,7 @@
       <ClassStats class="org.apache.tika.sax.xpath.XPathParser" sourceFile="XPathParser.java" interface="false" size="57" bugs="0"/>
       <ClassStats class="org.apache.tika.sax.xpath.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
-    <PackageStats package="org.apache.tika.utils" total_bugs="6" total_types="26" total_size="1037" priority_3="3" priority_2="3">
+    <PackageStats package="org.apache.tika.utils" total_bugs="6" total_types="25" total_size="954" priority_3="3" priority_2="3">
       <ClassStats class="org.apache.tika.utils.AnnotationUtils" sourceFile="AnnotationUtils.java" interface="false" size="57" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.utils.AnnotationUtils$1" sourceFile="AnnotationUtils.java" interface="false" size="8" bugs="0"/>
       <ClassStats class="org.apache.tika.utils.CharsetUtils" sourceFile="CharsetUtils.java" interface="false" size="98" bugs="1" priority_3="1"/>
@@ -1793,9 +1694,8 @@
       <ClassStats class="org.apache.tika.utils.RereadableInputStream" sourceFile="RereadableInputStream.java" interface="false" size="71" bugs="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.utils.ServiceLoaderUtils" sourceFile="ServiceLoaderUtils.java" interface="false" size="15" bugs="0"/>
       <ClassStats class="org.apache.tika.utils.ServiceLoaderUtils$1" sourceFile="ServiceLoaderUtils.java" interface="false" size="13" bugs="0"/>
-      <ClassStats class="org.apache.tika.utils.StringUtils" sourceFile="StringUtils.java" interface="false" size="71" bugs="0"/>
       <ClassStats class="org.apache.tika.utils.SystemUtils" sourceFile="SystemUtils.java" interface="false" size="40" bugs="0"/>
-      <ClassStats class="org.apache.tika.utils.XMLReaderUtils" sourceFile="XMLReaderUtils.java" interface="false" size="377" bugs="2" priority_3="1" priority_2="1"/>
+      <ClassStats class="org.apache.tika.utils.XMLReaderUtils" sourceFile="XMLReaderUtils.java" interface="false" size="365" bugs="2" priority_3="1" priority_2="1"/>
       <ClassStats class="org.apache.tika.utils.XMLReaderUtils$1" sourceFile="XMLReaderUtils.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="org.apache.tika.utils.XMLReaderUtils$2" sourceFile="XMLReaderUtils.java" interface="false" size="9" bugs="0"/>
       <ClassStats class="org.apache.tika.utils.XMLReaderUtils$3" sourceFile="XMLReaderUtils.java" interface="false" size="5" bugs="0"/>
@@ -1809,39 +1709,40 @@
       <ClassStats class="org.apache.tika.utils.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
     </PackageStats>
     <FindBugsProfile>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="1163" invocations="771" avgMicrosecondsPerInvocation="1508" maxMicrosecondsPerInvocation="99174" standardDeviationMircosecondsPerInvocation="6425"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1088" invocations="1839" avgMicrosecondsPerInvocation="592" maxMicrosecondsPerInvocation="33204" standardDeviationMircosecondsPerInvocation="1850"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="1059" invocations="771" avgMicrosecondsPerInvocation="1373" maxMicrosecondsPerInvocation="72683" standardDeviationMircosecondsPerInvocation="5169"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="1015" invocations="2239" avgMicrosecondsPerInvocation="453" maxMicrosecondsPerInvocation="14250" standardDeviationMircosecondsPerInvocation="1159"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="986" invocations="2137" avgMicrosecondsPerInvocation="461" maxMicrosecondsPerInvocation="20145" standardDeviationMircosecondsPerInvocation="1193"/>
-      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="906" invocations="3209" avgMicrosecondsPerInvocation="282" maxMicrosecondsPerInvocation="35851" standardDeviationMircosecondsPerInvocation="1376"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="817" invocations="2253" avgMicrosecondsPerInvocation="362" maxMicrosecondsPerInvocation="39291" standardDeviationMircosecondsPerInvocation="1221"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="725" invocations="2138" avgMicrosecondsPerInvocation="339" maxMicrosecondsPerInvocation="34701" standardDeviationMircosecondsPerInvocation="1094"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="694" invocations="2134" avgMicrosecondsPerInvocation="325" maxMicrosecondsPerInvocation="39315" standardDeviationMircosecondsPerInvocation="1246"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="615" invocations="2085" avgMicrosecondsPerInvocation="295" maxMicrosecondsPerInvocation="18463" standardDeviationMircosecondsPerInvocation="959"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="596" invocations="1728" avgMicrosecondsPerInvocation="345" maxMicrosecondsPerInvocation="105140" standardDeviationMircosecondsPerInvocation="2626"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="563" invocations="360" avgMicrosecondsPerInvocation="1565" maxMicrosecondsPerInvocation="26062" standardDeviationMircosecondsPerInvocation="3602"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="435" invocations="360" avgMicrosecondsPerInvocation="1210" maxMicrosecondsPerInvocation="14345" standardDeviationMircosecondsPerInvocation="2128"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="371" invocations="1846" avgMicrosecondsPerInvocation="201" maxMicrosecondsPerInvocation="5668" standardDeviationMircosecondsPerInvocation="389"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="353" invocations="878" avgMicrosecondsPerInvocation="402" maxMicrosecondsPerInvocation="16072" standardDeviationMircosecondsPerInvocation="1256"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="334" invocations="2201" avgMicrosecondsPerInvocation="151" maxMicrosecondsPerInvocation="80418" standardDeviationMircosecondsPerInvocation="1742"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="326" invocations="771" avgMicrosecondsPerInvocation="423" maxMicrosecondsPerInvocation="49056" standardDeviationMircosecondsPerInvocation="2105"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueRangeAnalysisFactory" totalMilliseconds="293" invocations="2201" avgMicrosecondsPerInvocation="133" maxMicrosecondsPerInvocation="11547" standardDeviationMircosecondsPerInvocation="625"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="282" invocations="41441" avgMicrosecondsPerInvocation="6" maxMicrosecondsPerInvocation="3883" standardDeviationMircosecondsPerInvocation="68"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.SerializableIdiom" totalMilliseconds="251" invocations="360" avgMicrosecondsPerInvocation="699" maxMicrosecondsPerInvocation="28557" standardDeviationMircosecondsPerInvocation="2137"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="246" invocations="771" avgMicrosecondsPerInvocation="319" maxMicrosecondsPerInvocation="53431" standardDeviationMircosecondsPerInvocation="2147"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindUselessObjects" totalMilliseconds="238" invocations="360" avgMicrosecondsPerInvocation="663" maxMicrosecondsPerInvocation="12509" standardDeviationMircosecondsPerInvocation="1602"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="233" invocations="360" avgMicrosecondsPerInvocation="649" maxMicrosecondsPerInvocation="11446" standardDeviationMircosecondsPerInvocation="1346"/>
-      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="233" invocations="1755" avgMicrosecondsPerInvocation="132" maxMicrosecondsPerInvocation="19573" standardDeviationMircosecondsPerInvocation="669"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.obl.ObligationAnalysis" totalMilliseconds="231" invocations="938" avgMicrosecondsPerInvocation="246" maxMicrosecondsPerInvocation="16443" standardDeviationMircosecondsPerInvocation="816"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="225" invocations="360" avgMicrosecondsPerInvocation="625" maxMicrosecondsPerInvocation="18643" standardDeviationMircosecondsPerInvocation="1394"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindPuzzlers" totalMilliseconds="199" invocations="360" avgMicrosecondsPerInvocation="552" maxMicrosecondsPerInvocation="13781" standardDeviationMircosecondsPerInvocation="1657"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="188" invocations="360" avgMicrosecondsPerInvocation="523" maxMicrosecondsPerInvocation="17213" standardDeviationMircosecondsPerInvocation="1688"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="182" invocations="2137" avgMicrosecondsPerInvocation="85" maxMicrosecondsPerInvocation="5036" standardDeviationMircosecondsPerInvocation="241"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="177" invocations="771" avgMicrosecondsPerInvocation="229" maxMicrosecondsPerInvocation="8993" standardDeviationMircosecondsPerInvocation="798"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="170" invocations="771" avgMicrosecondsPerInvocation="221" maxMicrosecondsPerInvocation="18676" standardDeviationMircosecondsPerInvocation="946"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="166" invocations="360" avgMicrosecondsPerInvocation="462" maxMicrosecondsPerInvocation="21029" standardDeviationMircosecondsPerInvocation="1471"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="155" invocations="771" avgMicrosecondsPerInvocation="202" maxMicrosecondsPerInvocation="14880" standardDeviationMircosecondsPerInvocation="789"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1013" invocations="1823" avgMicrosecondsPerInvocation="555" maxMicrosecondsPerInvocation="25297" standardDeviationMircosecondsPerInvocation="1540"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="979" invocations="2076" avgMicrosecondsPerInvocation="471" maxMicrosecondsPerInvocation="59127" standardDeviationMircosecondsPerInvocation="1708"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="963" invocations="2177" avgMicrosecondsPerInvocation="442" maxMicrosecondsPerInvocation="19707" standardDeviationMircosecondsPerInvocation="1236"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="934" invocations="756" avgMicrosecondsPerInvocation="1236" maxMicrosecondsPerInvocation="48483" standardDeviationMircosecondsPerInvocation="4216"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="852" invocations="756" avgMicrosecondsPerInvocation="1127" maxMicrosecondsPerInvocation="50663" standardDeviationMircosecondsPerInvocation="3694"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="783" invocations="2190" avgMicrosecondsPerInvocation="357" maxMicrosecondsPerInvocation="11991" standardDeviationMircosecondsPerInvocation="905"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="761" invocations="3137" avgMicrosecondsPerInvocation="242" maxMicrosecondsPerInvocation="20694" standardDeviationMircosecondsPerInvocation="1016"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="675" invocations="2073" avgMicrosecondsPerInvocation="325" maxMicrosecondsPerInvocation="36727" standardDeviationMircosecondsPerInvocation="1339"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="648" invocations="2077" avgMicrosecondsPerInvocation="312" maxMicrosecondsPerInvocation="12580" standardDeviationMircosecondsPerInvocation="814"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="616" invocations="2030" avgMicrosecondsPerInvocation="303" maxMicrosecondsPerInvocation="14092" standardDeviationMircosecondsPerInvocation="902"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="519" invocations="345" avgMicrosecondsPerInvocation="1504" maxMicrosecondsPerInvocation="29883" standardDeviationMircosecondsPerInvocation="4247"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="493" invocations="1684" avgMicrosecondsPerInvocation="292" maxMicrosecondsPerInvocation="11071" standardDeviationMircosecondsPerInvocation="751"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="444" invocations="1830" avgMicrosecondsPerInvocation="243" maxMicrosecondsPerInvocation="52327" standardDeviationMircosecondsPerInvocation="1297"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="420" invocations="345" avgMicrosecondsPerInvocation="1217" maxMicrosecondsPerInvocation="21213" standardDeviationMircosecondsPerInvocation="2149"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="291" invocations="862" avgMicrosecondsPerInvocation="338" maxMicrosecondsPerInvocation="23218" standardDeviationMircosecondsPerInvocation="1123"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueRangeAnalysisFactory" totalMilliseconds="277" invocations="2139" avgMicrosecondsPerInvocation="129" maxMicrosecondsPerInvocation="12647" standardDeviationMircosecondsPerInvocation="674"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="270" invocations="2139" avgMicrosecondsPerInvocation="126" maxMicrosecondsPerInvocation="30291" standardDeviationMircosecondsPerInvocation="719"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="261" invocations="40587" avgMicrosecondsPerInvocation="6" maxMicrosecondsPerInvocation="10342" standardDeviationMircosecondsPerInvocation="80"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.obl.ObligationAnalysis" totalMilliseconds="248" invocations="944" avgMicrosecondsPerInvocation="263" maxMicrosecondsPerInvocation="9465" standardDeviationMircosecondsPerInvocation="775"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="248" invocations="756" avgMicrosecondsPerInvocation="329" maxMicrosecondsPerInvocation="16087" standardDeviationMircosecondsPerInvocation="1116"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindUselessObjects" totalMilliseconds="242" invocations="345" avgMicrosecondsPerInvocation="702" maxMicrosecondsPerInvocation="14503" standardDeviationMircosecondsPerInvocation="1676"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.SerializableIdiom" totalMilliseconds="228" invocations="345" avgMicrosecondsPerInvocation="662" maxMicrosecondsPerInvocation="25854" standardDeviationMircosecondsPerInvocation="2121"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="228" invocations="345" avgMicrosecondsPerInvocation="662" maxMicrosecondsPerInvocation="54340" standardDeviationMircosecondsPerInvocation="3419"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="226" invocations="345" avgMicrosecondsPerInvocation="657" maxMicrosecondsPerInvocation="14749" standardDeviationMircosecondsPerInvocation="1656"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="209" invocations="1739" avgMicrosecondsPerInvocation="120" maxMicrosecondsPerInvocation="8573" standardDeviationMircosecondsPerInvocation="507"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="182" invocations="345" avgMicrosecondsPerInvocation="529" maxMicrosecondsPerInvocation="15139" standardDeviationMircosecondsPerInvocation="1189"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="177" invocations="2076" avgMicrosecondsPerInvocation="85" maxMicrosecondsPerInvocation="7059" standardDeviationMircosecondsPerInvocation="281"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindPuzzlers" totalMilliseconds="176" invocations="345" avgMicrosecondsPerInvocation="512" maxMicrosecondsPerInvocation="18849" standardDeviationMircosecondsPerInvocation="1729"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="168" invocations="756" avgMicrosecondsPerInvocation="222" maxMicrosecondsPerInvocation="11450" standardDeviationMircosecondsPerInvocation="838"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LazyInit" totalMilliseconds="168" invocations="345" avgMicrosecondsPerInvocation="487" maxMicrosecondsPerInvocation="149216" standardDeviationMircosecondsPerInvocation="8032"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="166" invocations="345" avgMicrosecondsPerInvocation="481" maxMicrosecondsPerInvocation="17615" standardDeviationMircosecondsPerInvocation="1363"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="154" invocations="756" avgMicrosecondsPerInvocation="204" maxMicrosecondsPerInvocation="6501" standardDeviationMircosecondsPerInvocation="621"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="152" invocations="345" avgMicrosecondsPerInvocation="440" maxMicrosecondsPerInvocation="12171" standardDeviationMircosecondsPerInvocation="1223"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="149" invocations="756" avgMicrosecondsPerInvocation="197" maxMicrosecondsPerInvocation="8806" standardDeviationMircosecondsPerInvocation="668"/>
     </FindBugsProfile>
   </FindBugsSummary>
   <ClassFeatures></ClassFeatures>

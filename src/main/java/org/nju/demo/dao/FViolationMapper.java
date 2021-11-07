@@ -1,11 +1,21 @@
 package org.nju.demo.dao;
 
+import java.util.List;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.DeleteProvider;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.FViolation;
 import org.nju.demo.entity.FViolationExample;
-import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.type.JdbcType;
-
-import java.util.List;
 
 public interface FViolationMapper {
     @SelectProvider(type=FViolationSqlProvider.class, method="countByExample")
@@ -26,13 +36,13 @@ public interface FViolationMapper {
         "classname, source_path, ",
         "method_name, signature, ",
         "start_line, end_line, ",
-        "`state`, category_id)",
+        "`state`)",
         "values (#{versionId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, ",
         "#{category,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, ",
         "#{classname,jdbcType=VARCHAR}, #{sourcePath,jdbcType=VARCHAR}, ",
         "#{methodName,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, ",
         "#{startLine,jdbcType=INTEGER}, #{endLine,jdbcType=INTEGER}, ",
-        "#{state,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER})"
+        "#{state,jdbcType=VARCHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(FViolation record);
@@ -54,15 +64,14 @@ public interface FViolationMapper {
         @Result(column="signature", property="signature", jdbcType=JdbcType.VARCHAR),
         @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
         @Result(column="end_line", property="endLine", jdbcType=JdbcType.INTEGER),
-        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
-        @Result(column="category_id", property="categoryId", jdbcType=JdbcType.INTEGER)
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR)
     })
     List<FViolation> selectByExample(FViolationExample example);
 
     @Select({
         "select",
         "id, version_id, `type`, category, priority, classname, source_path, method_name, ",
-        "signature, start_line, end_line, `state`, category_id",
+        "signature, start_line, end_line, `state`",
         "from f_violation",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -78,8 +87,7 @@ public interface FViolationMapper {
         @Result(column="signature", property="signature", jdbcType=JdbcType.VARCHAR),
         @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
         @Result(column="end_line", property="endLine", jdbcType=JdbcType.INTEGER),
-        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
-        @Result(column="category_id", property="categoryId", jdbcType=JdbcType.INTEGER)
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR)
     })
     FViolation selectByPrimaryKey(Integer id);
 
@@ -104,8 +112,7 @@ public interface FViolationMapper {
           "signature = #{signature,jdbcType=VARCHAR},",
           "start_line = #{startLine,jdbcType=INTEGER},",
           "end_line = #{endLine,jdbcType=INTEGER},",
-          "`state` = #{state,jdbcType=VARCHAR},",
-          "category_id = #{categoryId,jdbcType=INTEGER}",
+          "`state` = #{state,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(FViolation record);

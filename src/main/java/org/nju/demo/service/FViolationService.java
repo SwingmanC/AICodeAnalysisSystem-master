@@ -16,6 +16,4 @@ public interface FViolationService {
 
     int updateFViolation(FViolation violation);
 
-    long countFViolation(int versionId, int categoryId);
-
 }

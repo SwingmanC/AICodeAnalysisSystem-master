@@ -37,6 +37,7 @@
 
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
+    <script src="/js/layer/layer.js"></script>
 </head>
 
 <body>
@@ -75,6 +76,9 @@
                 </li>
                 <li>
                     <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
+                </li>
+                <li>
+                    <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
@@ -185,6 +189,10 @@
                                     <td>结束行：</td>
                                     <td style="width: 350px;"><input type="text" class="form-control" id="endLine" readonly/></td>
                                 </tr>
+                                <tr>
+                                    <td>比对结果：</td>
+                                    <td style="width: 350px;"><input type="text" class="form-control" id="state" readonly/></td>
+                                </tr>
                             </table>
                             <style>
                                 td{
@@ -236,10 +244,6 @@
             },{
                 title : '置信值',
                 field : 'likelihood',
-                sortable : true
-            },{
-                title : '比对结果',
-                field : 'state',
                 sortable : true
             },{
                 field: 'operate',
@@ -307,15 +311,28 @@
                 $("#signature").val(res.signature);
                 $("#startLine").val(res.startLine);
                 $("#endLine").val(res.endLine);
+                $("#state").val(res.state);
             }
         })
     }
     function generate() {
         $.ajax({
             url:'/generate',
+            responseType:'blob',
             method:'get',
             success:function (msg) {
-                window.location.href = "/doc/"+msg;
+                if (msg === 'null') layer.msg("请设置报告模版")
+                else {
+                    const blob = new Blob([msg], {type: 'application/vnd.ms-excel;charset=utf-8'});
+                    const link = document.createElement('a'); // 创建a链接，用于下载文件
+                    link.download = [[${session.project.projectName}]]+[[${session.version.version}]]+'.doc';
+                    link.style.display = 'none';
+                    link.href = URL.createObjectURL(blob);
+                    document.body.appendChild(link);
+                    link.click(); // 触发事件，下载文件
+                    URL.revokeObjectURL(link.href) ;// 释放掉blob对象
+                    document.body.removeChild(link) // 下载完成移除元素
+                }
             }
         })
     }

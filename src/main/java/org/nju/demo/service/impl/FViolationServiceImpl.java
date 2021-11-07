@@ -52,15 +52,4 @@ public class FViolationServiceImpl implements FViolationService {
 
         return violationMapper.updateByPrimaryKeySelective(violation);
     }
-
-    @Override
-    public long countFViolation(int versionId, int categoryId) {
-
-        FViolationExample violationExample = new FViolationExample();
-        FViolationExample.Criteria criteria = violationExample.createCriteria();
-
-        criteria.andVersionIdEqualTo(versionId).andCategoryIdEqualTo(categoryId);
-
-        return violationMapper.countByExample(violationExample);
-    }
 }
