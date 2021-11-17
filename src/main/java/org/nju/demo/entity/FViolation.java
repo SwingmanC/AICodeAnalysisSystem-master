@@ -26,7 +26,7 @@ public class FViolation {
     private String state;
 
     public FViolation(){
-        this.state = "未必对";
+        this.state = "未比对";
     }
 
     public Integer getId() {

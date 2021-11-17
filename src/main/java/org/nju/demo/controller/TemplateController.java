@@ -61,16 +61,16 @@ public class TemplateController {
         return "redirect:/view/templates";
     }
 
-    @RequestMapping("/start/{id}")
-    public String start(@PathVariable("id") int id){
+    @RequestMapping("/start/t/{id}")
+    public String startTemplate(@PathVariable("id") int id){
         AUser user = (AUser) session.getAttribute("user");
         ATemplate template = templateService.getTemplate(id);
         ATemplate lastTemplate = templateService.getUsedTemplate(user.getId());
-        template.setState(1);
-        if (lastTemplate != null)
+        if (lastTemplate != null){
             lastTemplate.setState(0);
-
-        templateService.updateTemplate(lastTemplate);
+            templateService.updateTemplate(lastTemplate);
+        }
+        template.setState(1);
         templateService.updateTemplate(template);
 
         return "redirect:/view/templates";

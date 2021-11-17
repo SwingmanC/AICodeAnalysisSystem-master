@@ -12,17 +12,17 @@ public class CmdUtil {
 
     public static String generateFindBugsXML(String projectName,String version,String path) throws IOException {
         //windows
-//        String filePath = "E:/tools/findbugs-3.0.1/output/"+projectName+"/"+version+".xml";
-//        String command = "E:/tools/findbugs-3.0.1/bin/findbugs.bat -textui -low -progress -xml -output "+filePath+" "+path;
-//        return getCmd(filePath, command);
-        //macos
-        String strDir = UPLOADED_FOLDER+"/tmp/"+projectName;
-        File dir = new File(strDir);
-        if (!dir.exists()) dir.mkdirs();
-        String filePath = UPLOADED_FOLDER+"/tmp/"+projectName+"/"+version+".xml";
-        String abPath = UPLOADED_FOLDER+"/"+path;
-        String command = "java -jar "+UPLOADED_FOLDER+"/tools/findbugs-3.0.1/lib/findbugs.jar -textui -low -progress -xml -output "+filePath+" "+abPath;
+        String filePath = "E:/tools/findbugs-3.0.1/output/"+projectName+"/"+version+".xml";
+        String command = "E:/tools/findbugs-3.0.1/bin/findbugs.bat -textui -low -progress -xml -output "+filePath+" "+path;
         return getCmd(filePath, command);
+        //macos
+//        String strDir = UPLOADED_FOLDER+"/tmp/"+projectName;
+//        File dir = new File(strDir);
+//        if (!dir.exists()) dir.mkdirs();
+//        String filePath = UPLOADED_FOLDER+"/tmp/"+projectName+"/"+version+".xml";
+//        String abPath = UPLOADED_FOLDER+"/"+path;
+//        String command = "java -jar "+UPLOADED_FOLDER+"/tools/findbugs-3.0.1/lib/findbugs.jar -textui -low -progress -xml -output "+filePath+" "+abPath;
+//        return getCmd(filePath, command);
     }
 
     public static String generatePMDXML(String projectName,String version,String path) throws IOException{
@@ -39,10 +39,10 @@ public class CmdUtil {
 
     private static String getCmd(String filePath, String command) throws IOException {
         //windows
-//        ProcessBuilder pb = new ProcessBuilder("cmd","/c", command);
-//        Process process = pb.start();
+        ProcessBuilder pb = new ProcessBuilder("cmd","/c", command);
+        Process process = pb.start();
         //macos
-        Process process = Runtime.getRuntime().exec(command);
+//        Process process = Runtime.getRuntime().exec(command);
         Scanner scanner = new Scanner(process.getInputStream());
         while(scanner.hasNextLine()) System.out.println(scanner.nextLine());
         scanner.close();
