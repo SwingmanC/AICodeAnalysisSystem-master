@@ -8,6 +8,7 @@ public class ViolationVO {
     private int priority;
     private String methodName;
     private double likelihood;
+    private double variance;
 
     public int getId() {
         return id;
@@ -55,5 +56,13 @@ public class ViolationVO {
 
     public void setLikelihood(double likelihood) {
         this.likelihood = likelihood;
+    }
+
+    public double getVariance() {
+        return variance;
+    }
+
+    public void setVariance(double variance) {
+        this.variance = variance;
     }
 }

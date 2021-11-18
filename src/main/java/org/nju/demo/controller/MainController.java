@@ -43,16 +43,13 @@ public class MainController {
     private FViolationService fViolationService;
 
     @Autowired
-    private FIssueService fIssueService;
-
-    @Autowired
-    private ReportService reportService;
-
-    @Autowired
     private PatternService patternService;
 
     @Autowired
     private TemplateService templateService;
+
+    @Autowired
+    private RuleService ruleService;
 
     @Autowired
     private HttpSession session;
@@ -89,26 +86,6 @@ public class MainController {
         return "violation_list";
     }
 
-    @RequestMapping("/view/reports")
-    public String viewReports(){
-        return "report_list";
-    }
-
-    @RequestMapping("/view/issue/{reportId}")
-    public String viewIssue(@PathVariable("reportId") int reportId){
-        Report report = reportService.getReport(reportId);
-        session.setAttribute("report",report);
-        return "issue_list";
-    }
-
-    @RequestMapping("/view/detail/{issueId}")
-    public String viewDetail(@PathVariable("issueId") int issueId,
-                             Model model){
-        FIssueWithBLOBs issue = fIssueService.getIssueByIssueId(issueId);
-        model.addAttribute("issue",issue);
-        return "issue_detail";
-    }
-
     @ResponseBody
     @RequestMapping("/projects")
     public List<Project> getProjects(){
@@ -124,10 +101,12 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/f_violations")
-    public List<ViolationVO> getFViolations(){
+    @RequestMapping("/f_violations/{flag}")
+    public List<ViolationVO> getFViolations(@PathVariable("flag") int flag){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        List<FViolation> violationList = null;
+        if (flag == 0) violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        else violationList = fViolationService.getTrueFViolations(version.getId());
         List<ViolationVO> violationVOList = new ArrayList<>();
         for(FViolation violation : violationList){
             ViolationVO violationVO = new ViolationVO();
@@ -137,31 +116,56 @@ public class MainController {
             violationVO.setClassname(violation.getClassname());
             violationVO.setMethodName(violation.getMethodName());
             violationVO.setPriority(violation.getPriority());
-            violationVO.setLikelihood(pattern.getLikelihood());
+
+            int trueNum = pattern.gettNum();
+            int falseNum = pattern.getfNum();
+
+            if (trueNum == 0 && falseNum == 0){
+                violationVO.setLikelihood(0);
+                violationVO.setVariance(1);
+            }
+            else{
+                long n = patternService.countByCategoryId(pattern.getCategoryId());
+                double likelihood = trueNum*1.0/(trueNum+falseNum);
+                double variance = likelihood*(1-likelihood)/n;
+
+                violationVO.setLikelihood(likelihood);
+                violationVO.setVariance(variance);
+            }
+
             violationVOList.add(violationVO);
         }
         return violationVOList;
     }
 
-    @ResponseBody
-    @RequestMapping("/f_true_violations")
-    public List<ViolationVO> getTrueFViolations(){
-        AVersion version = (AVersion) session.getAttribute("version");
-        List<FViolation> violationList = fViolationService.getTrueFViolations(version.getId());
-        List<ViolationVO> violationVOList = new ArrayList<>();
-        for(FViolation violation : violationList){
-            ViolationVO violationVO = new ViolationVO();
-            Pattern pattern = patternService.getPatternByPatternName(violation.getType());
-            violationVO.setId(violation.getId());
-            violationVO.setType(violation.getType());
-            violationVO.setClassname(violation.getClassname());
-            violationVO.setMethodName(violation.getMethodName());
-            violationVO.setPriority(violation.getPriority());
-            violationVO.setLikelihood(pattern.getLikelihood());
-            violationVOList.add(violationVO);
-        }
-        return violationVOList;
-    }
+//    @ResponseBody
+//    @RequestMapping("/f_true_violations")
+//    public List<ViolationVO> getTrueFViolations(){
+//        AVersion version = (AVersion) session.getAttribute("version");
+//        List<FViolation> violationList = fViolationService.getTrueFViolations(version.getId());
+//        List<ViolationVO> violationVOList = new ArrayList<>();
+//        for(FViolation violation : violationList){
+//            ViolationVO violationVO = new ViolationVO();
+//            Pattern pattern = patternService.getPatternByPatternName(violation.getType());
+//            violationVO.setId(violation.getId());
+//            violationVO.setType(violation.getType());
+//            violationVO.setClassname(violation.getClassname());
+//            violationVO.setMethodName(violation.getMethodName());
+//            violationVO.setPriority(violation.getPriority());
+//
+//            int trueNum = pattern.gettNum();
+//            int falseNum = pattern.getfNum();
+//            long n = patternService.countByCategoryId(pattern.getCategoryId());
+//            double likelihood = trueNum*1.0/(trueNum+falseNum);
+//            double variance = likelihood*(1-likelihood)/n;
+//
+//            violationVO.setLikelihood(likelihood);
+//            violationVO.setVariance(variance);
+//
+//            violationVOList.add(violationVO);
+//        }
+//        return violationVOList;
+//    }
 
     @ResponseBody
     @RequestMapping("/f_violation/{violationId}")
@@ -257,21 +261,27 @@ public class MainController {
 
             if (res != null){
                 for(FViolation violation : res) fViolationService.updateFViolation(violation);
-                Map<String,Double> likelihoods = SortUtil.computeLikelihood(res);
-                for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
+                Map<String,Integer> tNums = SortUtil.countNum(res,"True");
+                Map<String,Integer> fNums = SortUtil.countNum(res,"False");
+                for(Map.Entry<String,Integer> entry:tNums.entrySet()){
                     String patternName = entry.getKey();
-                    Double likelihood = entry.getValue();
+                    int trueNum = entry.getValue();
+                    int falseNum = 0;
+                    if (fNums.containsKey(patternName)) falseNum = fNums.get(patternName);
                     Pattern pattern = patternService.getPatternByPatternName(patternName);
-                    long n = patternService.countByCategoryId(pattern.getCategoryId());
-                    Double variance = SortUtil.computeVariance(likelihood,n);
-                    System.out.println(likelihood+" "+variance+" "+n);
-                    Double lastLikelihood = pattern.getLikelihood();
-                    Double lastVariance = pattern.getVariance();
-                    if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
-                    else pattern.setLikelihood((likelihood+lastLikelihood)/2);
-                    if (lastVariance == 0) pattern.setVariance(variance);
-                    else pattern.setVariance((variance+lastVariance)/2);
+                    pattern.settNum(pattern.gettNum()+trueNum);
+                    pattern.setfNum(pattern.getfNum()+falseNum);
                     patternService.updatePattern(pattern);
+                }
+                for (Map.Entry<String,Integer> entry:fNums.entrySet()){
+                    String patternName = entry.getKey();
+                    if (tNums.containsKey(patternName)) continue;
+                    else{
+                        int falseNum = entry.getValue();
+                        Pattern pattern = patternService.getPatternByPatternName(patternName);
+                        pattern.setfNum(pattern.getfNum()+falseNum);
+                        patternService.updatePattern(pattern);
+                    }
                 }
             }
             return 1;
@@ -333,51 +343,6 @@ public class MainController {
         }
 
         return sb.toString();
-    }
-
-    @ResponseBody
-    @RequestMapping("/reports")
-    public List<Report> getReports(){
-        AUser user = (AUser) session.getAttribute("user");
-        return reportService.getReportListByUserId(user.getId());
-    }
-
-    @RequestMapping("/addReport")
-    public String addReport(@RequestParam("reportName") String reportName,
-                            @RequestParam("reportFile") MultipartFile reportFile) throws IOException, ParserConfigurationException, SAXException {
-        Report report = new Report();
-        AUser user = (AUser) session.getAttribute("user");
-
-        if (reportFile != null){
-            String fileName = reportFile.getOriginalFilename();
-            String filePath = UPLOADED_FOLDER+"/report/"+user.getUsername()+"/";
-            File file =  new File(filePath);
-            if (!file.exists()) file.mkdirs();
-            filePath += fileName;
-            file = new File(filePath);
-            reportFile.transferTo(file);
-        }
-        report.setReportName(reportName);
-        report.setFilePath("report/"+user.getUsername()+"/"+reportFile.getOriginalFilename());
-        report.setUploadTime(new Date());
-        report.setUserId(user.getId());
-        reportService.addReport(report);
-        return "redirect:/view/reports";
-    }
-
-    @ResponseBody
-    @RequestMapping("/issues")
-    public List<FIssue> getIssues() throws IOException, SAXException, ParserConfigurationException {
-        Report report = (Report) session.getAttribute("report");
-        if (fIssueService.countByReportId(report.getId()) == 0){
-            InputStream inputStream = new FileInputStream(UPLOADED_FOLDER+"/"+report.getFilePath());
-            List<FIssueWithBLOBs> issueWithBLOBsList = XMLUtil.getIssues(inputStream);
-            for(FIssueWithBLOBs fIssueWithBLOBs : issueWithBLOBsList){
-                fIssueWithBLOBs.setReportId(report.getId());
-                fIssueService.addIssue(fIssueWithBLOBs);
-            }
-        }
-        return fIssueService.getIssueByReportId(report.getId());
     }
 
 //    @RequestMapping("/compute")

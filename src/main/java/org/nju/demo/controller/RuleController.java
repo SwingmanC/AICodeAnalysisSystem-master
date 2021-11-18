@@ -57,24 +57,26 @@ public class RuleController {
         else rule.setPriority(priority);
 
         if (fileName == null) rule.setFileName("");
-        else rule.setFileName(priority);
+        else rule.setFileName(fileName);
 
         if (functionName == null) rule.setFunctionName("");
-        else rule.setFunctionName(priority);
+        else rule.setFunctionName(functionName);
 
         rule.setUserId(user.getId());
         ruleService.addRule(rule);
         return "redirect:/view/rules";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/editRule",method = RequestMethod.POST)
-    public String editRule(@RequestParam("ruleName") String ruleName,
-                          @RequestParam(value = "pattern",required = false) String pattern,
-                          @RequestParam(value = "category",required = false) String category,
-                          @RequestParam(value = "priority",required = false) String priority,
-                          @RequestParam(value = "fileName",required = false) String fileName,
-                          @RequestParam(value = "functionName",required = false) String functionName){
-        ARule rule = new ARule();
+    public int editRule(@RequestParam("id") int id,
+                           @RequestParam("ruleName") String ruleName,
+                           @RequestParam(value = "pattern",required = false) String pattern,
+                           @RequestParam(value = "category",required = false) String category,
+                           @RequestParam(value = "priority",required = false) String priority,
+                           @RequestParam(value = "fileName",required = false) String fileName,
+                           @RequestParam(value = "functionName",required = false) String functionName){
+        ARule rule = ruleService.getRule(id);
         rule.setRuleName(ruleName);
         if (pattern == null) rule.setPattern("");
         else rule.setPattern(pattern);
@@ -86,13 +88,12 @@ public class RuleController {
         else rule.setPriority(priority);
 
         if (fileName == null) rule.setFileName("");
-        else rule.setFileName(priority);
+        else rule.setFileName(fileName);
 
         if (functionName == null) rule.setFunctionName("");
-        else rule.setFunctionName(priority);
+        else rule.setFunctionName(functionName);
 
-        ruleService.updateRule(rule);
-        return "redirect:/view/rules";
+        return ruleService.updateRule(rule);
     }
 
     @RequestMapping("/start/r/{id}")

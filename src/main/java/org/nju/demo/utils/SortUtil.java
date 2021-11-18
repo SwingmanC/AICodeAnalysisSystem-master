@@ -8,6 +8,17 @@ import java.util.Map;
 
 public class SortUtil {
 
+    public static Map<String,Integer> countNum(List<FViolation> violationList,String t){
+        Map<String,Integer> res = new HashMap<>();
+        for(FViolation violation:violationList){
+            if (violation.getState().equals(t)){
+                if (!res.containsKey(violation.getType())) res.put(violation.getType(),1);
+                else res.replace(violation.getType(),res.get(violation.getType())+1);
+            }
+        }
+        return res;
+    }
+
     public static Map<String,Double> computeLikelihood(List<FViolation> violationList){
         Map<String,Integer> tViolations = new HashMap<>();
         Map<String,Integer> fViolations = new HashMap<>();

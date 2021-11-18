@@ -34,6 +34,7 @@
 
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
+    <script src="/js/layer/layer.js"></script>
 
 </head>
 
@@ -185,9 +186,10 @@
                     <div class="modal-header">
                         <h3 class="modal-title">编辑规则</h3>
                     </div>
-                    <form id="edit_info" action="/editRule" method="post">
+                    <form id="edit_info" action="#" method="post">
                         <div class="modal-body">
                             <div class="container">
+                                <div id="ruleId" hidden></div>
                                 <table>
                                     <tr>
                                         <td><label for="e_ruleName">规则名称：</label></td>
@@ -223,7 +225,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="submit" class="btn btn-primary" id="edit_submit">确认</button>
+                            <button type="submit" class="btn btn-primary" id="edit_submit" onclick="edit()">确认</button>
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -274,6 +276,7 @@
             url:'/rule/'+id,
             type:'get',
             success:function (msg) {
+                $("#ruleId").val(id);
                 $("#e_ruleName").val(msg.ruleName);
                 $("#e_pattern").val(msg.pattern);
                 $("#e_category").val(msg.category);
@@ -291,6 +294,25 @@
     function strFormatter(value,row,index){
         if (value === 0) return "否";
         else return "是";
+    }
+    function edit() {
+        $.ajax({
+            url:'/editRule',
+            type:'post',
+            data:{
+                'id':$("#ruleId").val(),
+                'ruleName':$("#e_ruleName").val(),
+                'pattern':$("#e_pattern").val(),
+                'category':$("#e_category").val(),
+                'priority':$("#e_priority").val(),
+                'fileName':$("#e_fileName").val(),
+                'functionName':$("#e_functionName").val(),
+            },
+            success:function (msg) {
+                if (msg === 1) location.reload();
+                else layer.msg("编辑失败");
+            }
+        })
     }
 </script>
 </body>

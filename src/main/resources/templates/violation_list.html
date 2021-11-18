@@ -213,7 +213,7 @@
 <script th:inline="javascript">
     $(document).ready(function () {
         $("#f_violationTable").bootstrapTable({
-            url:"/f_violations",  //请求地址
+            url:"/f_violations/0",  //请求地址
             striped : true, //是否显示行间隔色
             pageNumber : 1, //初始化加载第一页
             pagination : true,//是否分页
@@ -246,6 +246,10 @@
                 field : 'likelihood',
                 sortable : true
             },{
+                title : '方差',
+                field : 'variance',
+                sortable : true
+            },{
                 field: 'operate',
                 title: '操作',
                 formatter: f_operateFormatter //自定义方法，添加操作按钮
@@ -254,7 +258,7 @@
     });
     function f_filter() {
         $("#f_violationTable").bootstrapTable('refresh',{
-            url:"/f_true_violations",  //请求地址
+            url:"/f_violations/1",  //请求地址
             striped : true, //是否显示行间隔色
             pageNumber : 1, //初始化加载第一页
             pagination : true,//是否分页
@@ -269,7 +273,6 @@
             },{
                 title : '警报类型',
                 field : 'type',
-                width : 80,
                 sortable : true
             },{
                 title : '类名',
@@ -284,8 +287,12 @@
                 field : 'methodName',
                 sortable : true
             },{
-                title : '比对结果',
-                field : 'state',
+                title : '置信值',
+                field : 'likelihood',
+                sortable : true
+            },{
+                title : '方差',
+                field : 'variance',
                 sortable : true
             },{
                 field: 'operate',

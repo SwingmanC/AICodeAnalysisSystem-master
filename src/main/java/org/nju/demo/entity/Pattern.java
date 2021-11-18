@@ -7,9 +7,9 @@ public class Pattern {
 
     private Integer categoryId;
 
-    private Double likelihood;
+    private Integer tNum;
 
-    private Double variance;
+    private Integer fNum;
 
     public Integer getId() {
         return id;
@@ -35,20 +35,20 @@ public class Pattern {
         this.categoryId = categoryId;
     }
 
-    public Double getLikelihood() {
-        return likelihood;
+    public Integer gettNum() {
+        return tNum;
     }
 
-    public void setLikelihood(Double likelihood) {
-        this.likelihood = likelihood;
+    public void settNum(Integer tNum) {
+        this.tNum = tNum;
     }
 
-    public Double getVariance() {
-        return variance;
+    public Integer getfNum() {
+        return fNum;
     }
 
-    public void setVariance(Double variance) {
-        this.variance = variance;
+    public void setfNum(Integer fNum) {
+        this.fNum = fNum;
     }
 
     @Override
@@ -60,8 +60,8 @@ public class Pattern {
         sb.append(", id=").append(id);
         sb.append(", patternName=").append(patternName);
         sb.append(", categoryId=").append(categoryId);
-        sb.append(", likelihood=").append(likelihood);
-        sb.append(", variance=").append(variance);
+        sb.append(", tNum=").append(tNum);
+        sb.append(", fNum=").append(fNum);
         sb.append("]");
         return sb.toString();
     }
@@ -81,8 +81,8 @@ public class Pattern {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()))
             && (this.getCategoryId() == null ? other.getCategoryId() == null : this.getCategoryId().equals(other.getCategoryId()))
-            && (this.getLikelihood() == null ? other.getLikelihood() == null : this.getLikelihood().equals(other.getLikelihood()))
-            && (this.getVariance() == null ? other.getVariance() == null : this.getVariance().equals(other.getVariance()));
+            && (this.gettNum() == null ? other.gettNum() == null : this.gettNum().equals(other.gettNum()))
+            && (this.getfNum() == null ? other.getfNum() == null : this.getfNum().equals(other.getfNum()));
     }
 
     @Override
@@ -92,8 +92,8 @@ public class Pattern {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
         result = prime * result + ((getCategoryId() == null) ? 0 : getCategoryId().hashCode());
-        result = prime * result + ((getLikelihood() == null) ? 0 : getLikelihood().hashCode());
-        result = prime * result + ((getVariance() == null) ? 0 : getVariance().hashCode());
+        result = prime * result + ((gettNum() == null) ? 0 : gettNum().hashCode());
+        result = prime * result + ((getfNum() == null) ? 0 : getfNum().hashCode());
         return result;
     }
 }

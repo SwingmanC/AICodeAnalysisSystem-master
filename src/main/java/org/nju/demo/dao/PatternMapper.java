@@ -32,9 +32,9 @@ public interface PatternMapper {
 
     @Insert({
         "insert into pattern (pattern_name, category_id, ",
-        "likelihood, variance)",
+        "t_num, f_num)",
         "values (#{patternName,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, ",
-        "#{likelihood,jdbcType=DOUBLE}, #{variance,jdbcType=DOUBLE})"
+        "#{tNum,jdbcType=INTEGER}, #{fNum,jdbcType=INTEGER})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Pattern record);
@@ -48,14 +48,14 @@ public interface PatternMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="category_id", property="categoryId", jdbcType=JdbcType.INTEGER),
-        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE),
-        @Result(column="variance", property="variance", jdbcType=JdbcType.DOUBLE)
+        @Result(column="t_num", property="tNum", jdbcType=JdbcType.INTEGER),
+        @Result(column="f_num", property="fNum", jdbcType=JdbcType.INTEGER)
     })
     List<Pattern> selectByExample(PatternExample example);
 
     @Select({
         "select",
-        "id, pattern_name, category_id, likelihood, variance",
+        "id, pattern_name, category_id, t_num, f_num",
         "from pattern",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -63,8 +63,8 @@ public interface PatternMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="category_id", property="categoryId", jdbcType=JdbcType.INTEGER),
-        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE),
-        @Result(column="variance", property="variance", jdbcType=JdbcType.DOUBLE)
+        @Result(column="t_num", property="tNum", jdbcType=JdbcType.INTEGER),
+        @Result(column="f_num", property="fNum", jdbcType=JdbcType.INTEGER)
     })
     Pattern selectByPrimaryKey(Integer id);
 
@@ -81,8 +81,8 @@ public interface PatternMapper {
         "update pattern",
         "set pattern_name = #{patternName,jdbcType=VARCHAR},",
           "category_id = #{categoryId,jdbcType=INTEGER},",
-          "likelihood = #{likelihood,jdbcType=DOUBLE},",
-          "variance = #{variance,jdbcType=DOUBLE}",
+          "t_num = #{tNum,jdbcType=INTEGER},",
+          "f_num = #{fNum,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Pattern record);

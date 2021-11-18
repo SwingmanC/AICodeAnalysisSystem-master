@@ -36,12 +36,12 @@ public class PatternSqlProvider {
             sql.VALUES("category_id", "#{categoryId,jdbcType=INTEGER}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.VALUES("likelihood", "#{likelihood,jdbcType=DOUBLE}");
+        if (record.gettNum() != null) {
+            sql.VALUES("t_num", "#{tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getVariance() != null) {
-            sql.VALUES("variance", "#{variance,jdbcType=DOUBLE}");
+        if (record.getfNum() != null) {
+            sql.VALUES("f_num", "#{fNum,jdbcType=INTEGER}");
         }
         
         return sql.toString();
@@ -56,8 +56,8 @@ public class PatternSqlProvider {
         }
         sql.SELECT("pattern_name");
         sql.SELECT("category_id");
-        sql.SELECT("likelihood");
-        sql.SELECT("variance");
+        sql.SELECT("t_num");
+        sql.SELECT("f_num");
         sql.FROM("pattern");
         applyWhere(sql, example, false);
         
@@ -87,12 +87,12 @@ public class PatternSqlProvider {
             sql.SET("category_id = #{record.categoryId,jdbcType=INTEGER}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        if (record.gettNum() != null) {
+            sql.SET("t_num = #{record.tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getVariance() != null) {
-            sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
+        if (record.getfNum() != null) {
+            sql.SET("f_num = #{record.fNum,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -106,8 +106,8 @@ public class PatternSqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         sql.SET("category_id = #{record.categoryId,jdbcType=INTEGER}");
-        sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
-        sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
+        sql.SET("t_num = #{record.tNum,jdbcType=INTEGER}");
+        sql.SET("f_num = #{record.fNum,jdbcType=INTEGER}");
         
         PatternExample example = (PatternExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -126,12 +126,12 @@ public class PatternSqlProvider {
             sql.SET("category_id = #{categoryId,jdbcType=INTEGER}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.SET("likelihood = #{likelihood,jdbcType=DOUBLE}");
+        if (record.gettNum() != null) {
+            sql.SET("t_num = #{tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getVariance() != null) {
-            sql.SET("variance = #{variance,jdbcType=DOUBLE}");
+        if (record.getfNum() != null) {
+            sql.SET("f_num = #{fNum,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

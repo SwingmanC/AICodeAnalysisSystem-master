@@ -2,66 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/IndexController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/JobCodeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/JobInfoController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/JobLogController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/annotation/PermessionLimit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/interceptor/CookieInterceptor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/interceptor/PermissionInterceptor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/controller/resolver/WebExceptionResolver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/callback/XxlJobLogCallbackServer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/callback/XxlJobLogCallbackServer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/callback/XxlJobLogCallbackServerHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/constant/Constants$JobGroupEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/constant/Constants.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/jobbean/RemoteHttpJobBean.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/model/ReturnT.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/model/XxlJobInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/model/XxlJobLog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/model/XxlJobLogGlue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/thread/JobMonitorHelper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/thread/JobMonitorHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/util/CookieUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/util/DynamicSchedulerUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/util/MailUtil$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/util/MailUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/core/util/PropertiesUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/IXxlJobInfoDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/IXxlJobLogDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/IXxlJobLogGlueDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/impl/XxlJobInfoDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/impl/XxlJobLogDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/dao/impl/XxlJobLogGlueDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/service/IXxlJobService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/1.4.2/admin/service/impl/XxlJobServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleSqlProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARuleExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/RuleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/RuleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/org.apache.catalina.connector.CoyoteOutputStream@6e09d93d" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/doc/jsfnsc/lens/2018.5.25.doc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/org.apache.catalina.connector.CoyoteOutputStream@743c677c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org.apache.catalina.connector.CoyoteOutputStream@7e15cc62" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/TemplateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/TemplateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternSqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Pattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/SortUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/SortUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternSqlProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Pattern.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Pattern.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/SortUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/SortUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,60 +76,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AICodeAnalysisSystem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/img" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\resources\static\img" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="AICodeAnalysisSystem" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="AICodeAnalysisSystem" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="AICodeAnalysisSystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.nju.demo.MainApplication" />
@@ -196,8 +118,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1637119763218</updated>
-      <workItem from="1637119770962" duration="14662000" />
+      <workItem from="1637119770962" duration="14952000" />
+      <workItem from="1637202995027" duration="11989000" />
     </task>
+    <task id="LOCAL-00001" summary="11.17规则库更新">
+      <created>1637141559251</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637141559251</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,20 +136,27 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="11.17规则库更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.17规则库更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637120846956">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120846956" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1637139315485">
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1637219619978">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139315485" />
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637219619978" />
     <state x="739" y="383" width="441" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1637135725244">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="739" y="383" width="441" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637135725244" />
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1637217013840">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637217013840" />
     <state x="253" y="117" key="CommitChangelistDialog2" timestamp="1637141548338">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -227,42 +165,58 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120696087" />
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom" timestamp="1637141359002">
+    <state width="1877" height="349" key="GridCell.Tab.0.bottom" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.0.center" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.0.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.0.center" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.0.left" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.0.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.0.left" timestamp="1637221413246">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.0.right" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.0.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413246" />
+    <state width="1877" height="349" key="GridCell.Tab.0.right" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.1.bottom" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.0.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.1.bottom" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.1.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.1.center" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.1.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.1.center" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.1.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.1.left" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.1.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.1.left" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.1.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
-    <state width="1877" height="211" key="GridCell.Tab.1.right" timestamp="1637141359002">
+    <state width="1877" height="222" key="GridCell.Tab.1.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
+    <state width="1877" height="349" key="GridCell.Tab.1.right" timestamp="1637221413247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.1.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141359002" />
+    <state width="1877" height="222" key="GridCell.Tab.1.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
+    <state width="1877" height="349" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221413247" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1637126694642">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637126694642" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1637203196599">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637203196599" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1637213560515">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637213560515" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1637139510978">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
