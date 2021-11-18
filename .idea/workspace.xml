@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Pattern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/SortUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/SortUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternSqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Pattern.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Pattern.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/SortUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/SortUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +26,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/controller/UserController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/service/FIssueService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ChartController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -51,19 +44,13 @@
         <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="211s7vZ9GeQObvBKRNqXpui5mvE" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
