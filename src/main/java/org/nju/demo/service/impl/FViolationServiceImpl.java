@@ -17,7 +17,6 @@ public class FViolationServiceImpl implements FViolationService {
 
     @Override
     public List<FViolation> getFViolationsByVersionId(int versionId) {
-
         FViolationExample violationExample = new FViolationExample();
         FViolationExample.Criteria criteria = violationExample.createCriteria();
 
@@ -28,7 +27,6 @@ public class FViolationServiceImpl implements FViolationService {
 
     @Override
     public List<FViolation> getTrueFViolations(int versionId) {
-
         FViolationExample violationExample = new FViolationExample();
         FViolationExample.Criteria criteria = violationExample.createCriteria();
 
@@ -49,7 +47,15 @@ public class FViolationServiceImpl implements FViolationService {
 
     @Override
     public int updateFViolation(FViolation violation) {
-
         return violationMapper.updateByPrimaryKeySelective(violation);
+    }
+
+    @Override
+    public int deleteFViolationByVersionId(int versionId) {
+        FViolationExample violationExample = new FViolationExample();
+        FViolationExample.Criteria criteria = violationExample.createCriteria();
+
+        criteria.andVersionIdEqualTo(versionId);
+        return violationMapper.deleteByExample(violationExample);
     }
 }

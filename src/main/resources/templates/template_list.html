@@ -205,7 +205,7 @@
     });
     function operateFormatter(value, row, index) {
         let path = "/start/t/"+row.id;
-        return "<a href=\""+path+"\" title='启用'><i class='fa fa-check'></i></a>";
+        return "<a href=\""+path+"\" title='启用'><i class='fa fa-check'></i></a>"+"  "+"<a href='#' title='删除'><i class='fa fa-trash'></i></a>";
     }
     function strFormatter(value,row,index){
         if (value === 0) return "否";

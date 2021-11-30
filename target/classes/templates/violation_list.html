@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <a class="btn btn-primary" href="#" role="button" onclick="f_filter()">过滤相似警报</a>
+                            <a class="btn btn-primary" href="#" role="button" onclick="f_filter()">过滤误报</a>
                             <table class="table table-hover" id="f_violationTable"></table>
 <!--                            <div class="jqGrid-wrapper">-->
 <!--                                <table id="f_violationTable"></table>-->
@@ -221,6 +221,7 @@
             pageSize : 10,//单页记录数
             pageList : [1, 5, 10],//可选择单页记录数
             showRefresh : true,//刷新按钮
+            rowStyle:style,
             columns : [ {
                 title : '#',
                 field : 'id',
@@ -228,10 +229,6 @@
             },{
                 title : '警报类型',
                 field : 'type',
-                sortable : true
-            },{
-                title : '类名',
-                field : 'classname',
                 sortable : true
             },{
                 title : '优先级',
@@ -242,13 +239,18 @@
                 field : 'methodName',
                 sortable : true
             },{
-                title : '置信值',
-                field : 'likelihood',
+                title : '起始行',
+                field : 'startLine',
                 sortable : true
             },{
-                title : '方差',
-                field : 'variance',
+                title : '结束行',
+                field : 'endLine',
                 sortable : true
+            },{
+                title : '置信值',
+                field : 'likelihood',
+                sortable : true,
+                formatter:toFixed
             },{
                 field: 'operate',
                 title: '操作',
@@ -266,6 +268,7 @@
             pageSize : 10,//单页记录数
             pageList : [1, 5, 10],//可选择单页记录数
             showRefresh : true,//刷新按钮
+            rowStyle:style,
             columns : [ {
                 title : '#',
                 field : 'id',
@@ -273,10 +276,6 @@
             },{
                 title : '警报类型',
                 field : 'type',
-                sortable : true
-            },{
-                title : '类名',
-                field : 'classname',
                 sortable : true
             },{
                 title : '优先级',
@@ -287,22 +286,45 @@
                 field : 'methodName',
                 sortable : true
             },{
-                title : '置信值',
-                field : 'likelihood',
+                title : '起始行',
+                field : 'startLine',
                 sortable : true
             },{
-                title : '方差',
-                field : 'variance',
+                title : '结束行',
+                field : 'endLine',
                 sortable : true
             },{
+                title: '置信值',
+                field: 'likelihood',
+                sortable: true,
+                formatter:toFixed
+            },
+            // },{
+            //     title : '方差',
+            //     field : 'variance',
+            //     sortable : true
+            // },{
+            {
                 field: 'operate',
                 title: '操作',
                 formatter: f_operateFormatter //自定义方法，添加操作按钮
             }]
         })
     }
+    function toFixed(value,row,index) {
+        let num = row.likelihood;
+        return num.toFixed(2);
+    }
     function f_operateFormatter(value, row, index){
-        return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>";
+        if(row.state === "False") return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为正报' onclick='start(\""+row.id+"\")'><i class='fa fa-check'></i></a>";
+        else return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为误报' onclick='end(\""+row.id+"\")'><i class='fa fa-times'></i></a>";
+    }
+    function style(row,index) {
+        let style = "";
+        if (row.state === 'True'){
+            style = "danger";
+        }
+        return { classes: style };
     }
     function f_watch(id) {
         $.ajax({
@@ -342,6 +364,46 @@
                 }
             }
         })
+    }
+    function start(id) {
+        layer.open({
+            title:false,
+            shade:0.4,
+            content:'确定将此警报标记为正报？',
+            btn:['确定','取消'],
+            yes:function(index,layero){
+                $.ajax({
+                    url:'/start/violation/'+id,
+                    success:function(msg){
+                        if (msg === 1) location.reload();
+                    }
+                });
+                layer.close(index);
+            },
+            btn2:function(index,layero){
+                layer.close(index);
+            }
+        });
+    }
+    function end(id) {
+        layer.open({
+            title:false,
+            shade:0.4,
+            content:'确定将此警报标记为误报？',
+            btn:['确定','取消'],
+            yes:function(index,layero){
+                $.ajax({
+                    url:'/end/violation/'+id,
+                    success:function(msg){
+                        if (msg === 1) location.reload();
+                    }
+                });
+                layer.close(index);
+            },
+            btn2:function(index,layero){
+                layer.close(index);
+            }
+        });
     }
 </script>
 </body>

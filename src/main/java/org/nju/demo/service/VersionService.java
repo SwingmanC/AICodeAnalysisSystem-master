@@ -15,5 +15,5 @@ public interface VersionService {
 
     int updateVersion(AVersion version);
 
-    int deleteVersionById(int id);
+    int deleteVersionByProjectId(int projectId);
 }

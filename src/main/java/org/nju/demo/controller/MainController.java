@@ -116,6 +116,8 @@ public class MainController {
             violationVO.setClassname(violation.getClassname());
             violationVO.setMethodName(violation.getMethodName());
             violationVO.setPriority(violation.getPriority());
+            violationVO.setStartLine(violation.getStartLine());
+            violationVO.setEndLine(violation.getEndLine());
 
             int trueNum = pattern.gettNum();
             int falseNum = pattern.getfNum();
@@ -131,6 +133,7 @@ public class MainController {
 
                 violationVO.setLikelihood(likelihood);
                 violationVO.setVariance(variance);
+                violationVO.setState(violation.getState());
             }
 
             violationVOList.add(violationVO);
@@ -138,34 +141,33 @@ public class MainController {
         return violationVOList;
     }
 
-//    @ResponseBody
-//    @RequestMapping("/f_true_violations")
-//    public List<ViolationVO> getTrueFViolations(){
-//        AVersion version = (AVersion) session.getAttribute("version");
-//        List<FViolation> violationList = fViolationService.getTrueFViolations(version.getId());
-//        List<ViolationVO> violationVOList = new ArrayList<>();
-//        for(FViolation violation : violationList){
-//            ViolationVO violationVO = new ViolationVO();
-//            Pattern pattern = patternService.getPatternByPatternName(violation.getType());
-//            violationVO.setId(violation.getId());
-//            violationVO.setType(violation.getType());
-//            violationVO.setClassname(violation.getClassname());
-//            violationVO.setMethodName(violation.getMethodName());
-//            violationVO.setPriority(violation.getPriority());
-//
-//            int trueNum = pattern.gettNum();
-//            int falseNum = pattern.getfNum();
-//            long n = patternService.countByCategoryId(pattern.getCategoryId());
-//            double likelihood = trueNum*1.0/(trueNum+falseNum);
-//            double variance = likelihood*(1-likelihood)/n;
-//
-//            violationVO.setLikelihood(likelihood);
-//            violationVO.setVariance(variance);
-//
-//            violationVOList.add(violationVO);
-//        }
-//        return violationVOList;
-//    }
+    @ResponseBody
+    @RequestMapping("/start/violation/{id}")
+    public int startViolation(@PathVariable("id") int id){
+        FViolation violation = fViolationService.getFViolation(id);
+        Pattern pattern = patternService.getPatternByPatternName(violation.getType());
+
+        if (violation.getState().equals("False")) pattern.setfNum(pattern.getfNum()-1);
+        pattern.settNum(pattern.gettNum()+1);
+        patternService.updatePattern(pattern);
+
+        violation.setState("True");
+        return fViolationService.updateFViolation(violation);
+    }
+
+    @ResponseBody
+    @RequestMapping("/end/violation/{id}")
+    public int endViolation(@PathVariable("id") int id){
+        FViolation violation = fViolationService.getFViolation(id);
+        Pattern pattern = patternService.getPatternByPatternName(violation.getType());
+
+        if (violation.getState().equals("True")) pattern.settNum(pattern.gettNum()-1);
+        pattern.setfNum(pattern.getfNum()+1);
+        patternService.updatePattern(pattern);
+
+        violation.setState("False");
+        return fViolationService.updateFViolation(violation);
+    }
 
     @ResponseBody
     @RequestMapping("/f_violation/{violationId}")
@@ -345,27 +347,14 @@ public class MainController {
         return sb.toString();
     }
 
-//    @RequestMapping("/compute")
-//    public String compute(){
-//        AVersion version = (AVersion) session.getAttribute("version");
-//        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
-//        Map<String,Double> likelihoods = SortUtil.computeLikelihood(violationList);
-//        for(Map.Entry<String,Double> entry : likelihoods.entrySet()){
-//            String patternName = entry.getKey();
-//            Double likelihood = entry.getValue();
-//            Pattern pattern = patternService.getPatternByPatternName(patternName);
-//            long n = patternService.countByCategoryId(pattern.getCategoryId());
-//            Double variance = SortUtil.computeVariance(likelihood,n);
-////            System.out.println(likelihood+" "+variance+" "+n);
-//            Double lastLikelihood = pattern.getLikelihood();
-//            Double lastVariance = pattern.getVariance();
-//            if (lastLikelihood == 0) pattern.setLikelihood(likelihood);
-//            else pattern.setLikelihood((likelihood+lastLikelihood)/2);
-//            if (lastVariance == 0) pattern.setVariance(variance);
-//            else pattern.setVariance((variance+lastVariance)/2);
-//            patternService.updatePattern(pattern);
-//        }
-//        return "redirect:/view/violations/"+version.getId();
-//    }
-
+    @ResponseBody
+    @RequestMapping("/deleteProject/{id}")
+    public int deleteProject(@PathVariable("id") int id){
+        List<AVersion> versionList = versionService.getVersionsByProjectId(id);
+        for (AVersion version : versionList){
+            fViolationService.deleteFViolationByVersionId(version.getId());
+        }
+        versionService.deleteVersionByProjectId(id);
+        return projectService.deleteProject(id);
+    }
 }

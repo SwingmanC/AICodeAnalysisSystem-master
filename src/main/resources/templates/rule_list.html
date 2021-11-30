@@ -289,7 +289,8 @@
     function operateFormatter(value, row, index) {
         let start_path = "/start/r/"+row.id;
         let end_path = "/end/r/"+row.id;
-        return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\""+row.id+"\")'><i class='fa fa-edit'></i></a>"+"  "+"<a href=\""+start_path+"\" title='启用'><i class='fa fa-check'></i></a>"+"  "+"<a href=\""+end_path+"\" title='禁用'><i class='fa fa-times'></i></a>";
+        if(row.state === 1) return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\""+row.id+"\")'><i class='fa fa-edit'></i></a>"+"  "+"<a href=\""+end_path+"\" title='禁用'><i class='fa fa-times'></i></a>";
+        else return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\""+row.id+"\")'><i class='fa fa-edit'></i></a>"+"  "+"<a href=\""+start_path+"\" title='启用'><i class='fa fa-check'></i></a>";
     }
     function strFormatter(value,row,index){
         if (value === 0) return "否";

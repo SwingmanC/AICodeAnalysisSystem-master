@@ -16,4 +16,6 @@ public interface FViolationService {
 
     int updateFViolation(FViolation violation);
 
+    int deleteFViolationByVersionId(int versionId);
+
 }

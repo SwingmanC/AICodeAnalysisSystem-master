@@ -7,8 +7,11 @@ public class ViolationVO {
     private String classname;
     private int priority;
     private String methodName;
+    private int startLine;
+    private int endLine;
     private double likelihood;
     private double variance;
+    private String state;
 
     public int getId() {
         return id;
@@ -50,6 +53,22 @@ public class ViolationVO {
         this.methodName = methodName;
     }
 
+    public int getStartLine() {
+        return startLine;
+    }
+
+    public void setStartLine(int startLine) {
+        this.startLine = startLine;
+    }
+
+    public int getEndLine() {
+        return endLine;
+    }
+
+    public void setEndLine(int endLine) {
+        this.endLine = endLine;
+    }
+
     public double getLikelihood() {
         return likelihood;
     }
@@ -64,5 +83,13 @@ public class ViolationVO {
 
     public void setVariance(double variance) {
         this.variance = variance;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
