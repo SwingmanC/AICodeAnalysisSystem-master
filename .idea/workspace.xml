@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AICodeAnalysisSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AICodeAnalysisSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_2_2.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,32 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -71,6 +94,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -106,6 +130,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -118,6 +143,7 @@
       <updated>1637119763218</updated>
       <workItem from="1637119770962" duration="14952000" />
       <workItem from="1637202995027" duration="11989000" />
+      <workItem from="1638440778200" duration="440000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -133,16 +159,24 @@
       <option name="project" value="LOCAL" />
       <updated>1637227605683</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="12.2更新">
+      <created>1638441110068</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1638441110071</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="11.17规则库更新" />
     <MESSAGE value="11.18更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.18更新" />
+    <MESSAGE value="12.2更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.2更新" />
   </component>
 </project>
