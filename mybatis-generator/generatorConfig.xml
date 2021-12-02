@@ -41,7 +41,7 @@
 <!--        <table tableName="report">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
 <!--        </table>-->
-        <table tableName="pattern">
+        <table tableName="category">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 <!--        <table tableName="f_violation">-->

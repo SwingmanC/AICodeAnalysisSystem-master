@@ -6,8 +6,6 @@ import org.nju.demo.entity.FViolation;
 import org.nju.demo.pojo.BugInstance;
 import org.nju.demo.pojo.Method;
 import org.nju.demo.pojo.WarningIssue;
-import org.nju.demo.service.FIssueService;
-import org.nju.demo.service.impl.FIssueServiceImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

@@ -84,7 +84,7 @@
                     <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-book"></i> <span class="nav-label">漏洞库管理</span></a>
+                    <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                 </li>
             </ul>
 
@@ -221,14 +221,20 @@
             pageSize : 10,//单页记录数
             pageList : [1, 5, 10],//可选择单页记录数
             showRefresh : true,//刷新按钮
+            sortName:'likelihood',
+            sortOrder:'desc',
             rowStyle:style,
             columns : [ {
                 title : '#',
                 field : 'id',
                 sortable : true
             },{
-                title : '警报类型',
+                title : '漏洞模式',
                 field : 'type',
+                sortable : true
+            },{
+                title : '漏洞类型',
+                field : 'category',
                 sortable : true
             },{
                 title : '优先级',
@@ -268,14 +274,20 @@
             pageSize : 10,//单页记录数
             pageList : [1, 5, 10],//可选择单页记录数
             showRefresh : true,//刷新按钮
+            sortName:'likelihood',
+            sortOrder:'desc',
             rowStyle:style,
             columns : [ {
                 title : '#',
                 field : 'id',
                 sortable : true
             },{
-                title : '警报类型',
+                title : '漏洞模式',
                 field : 'type',
+                sortable : true
+            },{
+                title : '漏洞类型',
+                field : 'category',
                 sortable : true
             },{
                 title : '优先级',
@@ -317,7 +329,8 @@
     }
     function f_operateFormatter(value, row, index){
         if(row.state === "False") return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为正报' onclick='start(\""+row.id+"\")'><i class='fa fa-check'></i></a>";
-        else return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为误报' onclick='end(\""+row.id+"\")'><i class='fa fa-times'></i></a>";
+        else if(row.state === "True") return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为误报' onclick='end(\""+row.id+"\")'><i class='fa fa-times'></i></a>";
+        else return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='f_watch(\""+row.id+"\")'><i class='fa fa-eye'></i> </a>"+"  "+"<a href='#' title='标记为正报' onclick='start(\""+row.id+"\")'><i class='fa fa-check'></i></a>"+"  "+"<a href='#' title='标记为误报' onclick='end(\""+row.id+"\")'><i class='fa fa-times'></i></a>";
     }
     function style(row,index) {
         let style = "";

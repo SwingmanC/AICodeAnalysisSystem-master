@@ -113,6 +113,7 @@ public class MainController {
             Pattern pattern = patternService.getPatternByPatternName(violation.getType());
             violationVO.setId(violation.getId());
             violationVO.setType(violation.getType());
+            violationVO.setCategory(violation.getCategory());
             violationVO.setClassname(violation.getClassname());
             violationVO.setMethodName(violation.getMethodName());
             violationVO.setPriority(violation.getPriority());

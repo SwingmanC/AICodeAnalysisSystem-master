@@ -5,9 +5,11 @@ import org.nju.demo.entity.Category;
 import org.nju.demo.entity.CategoryExample;
 import org.nju.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
@@ -17,5 +19,10 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getCategories() {
         CategoryExample categoryExample = new CategoryExample();
         return categoryMapper.selectByExample(categoryExample);
+    }
+
+    @Override
+    public Category getCategory(int id) {
+        return categoryMapper.selectByPrimaryKey(id);
     }
 }

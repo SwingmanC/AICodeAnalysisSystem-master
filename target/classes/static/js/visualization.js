@@ -14,9 +14,9 @@ $(function () {
             calculable:true,
             series : [
                 {
-                    name: '缺陷类型',
+                    name: '漏洞类型',
                     type: 'pie',    // 设置图表类型为饼图
-                    radius: '65%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                    radius: '80%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
                     x:'right',
                     data:data
                 }
@@ -25,6 +25,10 @@ $(function () {
     }, 'json');
     let f_violation_bar = echarts.init(document.getElementById('f_violation_bar'));
     $.get('/f_violations/priority', function (data) {
+        f_violation_bar.resize({
+           width:800,
+           height:400
+        });
         f_violation_bar.setOption({
             tooltip : {
                 trigger: 'axis'

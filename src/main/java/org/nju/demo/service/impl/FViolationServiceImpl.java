@@ -30,7 +30,7 @@ public class FViolationServiceImpl implements FViolationService {
         FViolationExample violationExample = new FViolationExample();
         FViolationExample.Criteria criteria = violationExample.createCriteria();
 
-        criteria.andVersionIdEqualTo(versionId).andStateNotEqualTo("false");
+        criteria.andVersionIdEqualTo(versionId).andStateEqualTo("True");
 
         return violationMapper.selectByExample(violationExample);
     }

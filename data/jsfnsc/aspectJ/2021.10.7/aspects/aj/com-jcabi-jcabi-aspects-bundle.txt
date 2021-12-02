@@ -1,0 +1,37 @@
+Build Number: null
+Project Version: 1.0-SNAPSHOT
+Build Date: 2021-11-30T22:02:01
+
+ExceptionsLogger.class: 3828
+ImmutabilityChecker$1.class: 247
+ImmutabilityChecker$Violation.class: 1149
+ImmutabilityChecker.class: 7805
+ImprovedJoinPoint.class: 2624
+LogHelper.class: 1345
+MethodAsyncRunner$1.class: 1791
+MethodAsyncRunner.class: 5078
+MethodCacher$Key.class: 3895
+MethodCacher$Tunnel.class: 4323
+MethodCacher.class: 10474
+MethodInterrupter$1.class: 734
+MethodInterrupter$Call.class: 2960
+MethodInterrupter.class: 5165
+MethodLogger$1.class: 1140
+MethodLogger$2.class: 1269
+MethodLogger$Marker.class: 3790
+MethodLogger.class: 16343
+MethodScheduler$Service$1.class: 1190
+MethodScheduler$Service.class: 4101
+MethodScheduler.class: 5375
+MethodValidator.class: 10582
+Mnemos.class: 10230
+NamedThreads.class: 1635
+Parallelizer$1.class: 1484
+Parallelizer$ParallelException.class: 900
+Parallelizer.class: 8728
+QuietExceptionsLogger.class: 4788
+Repeater.class: 8821
+SingleException.class: 6897
+UpdateMethodCacher$1.class: 753
+UpdateMethodCacher$2.class: 753
+UpdateMethodCacher.class: 4681

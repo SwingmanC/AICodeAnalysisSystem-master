@@ -1,9 +1,9 @@
 package org.nju.demo.vo;
 
 public class ViolationVO {
-
     private int id;
     private String type;
+    private String category;
     private String classname;
     private int priority;
     private String methodName;
@@ -27,6 +27,14 @@ public class ViolationVO {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getClassname() {

@@ -12,6 +12,9 @@ public class CmdUtil {
 
     public static String generateFindBugsXML(String projectName,String version,String path) throws IOException {
         //windows
+        String dirPath = "E:/tools/findbugs-3.0.1/output/"+projectName;
+        File dir = new File(dirPath);
+        if (!dir.exists()) dir.mkdirs();
         String filePath = "E:/tools/findbugs-3.0.1/output/"+projectName+"/"+version+".xml";
         String command = "E:/tools/findbugs-3.0.1/bin/findbugs.bat -textui -low -progress -xml -output "+filePath+" "+path;
         return getCmd(filePath, command);
@@ -23,18 +26,6 @@ public class CmdUtil {
 //        String abPath = UPLOADED_FOLDER+"/"+path;
 //        String command = "java -jar "+UPLOADED_FOLDER+"/tools/findbugs-3.0.1/lib/findbugs.jar -textui -low -progress -xml -output "+filePath+" "+abPath;
 //        return getCmd(filePath, command);
-    }
-
-    public static String generatePMDXML(String projectName,String version,String path) throws IOException{
-        String filePath = "E:/tools/pmd/output/"+projectName+"/"+version+".xml";
-        String command = "E:/tools/pmd/bin/pmd.bat -d "+path+" -f xml -R E:/tools/pmd/rules.xml -r "+filePath;
-        return getCmd(filePath, command);
-    }
-
-    public static String generateFeature(String projectName,String version,String path) throws IOException{
-        String filePath = "E:/tools/JHawk/output/"+projectName+"/"+version+".csv";
-        String command = "java -jar E:/tools/JHawk/JHawkCommandLine/JHawkCommandLine.jar -f .*\\.java -p E:/tools/JHawk/JHawkCommandLine/jhawk.properties -r -l pcm -s "+path+" -raw m -c "+filePath+" -system "+projectName;
-        return getCmd(filePath,command);
     }
 
     private static String getCmd(String filePath, String command) throws IOException {

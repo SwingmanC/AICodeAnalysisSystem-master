@@ -36,10 +36,6 @@ public class CategorySqlProvider {
             sql.VALUES("likelihood", "#{likelihood,jdbcType=DOUBLE}");
         }
         
-        if (record.getVariance() != null) {
-            sql.VALUES("variance", "#{variance,jdbcType=DOUBLE}");
-        }
-        
         return sql.toString();
     }
 
@@ -82,10 +78,6 @@ public class CategorySqlProvider {
             sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
         }
         
-        if (record.getVariance() != null) {
-            sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
-        }
-        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -114,10 +106,6 @@ public class CategorySqlProvider {
         
         if (record.getLikelihood() != null) {
             sql.SET("likelihood = #{likelihood,jdbcType=DOUBLE}");
-        }
-        
-        if (record.getVariance() != null) {
-            sql.SET("variance = #{variance,jdbcType=DOUBLE}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

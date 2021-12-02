@@ -2,20 +2,194 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Async.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Cacheable$Flush.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Cacheable$FlushAfter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Cacheable$FlushBefore.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Cacheable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Immutable$Array.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Immutable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/LogExceptions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Loggable$Quiet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Loggable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Parallel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Quietly.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/RetryOnFailure.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/ScheduleWithFixedDelay.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Timeable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/Tv.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/UnitedThrow$None.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/UnitedThrow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/ExceptionsLogger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/ImmutabilityChecker$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/ImmutabilityChecker$Violation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/ImmutabilityChecker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/ImprovedJoinPoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/LogHelper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodAsyncRunner$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodAsyncRunner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodCacher$Key.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodCacher$Tunnel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodCacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodInterrupter$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodInterrupter$Call.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodInterrupter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodLogger$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodLogger$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodLogger$Marker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodLogger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodScheduler$Service$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodScheduler$Service.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodScheduler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/MethodValidator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/Mnemos.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/NamedThreads.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/Parallelizer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/Parallelizer$ParallelException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/Parallelizer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/QuietExceptionsLogger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/Repeater.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/SingleException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/UpdateMethodCacher$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/UpdateMethodCacher$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/UpdateMethodCacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/aj/com-jcabi-jcabi-aspects-bundle.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/apt/AsyncReturnTypeProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/apt/QuietlyReturnTypeProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/apt/com-jcabi-jcabi-aspects-bundle.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/com-jcabi-jcabi-aspects-bundle.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/aspectJ/2021.10.7/aspects/version/Version.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/naming/GenericNamingResourcesFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ClassLoaderUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ConnectionPool$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ConnectionPool$ConnectionFuture.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ConnectionPool$PoolCleaner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ConnectionPool$PrivilegedNewTimer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ConnectionPool.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/DataSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/DataSourceFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/DataSourceProxy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/DisposableConnectionFacade.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/FairBlockingQueue$ExchangeCountDownLatch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/FairBlockingQueue$FairIterator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/FairBlockingQueue$ItemFuture.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/FairBlockingQueue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/JdbcInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/MultiLockFairBlockingQueue$ExchangeCountDownLatch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/MultiLockFairBlockingQueue$FairIterator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/MultiLockFairBlockingQueue$ItemFuture.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/MultiLockFairBlockingQueue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolExhaustedException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolProperties$InterceptorDefinition.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolProperties$InterceptorProperty.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolProperties.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PoolUtilities.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PooledConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/PooledConnectionMBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/ProxyConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/StatementFacade$StatementProxy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/StatementFacade.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/TrapException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/Validator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/XADataSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/AbstractCreateStatementInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/AbstractQueryReport$StatementProxy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/AbstractQueryReport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/ConnectionState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/QueryTimeoutInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/ResetAbandonedTimer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/ResetAbandonedTimerMBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/SlowQueryReport$QueryStats.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/SlowQueryReport$QueryStatsComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/SlowQueryReport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/SlowQueryReportJmx.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/SlowQueryReportJmxMBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementCache$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementCache$CacheKey.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementCache$CachedStatement.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementCache.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementCacheMBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementDecoratorInterceptor$ResultSetProxy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementDecoratorInterceptor$StatementProxy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementDecoratorInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementFinalizer$StatementEntry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/interceptor/StatementFinalizer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/jmx/ConnectionPool.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/jmx/ConnectionPoolMBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/tomcat/8.5.73/jdbc/pool/jmx/JmxUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Knowledge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/KnowledgeExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/KnowledgeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/KnowledgeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/KnowledgeVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/PatternVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/doc/jsfnsc/tika/2020.4.15.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-generator/generatorConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/FViolationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/FViolationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategorySqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategorySqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/CategoryExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/CategoryExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/CategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/FViolationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/FViolationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategoryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategorySqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategorySqlProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/FViolation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/FViolation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/FViolationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/FViolationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/CategoryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/FViolationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/FViolationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/XMLUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/XMLUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/visualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/modify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/template_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/version_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_charts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +240,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../StaticAnalysisTool" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/org/nju/demo/dao" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -74,6 +248,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\dao" />
+      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\entity" />
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\resources\static\img" />
     </key>
   </component>
@@ -113,7 +289,9 @@
       <workItem from="1637657749041" duration="1883000" />
       <workItem from="1637665329284" duration="2752000" />
       <workItem from="1638077179013" duration="1666000" />
-      <workItem from="1638263428215" duration="8940000" />
+      <workItem from="1638263428215" duration="9744000" />
+      <workItem from="1638335302166" duration="12349000" />
+      <workItem from="1638420052917" duration="5373000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -129,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637221460586</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="11.30更新">
+      <created>1638274474391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1638274474391</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,19 +324,20 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="11.17规则库更新" />
     <MESSAGE value="11.18排序算法更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.18排序算法更新" />
+    <MESSAGE value="11.30更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.30更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637120846956">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120846956" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1638274222842">
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1638421966838">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1638269094825" />
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139315485" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638274222842" />
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638421966838" />
     <state x="739" y="383" width="441" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1637135725244">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -160,81 +346,82 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637217013840" />
-    <state x="253" y="117" key="CommitChangelistDialog2" timestamp="1637221458572">
+    <state x="253" y="117" key="CommitChangelistDialog2" timestamp="1638274471488">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="253" y="117" key="CommitChangelistDialog2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141548338" />
-    <state x="253" y="117" key="CommitChangelistDialog2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221458572" />
+    <state x="253" y="117" key="CommitChangelistDialog2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638274471488" />
     <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1638263872685">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1638263872685" />
     <state x="740" y="280" key="FileChooserDialogImpl/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120696087" />
-    <state width="1877" height="340" key="GridCell.Tab.0.bottom" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.0.center" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.0.left" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.0.right" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.1.bottom" timestamp="1638272589444">
+    <state width="1877" height="266" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.1.bottom" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589444" />
-    <state width="1877" height="340" key="GridCell.Tab.1.center" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.1.center" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.1.left" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.1.left" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state width="1877" height="340" key="GridCell.Tab.1.right" timestamp="1638272589443">
+    <state width="1877" height="266" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state width="1877" height="266" key="GridCell.Tab.1.right" timestamp="1638425186883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="340" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638272589443" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1637126694642">
+    <state width="1877" height="266" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638425186883" />
+    <state x="461" y="167" key="SettingsEditor" timestamp="1638275118379">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637126694642" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1637221472570">
+    <state x="461" y="167" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638275118379" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1638275124551">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637203196599" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637221472570" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638275124551" />
     <state x="616" y="243" key="run.anything.popup" timestamp="1637213560515">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637213560515" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1638271402643">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1638422067579">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139510978" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638271402643" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638422067579" />
   </component>
 </project>
