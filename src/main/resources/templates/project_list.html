@@ -34,7 +34,7 @@
 
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
-
+    <script src="/js/layer/layer.js"></script>
 </head>
 
 <body>
@@ -81,7 +81,7 @@
                         <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-book"></i> <span class="nav-label">漏洞库管理</span></a>
+                        <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                     </li>
                 </ul>
 
@@ -205,7 +205,7 @@
         });
         function operateFormatter(value, row, index) {
             let path = "/view/versions/"+row.id;
-            return "<a href=\""+path+"\"><i class='fa fa-eye'></i></a>";
+            return "<a href=\""+path+"\"><i class='fa fa-eye'></i></a>"+"  "+"<a href='#' title='删除' onclick='del(\""+row.id+"\")'><i class='fa fa-trash'></i></a>";
         }
         function add(){
             let projectName = $("#projectName").val();
@@ -223,6 +223,26 @@
                     window.location.href = "/view/projects";
                 }
             })
+        }
+        function del(id){
+            layer.open({
+                title:false,
+                shade:0.4,
+                content:'确定移除此项目？',
+                btn:['确定','取消'],
+                yes:function(index,layero){
+                    $.ajax({
+                        url:'/deleteProject/'+id,
+                        success:function(msg){
+                            if (msg === 1) location.reload();
+                        }
+                    });
+                    layer.close(index);
+                },
+                btn2:function(index,layero){
+                    layer.close(index);
+                }
+            });
         }
     </script>
 </body>

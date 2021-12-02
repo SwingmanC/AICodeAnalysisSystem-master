@@ -41,7 +41,11 @@ public class VersionServiceImpl implements VersionService {
     }
 
     @Override
-    public int deleteVersionById(int id) {
-        return versionMapper.deleteByPrimaryKey(id);
+    public int deleteVersionByProjectId(int projectId) {
+        AVersionExample versionExample = new AVersionExample();
+        AVersionExample.Criteria criteria = versionExample.createCriteria();
+
+        criteria.andProjectIdEqualTo(projectId);
+        return versionMapper.deleteByExample(versionExample);
     }
 }

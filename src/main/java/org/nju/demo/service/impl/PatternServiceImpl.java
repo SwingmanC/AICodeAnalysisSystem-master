@@ -7,6 +7,8 @@ import org.nju.demo.service.PatternService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatternServiceImpl implements PatternService {
 
@@ -21,6 +23,21 @@ public class PatternServiceImpl implements PatternService {
         criteria.andPatternNameEqualTo(patternName);
 
         return patternMapper.selectByExample(example).get(0);
+    }
+
+    @Override
+    public Pattern getPattern(int id) {
+        return patternMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Pattern> getFalsePatterns() {
+        PatternExample example = new PatternExample();
+        PatternExample.Criteria criteria = example.createCriteria();
+
+        criteria.andFNumNotEqualTo(0);
+
+        return patternMapper.selectByExample(example);
     }
 
     @Override

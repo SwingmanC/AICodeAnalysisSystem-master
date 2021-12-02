@@ -31,10 +31,8 @@ public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into category (category_name, likelihood, ",
-        "variance)",
-        "values (#{categoryName,jdbcType=VARCHAR}, #{likelihood,jdbcType=DOUBLE}, ",
-        "#{variance,jdbcType=DOUBLE})"
+        "insert into category (category_name, likelihood)",
+        "values (#{categoryName,jdbcType=VARCHAR}, #{likelihood,jdbcType=DOUBLE}) "
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Category record);
@@ -47,22 +45,20 @@ public interface CategoryMapper {
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="category_name", property="categoryName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE),
-        @Result(column="variance", property="variance", jdbcType=JdbcType.DOUBLE)
+        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE)
     })
     List<Category> selectByExample(CategoryExample example);
 
     @Select({
         "select",
-        "id, category_name, likelihood, variance",
+        "id, category_name, likelihood",
         "from category",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="category_name", property="categoryName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE),
-        @Result(column="variance", property="variance", jdbcType=JdbcType.DOUBLE)
+        @Result(column="likelihood", property="likelihood", jdbcType=JdbcType.DOUBLE)
     })
     Category selectByPrimaryKey(Integer id);
 
@@ -78,8 +74,7 @@ public interface CategoryMapper {
     @Update({
         "update category",
         "set category_name = #{categoryName,jdbcType=VARCHAR},",
-          "likelihood = #{likelihood,jdbcType=DOUBLE},",
-          "variance = #{variance,jdbcType=DOUBLE}",
+          "likelihood = #{likelihood,jdbcType=DOUBLE}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Category record);

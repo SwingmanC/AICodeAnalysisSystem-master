@@ -13,7 +13,6 @@
     <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
     <link href="/css/animate.css" rel="stylesheet"/>
     <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
-    <link href="/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
@@ -22,8 +21,6 @@
     <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-    <script src="/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
-    <script src="/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
 
     <!-- Peity -->
     <script src="/js/plugins/peity/jquery.peity.min.js"></script>
@@ -37,6 +34,8 @@
 
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
 </head>
 
 <body>
@@ -73,7 +72,7 @@
                 <li>
                     <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
                 </li>
                 <li>
@@ -82,7 +81,7 @@
                 <li>
                     <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                 </li>
             </ul>
@@ -96,22 +95,20 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a th:href="@{'/view/issue/'+${session.report.id}}">
-                        <i class="fa fa-sign-out"></i> 返回
+                    <a href="/logout">
+                        <i class="fa fa-sign-out"></i> 退出
                     </a>
                 </li>
             </ul>
-
         </nav>
     </div>
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-8">
-                <h2></h2>
+            <div class="col-lg-10">
+                <h2>专家误报漏洞知识库</h2>
             </div>
-            <div class="col-lg-4">
-                <h2 style="text-align: right">
-                </h2>
+            <div class="col-lg-2">
+
             </div>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -119,7 +116,6 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>警报详情</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -127,61 +123,75 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <table>
-                                <tr>
-                                    <td>警报类型：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="category" th:value="${issue.category}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>优先级：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="priority" th:value="${issue.priority}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>领域：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="kingdom" th:value="${issue.kingdom}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>警报所在文件：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="filePath"  th:value="${issue.filePath}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>警报所在方法：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="targetFunction" th:value="${issue.targetFunction}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>起始行：</td>
-                                    <td style="width: 350px;"><input type="text" class="form-control" id="startLine" th:value="${issue.startLine}" readonly/></td>
-                                </tr>
-                                <tr>
-                                    <td>警报描述：</td>
-                                    <td style="width: 350px;"><textarea class="form-control" id="description" th:text="${issue.description}" readonly></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td>代码段：</td>
-                                    <td style="width: 350px;"><textarea class="form-control" id="snippet" th:text="${issue.snippet}" readonly></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td>修复建议：</td>
-                                    <td style="width: 350px;"><textarea class="form-control" id="recommendation" th:text="${issue.recommendation}" readonly></textarea></td>
-                                </tr>
-                            </table>
-                            <style>
-                                td{
-                                    padding-bottom: 10px;
-                                }
-                            </style>
+                            <table class="table table-hover" id="patternTable"></table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="footer">
+        </div>
+
     </div>
 </div>
 
-    <script th:inline="javascript">
-        $(document).ready(function () {
-        });
-    </script>
+
+</div>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("#patternTable").bootstrapTable({
+            url:"/patterns",  //请求地址
+            striped : true, //是否显示行间隔色
+            pageNumber : 1, //初始化加载第一页
+            pagination : true,//是否分页
+            sidePagination : 'client',//server:服务器端分页|client：前端分页
+            pageSize : 5,//单页记录数
+            pageList : [1, 5, 10],//可选择单页记录数
+            showRefresh : true,//刷新按钮
+            sortName:'likelihood',
+            sortOrder:'desc',
+            columns : [ {
+                title : '#',
+                field : 'id',
+                sortable : true
+            },{
+                title : '漏洞模式',
+                field : 'patternName',
+                sortable : true
+            },{
+                title : '漏洞类型',
+                field : 'categoryName',
+                sortable : true
+            },{
+                title : '置信值',
+                field : 'likelihood',
+                sortable : true,
+                formatter:likelihoodToFixed
+            },{
+                title : '方差',
+                field : 'variance',
+                sortable : true,
+            },{
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    });
+    function likelihoodToFixed(value,row,index) {
+        let num = row.likelihood;
+        return num.toFixed(2);
+    }
+    function varianceToFixed(value,row,index){
+        let num = row.variance;
+        return num.toFixed(2);
+    }
+    function operateFormatter(value,row,index) {
+        let path = "/view/knowledge/"+row.id;
+        return "<a href=\""+path+"\" title='进入知识库'><i class='fa fa-eye'></i></a>";
+    }
+</script>
 </body>
 
 </html>

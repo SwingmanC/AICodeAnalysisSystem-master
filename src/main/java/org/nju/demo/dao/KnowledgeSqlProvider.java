@@ -3,53 +3,57 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.Category;
-import org.nju.demo.entity.CategoryExample.Criteria;
-import org.nju.demo.entity.CategoryExample.Criterion;
-import org.nju.demo.entity.CategoryExample;
+import org.nju.demo.entity.Knowledge;
+import org.nju.demo.entity.KnowledgeExample.Criteria;
+import org.nju.demo.entity.KnowledgeExample.Criterion;
+import org.nju.demo.entity.KnowledgeExample;
 
-public class CategorySqlProvider {
+public class KnowledgeSqlProvider {
 
-    public String countByExample(CategoryExample example) {
+    public String countByExample(KnowledgeExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("category");
+        sql.SELECT("count(*)").FROM("knowledge");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(CategoryExample example) {
+    public String deleteByExample(KnowledgeExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("category");
+        sql.DELETE_FROM("knowledge");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Category record) {
+    public String insertSelective(Knowledge record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("category");
+        sql.INSERT_INTO("knowledge");
         
-        if (record.getCategoryName() != null) {
-            sql.VALUES("category_name", "#{categoryName,jdbcType=VARCHAR}");
+        if (record.getKnowledgeName() != null) {
+            sql.VALUES("knowledge_name", "#{knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.VALUES("likelihood", "#{likelihood,jdbcType=DOUBLE}");
+        if (record.getContent() != null) {
+            sql.VALUES("content", "#{content,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getPatternId() != null) {
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(CategoryExample example) {
+    public String selectByExample(KnowledgeExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("category_name");
-        sql.SELECT("likelihood");
-        sql.SELECT("variance");
-        sql.FROM("category");
+        sql.SELECT("knowledge_name");
+        sql.SELECT("content");
+        sql.SELECT("pattern_id");
+        sql.FROM("knowledge");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -60,22 +64,26 @@ public class CategorySqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Category record = (Category) parameter.get("record");
-        CategoryExample example = (CategoryExample) parameter.get("example");
+        Knowledge record = (Knowledge) parameter.get("record");
+        KnowledgeExample example = (KnowledgeExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("category");
+        sql.UPDATE("knowledge");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getCategoryName() != null) {
-            sql.SET("category_name = #{record.categoryName,jdbcType=VARCHAR}");
+        if (record.getKnowledgeName() != null) {
+            sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
+        if (record.getContent() != null) {
+            sql.SET("content = #{record.content,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -84,28 +92,32 @@ public class CategorySqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("category");
+        sql.UPDATE("knowledge");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("category_name = #{record.categoryName,jdbcType=VARCHAR}");
-        sql.SET("likelihood = #{record.likelihood,jdbcType=DOUBLE}");
-        sql.SET("variance = #{record.variance,jdbcType=DOUBLE}");
+        sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
+        sql.SET("content = #{record.content,jdbcType=VARCHAR}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
         
-        CategoryExample example = (CategoryExample) parameter.get("example");
+        KnowledgeExample example = (KnowledgeExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Category record) {
+    public String updateByPrimaryKeySelective(Knowledge record) {
         SQL sql = new SQL();
-        sql.UPDATE("category");
+        sql.UPDATE("knowledge");
         
-        if (record.getCategoryName() != null) {
-            sql.SET("category_name = #{categoryName,jdbcType=VARCHAR}");
+        if (record.getKnowledgeName() != null) {
+            sql.SET("knowledge_name = #{knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getLikelihood() != null) {
-            sql.SET("likelihood = #{likelihood,jdbcType=DOUBLE}");
+        if (record.getContent() != null) {
+            sql.SET("content = #{content,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{patternId,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -113,7 +125,7 @@ public class CategorySqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, CategoryExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, KnowledgeExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

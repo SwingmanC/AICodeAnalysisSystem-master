@@ -7,8 +7,6 @@ public class Category {
 
     private Double likelihood;
 
-    private Double variance;
-
     public Integer getId() {
         return id;
     }
@@ -33,14 +31,6 @@ public class Category {
         this.likelihood = likelihood;
     }
 
-    public Double getVariance() {
-        return variance;
-    }
-
-    public void setVariance(Double variance) {
-        this.variance = variance;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -50,7 +40,6 @@ public class Category {
         sb.append(", id=").append(id);
         sb.append(", categoryName=").append(categoryName);
         sb.append(", likelihood=").append(likelihood);
-        sb.append(", variance=").append(variance);
         sb.append("]");
         return sb.toString();
     }
@@ -69,8 +58,7 @@ public class Category {
         Category other = (Category) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getCategoryName() == null ? other.getCategoryName() == null : this.getCategoryName().equals(other.getCategoryName()))
-            && (this.getLikelihood() == null ? other.getLikelihood() == null : this.getLikelihood().equals(other.getLikelihood()))
-            && (this.getVariance() == null ? other.getVariance() == null : this.getVariance().equals(other.getVariance()));
+            && (this.getLikelihood() == null ? other.getLikelihood() == null : this.getLikelihood().equals(other.getLikelihood()));
     }
 
     @Override
@@ -80,7 +68,6 @@ public class Category {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getCategoryName() == null) ? 0 : getCategoryName().hashCode());
         result = prime * result + ((getLikelihood() == null) ? 0 : getLikelihood().hashCode());
-        result = prime * result + ((getVariance() == null) ? 0 : getVariance().hashCode());
         return result;
     }
 }
