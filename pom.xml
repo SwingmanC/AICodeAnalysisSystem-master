@@ -99,12 +99,12 @@
             <version>2.3.28</version>
         </dependency>
         <!--json-lib-->
-        <dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>RELEASE</version>
-            <classifier>jdk15</classifier>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.sf.json-lib</groupId>-->
+<!--            <artifactId>json-lib</artifactId>-->
+<!--            <version>RELEASE</version>-->
+<!--            <classifier>jdk15</classifier>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
