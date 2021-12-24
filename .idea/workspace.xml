@@ -5,81 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeSqlProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Knowledge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/KnowledgeExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/KnowledgeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/KnowledgeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/KnowledgeVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/PatternVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/doc/jsfnsc/tika/2020.4.15.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategorySqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/CategorySqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/CategoryExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/CategoryExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/FViolation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/FViolationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/FViolationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/FViolationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/FViolationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/CmdUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/vo/ViolationVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategorySqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/CategorySqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/CategoryExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/FViolation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/FViolation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/FViolationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/FViolationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/CategoryServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/FViolationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/FViolationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/CmdUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/XMLUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/XMLUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/vo/ViolationVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/visualization.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/template_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/version_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/violation_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/violation_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +145,10 @@
       <updated>1637119763218</updated>
       <workItem from="1637119770962" duration="14952000" />
       <workItem from="1637202995027" duration="11989000" />
-      <workItem from="1638440778200" duration="1406000" />
+      <workItem from="1638440778200" duration="1582000" />
+      <workItem from="1638444814284" duration="664000" />
+      <workItem from="1639029251399" duration="2565000" />
+      <workItem from="1639897213125" duration="2281000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -249,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638441235373</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="12.2专家漏洞知识库">
+      <created>1638442284303</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1638442284305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +196,7 @@
     <MESSAGE value="11.17规则库更新" />
     <MESSAGE value="11.18更新" />
     <MESSAGE value="12.2更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.2更新" />
+    <MESSAGE value="12.2专家漏洞知识库" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.2专家漏洞知识库" />
   </component>
 </project>
