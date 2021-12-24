@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,6 +147,7 @@
       <workItem from="1638444814284" duration="664000" />
       <workItem from="1639029251399" duration="2565000" />
       <workItem from="1639897213125" duration="2281000" />
+      <workItem from="1640355995127" duration="363000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -185,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638442284305</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="12.24">
+      <created>1640356135319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1640356135320</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +203,7 @@
     <MESSAGE value="11.18更新" />
     <MESSAGE value="12.2更新" />
     <MESSAGE value="12.2专家漏洞知识库" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.2专家漏洞知识库" />
+    <MESSAGE value="12.24" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.24" />
   </component>
 </project>
