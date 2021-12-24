@@ -1,13 +1,11 @@
 package org.nju.demo.entity;
 
-public class Knowledge {
+public class PatternInfo {
     private Integer id;
 
-    private String knowledgeName;
+    private String patternId;
 
-    private Integer patternId;
-
-    private String content;
+    private String patternName;
 
     public Integer getId() {
         return id;
@@ -17,28 +15,20 @@ public class Knowledge {
         this.id = id;
     }
 
-    public String getKnowledgeName() {
-        return knowledgeName;
-    }
-
-    public void setKnowledgeName(String knowledgeName) {
-        this.knowledgeName = knowledgeName;
-    }
-
-    public Integer getPatternId() {
+    public String getPatternId() {
         return patternId;
     }
 
-    public void setPatternId(Integer patternId) {
+    public void setPatternId(String patternId) {
         this.patternId = patternId;
     }
 
-    public String getContent() {
-        return content;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     @Override
@@ -48,9 +38,8 @@ public class Knowledge {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", knowledgeName=").append(knowledgeName);
         sb.append(", patternId=").append(patternId);
-        sb.append(", content=").append(content);
+        sb.append(", patternName=").append(patternName);
         sb.append("]");
         return sb.toString();
     }
@@ -66,11 +55,10 @@ public class Knowledge {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Knowledge other = (Knowledge) that;
+        PatternInfo other = (PatternInfo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getKnowledgeName() == null ? other.getKnowledgeName() == null : this.getKnowledgeName().equals(other.getKnowledgeName()))
             && (this.getPatternId() == null ? other.getPatternId() == null : this.getPatternId().equals(other.getPatternId()))
-            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
+            && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()));
     }
 
     @Override
@@ -78,9 +66,8 @@ public class Knowledge {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getKnowledgeName() == null) ? 0 : getKnowledgeName().hashCode());
         result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
-        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
+        result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
         return result;
     }
 }

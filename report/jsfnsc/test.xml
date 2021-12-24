@@ -90,7 +90,7 @@
                         <groupTitle>System Information Leak: HTML Comment in JSP</groupTitle>
                     </GroupingSection>
                     <GroupingSection count="10">
-                        <groupTitle>Cross-Site Scripting: Reflected</groupTitle>
+                        <groupTitle>Cross-Site Scripting：Reflected</groupTitle>
                     </GroupingSection>
                     <GroupingSection count="10">
                         <groupTitle>Path Manipulation</groupTitle>

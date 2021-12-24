@@ -1,13 +1,12 @@
 package org.nju.demo.dao;
 
-import org.nju.demo.entity.AUser;
-import org.nju.demo.entity.AUserExample;
-import org.nju.demo.entity.AUserExample.Criteria;
-import org.nju.demo.entity.AUserExample.Criterion;
-import org.apache.ibatis.jdbc.SQL;
-
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.jdbc.SQL;
+import org.nju.demo.entity.AUser;
+import org.nju.demo.entity.AUserExample.Criteria;
+import org.nju.demo.entity.AUserExample.Criterion;
+import org.nju.demo.entity.AUserExample;
 
 public class AUserSqlProvider {
 

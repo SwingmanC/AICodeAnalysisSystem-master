@@ -32,12 +32,32 @@ public class KnowledgeSqlProvider {
             sql.VALUES("knowledge_name", "#{knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getContent() != null) {
-            sql.VALUES("content", "#{content,jdbcType=VARCHAR}");
-        }
-        
         if (record.getPatternId() != null) {
             sql.VALUES("pattern_id", "#{patternId,jdbcType=INTEGER}");
+        }
+        
+        if (record.getContent() != null) {
+            sql.VALUES("content", "#{content,jdbcType=LONGVARCHAR}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String selectByExampleWithBLOBs(KnowledgeExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("id");
+        } else {
+            sql.SELECT("id");
+        }
+        sql.SELECT("knowledge_name");
+        sql.SELECT("pattern_id");
+        sql.SELECT("content");
+        sql.FROM("knowledge");
+        applyWhere(sql, example, false);
+        
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
         }
         
         return sql.toString();
@@ -51,7 +71,6 @@ public class KnowledgeSqlProvider {
             sql.SELECT("id");
         }
         sql.SELECT("knowledge_name");
-        sql.SELECT("content");
         sql.SELECT("pattern_id");
         sql.FROM("knowledge");
         applyWhere(sql, example, false);
@@ -78,14 +97,28 @@ public class KnowledgeSqlProvider {
             sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getContent() != null) {
-            sql.SET("content = #{record.content,jdbcType=VARCHAR}");
-        }
-        
         if (record.getPatternId() != null) {
             sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
         }
         
+        if (record.getContent() != null) {
+            sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
+        }
+        
+        applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
+        SQL sql = new SQL();
+        sql.UPDATE("knowledge");
+        
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
+        sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
+        
+        KnowledgeExample example = (KnowledgeExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -96,7 +129,6 @@ public class KnowledgeSqlProvider {
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
-        sql.SET("content = #{record.content,jdbcType=VARCHAR}");
         sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
         
         KnowledgeExample example = (KnowledgeExample) parameter.get("example");
@@ -112,12 +144,12 @@ public class KnowledgeSqlProvider {
             sql.SET("knowledge_name = #{knowledgeName,jdbcType=VARCHAR}");
         }
         
-        if (record.getContent() != null) {
-            sql.SET("content = #{content,jdbcType=VARCHAR}");
-        }
-        
         if (record.getPatternId() != null) {
             sql.SET("pattern_id = #{patternId,jdbcType=INTEGER}");
+        }
+        
+        if (record.getContent() != null) {
+            sql.SET("content = #{content,jdbcType=LONGVARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

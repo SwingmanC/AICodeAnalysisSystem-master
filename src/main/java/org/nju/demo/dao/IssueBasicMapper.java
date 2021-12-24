@@ -1,0 +1,159 @@
+package org.nju.demo.dao;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.DeleteProvider;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+import org.nju.demo.entity.IssueBasic;
+import org.nju.demo.entity.IssueBasicExample;
+
+public interface IssueBasicMapper {
+    @SelectProvider(type=IssueBasicSqlProvider.class, method="countByExample")
+    long countByExample(IssueBasicExample example);
+
+    @DeleteProvider(type=IssueBasicSqlProvider.class, method="deleteByExample")
+    int deleteByExample(IssueBasicExample example);
+
+    @Delete({
+        "delete from issue_basic",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    int deleteByPrimaryKey(Integer id);
+
+    @Insert({
+        "insert into issue_basic (pattern_id, issue_id, ",
+        "priority, kingdom, ",
+        "file_name, file_path, ",
+        "start_line, target_function, ",
+        "description, version_id, ",
+        "`state`, snippet)",
+        "values (#{patternId,jdbcType=VARCHAR}, #{issueId,jdbcType=VARCHAR}, ",
+        "#{priority,jdbcType=VARCHAR}, #{kingdom,jdbcType=VARCHAR}, ",
+        "#{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
+        "#{startLine,jdbcType=INTEGER}, #{targetFunction,jdbcType=VARCHAR}, ",
+        "#{description,jdbcType=VARCHAR}, #{versionId,jdbcType=INTEGER}, ",
+        "#{state,jdbcType=VARCHAR}, #{snippet,jdbcType=LONGVARCHAR})"
+    })
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
+    int insert(IssueBasic record);
+
+    @InsertProvider(type=IssueBasicSqlProvider.class, method="insertSelective")
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
+    int insertSelective(IssueBasic record);
+
+    @SelectProvider(type=IssueBasicSqlProvider.class, method="selectByExampleWithBLOBs")
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
+        @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+        @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
+        @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
+        @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.INTEGER),
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+        @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
+    })
+    List<IssueBasic> selectByExampleWithBLOBs(IssueBasicExample example);
+
+    @SelectProvider(type=IssueBasicSqlProvider.class, method="selectByExample")
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
+        @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+        @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
+        @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
+        @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.INTEGER),
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR)
+    })
+    List<IssueBasic> selectByExample(IssueBasicExample example);
+
+    @Select({
+        "select",
+        "id, pattern_id, issue_id, priority, kingdom, file_name, file_path, start_line, ",
+        "target_function, description, version_id, `state`, snippet",
+        "from issue_basic",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
+        @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+        @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
+        @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
+        @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.INTEGER),
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+        @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
+    })
+    IssueBasic selectByPrimaryKey(Integer id);
+
+    @UpdateProvider(type=IssueBasicSqlProvider.class, method="updateByExampleSelective")
+    int updateByExampleSelective(@Param("record") IssueBasic record, @Param("example") IssueBasicExample example);
+
+    @UpdateProvider(type=IssueBasicSqlProvider.class, method="updateByExampleWithBLOBs")
+    int updateByExampleWithBLOBs(@Param("record") IssueBasic record, @Param("example") IssueBasicExample example);
+
+    @UpdateProvider(type=IssueBasicSqlProvider.class, method="updateByExample")
+    int updateByExample(@Param("record") IssueBasic record, @Param("example") IssueBasicExample example);
+
+    @UpdateProvider(type=IssueBasicSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(IssueBasic record);
+
+    @Update({
+        "update issue_basic",
+        "set pattern_id = #{patternId,jdbcType=VARCHAR},",
+          "issue_id = #{issueId,jdbcType=VARCHAR},",
+          "priority = #{priority,jdbcType=VARCHAR},",
+          "kingdom = #{kingdom,jdbcType=VARCHAR},",
+          "file_name = #{fileName,jdbcType=VARCHAR},",
+          "file_path = #{filePath,jdbcType=VARCHAR},",
+          "start_line = #{startLine,jdbcType=INTEGER},",
+          "target_function = #{targetFunction,jdbcType=VARCHAR},",
+          "description = #{description,jdbcType=VARCHAR},",
+          "version_id = #{versionId,jdbcType=INTEGER},",
+          "`state` = #{state,jdbcType=VARCHAR},",
+          "snippet = #{snippet,jdbcType=LONGVARCHAR}",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    int updateByPrimaryKeyWithBLOBs(IssueBasic record);
+
+    @Update({
+        "update issue_basic",
+        "set pattern_id = #{patternId,jdbcType=VARCHAR},",
+          "issue_id = #{issueId,jdbcType=VARCHAR},",
+          "priority = #{priority,jdbcType=VARCHAR},",
+          "kingdom = #{kingdom,jdbcType=VARCHAR},",
+          "file_name = #{fileName,jdbcType=VARCHAR},",
+          "file_path = #{filePath,jdbcType=VARCHAR},",
+          "start_line = #{startLine,jdbcType=INTEGER},",
+          "target_function = #{targetFunction,jdbcType=VARCHAR},",
+          "description = #{description,jdbcType=VARCHAR},",
+          "version_id = #{versionId,jdbcType=INTEGER},",
+          "`state` = #{state,jdbcType=VARCHAR}",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    int updateByPrimaryKey(IssueBasic record);
+}

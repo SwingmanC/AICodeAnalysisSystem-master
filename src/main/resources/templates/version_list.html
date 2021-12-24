@@ -151,18 +151,9 @@
                                         <td><label for="version">版本信息：</label></td>
                                         <td style="width: 350px;"><input type="text" class="form-control" id="version" name="version" required/></td>
                                     </tr>
-<!--                                    <tr>-->
-<!--                                        <td><label for="lastId">对比版本：</label></td>-->
-<!--                                        <td style="width: 350px;">-->
-<!--                                            <select id="lastId" name="lastId" class="form-control" >-->
-<!--                                                <option value="0" selected>请选择</option>-->
-<!--                                                <option th:each="version:${versionList}" th:value="${version.id}" th:text="${version.version}"></option>-->
-<!--                                            </select>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
                                     <tr>
-                                        <td><label for="javaFiles">附件上传：</label></td>
-                                        <td style="width: 350px;"><input id="javaFiles" name="javaFiles" type="file" webkitdirectory multiple required onchange="uploadDir(this)"/><br/></td>
+                                        <td><label for="reportFile">附件上传：</label></td>
+                                        <td style="width: 350px;"><input id="reportFile" name="reportFile" type="file" required/><br/></td>
                                     </tr>
                                 </table>
                                 <style>
@@ -174,7 +165,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <input type="submit" class="btn btn-primary" id="add_submit" value="提交"/>
+                            <input type="submit" class="btn btn-primary" id="add_submit" value="提交" onclick="return isValid()"/>
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -298,28 +289,6 @@
             }
         })
     }
-    // function add() {
-    //     let version = $("#version").val();
-    //     let lastId = Number($("#lastId").val());
-    //     let formData = new FormData();
-    //     formData.append("version",version);
-    //     formData.append("lastId",lastId);
-    //     formData.append("javaFiles",$("#javaFiles")[0].files[0])
-    //     $.ajax({
-    //         url:'/addVersion',
-    //         type: 'get',
-    //         cache: false,
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         success:function(msg){
-    //             layer.msg("上传成功");
-    //             setTimeout(function(){
-    //                 self.location="/view/versions/"+[[${session.project.id}]];
-    //             },2000);
-    //         }
-    //     })
-    // }
     function value(id) {
         $("#version_id").val(id);
     }
@@ -348,30 +317,8 @@
             })
         }
     }
-    // function extract(versionId) {
-    //     $.ajax({
-    //         url:'/extract',
-    //         type:'get',
-    //         data:{
-    //             "versionId":versionId,
-    //         },
-    //         dataType: 'json',
-    //         success:function (msg) {
-    //             if (msg === 0) layer.msg("该版本特征已提取");
-    //             else{
-    //                 layer.msg("提取完成");
-    //                 setTimeout(function () {
-    //                     location.reload();
-    //                 },1500);
-    //             }
-    //         }
-    //     })
-    // }
-    function uploadDir(inputTag) {
-        const files = inputTag.files;
-        for (let file of files) {
-            console.log(file.webkitRelativePath);
-        }
+    function isValid(){
+
     }
 </script>
 </body>

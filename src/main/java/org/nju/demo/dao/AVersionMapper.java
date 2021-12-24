@@ -31,9 +31,9 @@ public interface AVersionMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into a_version (version, file_path, ",
+        "insert into a_version (version_name, file_path, ",
         "project_id, last_id)",
-        "values (#{version,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
+        "values (#{versionName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
         "#{projectId,jdbcType=INTEGER}, #{lastId,jdbcType=INTEGER})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
@@ -46,7 +46,7 @@ public interface AVersionMapper {
     @SelectProvider(type=AVersionSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="version", property="version", jdbcType=JdbcType.VARCHAR),
+        @Result(column="version_name", property="versionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="project_id", property="projectId", jdbcType=JdbcType.INTEGER),
         @Result(column="last_id", property="lastId", jdbcType=JdbcType.INTEGER)
@@ -55,13 +55,13 @@ public interface AVersionMapper {
 
     @Select({
         "select",
-        "id, version, file_path, project_id, last_id",
+        "id, version_name, file_path, project_id, last_id",
         "from a_version",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="version", property="version", jdbcType=JdbcType.VARCHAR),
+        @Result(column="version_name", property="versionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="project_id", property="projectId", jdbcType=JdbcType.INTEGER),
         @Result(column="last_id", property="lastId", jdbcType=JdbcType.INTEGER)
@@ -79,7 +79,7 @@ public interface AVersionMapper {
 
     @Update({
         "update a_version",
-        "set version = #{version,jdbcType=VARCHAR},",
+        "set version_name = #{versionName,jdbcType=VARCHAR},",
           "file_path = #{filePath,jdbcType=VARCHAR},",
           "project_id = #{projectId,jdbcType=INTEGER},",
           "last_id = #{lastId,jdbcType=INTEGER}",

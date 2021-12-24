@@ -24,7 +24,7 @@
 
         <!--数据库连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/ai_code?serverTimezone=UTC"
+                        connectionURL="jdbc:mysql://localhost:3306/analysis?serverTimezone=UTC"
                         userId="root"
                         password="1234" />
 
@@ -32,23 +32,41 @@
         <javaModelGenerator targetPackage="org.nju.demo.entity" targetProject="src/main/java" />
         <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="org.nju.demo.dao" targetProject="src/main/java" />
         <!--表名-->
-<!--        <table tableName="a_user">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-<!--        </table>-->
-<!--        <table tableName="project">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-<!--        </table>-->
-<!--        <table tableName="report">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-<!--        </table>-->
-        <table tableName="category">
+        <table tableName="a_rule">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-<!--        <table tableName="f_violation">-->
+        <table tableName="a_template">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="a_user">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="a_user_info">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="a_version">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="issue_basic">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+<!--        <table tableName="issue_sink">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
 <!--        </table>-->
-<!--        <table tableName="category">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-<!--        </table>-->
+        <table tableName="issue_source">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="knowledge">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="pattern_info">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="pattern_lk">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table tableName="project">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
     </context>
 </generatorConfiguration>

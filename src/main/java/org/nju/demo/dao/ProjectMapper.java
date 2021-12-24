@@ -1,11 +1,21 @@
 package org.nju.demo.dao;
 
+import java.util.List;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.DeleteProvider;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.Project;
 import org.nju.demo.entity.ProjectExample;
-import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.type.JdbcType;
-
-import java.util.List;
 
 public interface ProjectMapper {
     @SelectProvider(type=ProjectSqlProvider.class, method="countByExample")

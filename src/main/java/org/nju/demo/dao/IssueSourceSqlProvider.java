@@ -3,57 +3,94 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.Project;
-import org.nju.demo.entity.ProjectExample.Criteria;
-import org.nju.demo.entity.ProjectExample.Criterion;
-import org.nju.demo.entity.ProjectExample;
+import org.nju.demo.entity.IssueSource;
+import org.nju.demo.entity.IssueSourceExample.Criteria;
+import org.nju.demo.entity.IssueSourceExample.Criterion;
+import org.nju.demo.entity.IssueSourceExample;
 
-public class ProjectSqlProvider {
+public class IssueSourceSqlProvider {
 
-    public String countByExample(ProjectExample example) {
+    public String countByExample(IssueSourceExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("project");
+        sql.SELECT("count(*)").FROM("issue_source");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(ProjectExample example) {
+    public String deleteByExample(IssueSourceExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("project");
+        sql.DELETE_FROM("issue_source");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Project record) {
+    public String insertSelective(IssueSource record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("project");
+        sql.INSERT_INTO("issue_source");
         
-        if (record.getProjectName() != null) {
-            sql.VALUES("project_name", "#{projectName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.VALUES("issue_id", "#{issueId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.VALUES("description", "#{description,jdbcType=VARCHAR}");
+        if (record.getFileName() != null) {
+            sql.VALUES("file_name", "#{fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getStartLine() != null) {
+            sql.VALUES("start_line", "#{startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.VALUES("target_function", "#{targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getSnippet() != null) {
+            sql.VALUES("snippet", "#{snippet,jdbcType=LONGVARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(ProjectExample example) {
+    public String selectByExampleWithBLOBs(IssueSourceExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("project_name");
-        sql.SELECT("description");
-        sql.SELECT("user_id");
-        sql.FROM("project");
+        sql.SELECT("issue_id");
+        sql.SELECT("file_name");
+        sql.SELECT("file_path");
+        sql.SELECT("start_line");
+        sql.SELECT("target_function");
+        sql.SELECT("snippet");
+        sql.FROM("issue_source");
+        applyWhere(sql, example, false);
+        
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
+        }
+        
+        return sql.toString();
+    }
+
+    public String selectByExample(IssueSourceExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("id");
+        } else {
+            sql.SELECT("id");
+        }
+        sql.SELECT("issue_id");
+        sql.SELECT("file_name");
+        sql.SELECT("file_path");
+        sql.SELECT("start_line");
+        sql.SELECT("target_function");
+        sql.FROM("issue_source");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -64,60 +101,103 @@ public class ProjectSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Project record = (Project) parameter.get("record");
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        IssueSource record = (IssueSource) parameter.get("record");
+        IssueSourceExample example = (IssueSourceExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("issue_source");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        if (record.getFileName() != null) {
+            sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         }
         
+        if (record.getStartLine() != null) {
+            sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getSnippet() != null) {
+            sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
+        }
+        
+        applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
+        SQL sql = new SQL();
+        sql.UPDATE("issue_source");
+        
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
+        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
+        sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
+        
+        IssueSourceExample example = (IssueSourceExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("issue_source");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
-        sql.SET("description = #{record.description,jdbcType=VARCHAR}");
-        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
+        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
         
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        IssueSourceExample example = (IssueSourceExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Project record) {
+    public String updateByPrimaryKeySelective(IssueSource record) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("issue_source");
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{projectName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.SET("issue_id = #{issueId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{description,jdbcType=VARCHAR}");
+        if (record.getFileName() != null) {
+            sql.SET("file_name = #{fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getStartLine() != null) {
+            sql.SET("start_line = #{startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.SET("target_function = #{targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getSnippet() != null) {
+            sql.SET("snippet = #{snippet,jdbcType=LONGVARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -125,7 +205,7 @@ public class ProjectSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, ProjectExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, IssueSourceExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

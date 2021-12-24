@@ -28,8 +28,8 @@ public class AVersionSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("a_version");
         
-        if (record.getVersion() != null) {
-            sql.VALUES("version", "#{version,jdbcType=VARCHAR}");
+        if (record.getVersionName() != null) {
+            sql.VALUES("version_name", "#{versionName,jdbcType=VARCHAR}");
         }
         
         if (record.getFilePath() != null) {
@@ -54,7 +54,7 @@ public class AVersionSqlProvider {
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("version");
+        sql.SELECT("version_name");
         sql.SELECT("file_path");
         sql.SELECT("project_id");
         sql.SELECT("last_id");
@@ -79,8 +79,8 @@ public class AVersionSqlProvider {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getVersion() != null) {
-            sql.SET("version = #{record.version,jdbcType=VARCHAR}");
+        if (record.getVersionName() != null) {
+            sql.SET("version_name = #{record.versionName,jdbcType=VARCHAR}");
         }
         
         if (record.getFilePath() != null) {
@@ -104,7 +104,7 @@ public class AVersionSqlProvider {
         sql.UPDATE("a_version");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("version = #{record.version,jdbcType=VARCHAR}");
+        sql.SET("version_name = #{record.versionName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         sql.SET("project_id = #{record.projectId,jdbcType=INTEGER}");
         sql.SET("last_id = #{record.lastId,jdbcType=INTEGER}");
@@ -118,8 +118,8 @@ public class AVersionSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_version");
         
-        if (record.getVersion() != null) {
-            sql.SET("version = #{version,jdbcType=VARCHAR}");
+        if (record.getVersionName() != null) {
+            sql.SET("version_name = #{versionName,jdbcType=VARCHAR}");
         }
         
         if (record.getFilePath() != null) {

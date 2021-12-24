@@ -39,19 +39,19 @@ public class RuleController {
 
     @RequestMapping(value = "/addRule",method = RequestMethod.POST)
     public String addRule(@RequestParam("ruleName") String ruleName,
-                          @RequestParam(value = "pattern",required = false) String pattern,
-                          @RequestParam(value = "category",required = false) String category,
+                          @RequestParam(value = "patternName",required = false) String patternName,
                           @RequestParam(value = "priority",required = false) String priority,
+                          @RequestParam(value = "kingdom",required = false) String kingdom,
                           @RequestParam(value = "fileName",required = false) String fileName,
                           @RequestParam(value = "functionName",required = false) String functionName){
         ARule rule = new ARule();
         AUser user = (AUser) session.getAttribute("user");
         rule.setRuleName(ruleName);
-        if (pattern == null) rule.setPattern("");
-        else rule.setPattern(pattern);
+        if (patternName == null) rule.setPatternName("");
+        else rule.setPatternName(patternName);
 
-        if (category == null) rule.setCategory("");
-        else rule.setCategory(category);
+        if (kingdom == null) rule.setKingdom("");
+        else rule.setKingdom(kingdom);
 
         if (priority == null) rule.setPriority("");
         else rule.setPriority(priority);
@@ -70,19 +70,19 @@ public class RuleController {
     @ResponseBody
     @RequestMapping(value = "/editRule",method = RequestMethod.POST)
     public int editRule(@RequestParam("id") int id,
-                           @RequestParam("ruleName") String ruleName,
-                           @RequestParam(value = "pattern",required = false) String pattern,
-                           @RequestParam(value = "category",required = false) String category,
-                           @RequestParam(value = "priority",required = false) String priority,
-                           @RequestParam(value = "fileName",required = false) String fileName,
-                           @RequestParam(value = "functionName",required = false) String functionName){
+                        @RequestParam("ruleName") String ruleName,
+                        @RequestParam(value = "patternName",required = false) String patternName,
+                        @RequestParam(value = "priority",required = false) String priority,
+                        @RequestParam(value = "kingdom",required = false) String kingdom,
+                        @RequestParam(value = "fileName",required = false) String fileName,
+                        @RequestParam(value = "functionName",required = false) String functionName){
         ARule rule = ruleService.getRule(id);
         rule.setRuleName(ruleName);
-        if (pattern == null) rule.setPattern("");
-        else rule.setPattern(pattern);
+        if (patternName == null) rule.setPatternName("");
+        else rule.setPatternName(patternName);
 
-        if (category == null) rule.setCategory("");
-        else rule.setCategory(category);
+        if (kingdom == null) rule.setKingdom("");
+        else rule.setKingdom(kingdom);
 
         if (priority == null) rule.setPriority("");
         else rule.setPriority(priority);

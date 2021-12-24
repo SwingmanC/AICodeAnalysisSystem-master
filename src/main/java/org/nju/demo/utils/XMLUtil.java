@@ -1,11 +1,6 @@
 package org.nju.demo.utils;
 
-import org.nju.demo.entity.FIssue;
-import org.nju.demo.entity.FIssueWithBLOBs;
-import org.nju.demo.entity.FViolation;
-import org.nju.demo.pojo.BugInstance;
-import org.nju.demo.pojo.Method;
-import org.nju.demo.pojo.WarningIssue;
+import org.nju.demo.entity.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,85 +15,44 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class XMLUtil {
-	public static List<BugInstance> getBugs(InputStream file) throws Exception {
-	    List<BugInstance> bugInstances = new ArrayList<>();
 
+    public static Element getElement(InputStream file) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-
         Document document = builder.parse(file);
-        Element element = document.getDocumentElement();
-        NodeList nodeList = element.getElementsByTagName("BugInstance");
-
-        for(int i=0;i<nodeList.getLength();++i){
-            Element bug = (Element) nodeList.item(i);
-            BugInstance bugInstance = new BugInstance();
-            bugInstance.setType(bug.getAttribute("type"));
-            bugInstance.setPriority(Integer.parseInt(bug.getAttribute("priority")));
-            bugInstance.setCategory(bug.getAttribute("category"));
-
-            Element classElement = (Element) bug.getElementsByTagName("Class").item(0);
-            bugInstance.setClassname(classElement.getAttribute("classname"));
-            Element sourceElement = (Element) classElement.getElementsByTagName("SourceLine").item(0);
-            bugInstance.setSourcePath(sourceElement.getAttribute("sourcepath"));
-            if (!sourceElement.getAttribute("start").equals("")) bugInstance.setStart(Integer.parseInt(sourceElement.getAttribute("start")));
-            if (!sourceElement.getAttribute("end").equals("")) bugInstance.setEnd(Integer.parseInt(sourceElement.getAttribute("end")));
-
-            NodeList methodList = bug.getElementsByTagName("Method");
-            for(int j=0;j<methodList.getLength();++j){
-                Element methodElement = (Element) methodList.item(j);
-                Method method = new Method();
-                method.setName(methodElement.getAttribute("name"));
-                method.setSignature(methodElement.getAttribute("signature"));
-                Element methodSource = (Element) methodElement.getElementsByTagName("SourceLine").item(0);
-                if(methodSource == null) continue;
-                if(!methodSource.getAttribute("start").equals("")) method.setStartLine(Integer.parseInt(methodSource.getAttribute("start")));
-                if(!methodSource.getAttribute("end").equals("")) method.setEndLine(Integer.parseInt(methodSource.getAttribute("end")));
-                bugInstance.add(method);
-            }
-            bugInstances.add(bugInstance);
-        }
-
-        return bugInstances;
+        return document.getDocumentElement();
     }
 
-    public static List<FViolation> getFViolations(InputStream file,int versionId) throws Exception {
-	    List<FViolation> violationList = new ArrayList<>();
-        List<BugInstance> bugInstances = XMLUtil.getBugs(file);
-//        System.out.println(bugInstances.size());
+    public static List<String> getSummary(InputStream file) throws ParserConfigurationException, IOException, SAXException {
+        List<String> res = new ArrayList<>();
+        Element element = getElement(file);
+        Element reportSection = (Element) element.getElementsByTagName("ReportSection").item(1);
+        Element subSection = (Element) reportSection.getElementsByTagName("SubSection").item(1);
+        Element issueListing = (Element) subSection.getElementsByTagName("IssueListing").item(0);
+        Element chart = (Element) issueListing.getElementsByTagName("Chart").item(0);
+        NodeList groupSection = chart.getElementsByTagName("GroupingSection");
 
-	    for(BugInstance bugInstance:bugInstances){
-	        List<Method> methods = bugInstance.getMethodList();
-	        for(Method method:methods){
-	            FViolation violation = new FViolation();
-	            violation.setVersionId(versionId);
-	            violation.setType(bugInstance.getType());
-	            violation.setCategory(bugInstance.getCategory());
-	            violation.setPriority(bugInstance.getPriority());
-	            violation.setClassname(bugInstance.getClassname());
-	            violation.setSourcePath(bugInstance.getSourcePath());
-	            violation.setMethodName(method.getName());
-	            violation.setSignature(method.getSignature());
-	            violation.setStartLine(method.getStartLine());
-	            violation.setEndLine(method.getEndLine());
-	            violationList.add(violation);
-            }
+        for (int i=0;i<groupSection.getLength();++i){
+            Element group = (Element) groupSection.item(i);
+            Element title = (Element) group.getElementsByTagName("groupTitle").item(0);
+            res.add(title.getTextContent());
         }
 
-        return violationList;
+        return res;
     }
 
-    public static List<FIssueWithBLOBs> getIssues(InputStream file) throws ParserConfigurationException, IOException, SAXException {
-	    List<FIssueWithBLOBs> warningIssueList = new ArrayList<>();
+    public static Map<String,List> getInfo(InputStream file) throws ParserConfigurationException, IOException, SAXException {
+	    List<IssueBasic> issueBasicList = new ArrayList<>();
+	    List<IssueSource> issueSourceList = new ArrayList<>();
+	    List<PatternInfoWithBLOBs> patternInfoList = new ArrayList<>();
+	    Map<String,List> res = new HashMap<>();
 
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-
-        Document document = builder.parse(file);
-        Element element = document.getDocumentElement();
+        Element element = getElement(file);
         Element reportSection = (Element) element.getElementsByTagName("ReportSection").item(2);
         Element subSection = (Element) reportSection.getElementsByTagName("SubSection").item(0);
         Element issueListing = (Element) subSection.getElementsByTagName("IssueListing").item(0);
@@ -106,40 +60,83 @@ public class XMLUtil {
         NodeList groupSection = chart.getElementsByTagName("GroupingSection");
 
         for(int i=0;i<groupSection.getLength();++i){
+            String explanation,recommendation,tip;
+            String ruleId = "";
+            String patternName = "";
+
             Element group = (Element) groupSection.item(i);
             Element summary = (Element) group.getElementsByTagName("MajorAttributeSummary").item(0);
-            Element metaInfo = (Element) summary.getElementsByTagName("MetaInfo").item(2);
-            Element value = (Element) metaInfo.getElementsByTagName("Value").item(0);
-            String recommendation = value.getTextContent();
+            Element metaInfo1 = (Element) summary.getElementsByTagName("MetaInfo").item(1);
+            Element value1 = (Element) metaInfo1.getElementsByTagName("Value").item(0);
+            explanation = value1.getTextContent();
+            Element metaInfo2 = (Element) summary.getElementsByTagName("MetaInfo").item(2);
+            Element value2 = (Element) metaInfo2.getElementsByTagName("Value").item(0);
+            recommendation = value2.getTextContent();
+            Element metaInfo3 = (Element) summary.getElementsByTagName("MetaInfo").item(3);
+            Element name = (Element) metaInfo3.getElementsByTagName("Name").item(0);
+            if (name.getTextContent().equals("Tips")){
+                Element value3 = (Element) metaInfo3.getElementsByTagName("Value").item(0);
+                tip = value3.getTextContent();
+            }
+            else tip = "";
             NodeList issueList = group.getElementsByTagName("Issue");
             for(int j=0;j<issueList.getLength();++j){
                 Element issue = (Element) issueList.item(j);
-                FIssueWithBLOBs warningIssue = new FIssueWithBLOBs();
-                warningIssue.setiId(issue.getAttribute("iid"));
+                IssueBasic issueBasic = new IssueBasic();
+                issueBasic.setIssueId(issue.getAttribute("iid"));
+                issueBasic.setPatternId(issue.getAttribute("ruleID"));
+                if (ruleId.equals("")) ruleId = issue.getAttribute("ruleID");
                 Element category = (Element) issue.getElementsByTagName("Category").item(0);
                 Element kingdom = (Element) issue.getElementsByTagName("Kingdom").item(0);
                 Element description = (Element) issue.getElementsByTagName("Abstract").item(0);
                 Element priority = (Element) issue.getElementsByTagName("Friority").item(0);
                 Element primary = (Element) issue.getElementsByTagName("Primary").item(0);
-                Element fileName = (Element) primary.getElementsByTagName("FileName").item(0);
-                Element filePath = (Element) primary.getElementsByTagName("FilePath").item(0);
-                Element startLine = (Element) primary.getElementsByTagName("LineStart").item(0);
-                Element snippet = (Element) primary.getElementsByTagName("Snippet").item(0);
-                Element targetFunction = (Element) primary.getElementsByTagName("TargetFunction").item(0);
-                warningIssue.setCategory(category.getTextContent());
-                warningIssue.setKingdom(kingdom.getTextContent());
-                warningIssue.setDescription(description.getTextContent());
-                warningIssue.setPriority(priority.getTextContent());
-                warningIssue.setFileName(fileName.getTextContent());
-                warningIssue.setFilePath(filePath.getTextContent());
-                warningIssue.setStartLine(Integer.parseInt(startLine.getTextContent()));
-                warningIssue.setSnippet(snippet.getTextContent());
-                warningIssue.setTargetFunction(targetFunction.getTextContent());
-                warningIssue.setRecommendation(recommendation);
-                warningIssueList.add(warningIssue);
+                Element sinkFileName = (Element) primary.getElementsByTagName("FileName").item(0);
+                Element sinkFilePath = (Element) primary.getElementsByTagName("FilePath").item(0);
+                Element sinkStartLine = (Element) primary.getElementsByTagName("LineStart").item(0);
+                Element sinkSnippet = (Element) primary.getElementsByTagName("Snippet").item(0);
+                Element sinkTargetFunction = (Element) primary.getElementsByTagName("TargetFunction").item(0);
+                if (patternName.equals("")) patternName = category.getTextContent();
+                issueBasic.setKingdom(kingdom.getTextContent());
+                issueBasic.setDescription(description.getTextContent());
+                issueBasic.setPriority(priority.getTextContent());
+                issueBasic.setFileName(sinkFileName.getTextContent());
+                issueBasic.setFilePath(sinkFilePath.getTextContent());
+                issueBasic.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
+                issueBasic.setSnippet(sinkSnippet.getTextContent());
+                issueBasic.setTargetFunction(sinkTargetFunction.getTextContent());
+
+                if(issue.getElementsByTagName("Source") != null){
+                    IssueSource issueSource = new IssueSource();
+                    Element source = (Element) issue.getElementsByTagName("Source").item(0);
+                    Element sourceFileName = (Element) source.getElementsByTagName("FileName").item(0);
+                    Element sourceFilePath = (Element) source.getElementsByTagName("FilePath").item(0);
+                    Element sourceStartLine = (Element) source.getElementsByTagName("LineStart").item(0);
+                    Element sourceSnippet = (Element) source.getElementsByTagName("Snippet").item(0);
+                    Element sourceTargetFunction = (Element) source.getElementsByTagName("TargetFunction").item(0);
+                    issueSource.setIssueId(issueBasic.getIssueId());
+                    issueSource.setFileName(sourceFileName.getTextContent());
+                    issueSource.setFilePath(sourceFilePath.getTextContent());
+                    issueSource.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
+                    issueSource.setSnippet(sourceSnippet.getTextContent());
+                    issueSource.setTargetFunction(sourceTargetFunction.getTextContent());
+                    issueSourceList.add(issueSource);
+                }
+
+                issueBasicList.add(issueBasic);
             }
+            PatternInfoWithBLOBs patternInfo = new PatternInfoWithBLOBs();
+            patternInfo.setPatternId(ruleId);
+            patternInfo.setPatternName(patternName);
+            patternInfo.setExplanation(explanation);
+            patternInfo.setRecommendation(recommendation);
+            patternInfo.setTip(tip);
+            patternInfoList.add(patternInfo);
         }
 
-	    return warningIssueList;
+        res.put("issueBasicList",issueBasicList);
+        res.put("issueSourceList",issueSourceList);
+        res.put("patternInfoList",patternInfoList);
+	    return res;
     }
 }

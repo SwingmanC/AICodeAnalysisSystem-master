@@ -2,10 +2,9 @@ package org.nju.demo.controller;
 
 import org.nju.demo.constant.Type;
 import org.nju.demo.entity.AVersion;
-import org.nju.demo.entity.FViolation;
-import org.nju.demo.service.FViolationService;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import org.nju.demo.entity.IssueBasic;
+import org.nju.demo.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,54 +23,48 @@ public class ChartController {
     private HttpSession session;
 
     @Autowired
-    private FViolationService fViolationService;
+    private IssueService issueService;
 
-    @GetMapping("/view/violations/charts")
+    @GetMapping("/view/issues/charts")
     public String viewViolationCharts(){
         return "violation_charts";
     }
 
-    @GetMapping("/view/violations/list")
+    @GetMapping("/view/issues/list")
     public String viewViolationList(){
         return "violation_list";
     }
 
     @ResponseBody
-    @GetMapping("/f_violations/type")
-    public String getFViolationsType(){
+    @GetMapping("/issues/pattern")
+    public int[] getIssuesByPattern(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
-        int[] count = {0,0,0,0,0,0,0,0,0};
-        for(FViolation violation:violationList){
-            String category = violation.getCategory();
-            for(int i=0;i< Type.findBugs.length;++i){
-                if (category.equals(Type.findBugs[i])){
+        List<IssueBasic> issueList = issueService.getIssueList(version.getId(),"","",0);
+        int[] count = {0,0,0,0,0,0,0,0};
+        for(IssueBasic issueBasic:issueList){
+            String kingdom = issueBasic.getKingdom();
+            for(int i=0;i<Type.fortify.length;++i){
+                if (kingdom.equals(Type.fortify[i])){
                     count[i]++;
                     break;
                 }
             }
         }
-        List<Map> outputs = new ArrayList<>();
-        for(int i=0;i<count.length;++i){
-            Map output = new TreeMap();
-            output.put("value",count[i]);
-            output.put("name",Type.findBugs[i]);
-            outputs.add(output);
-        }
-        JSONArray jsonArray = JSONArray.fromObject(outputs);
-        return jsonArray.toString();
+        return count;
     }
 
     @ResponseBody
-    @GetMapping("/f_violations/priority")
-    public int[] getFViolationsPriority(){
+    @GetMapping("/issues/priority")
+    public int[] getIssuesByPriority(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<FViolation> violationList = fViolationService.getFViolationsByVersionId(version.getId());
+        List<IssueBasic> issueList = issueService.getIssueList(version.getId(),"","",0);
         int[] count = {0,0,0,0};
-        for(FViolation violation:violationList){
-            int p = violation.getPriority();
-            if (p>=4) count[3]++;
-            else count[p-1]++;
+        for(IssueBasic issueBasic:issueList){
+            String p = issueBasic.getPriority();
+            if (p.equals("Low")) count[0]++;
+            else if (p.equals("Medium")) count[1]++;
+            else if (p.equals("High")) count[2]++;
+            else count[3]++;
         }
         return count;
     }

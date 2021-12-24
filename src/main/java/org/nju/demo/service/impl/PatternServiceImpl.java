@@ -1,8 +1,8 @@
 package org.nju.demo.service.impl;
 
-import org.nju.demo.dao.PatternMapper;
-import org.nju.demo.entity.Pattern;
-import org.nju.demo.entity.PatternExample;
+import org.nju.demo.dao.PatternInfoMapper;
+import org.nju.demo.dao.PatternLkMapper;
+import org.nju.demo.entity.*;
 import org.nju.demo.service.PatternService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,45 +13,80 @@ import java.util.List;
 public class PatternServiceImpl implements PatternService {
 
     @Autowired
-    private PatternMapper patternMapper;
+    private PatternInfoMapper patternInfoMapper;
+
+    @Autowired
+    private PatternLkMapper patternLkMapper;
 
     @Override
-    public Pattern getPatternByPatternName(String patternName) {
-        PatternExample example = new PatternExample();
-        PatternExample.Criteria criteria = example.createCriteria();
+    public PatternInfo getPatternInfoByPatternName(String patternName) {
+        PatternInfoExample example = new PatternInfoExample();
+        PatternInfoExample.Criteria criteria = example.createCriteria();
 
         criteria.andPatternNameEqualTo(patternName);
-
-        return patternMapper.selectByExample(example).get(0);
+        return patternInfoMapper.selectByExample(example).get(0);
     }
 
     @Override
-    public Pattern getPattern(int id) {
-        return patternMapper.selectByPrimaryKey(id);
+    public PatternInfoWithBLOBs getPatternInfo(String patternId) {
+        PatternInfoExample example = new PatternInfoExample();
+        PatternInfoExample.Criteria criteria = example.createCriteria();
+
+        criteria.andPatternIdEqualTo(patternId);
+
+        List<PatternInfoWithBLOBs> patternInfoList = patternInfoMapper.selectByExampleWithBLOBs(example);
+        if (patternInfoList.size() > 0)
+            return patternInfoList.get(0);
+        else return null;
     }
 
     @Override
-    public List<Pattern> getFalsePatterns() {
-        PatternExample example = new PatternExample();
-        PatternExample.Criteria criteria = example.createCriteria();
+    public PatternLk getPatternLikelihood(String patternId) {
+        PatternLkExample example = new PatternLkExample();
+        PatternLkExample.Criteria criteria = example.createCriteria();
 
-        criteria.andFNumNotEqualTo(0);
+        criteria.andPatternIdEqualTo(patternId);
 
-        return patternMapper.selectByExample(example);
+        List<PatternLk> patternLkList = patternLkMapper.selectByExample(example);
+        if (patternLkList.size() > 0)
+            return patternLkList.get(0);
+        else return null;
     }
 
     @Override
-    public int updatePattern(Pattern pattern) {
-        return patternMapper.updateByPrimaryKey(pattern);
+    public PatternInfoWithBLOBs getPattern(int id) {
+        return patternInfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public long countByCategoryId(int categoryId) {
-        PatternExample example = new PatternExample();
-        PatternExample.Criteria criteria = example.createCriteria();
+    public PatternLk getPatternLk(int id) {
+        return patternLkMapper.selectByPrimaryKey(id);
+    }
 
-        criteria.andCategoryIdEqualTo(categoryId);
+    @Override
+    public List<PatternLk> getPatternLkList() {
+        PatternLkExample example = new PatternLkExample();
+        return patternLkMapper.selectByExample(example);
+    }
 
-        return patternMapper.countByExample(example);
+    @Override
+    public List<PatternInfo> getPatternInfoList() {
+        PatternInfoExample example = new PatternInfoExample();
+        return patternInfoMapper.selectByExample(example);
+    }
+
+    @Override
+    public int updatePatternLikelihood(PatternLk pattern) {
+        return patternLkMapper.updateByPrimaryKeySelective(pattern);
+    }
+
+    @Override
+    public int addPatternInfo(PatternInfoWithBLOBs patternInfo) {
+        return patternInfoMapper.insert(patternInfo);
+    }
+
+    @Override
+    public int addPatternLk(PatternLk patternLk) {
+        return patternLkMapper.insert(patternLk);
     }
 }

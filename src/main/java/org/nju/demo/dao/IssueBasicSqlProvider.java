@@ -3,37 +3,37 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.ARule;
-import org.nju.demo.entity.ARuleExample.Criteria;
-import org.nju.demo.entity.ARuleExample.Criterion;
-import org.nju.demo.entity.ARuleExample;
+import org.nju.demo.entity.IssueBasic;
+import org.nju.demo.entity.IssueBasicExample.Criteria;
+import org.nju.demo.entity.IssueBasicExample.Criterion;
+import org.nju.demo.entity.IssueBasicExample;
 
-public class ARuleSqlProvider {
+public class IssueBasicSqlProvider {
 
-    public String countByExample(ARuleExample example) {
+    public String countByExample(IssueBasicExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("a_rule");
+        sql.SELECT("count(*)").FROM("issue_basic");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(ARuleExample example) {
+    public String deleteByExample(IssueBasicExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("a_rule");
+        sql.DELETE_FROM("issue_basic");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(ARule record) {
+    public String insertSelective(IssueBasic record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("a_rule");
+        sql.INSERT_INTO("issue_basic");
         
-        if (record.getRuleName() != null) {
-            sql.VALUES("rule_name", "#{ruleName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternName() != null) {
-            sql.VALUES("pattern_name", "#{patternName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.VALUES("issue_id", "#{issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -48,37 +48,85 @@ public class ARuleSqlProvider {
             sql.VALUES("file_name", "#{fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFunctionName() != null) {
-            sql.VALUES("function_name", "#{functionName,jdbcType=VARCHAR}");
+        if (record.getFilePath() != null) {
+            sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getStartLine() != null) {
+            sql.VALUES("start_line", "#{startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.VALUES("target_function", "#{targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDescription() != null) {
+            sql.VALUES("description", "#{description,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVersionId() != null) {
+            sql.VALUES("version_id", "#{versionId,jdbcType=INTEGER}");
         }
         
         if (record.getState() != null) {
-            sql.VALUES("`state`", "#{state,jdbcType=INTEGER}");
+            sql.VALUES("`state`", "#{state,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+        if (record.getSnippet() != null) {
+            sql.VALUES("snippet", "#{snippet,jdbcType=LONGVARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(ARuleExample example) {
+    public String selectByExampleWithBLOBs(IssueBasicExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("rule_name");
-        sql.SELECT("pattern_name");
+        sql.SELECT("pattern_id");
+        sql.SELECT("issue_id");
         sql.SELECT("priority");
         sql.SELECT("kingdom");
         sql.SELECT("file_name");
-        sql.SELECT("function_name");
+        sql.SELECT("file_path");
+        sql.SELECT("start_line");
+        sql.SELECT("target_function");
+        sql.SELECT("description");
+        sql.SELECT("version_id");
         sql.SELECT("`state`");
-        sql.SELECT("user_id");
-        sql.FROM("a_rule");
+        sql.SELECT("snippet");
+        sql.FROM("issue_basic");
+        applyWhere(sql, example, false);
+        
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
+        }
+        
+        return sql.toString();
+    }
+
+    public String selectByExample(IssueBasicExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("id");
+        } else {
+            sql.SELECT("id");
+        }
+        sql.SELECT("pattern_id");
+        sql.SELECT("issue_id");
+        sql.SELECT("priority");
+        sql.SELECT("kingdom");
+        sql.SELECT("file_name");
+        sql.SELECT("file_path");
+        sql.SELECT("start_line");
+        sql.SELECT("target_function");
+        sql.SELECT("description");
+        sql.SELECT("version_id");
+        sql.SELECT("`state`");
+        sql.FROM("issue_basic");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -89,22 +137,22 @@ public class ARuleSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        ARule record = (ARule) parameter.get("record");
-        ARuleExample example = (ARuleExample) parameter.get("example");
+        IssueBasic record = (IssueBasic) parameter.get("record");
+        IssueBasicExample example = (IssueBasicExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("a_rule");
+        sql.UPDATE("issue_basic");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getRuleName() != null) {
-            sql.SET("rule_name = #{record.ruleName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternName() != null) {
-            sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -119,51 +167,93 @@ public class ARuleSqlProvider {
             sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFunctionName() != null) {
-            sql.SET("function_name = #{record.functionName,jdbcType=VARCHAR}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getStartLine() != null) {
+            sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDescription() != null) {
+            sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVersionId() != null) {
+            sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
         }
         
         if (record.getState() != null) {
-            sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
+            sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        if (record.getSnippet() != null) {
+            sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
         }
         
+        applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
+        SQL sql = new SQL();
+        sql.UPDATE("issue_basic");
+        
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("priority = #{record.priority,jdbcType=VARCHAR}");
+        sql.SET("kingdom = #{record.kingdom,jdbcType=VARCHAR}");
+        sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
+        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
+        sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
+        sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
+        
+        IssueBasicExample example = (IssueBasicExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("a_rule");
+        sql.UPDATE("issue_basic");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("rule_name = #{record.ruleName,jdbcType=VARCHAR}");
-        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
         sql.SET("priority = #{record.priority,jdbcType=VARCHAR}");
         sql.SET("kingdom = #{record.kingdom,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
-        sql.SET("function_name = #{record.functionName,jdbcType=VARCHAR}");
-        sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
-        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
+        sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
+        sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
         
-        ARuleExample example = (ARuleExample) parameter.get("example");
+        IssueBasicExample example = (IssueBasicExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(ARule record) {
+    public String updateByPrimaryKeySelective(IssueBasic record) {
         SQL sql = new SQL();
-        sql.UPDATE("a_rule");
+        sql.UPDATE("issue_basic");
         
-        if (record.getRuleName() != null) {
-            sql.SET("rule_name = #{ruleName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternName() != null) {
-            sql.SET("pattern_name = #{patternName,jdbcType=VARCHAR}");
+        if (record.getIssueId() != null) {
+            sql.SET("issue_id = #{issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -178,16 +268,32 @@ public class ARuleSqlProvider {
             sql.SET("file_name = #{fileName,jdbcType=VARCHAR}");
         }
         
-        if (record.getFunctionName() != null) {
-            sql.SET("function_name = #{functionName,jdbcType=VARCHAR}");
+        if (record.getFilePath() != null) {
+            sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getStartLine() != null) {
+            sql.SET("start_line = #{startLine,jdbcType=INTEGER}");
+        }
+        
+        if (record.getTargetFunction() != null) {
+            sql.SET("target_function = #{targetFunction,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getDescription() != null) {
+            sql.SET("description = #{description,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVersionId() != null) {
+            sql.SET("version_id = #{versionId,jdbcType=INTEGER}");
         }
         
         if (record.getState() != null) {
-            sql.SET("`state` = #{state,jdbcType=INTEGER}");
+            sql.SET("`state` = #{state,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
+        if (record.getSnippet() != null) {
+            sql.SET("snippet = #{snippet,jdbcType=LONGVARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -195,7 +301,7 @@ public class ARuleSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, ARuleExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, IssueBasicExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

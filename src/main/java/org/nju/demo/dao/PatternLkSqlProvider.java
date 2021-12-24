@@ -3,57 +3,57 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.Project;
-import org.nju.demo.entity.ProjectExample.Criteria;
-import org.nju.demo.entity.ProjectExample.Criterion;
-import org.nju.demo.entity.ProjectExample;
+import org.nju.demo.entity.PatternLk;
+import org.nju.demo.entity.PatternLkExample.Criteria;
+import org.nju.demo.entity.PatternLkExample.Criterion;
+import org.nju.demo.entity.PatternLkExample;
 
-public class ProjectSqlProvider {
+public class PatternLkSqlProvider {
 
-    public String countByExample(ProjectExample example) {
+    public String countByExample(PatternLkExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("project");
+        sql.SELECT("count(*)").FROM("pattern_lk");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(ProjectExample example) {
+    public String deleteByExample(PatternLkExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("project");
+        sql.DELETE_FROM("pattern_lk");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Project record) {
+    public String insertSelective(PatternLk record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("project");
+        sql.INSERT_INTO("pattern_lk");
         
-        if (record.getProjectName() != null) {
-            sql.VALUES("project_name", "#{projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.VALUES("description", "#{description,jdbcType=VARCHAR}");
+        if (record.gettNum() != null) {
+            sql.VALUES("t_num", "#{tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+        if (record.getfNum() != null) {
+            sql.VALUES("f_num", "#{fNum,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(ProjectExample example) {
+    public String selectByExample(PatternLkExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("project_name");
-        sql.SELECT("description");
-        sql.SELECT("user_id");
-        sql.FROM("project");
+        sql.SELECT("pattern_id");
+        sql.SELECT("t_num");
+        sql.SELECT("f_num");
+        sql.FROM("pattern_lk");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -64,26 +64,26 @@ public class ProjectSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Project record = (Project) parameter.get("record");
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        PatternLk record = (PatternLk) parameter.get("record");
+        PatternLkExample example = (PatternLkExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_lk");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        if (record.gettNum() != null) {
+            sql.SET("t_num = #{record.tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        if (record.getfNum() != null) {
+            sql.SET("f_num = #{record.fNum,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -92,32 +92,32 @@ public class ProjectSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_lk");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
-        sql.SET("description = #{record.description,jdbcType=VARCHAR}");
-        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("t_num = #{record.tNum,jdbcType=INTEGER}");
+        sql.SET("f_num = #{record.fNum,jdbcType=INTEGER}");
         
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        PatternLkExample example = (PatternLkExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Project record) {
+    public String updateByPrimaryKeySelective(PatternLk record) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_lk");
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{description,jdbcType=VARCHAR}");
+        if (record.gettNum() != null) {
+            sql.SET("t_num = #{tNum,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
+        if (record.getfNum() != null) {
+            sql.SET("f_num = #{fNum,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -125,7 +125,7 @@ public class ProjectSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, ProjectExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, PatternLkExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

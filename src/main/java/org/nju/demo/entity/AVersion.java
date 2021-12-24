@@ -3,17 +3,13 @@ package org.nju.demo.entity;
 public class AVersion {
     private Integer id;
 
-    private String version;
+    private String versionName;
 
     private String filePath;
 
     private Integer projectId;
 
     private Integer lastId;
-
-    public AVersion(){
-        this.lastId = 0;
-    }
 
     public Integer getId() {
         return id;
@@ -23,12 +19,12 @@ public class AVersion {
         this.id = id;
     }
 
-    public String getVersion() {
-        return version;
+    public String getVersionName() {
+        return versionName;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
     }
 
     public String getFilePath() {
@@ -62,7 +58,7 @@ public class AVersion {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", version=").append(version);
+        sb.append(", versionName=").append(versionName);
         sb.append(", filePath=").append(filePath);
         sb.append(", projectId=").append(projectId);
         sb.append(", lastId=").append(lastId);
@@ -83,7 +79,7 @@ public class AVersion {
         }
         AVersion other = (AVersion) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()))
+            && (this.getVersionName() == null ? other.getVersionName() == null : this.getVersionName().equals(other.getVersionName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
             && (this.getProjectId() == null ? other.getProjectId() == null : this.getProjectId().equals(other.getProjectId()))
             && (this.getLastId() == null ? other.getLastId() == null : this.getLastId().equals(other.getLastId()));
@@ -94,7 +90,7 @@ public class AVersion {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
+        result = prime * result + ((getVersionName() == null) ? 0 : getVersionName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
         result = prime * result + ((getProjectId() == null) ? 0 : getProjectId().hashCode());
         result = prime * result + ((getLastId() == null) ? 0 : getLastId().hashCode());

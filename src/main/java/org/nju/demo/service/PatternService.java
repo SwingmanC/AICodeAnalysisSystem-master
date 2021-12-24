@@ -1,19 +1,30 @@
 package org.nju.demo.service;
 
-import org.nju.demo.entity.Pattern;
+import org.nju.demo.entity.PatternInfo;
+import org.nju.demo.entity.PatternInfoWithBLOBs;
+import org.nju.demo.entity.PatternLk;
 
 import java.util.List;
 
 public interface PatternService {
 
-    Pattern getPatternByPatternName(String patternName);
+    PatternInfo getPatternInfoByPatternName(String patternName);
 
-    Pattern getPattern(int id);
+    PatternInfoWithBLOBs getPatternInfo(String patternId);
 
-    List<Pattern> getFalsePatterns();
+    PatternLk getPatternLikelihood(String patternId);
 
-    int updatePattern(Pattern pattern);
+    PatternInfoWithBLOBs getPattern(int id);
 
-    long countByCategoryId(int categoryId);
+    PatternLk getPatternLk(int id);
 
+    List<PatternLk> getPatternLkList();
+
+    List<PatternInfo> getPatternInfoList();
+
+    int updatePatternLikelihood(PatternLk pattern);
+
+    int addPatternInfo(PatternInfoWithBLOBs patternInfo);
+
+    int addPatternLk(PatternLk patternLk);
 }

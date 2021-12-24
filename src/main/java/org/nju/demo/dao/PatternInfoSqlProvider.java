@@ -3,57 +3,86 @@ package org.nju.demo.dao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
-import org.nju.demo.entity.Project;
-import org.nju.demo.entity.ProjectExample.Criteria;
-import org.nju.demo.entity.ProjectExample.Criterion;
-import org.nju.demo.entity.ProjectExample;
+import org.nju.demo.entity.PatternInfoExample.Criteria;
+import org.nju.demo.entity.PatternInfoExample.Criterion;
+import org.nju.demo.entity.PatternInfoExample;
+import org.nju.demo.entity.PatternInfoWithBLOBs;
 
-public class ProjectSqlProvider {
+public class PatternInfoSqlProvider {
 
-    public String countByExample(ProjectExample example) {
+    public String countByExample(PatternInfoExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("project");
+        sql.SELECT("count(*)").FROM("pattern_info");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(ProjectExample example) {
+    public String deleteByExample(PatternInfoExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("project");
+        sql.DELETE_FROM("pattern_info");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Project record) {
+    public String insertSelective(PatternInfoWithBLOBs record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("project");
+        sql.INSERT_INTO("pattern_info");
         
-        if (record.getProjectName() != null) {
-            sql.VALUES("project_name", "#{projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.VALUES("description", "#{description,jdbcType=VARCHAR}");
+        if (record.getPatternName() != null) {
+            sql.VALUES("pattern_name", "#{patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+        if (record.getExplanation() != null) {
+            sql.VALUES("explanation", "#{explanation,jdbcType=LONGVARCHAR}");
+        }
+        
+        if (record.getRecommendation() != null) {
+            sql.VALUES("recommendation", "#{recommendation,jdbcType=LONGVARCHAR}");
+        }
+        
+        if (record.getTip() != null) {
+            sql.VALUES("tip", "#{tip,jdbcType=LONGVARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(ProjectExample example) {
+    public String selectByExampleWithBLOBs(PatternInfoExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("project_name");
-        sql.SELECT("description");
-        sql.SELECT("user_id");
-        sql.FROM("project");
+        sql.SELECT("pattern_id");
+        sql.SELECT("pattern_name");
+        sql.SELECT("explanation");
+        sql.SELECT("recommendation");
+        sql.SELECT("tip");
+        sql.FROM("pattern_info");
+        applyWhere(sql, example, false);
+        
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
+        }
+        
+        return sql.toString();
+    }
+
+    public String selectByExample(PatternInfoExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("id");
+        } else {
+            sql.SELECT("id");
+        }
+        sql.SELECT("pattern_id");
+        sql.SELECT("pattern_name");
+        sql.FROM("pattern_info");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -64,60 +93,91 @@ public class ProjectSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Project record = (Project) parameter.get("record");
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        PatternInfoWithBLOBs record = (PatternInfoWithBLOBs) parameter.get("record");
+        PatternInfoExample example = (PatternInfoExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_info");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        if (record.getExplanation() != null) {
+            sql.SET("explanation = #{record.explanation,jdbcType=LONGVARCHAR}");
         }
         
+        if (record.getRecommendation() != null) {
+            sql.SET("recommendation = #{record.recommendation,jdbcType=LONGVARCHAR}");
+        }
+        
+        if (record.getTip() != null) {
+            sql.SET("tip = #{record.tip,jdbcType=LONGVARCHAR}");
+        }
+        
+        applyWhere(sql, example, true);
+        return sql.toString();
+    }
+
+    public String updateByExampleWithBLOBs(Map<String, Object> parameter) {
+        SQL sql = new SQL();
+        sql.UPDATE("pattern_info");
+        
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        sql.SET("explanation = #{record.explanation,jdbcType=LONGVARCHAR}");
+        sql.SET("recommendation = #{record.recommendation,jdbcType=LONGVARCHAR}");
+        sql.SET("tip = #{record.tip,jdbcType=LONGVARCHAR}");
+        
+        PatternInfoExample example = (PatternInfoExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_info");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
-        sql.SET("description = #{record.description,jdbcType=VARCHAR}");
-        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         
-        ProjectExample example = (ProjectExample) parameter.get("example");
+        PatternInfoExample example = (PatternInfoExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Project record) {
+    public String updateByPrimaryKeySelective(PatternInfoWithBLOBs record) {
         SQL sql = new SQL();
-        sql.UPDATE("project");
+        sql.UPDATE("pattern_info");
         
-        if (record.getProjectName() != null) {
-            sql.SET("project_name = #{projectName,jdbcType=VARCHAR}");
+        if (record.getPatternId() != null) {
+            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
         }
         
-        if (record.getDescription() != null) {
-            sql.SET("description = #{description,jdbcType=VARCHAR}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{patternName,jdbcType=VARCHAR}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
+        if (record.getExplanation() != null) {
+            sql.SET("explanation = #{explanation,jdbcType=LONGVARCHAR}");
+        }
+        
+        if (record.getRecommendation() != null) {
+            sql.SET("recommendation = #{recommendation,jdbcType=LONGVARCHAR}");
+        }
+        
+        if (record.getTip() != null) {
+            sql.SET("tip = #{tip,jdbcType=LONGVARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -125,7 +185,7 @@ public class ProjectSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, ProjectExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, PatternInfoExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

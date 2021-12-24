@@ -1,13 +1,12 @@
 package org.nju.demo.controller;
 
-import org.nju.demo.entity.Category;
 import org.nju.demo.entity.Knowledge;
-import org.nju.demo.entity.Pattern;
-import org.nju.demo.service.CategoryService;
+import org.nju.demo.entity.PatternInfo;
+import org.nju.demo.entity.PatternLk;
+import org.nju.demo.pojo.vo.KnowledgeVO;
+import org.nju.demo.pojo.vo.PatternVO;
 import org.nju.demo.service.KnowledgeService;
 import org.nju.demo.service.PatternService;
-import org.nju.demo.vo.KnowledgeVO;
-import org.nju.demo.vo.PatternVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +20,6 @@ import java.util.List;
 
 @Controller
 public class RepoController {
-
-    @Autowired
-    private CategoryService categoryService;
 
     @Autowired
     private PatternService patternService;
@@ -41,7 +37,7 @@ public class RepoController {
 
     @RequestMapping("/view/knowledge/{patternId}")
     public String viewKnowledge(@PathVariable("patternId") int id){
-        Pattern pattern = patternService.getPattern(id);
+        PatternInfo pattern = patternService.getPattern(id);
         session.setAttribute("pattern",pattern);
         return "knowledge_list";
     }
@@ -49,23 +45,20 @@ public class RepoController {
     @ResponseBody
     @RequestMapping("/patterns")
     public List<PatternVO> getPatterns(){
-        List<Pattern> patternList = patternService.getFalsePatterns();
+        List<PatternInfo> patternList = patternService.getPatternInfoList();
         List<PatternVO> patternVOList = new ArrayList<>();
-        for(Pattern pattern:patternList){
+        for(PatternInfo pattern:patternList){
             PatternVO patternVO = new PatternVO();
-            Category category = categoryService.getCategory(pattern.getCategoryId());
             patternVO.setId(pattern.getId());
             patternVO.setPatternName(pattern.getPatternName());
-            patternVO.setCategoryName(category.getCategoryName());
 
-            int trueNum = pattern.gettNum();
-            int falseNum = pattern.getfNum();
-            long n = patternService.countByCategoryId(pattern.getCategoryId());
+            PatternLk patternLk = patternService.getPatternLikelihood(pattern.getPatternId());
+
+            int trueNum = patternLk.gettNum();
+            int falseNum = patternLk.getfNum();
             double likelihood = trueNum*1.0/(trueNum+falseNum);
-            double variance = likelihood*(1-likelihood)/n;
 
             patternVO.setLikelihood(likelihood);
-            patternVO.setVariance(variance);
             patternVOList.add(patternVO);
         }
         return patternVOList;
@@ -74,7 +67,7 @@ public class RepoController {
     @ResponseBody
     @RequestMapping("/knowledgeVOs")
     public List<KnowledgeVO> getKnowledgeVOs(){
-        Pattern pattern = (Pattern) session.getAttribute("pattern");
+        PatternInfo pattern = (PatternInfo) session.getAttribute("pattern");
         List<Knowledge> knowledgeList = knowledgeService.getKnowledgeList(pattern.getId());
         List<KnowledgeVO> knowledgeVOList = new ArrayList<>();
         for(Knowledge knowledge : knowledgeList){
@@ -96,7 +89,7 @@ public class RepoController {
     @RequestMapping("/addKnowledge")
     public String addKnowledge(@RequestParam("knowledgeName") String knowledgeName,
                                @RequestParam("content") String content){
-        Pattern pattern = (Pattern) session.getAttribute("pattern");
+        PatternInfo pattern = (PatternInfo) session.getAttribute("pattern");
 
         Knowledge knowledge = new Knowledge();
         knowledge.setKnowledgeName(knowledgeName);

@@ -31,12 +31,12 @@ public interface ARuleMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into a_rule (rule_name, pattern, ",
-        "priority, category, ",
+        "insert into a_rule (rule_name, pattern_name, ",
+        "priority, kingdom, ",
         "file_name, function_name, ",
         "`state`, user_id)",
-        "values (#{ruleName,jdbcType=VARCHAR}, #{pattern,jdbcType=VARCHAR}, ",
-        "#{priority,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, ",
+        "values (#{ruleName,jdbcType=VARCHAR}, #{patternName,jdbcType=VARCHAR}, ",
+        "#{priority,jdbcType=VARCHAR}, #{kingdom,jdbcType=VARCHAR}, ",
         "#{fileName,jdbcType=VARCHAR}, #{functionName,jdbcType=VARCHAR}, ",
         "#{state,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})"
     })
@@ -51,9 +51,9 @@ public interface ARuleMapper {
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="rule_name", property="ruleName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern", property="pattern", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
-        @Result(column="category", property="category", jdbcType=JdbcType.VARCHAR),
+        @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
@@ -63,7 +63,7 @@ public interface ARuleMapper {
 
     @Select({
         "select",
-        "id, rule_name, pattern, priority, category, file_name, function_name, `state`, ",
+        "id, rule_name, pattern_name, priority, kingdom, file_name, function_name, `state`, ",
         "user_id",
         "from a_rule",
         "where id = #{id,jdbcType=INTEGER}"
@@ -71,9 +71,9 @@ public interface ARuleMapper {
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="rule_name", property="ruleName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern", property="pattern", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
-        @Result(column="category", property="category", jdbcType=JdbcType.VARCHAR),
+        @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
@@ -93,9 +93,9 @@ public interface ARuleMapper {
     @Update({
         "update a_rule",
         "set rule_name = #{ruleName,jdbcType=VARCHAR},",
-          "pattern = #{pattern,jdbcType=VARCHAR},",
+          "pattern_name = #{patternName,jdbcType=VARCHAR},",
           "priority = #{priority,jdbcType=VARCHAR},",
-          "category = #{category,jdbcType=VARCHAR},",
+          "kingdom = #{kingdom,jdbcType=VARCHAR},",
           "file_name = #{fileName,jdbcType=VARCHAR},",
           "function_name = #{functionName,jdbcType=VARCHAR},",
           "`state` = #{state,jdbcType=INTEGER},",

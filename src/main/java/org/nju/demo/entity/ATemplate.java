@@ -11,10 +11,6 @@ public class ATemplate {
 
     private Integer userId;
 
-    public ATemplate(){
-        this.state = 0;
-    }
-
     public Integer getId() {
         return id;
     }

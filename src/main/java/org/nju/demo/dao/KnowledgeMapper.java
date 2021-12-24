@@ -31,10 +31,10 @@ public interface KnowledgeMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into knowledge (knowledge_name, content, ",
-        "pattern_id)",
-        "values (#{knowledgeName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, ",
-        "#{patternId,jdbcType=INTEGER})"
+        "insert into knowledge (knowledge_name, pattern_id, ",
+        "content)",
+        "values (#{knowledgeName,jdbcType=VARCHAR}, #{patternId,jdbcType=INTEGER}, ",
+        "#{content,jdbcType=LONGVARCHAR})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Knowledge record);
@@ -43,31 +43,42 @@ public interface KnowledgeMapper {
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(Knowledge record);
 
+    @SelectProvider(type=KnowledgeSqlProvider.class, method="selectByExampleWithBLOBs")
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER),
+        @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
+    })
+    List<Knowledge> selectByExampleWithBLOBs(KnowledgeExample example);
+
     @SelectProvider(type=KnowledgeSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
         @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER)
     })
     List<Knowledge> selectByExample(KnowledgeExample example);
 
     @Select({
         "select",
-        "id, knowledge_name, content, pattern_id",
+        "id, knowledge_name, pattern_id, content",
         "from knowledge",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER)
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER),
+        @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
     Knowledge selectByPrimaryKey(Integer id);
 
     @UpdateProvider(type=KnowledgeSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
+
+    @UpdateProvider(type=KnowledgeSqlProvider.class, method="updateByExampleWithBLOBs")
+    int updateByExampleWithBLOBs(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
 
     @UpdateProvider(type=KnowledgeSqlProvider.class, method="updateByExample")
     int updateByExample(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
@@ -78,7 +89,15 @@ public interface KnowledgeMapper {
     @Update({
         "update knowledge",
         "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
-          "content = #{content,jdbcType=VARCHAR},",
+          "pattern_id = #{patternId,jdbcType=INTEGER},",
+          "content = #{content,jdbcType=LONGVARCHAR}",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    int updateByPrimaryKeyWithBLOBs(Knowledge record);
+
+    @Update({
+        "update knowledge",
+        "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
           "pattern_id = #{patternId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
