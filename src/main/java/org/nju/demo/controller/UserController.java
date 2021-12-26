@@ -29,12 +29,12 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping("/view/modify")
-    public String viewModify(Model model){
+    @RequestMapping("/view/info")
+    public String viewInfo(Model model){
         AUser user = (AUser) session.getAttribute("user");
         AUserInfo userInfo = userService.getUserInfoByUserId(user.getId());
         model.addAttribute("userInfo",userInfo);
-        return "modify";
+        return "user_info";
     }
 
     @RequestMapping("/login")
@@ -100,7 +100,7 @@ public class UserController {
         userInfo.setTelephone(telephone);
         userInfo.setEmail(email);
         userService.updateUserInfo(userInfo);
-        return "redirect:/view/modify";
+        return "redirect:/view/info";
     }
 
 }

@@ -26,8 +26,8 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public ATemplate getTemplate(int id) {
-        return templateMapper.selectByPrimaryKey(id);
+    public ATemplate getTemplate(String templateId) {
+        return templateMapper.selectByPrimaryKey(templateId);
     }
 
     @Override

@@ -28,6 +28,10 @@ public class ARuleSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("a_rule");
         
+        if (record.getRuleId() != null) {
+            sql.VALUES("rule_id", "#{ruleId,jdbcType=VARCHAR}");
+        }
+        
         if (record.getRuleName() != null) {
             sql.VALUES("rule_name", "#{ruleName,jdbcType=VARCHAR}");
         }
@@ -66,9 +70,9 @@ public class ARuleSqlProvider {
     public String selectByExample(ARuleExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("rule_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("rule_id");
         }
         sql.SELECT("rule_name");
         sql.SELECT("pattern_name");
@@ -95,8 +99,8 @@ public class ARuleSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_rule");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getRuleId() != null) {
+            sql.SET("rule_id = #{record.ruleId,jdbcType=VARCHAR}");
         }
         
         if (record.getRuleName() != null) {
@@ -139,7 +143,7 @@ public class ARuleSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_rule");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("rule_id = #{record.ruleId,jdbcType=VARCHAR}");
         sql.SET("rule_name = #{record.ruleName,jdbcType=VARCHAR}");
         sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         sql.SET("priority = #{record.priority,jdbcType=VARCHAR}");
@@ -190,7 +194,7 @@ public class ARuleSqlProvider {
             sql.SET("user_id = #{userId,jdbcType=INTEGER}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("rule_id = #{ruleId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

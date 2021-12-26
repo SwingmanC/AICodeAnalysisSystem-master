@@ -10,8 +10,8 @@ public interface ProjectService {
 
     List<Project> getProjects(int userId);
 
-    Project getProjectById(int id);
+    Project getProject(String projectId);
 
-    int deleteProject(int id);
+    int deleteProject(String projectId);
 
 }

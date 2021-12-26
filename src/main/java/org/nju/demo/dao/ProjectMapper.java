@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,26 +25,24 @@ public interface ProjectMapper {
 
     @Delete({
         "delete from project",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where project_id = #{projectId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String projectId);
 
     @Insert({
-        "insert into project (project_name, description, ",
-        "user_id)",
-        "values (#{projectName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
-        "#{userId,jdbcType=INTEGER})"
+        "insert into project (project_id, project_name, ",
+        "description, user_id)",
+        "values (#{projectId,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, ",
+        "#{description,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Project record);
 
     @InsertProvider(type=ProjectSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(Project record);
 
     @SelectProvider(type=ProjectSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="project_name", property="projectName", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
@@ -54,17 +51,17 @@ public interface ProjectMapper {
 
     @Select({
         "select",
-        "id, project_name, description, user_id",
+        "project_id, project_name, description, user_id",
         "from project",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where project_id = #{projectId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="project_name", property="projectName", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
-    Project selectByPrimaryKey(Integer id);
+    Project selectByPrimaryKey(String projectId);
 
     @UpdateProvider(type=ProjectSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") Project record, @Param("example") ProjectExample example);
@@ -80,7 +77,7 @@ public interface ProjectMapper {
         "set project_name = #{projectName,jdbcType=VARCHAR},",
           "description = #{description,jdbcType=VARCHAR},",
           "user_id = #{userId,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where project_id = #{projectId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Project record);
 }

@@ -16,7 +16,7 @@ public class VersionServiceImpl implements VersionService {
     private AVersionMapper versionMapper;
 
     @Override
-    public List<AVersion> getVersionsByProjectId(int projectId) {
+    public List<AVersion> getVersionsByProjectId(String projectId) {
 
         AVersionExample versionExample = new AVersionExample();
         AVersionExample.Criteria criteria = versionExample.createCriteria();
@@ -26,8 +26,8 @@ public class VersionServiceImpl implements VersionService {
     }
 
     @Override
-    public AVersion getVersion(int id) {
-        return versionMapper.selectByPrimaryKey(id);
+    public AVersion getVersion(String versionId) {
+        return versionMapper.selectByPrimaryKey(versionId);
     }
 
     @Override
@@ -38,14 +38,5 @@ public class VersionServiceImpl implements VersionService {
     @Override
     public int updateVersion(AVersion version) {
         return versionMapper.updateByPrimaryKeySelective(version);
-    }
-
-    @Override
-    public int deleteVersionByProjectId(int projectId) {
-        AVersionExample versionExample = new AVersionExample();
-        AVersionExample.Criteria criteria = versionExample.createCriteria();
-
-        criteria.andProjectIdEqualTo(projectId);
-        return versionMapper.deleteByExample(versionExample);
     }
 }

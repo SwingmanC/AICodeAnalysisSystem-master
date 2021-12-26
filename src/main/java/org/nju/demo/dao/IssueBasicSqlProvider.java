@@ -28,12 +28,12 @@ public class IssueBasicSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("issue_basic");
         
-        if (record.getPatternId() != null) {
-            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
-        }
-        
         if (record.getIssueId() != null) {
             sql.VALUES("issue_id", "#{issueId,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getPatternId() != null) {
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -65,7 +65,7 @@ public class IssueBasicSqlProvider {
         }
         
         if (record.getVersionId() != null) {
-            sql.VALUES("version_id", "#{versionId,jdbcType=INTEGER}");
+            sql.VALUES("version_id", "#{versionId,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
@@ -82,12 +82,11 @@ public class IssueBasicSqlProvider {
     public String selectByExampleWithBLOBs(IssueBasicExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("issue_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("issue_id");
         }
         sql.SELECT("pattern_id");
-        sql.SELECT("issue_id");
         sql.SELECT("priority");
         sql.SELECT("kingdom");
         sql.SELECT("file_name");
@@ -111,12 +110,11 @@ public class IssueBasicSqlProvider {
     public String selectByExample(IssueBasicExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("issue_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("issue_id");
         }
         sql.SELECT("pattern_id");
-        sql.SELECT("issue_id");
         sql.SELECT("priority");
         sql.SELECT("kingdom");
         sql.SELECT("file_name");
@@ -143,16 +141,12 @@ public class IssueBasicSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_basic");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getIssueId() != null) {
+            sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPatternId() != null) {
             sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getIssueId() != null) {
-            sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -184,7 +178,7 @@ public class IssueBasicSqlProvider {
         }
         
         if (record.getVersionId() != null) {
-            sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+            sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
@@ -203,9 +197,8 @@ public class IssueBasicSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_basic");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("priority = #{record.priority,jdbcType=VARCHAR}");
         sql.SET("kingdom = #{record.kingdom,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
@@ -213,7 +206,7 @@ public class IssueBasicSqlProvider {
         sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
         sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
-        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
         sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
         
@@ -226,9 +219,8 @@ public class IssueBasicSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_basic");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("priority = #{record.priority,jdbcType=VARCHAR}");
         sql.SET("kingdom = #{record.kingdom,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
@@ -236,7 +228,7 @@ public class IssueBasicSqlProvider {
         sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
         sql.SET("target_function = #{record.targetFunction,jdbcType=VARCHAR}");
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
-        sql.SET("version_id = #{record.versionId,jdbcType=INTEGER}");
+        sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
         
         IssueBasicExample example = (IssueBasicExample) parameter.get("example");
@@ -250,10 +242,6 @@ public class IssueBasicSqlProvider {
         
         if (record.getPatternId() != null) {
             sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getIssueId() != null) {
-            sql.SET("issue_id = #{issueId,jdbcType=VARCHAR}");
         }
         
         if (record.getPriority() != null) {
@@ -285,7 +273,7 @@ public class IssueBasicSqlProvider {
         }
         
         if (record.getVersionId() != null) {
-            sql.SET("version_id = #{versionId,jdbcType=INTEGER}");
+            sql.SET("version_id = #{versionId,jdbcType=VARCHAR}");
         }
         
         if (record.getState() != null) {
@@ -296,7 +284,7 @@ public class IssueBasicSqlProvider {
             sql.SET("snippet = #{snippet,jdbcType=LONGVARCHAR}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("issue_id = #{issueId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

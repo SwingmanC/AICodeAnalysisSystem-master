@@ -1,7 +1,7 @@
 package org.nju.demo.entity;
 
 public class Project {
-    private Integer id;
+    private String projectId;
 
     private String projectName;
 
@@ -9,12 +9,12 @@ public class Project {
 
     private Integer userId;
 
-    public Integer getId() {
-        return id;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getProjectName() {
@@ -47,7 +47,7 @@ public class Project {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", projectId=").append(projectId);
         sb.append(", projectName=").append(projectName);
         sb.append(", description=").append(description);
         sb.append(", userId=").append(userId);
@@ -67,7 +67,7 @@ public class Project {
             return false;
         }
         Project other = (Project) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+        return (this.getProjectId() == null ? other.getProjectId() == null : this.getProjectId().equals(other.getProjectId()))
             && (this.getProjectName() == null ? other.getProjectName() == null : this.getProjectName().equals(other.getProjectName()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()));
@@ -77,7 +77,7 @@ public class Project {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getProjectId() == null) ? 0 : getProjectId().hashCode());
         result = prime * result + ((getProjectName() == null) ? 0 : getProjectName().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());

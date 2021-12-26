@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
 
     <title>源代码误报智能分析</title>
 
-    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet"/>
-    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet"/>
-    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
-    <link href="/css/animate.css" rel="stylesheet"/>
-    <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet" />
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet" />
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="/css/animate.css" rel="stylesheet" />
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet" />
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
@@ -35,88 +35,55 @@
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
     <script src="/js/layer/layer.js"></script>
+
 </head>
 
-<body>
+<body class="gray-bg top-navigation">
+
     <div id="wrapper">
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
-                             </span>
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.user.username}"></strong>
-                             </span>  <span class="text-muted text-xs block">南京大学 <b class="caret"></b></span> </span>
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="#">修改头像</a>
-                                </li>
-                                <li><a href="/view/modify">个人资料</a>
-                                </li>
-                                <li><a href="#">联系我们</a>
-                                </li>
-                                <li><a href="#">信箱</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="/logout">安全退出</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="logo-element">
-                            H+
-                        </div>
-                    </li>
-                    <li class="active">
-                        <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
-                    </li>
-                    <li>
-                        <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
-                    </li>
-                    <li>
-                        <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
-                    </li>
-                    <li>
-                        <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
-                    </li>
-                    <li>
-                        <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
-                    </li>
-                </ul>
-
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom white-bg">
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-header">
+                        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <i class="fa fa-reorder"></i>
+                        </button>
+                        <a href="#" class="navbar-brand">CodeAnalysis</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                            </li>
+                            <li>
+                                <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
+                            </li>
+                            <li>
+                                <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
+                            </li>
+                            <li>
+                                <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
+                            </li>
+                            <li>
+                                <a href="/view/info"><i class="fa fa-user"></i> <span class="nav-label">个人中心</span></a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <a href="/logout">
+                                    <i class="fa fa-sign-out"></i> 退出
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-        </nav>
-        <div class="row border-bottom">
-            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <a href="/logout">
-                            <i class="fa fa-sign-out"></i> 退出
-                        </a>
-                    </li>
-                </ul>
-
-            </nav>
-        </div>
-        <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>项目列表</h2>
-                </div>
-                <div class="col-lg-2">
-
-                </div>
-            </div>
-            <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="wrapper wrapper-content">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">添加新项目</a>
+                                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">添加任务</a>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -129,122 +96,125 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">添加新项目</h3>
-                        </div>
-                        <form id="project_info" action="#">
-                            <div class="modal-body">
-                                <div class="container">
-                                    <table>
-                                        <tr>
-                                            <td><label for="projectName">项目名称：</label></td>
-                                            <td style="width: 350px;"><input type="text" class="form-control" id="projectName" name="projectName" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label for="description">项目描述：</label></td>
-                                            <td style="width: 350px;"><input type="text" class="form-control" id="description" name="description" required/></td>
-                                        </tr>
-                                    </table>
-                                    <style>
-                                        td{
-                                            padding-bottom: 10px;
-                                        }
-                                    </style>
+                <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">添加新项目</h3>
+                            </div>
+                            <form id="project_info" action="#">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <table>
+                                            <tr>
+                                                <td><label for="projectName">项目名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="projectName" name="projectName" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="description">项目描述：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="description" name="description" required/></td>
+                                            </tr>
+                                        </table>
+                                        <style>
+                                            td {
+                                                padding-bottom: 10px;
+                                            }
+                                        </style>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="submit" class="btn btn-primary" id="add_submit" onclick="add()">确认</button>
-                            </div>
-                        </form>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary" id="add_submit" onclick="add()">确认</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
             </div>
             <div class="footer">
+                <div class="pull-right">
+                </div>
+                <div>
+                </div>
             </div>
-
         </div>
     </div>
-
-
-    </div>
-
-    <script th:inline="javascript">
-        $(document).ready(function () {
-            $("#projectTable").bootstrapTable({
-                url:"/projects",  //请求地址
-                striped : true, //是否显示行间隔色
-                pageNumber : 1, //初始化加载第一页
-                pagination : true,//是否分页
-                sidePagination : 'client',//server:服务器端分页|client：前端分页
-                pageSize : 5,//单页记录数
-                pageList : [1, 5, 10],//可选择单页记录数
-                showRefresh : true,//刷新按钮
-                columns : [ {
-                    title : '#',
-                    field : 'id',
-                    sortable : true
-                },{
-                    title : '项目名称',
-                    field : 'projectName',
-                    sortable : true
-                },{
-                    title : '项目描述',
-                    field : 'description',
-                    sortable : true
-                },{
-                    field: 'operate',
-                    title: '操作',
-                    formatter: operateFormatter //自定义方法，添加操作按钮
-                }]
-            })
-        });
-        function operateFormatter(value, row, index) {
-            let path = "/view/versions/"+row.id;
-            return "<a href=\""+path+"\"><i class='fa fa-eye'></i></a>"+"  "+"<a href='#' title='删除' onclick='del(\""+row.id+"\")'><i class='fa fa-trash'></i></a>";
-        }
-        function add(){
-            let projectName = $("#projectName").val();
-            let description = $("#description").val();
-            $.ajax({
-                url:'/addProject',
-                type: 'post',
-                data:{
-                    "projectName":projectName,
-                    "description":description
-                },
-                dateType:'json',
-                success:function(msg){
-                    layer.msg("上传成功");
-                    window.location.href = "/view/projects";
-                }
-            })
-        }
-        function del(id){
-            layer.open({
-                title:false,
-                shade:0.4,
-                content:'确定移除此项目？',
-                btn:['确定','取消'],
-                yes:function(index,layero){
-                    $.ajax({
-                        url:'/deleteProject/'+id,
-                        success:function(msg){
-                            if (msg === 1) location.reload();
-                        }
-                    });
-                    layer.close(index);
-                },
-                btn2:function(index,layero){
-                    layer.close(index);
-                }
-            });
-        }
-    </script>
 </body>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $("#projectTable").bootstrapTable({
+            url: "/projects", //请求地址
+            striped: true, //是否显示行间隔色
+            pageNumber: 1, //初始化加载第一页
+            pagination: true, //是否分页
+            sidePagination: 'client', //server:服务器端分页|client：前端分页
+            pageSize: 5, //单页记录数
+            pageList: [1, 5, 10], //可选择单页记录数
+            showRefresh: true, //刷新按钮
+            columns: [{
+                title: '#',
+                field: 'id',
+                sortable: true
+            }, {
+                title: '项目名称',
+                field: 'projectName',
+                sortable: true
+            }, {
+                title: '项目描述',
+                field: 'description',
+                sortable: true
+            }, {
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    });
+
+    function operateFormatter(value, row, index) {
+        let path = "/view/versions/" + row.id;
+        return "<a href=\"" + path + "\"><i class='fa fa-eye'></i></a>" + "  " + "<a href='#' title='删除' onclick='del(\"" + row.id + "\")'><i class='fa fa-trash'></i></a>";
+    }
+
+    function add() {
+        let projectName = $("#projectName").val();
+        let description = $("#description").val();
+        $.ajax({
+            url: '/addProject',
+            type: 'post',
+            data: {
+                "projectName": projectName,
+                "description": description
+            },
+            dateType: 'json',
+            success: function(msg) {
+                layer.msg("上传成功");
+                window.location.href = "/view/projects";
+            }
+        })
+    }
+    // function del(id){
+    //     layer.open({
+    //         title:false,
+    //         shade:0.4,
+    //         content:'确定移除此项目？',
+    //         btn:['确定','取消'],
+    //         yes:function(index,layero){
+    //             $.ajax({
+    //                 url:'/deleteProject/'+id,
+    //                 success:function(msg){
+    //                     if (msg === 1) location.reload();
+    //                 }
+    //             });
+    //             layer.close(index);
+    //         },
+    //         btn2:function(index,layero){
+    //             layer.close(index);
+    //         }
+    //     });
+    // }
+</script>
 
 </html>

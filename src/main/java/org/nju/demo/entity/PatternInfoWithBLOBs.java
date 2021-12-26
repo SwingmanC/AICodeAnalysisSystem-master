@@ -56,9 +56,8 @@ public class PatternInfoWithBLOBs extends PatternInfo {
             return false;
         }
         PatternInfoWithBLOBs other = (PatternInfoWithBLOBs) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getPatternId() == null ? other.getPatternId() == null : this.getPatternId().equals(other.getPatternId()))
-            && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()))
+        return (this.getPatternInfoId() == null ? other.getPatternInfoId() == null : this.getPatternInfoId().equals(other.getPatternInfoId()))
+            && (this.getPatternLkId() == null ? other.getPatternLkId() == null : this.getPatternLkId().equals(other.getPatternLkId()))
             && (this.getExplanation() == null ? other.getExplanation() == null : this.getExplanation().equals(other.getExplanation()))
             && (this.getRecommendation() == null ? other.getRecommendation() == null : this.getRecommendation().equals(other.getRecommendation()))
             && (this.getTip() == null ? other.getTip() == null : this.getTip().equals(other.getTip()));
@@ -68,9 +67,8 @@ public class PatternInfoWithBLOBs extends PatternInfo {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
-        result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
+        result = prime * result + ((getPatternInfoId() == null) ? 0 : getPatternInfoId().hashCode());
+        result = prime * result + ((getPatternLkId() == null) ? 0 : getPatternLkId().hashCode());
         result = prime * result + ((getExplanation() == null) ? 0 : getExplanation().hashCode());
         result = prime * result + ((getRecommendation() == null) ? 0 : getRecommendation().hashCode());
         result = prime * result + ((getTip() == null) ? 0 : getTip().hashCode());

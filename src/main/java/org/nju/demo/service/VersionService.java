@@ -7,13 +7,11 @@ import java.util.List;
 
 public interface VersionService {
 
-    List<AVersion> getVersionsByProjectId(int projectId);
+    List<AVersion> getVersionsByProjectId(String projectId);
 
-    AVersion getVersion(int id);
+    AVersion getVersion(String versionId);
 
     int addVersion(AVersion version);
 
     int updateVersion(AVersion version);
-
-    int deleteVersionByProjectId(int projectId);
 }

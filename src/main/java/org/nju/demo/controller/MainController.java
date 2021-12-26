@@ -55,6 +55,11 @@ public class MainController {
 
     private static String UPLOADED_FOLDER = System.getProperty("user.dir");
 
+    @RequestMapping("/test")
+    public String test(){
+        return "index";
+    }
+
     @RequestMapping("/view/projects")
     public String viewProjects(){
         return "project_list";
@@ -270,21 +275,23 @@ public class MainController {
                 }
             }
 
+            for (PatternInfoWithBLOBs patternInfo:patternInfoList){
+                if (patternService.getPatternLikelihood(patternInfo.getPatternId()) == null) {
+                    PatternLk patternLk = new PatternLk();
+                    patternLk.setPatternId(patternInfo.getPatternId());
+                    patternService.addPatternInfo(patternInfo);
+                    patternService.addPatternLk(patternLk);
+                }
+            }
+
             for (IssueBasic issueBasic : issueBasicList){
+                issueBasic.setVersionId(versionId);
+                System.out.println(issueBasic.getIssueId()+" "+issueBasic.getPatternId());
                 issueService.addIssue(issueBasic);
             }
 
             for (IssueSource issueSource : issueSourceList){
                 issueService.addSourceInfo(issueSource);
-            }
-
-            for (PatternInfoWithBLOBs patternInfo:patternInfoList){
-                if (patternService.getPatternLikelihood(patternInfo.getPatternId()) == null){
-                    PatternLk patternLk = new PatternLk();
-                    patternLk.setPatternId(patternInfo.getPatternId());
-                    patternService.addPatternLk(patternLk);
-                }
-                patternService.addPatternInfo(patternInfo);
             }
             return 1;
         }catch (Exception e){

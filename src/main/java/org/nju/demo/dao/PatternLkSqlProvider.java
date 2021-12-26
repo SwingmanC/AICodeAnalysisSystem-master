@@ -28,8 +28,12 @@ public class PatternLkSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("pattern_lk");
         
-        if (record.getPatternId() != null) {
-            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
+        if (record.getPatternLkId() != null) {
+            sql.VALUES("pattern_lk_id", "#{patternLkId,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getPatternName() != null) {
+            sql.VALUES("pattern_name", "#{patternName,jdbcType=VARCHAR}");
         }
         
         if (record.gettNum() != null) {
@@ -46,11 +50,11 @@ public class PatternLkSqlProvider {
     public String selectByExample(PatternLkExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("pattern_lk_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("pattern_lk_id");
         }
-        sql.SELECT("pattern_id");
+        sql.SELECT("pattern_name");
         sql.SELECT("t_num");
         sql.SELECT("f_num");
         sql.FROM("pattern_lk");
@@ -70,12 +74,12 @@ public class PatternLkSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_lk");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getPatternLkId() != null) {
+            sql.SET("pattern_lk_id = #{record.patternLkId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         }
         
         if (record.gettNum() != null) {
@@ -94,8 +98,8 @@ public class PatternLkSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_lk");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
+        sql.SET("pattern_lk_id = #{record.patternLkId,jdbcType=VARCHAR}");
+        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
         sql.SET("t_num = #{record.tNum,jdbcType=INTEGER}");
         sql.SET("f_num = #{record.fNum,jdbcType=INTEGER}");
         
@@ -108,8 +112,8 @@ public class PatternLkSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_lk");
         
-        if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
+        if (record.getPatternName() != null) {
+            sql.SET("pattern_name = #{patternName,jdbcType=VARCHAR}");
         }
         
         if (record.gettNum() != null) {
@@ -120,7 +124,7 @@ public class PatternLkSqlProvider {
             sql.SET("f_num = #{fNum,jdbcType=INTEGER}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

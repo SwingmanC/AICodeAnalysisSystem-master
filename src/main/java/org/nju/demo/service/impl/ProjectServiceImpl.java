@@ -31,12 +31,12 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project getProjectById(int id) {
-        return projectMapper.selectByPrimaryKey(id);
+    public Project getProject(String projectId) {
+        return projectMapper.selectByPrimaryKey(projectId);
     }
 
     @Override
-    public int deleteProject(int id) {
-        return projectMapper.deleteByPrimaryKey(id);
+    public int deleteProject(String projectId) {
+        return projectMapper.deleteByPrimaryKey(projectId);
     }
 }

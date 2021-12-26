@@ -19,20 +19,11 @@ public class PatternServiceImpl implements PatternService {
     private PatternLkMapper patternLkMapper;
 
     @Override
-    public PatternInfo getPatternInfoByPatternName(String patternName) {
+    public PatternInfoWithBLOBs getPatternInfoByPatternLkId(String patternLkId) {
         PatternInfoExample example = new PatternInfoExample();
         PatternInfoExample.Criteria criteria = example.createCriteria();
 
-        criteria.andPatternNameEqualTo(patternName);
-        return patternInfoMapper.selectByExample(example).get(0);
-    }
-
-    @Override
-    public PatternInfoWithBLOBs getPatternInfo(String patternId) {
-        PatternInfoExample example = new PatternInfoExample();
-        PatternInfoExample.Criteria criteria = example.createCriteria();
-
-        criteria.andPatternIdEqualTo(patternId);
+        criteria.andPatternLkIdEqualTo(patternLkId);
 
         List<PatternInfoWithBLOBs> patternInfoList = patternInfoMapper.selectByExampleWithBLOBs(example);
         if (patternInfoList.size() > 0)
@@ -41,38 +32,19 @@ public class PatternServiceImpl implements PatternService {
     }
 
     @Override
-    public PatternLk getPatternLikelihood(String patternId) {
-        PatternLkExample example = new PatternLkExample();
-        PatternLkExample.Criteria criteria = example.createCriteria();
-
-        criteria.andPatternIdEqualTo(patternId);
-
-        List<PatternLk> patternLkList = patternLkMapper.selectByExample(example);
-        if (patternLkList.size() > 0)
-            return patternLkList.get(0);
-        else return null;
+    public PatternInfoWithBLOBs getPatternInfo(String patternInfoId) {
+        return patternInfoMapper.selectByPrimaryKey(patternInfoId);
     }
 
     @Override
-    public PatternInfoWithBLOBs getPattern(int id) {
-        return patternInfoMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public PatternLk getPatternLk(int id) {
-        return patternLkMapper.selectByPrimaryKey(id);
+    public PatternLk getPatternLk(String patternLkId) {
+        return patternLkMapper.selectByPrimaryKey(patternLkId);
     }
 
     @Override
     public List<PatternLk> getPatternLkList() {
         PatternLkExample example = new PatternLkExample();
         return patternLkMapper.selectByExample(example);
-    }
-
-    @Override
-    public List<PatternInfo> getPatternInfoList() {
-        PatternInfoExample example = new PatternInfoExample();
-        return patternInfoMapper.selectByExample(example);
     }
 
     @Override

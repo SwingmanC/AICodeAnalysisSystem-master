@@ -1,16 +1,16 @@
 package org.nju.demo.pojo.vo;
 
 public class PatternVO {
-    private int id;
+    private String patternId;
     private String patternName;
     private double likelihood;
 
-    public int getId() {
-        return id;
+    public String getPatternId() {
+        return patternId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
     }
 
     public String getPatternName() {

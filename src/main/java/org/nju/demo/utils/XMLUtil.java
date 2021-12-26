@@ -66,15 +66,17 @@ public class XMLUtil {
 
             Element group = (Element) groupSection.item(i);
             Element summary = (Element) group.getElementsByTagName("MajorAttributeSummary").item(0);
-            Element metaInfo1 = (Element) summary.getElementsByTagName("MetaInfo").item(1);
+
+            NodeList metaInfoList = summary.getElementsByTagName("MetaInfo");
+
+            Element metaInfo1 = (Element) metaInfoList.item(1);
             Element value1 = (Element) metaInfo1.getElementsByTagName("Value").item(0);
             explanation = value1.getTextContent();
-            Element metaInfo2 = (Element) summary.getElementsByTagName("MetaInfo").item(2);
+            Element metaInfo2 = (Element) metaInfoList.item(2);
             Element value2 = (Element) metaInfo2.getElementsByTagName("Value").item(0);
             recommendation = value2.getTextContent();
-            Element metaInfo3 = (Element) summary.getElementsByTagName("MetaInfo").item(3);
-            Element name = (Element) metaInfo3.getElementsByTagName("Name").item(0);
-            if (name.getTextContent().equals("Tips")){
+            if (metaInfoList.getLength() > 3){
+                Element metaInfo3 = (Element) metaInfoList.item(3);
                 Element value3 = (Element) metaInfo3.getElementsByTagName("Value").item(0);
                 tip = value3.getTextContent();
             }
@@ -106,9 +108,11 @@ public class XMLUtil {
                 issueBasic.setSnippet(sinkSnippet.getTextContent());
                 issueBasic.setTargetFunction(sinkTargetFunction.getTextContent());
 
-                if(issue.getElementsByTagName("Source") != null){
+                Element source = (Element) issue.getElementsByTagName("Source").item(0);
+
+                if(source != null){
                     IssueSource issueSource = new IssueSource();
-                    Element source = (Element) issue.getElementsByTagName("Source").item(0);
+
                     Element sourceFileName = (Element) source.getElementsByTagName("FileName").item(0);
                     Element sourceFilePath = (Element) source.getElementsByTagName("FilePath").item(0);
                     Element sourceStartLine = (Element) source.getElementsByTagName("LineStart").item(0);

@@ -104,63 +104,73 @@ public class IssueBasicExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andIssueIdIsNull() {
+            addCriterion("issue_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andIssueIdIsNotNull() {
+            addCriterion("issue_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andIssueIdEqualTo(String value) {
+            addCriterion("issue_id =", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andIssueIdNotEqualTo(String value) {
+            addCriterion("issue_id <>", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andIssueIdGreaterThan(String value) {
+            addCriterion("issue_id >", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andIssueIdGreaterThanOrEqualTo(String value) {
+            addCriterion("issue_id >=", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andIssueIdLessThan(String value) {
+            addCriterion("issue_id <", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andIssueIdLessThanOrEqualTo(String value) {
+            addCriterion("issue_id <=", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andIssueIdLike(String value) {
+            addCriterion("issue_id like", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andIssueIdNotLike(String value) {
+            addCriterion("issue_id not like", value, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andIssueIdIn(List<String> values) {
+            addCriterion("issue_id in", values, "issueId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andIssueIdNotIn(List<String> values) {
+            addCriterion("issue_id not in", values, "issueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssueIdBetween(String value1, String value2) {
+            addCriterion("issue_id between", value1, value2, "issueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssueIdNotBetween(String value1, String value2) {
+            addCriterion("issue_id not between", value1, value2, "issueId");
             return (Criteria) this;
         }
 
@@ -231,76 +241,6 @@ public class IssueBasicExample {
 
         public Criteria andPatternIdNotBetween(String value1, String value2) {
             addCriterion("pattern_id not between", value1, value2, "patternId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdIsNull() {
-            addCriterion("issue_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdIsNotNull() {
-            addCriterion("issue_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdEqualTo(String value) {
-            addCriterion("issue_id =", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdNotEqualTo(String value) {
-            addCriterion("issue_id <>", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdGreaterThan(String value) {
-            addCriterion("issue_id >", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdGreaterThanOrEqualTo(String value) {
-            addCriterion("issue_id >=", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdLessThan(String value) {
-            addCriterion("issue_id <", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdLessThanOrEqualTo(String value) {
-            addCriterion("issue_id <=", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdLike(String value) {
-            addCriterion("issue_id like", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdNotLike(String value) {
-            addCriterion("issue_id not like", value, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdIn(List<String> values) {
-            addCriterion("issue_id in", values, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdNotIn(List<String> values) {
-            addCriterion("issue_id not in", values, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdBetween(String value1, String value2) {
-            addCriterion("issue_id between", value1, value2, "issueId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIssueIdNotBetween(String value1, String value2) {
-            addCriterion("issue_id not between", value1, value2, "issueId");
             return (Criteria) this;
         }
 
@@ -794,52 +734,62 @@ public class IssueBasicExample {
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdEqualTo(Integer value) {
+        public Criteria andVersionIdEqualTo(String value) {
             addCriterion("version_id =", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotEqualTo(Integer value) {
+        public Criteria andVersionIdNotEqualTo(String value) {
             addCriterion("version_id <>", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdGreaterThan(Integer value) {
+        public Criteria andVersionIdGreaterThan(String value) {
             addCriterion("version_id >", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andVersionIdGreaterThanOrEqualTo(String value) {
             addCriterion("version_id >=", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdLessThan(Integer value) {
+        public Criteria andVersionIdLessThan(String value) {
             addCriterion("version_id <", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdLessThanOrEqualTo(Integer value) {
+        public Criteria andVersionIdLessThanOrEqualTo(String value) {
             addCriterion("version_id <=", value, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdIn(List<Integer> values) {
+        public Criteria andVersionIdLike(String value) {
+            addCriterion("version_id like", value, "versionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionIdNotLike(String value) {
+            addCriterion("version_id not like", value, "versionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andVersionIdIn(List<String> values) {
             addCriterion("version_id in", values, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotIn(List<Integer> values) {
+        public Criteria andVersionIdNotIn(List<String> values) {
             addCriterion("version_id not in", values, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdBetween(Integer value1, Integer value2) {
+        public Criteria andVersionIdBetween(String value1, String value2) {
             addCriterion("version_id between", value1, value2, "versionId");
             return (Criteria) this;
         }
 
-        public Criteria andVersionIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andVersionIdNotBetween(String value1, String value2) {
             addCriterion("version_id not between", value1, value2, "versionId");
             return (Criteria) this;
         }

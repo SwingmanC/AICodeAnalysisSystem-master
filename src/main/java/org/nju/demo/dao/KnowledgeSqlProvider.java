@@ -28,12 +28,16 @@ public class KnowledgeSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("knowledge");
         
+        if (record.getKnowledgeId() != null) {
+            sql.VALUES("knowledge_id", "#{knowledgeId,jdbcType=VARCHAR}");
+        }
+        
         if (record.getKnowledgeName() != null) {
             sql.VALUES("knowledge_name", "#{knowledgeName,jdbcType=VARCHAR}");
         }
         
         if (record.getPatternId() != null) {
-            sql.VALUES("pattern_id", "#{patternId,jdbcType=INTEGER}");
+            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
         
         if (record.getContent() != null) {
@@ -46,9 +50,9 @@ public class KnowledgeSqlProvider {
     public String selectByExampleWithBLOBs(KnowledgeExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("knowledge_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("knowledge_id");
         }
         sql.SELECT("knowledge_name");
         sql.SELECT("pattern_id");
@@ -66,9 +70,9 @@ public class KnowledgeSqlProvider {
     public String selectByExample(KnowledgeExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("knowledge_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("knowledge_id");
         }
         sql.SELECT("knowledge_name");
         sql.SELECT("pattern_id");
@@ -89,8 +93,8 @@ public class KnowledgeSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("knowledge");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getKnowledgeId() != null) {
+            sql.SET("knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR}");
         }
         
         if (record.getKnowledgeName() != null) {
@@ -98,7 +102,7 @@ public class KnowledgeSqlProvider {
         }
         
         if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
+            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         }
         
         if (record.getContent() != null) {
@@ -113,9 +117,9 @@ public class KnowledgeSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("knowledge");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR}");
         sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
         
         KnowledgeExample example = (KnowledgeExample) parameter.get("example");
@@ -127,9 +131,9 @@ public class KnowledgeSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("knowledge");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR}");
         sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=INTEGER}");
+        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         
         KnowledgeExample example = (KnowledgeExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -145,14 +149,14 @@ public class KnowledgeSqlProvider {
         }
         
         if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{patternId,jdbcType=INTEGER}");
+            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
         }
         
         if (record.getContent() != null) {
             sql.SET("content = #{content,jdbcType=LONGVARCHAR}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("knowledge_id = #{knowledgeId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

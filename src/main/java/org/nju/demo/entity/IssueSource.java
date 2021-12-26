@@ -1,9 +1,9 @@
 package org.nju.demo.entity;
 
 public class IssueSource {
-    private Integer id;
+    private String issueSourceId;
 
-    private String issueId;
+    private String issueBasicId;
 
     private String fileName;
 
@@ -15,20 +15,20 @@ public class IssueSource {
 
     private String snippet;
 
-    public Integer getId() {
-        return id;
+    public String getIssueSourceId() {
+        return issueSourceId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIssueSourceId(String issueSourceId) {
+        this.issueSourceId = issueSourceId;
     }
 
-    public String getIssueId() {
-        return issueId;
+    public String getIssueBasicId() {
+        return issueBasicId;
     }
 
-    public void setIssueId(String issueId) {
-        this.issueId = issueId;
+    public void setIssueBasicId(String issueBasicId) {
+        this.issueBasicId = issueBasicId;
     }
 
     public String getFileName() {
@@ -77,8 +77,8 @@ public class IssueSource {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", issueId=").append(issueId);
+        sb.append(", issueSourceId=").append(issueSourceId);
+        sb.append(", issueBasicId=").append(issueBasicId);
         sb.append(", fileName=").append(fileName);
         sb.append(", filePath=").append(filePath);
         sb.append(", startLine=").append(startLine);
@@ -100,8 +100,8 @@ public class IssueSource {
             return false;
         }
         IssueSource other = (IssueSource) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getIssueId() == null ? other.getIssueId() == null : this.getIssueId().equals(other.getIssueId()))
+        return (this.getIssueSourceId() == null ? other.getIssueSourceId() == null : this.getIssueSourceId().equals(other.getIssueSourceId()))
+            && (this.getIssueBasicId() == null ? other.getIssueBasicId() == null : this.getIssueBasicId().equals(other.getIssueBasicId()))
             && (this.getFileName() == null ? other.getFileName() == null : this.getFileName().equals(other.getFileName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
             && (this.getStartLine() == null ? other.getStartLine() == null : this.getStartLine().equals(other.getStartLine()))
@@ -113,8 +113,8 @@ public class IssueSource {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getIssueId() == null) ? 0 : getIssueId().hashCode());
+        result = prime * result + ((getIssueSourceId() == null) ? 0 : getIssueSourceId().hashCode());
+        result = prime * result + ((getIssueBasicId() == null) ? 0 : getIssueBasicId().hashCode());
         result = prime * result + ((getFileName() == null) ? 0 : getFileName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
         result = prime * result + ((getStartLine() == null) ? 0 : getStartLine().hashCode());

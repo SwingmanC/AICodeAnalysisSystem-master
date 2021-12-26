@@ -1,33 +1,33 @@
 package org.nju.demo.entity;
 
 public class PatternLk {
-    private Integer id;
+    private String patternLkId;
 
-    private String patternId;
+    private String patternName;
 
     private Integer tNum;
 
     private Integer fNum;
 
     public PatternLk(){
-        tNum = 0;
-        fNum = 0;
+        this.tNum = 0;
+        this.fNum = 0;
     }
 
-    public Integer getId() {
-        return id;
+    public String getPatternLkId() {
+        return patternLkId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPatternLkId(String patternLkId) {
+        this.patternLkId = patternLkId;
     }
 
-    public String getPatternId() {
-        return patternId;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setPatternId(String patternId) {
-        this.patternId = patternId;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
     public Integer gettNum() {
@@ -52,8 +52,8 @@ public class PatternLk {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", patternId=").append(patternId);
+        sb.append(", patternLkId=").append(patternLkId);
+        sb.append(", patternName=").append(patternName);
         sb.append(", tNum=").append(tNum);
         sb.append(", fNum=").append(fNum);
         sb.append("]");
@@ -72,8 +72,8 @@ public class PatternLk {
             return false;
         }
         PatternLk other = (PatternLk) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getPatternId() == null ? other.getPatternId() == null : this.getPatternId().equals(other.getPatternId()))
+        return (this.getPatternLkId() == null ? other.getPatternLkId() == null : this.getPatternLkId().equals(other.getPatternLkId()))
+            && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()))
             && (this.gettNum() == null ? other.gettNum() == null : this.gettNum().equals(other.gettNum()))
             && (this.getfNum() == null ? other.getfNum() == null : this.getfNum().equals(other.getfNum()));
     }
@@ -82,8 +82,8 @@ public class PatternLk {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
+        result = prime * result + ((getPatternLkId() == null) ? 0 : getPatternLkId().hashCode());
+        result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
         result = prime * result + ((gettNum() == null) ? 0 : gettNum().hashCode());
         result = prime * result + ((getfNum() == null) ? 0 : getfNum().hashCode());
         return result;

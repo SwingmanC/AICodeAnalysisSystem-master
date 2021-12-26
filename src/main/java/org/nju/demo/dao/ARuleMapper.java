@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,30 +25,30 @@ public interface ARuleMapper {
 
     @Delete({
         "delete from a_rule",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String ruleId);
 
     @Insert({
-        "insert into a_rule (rule_name, pattern_name, ",
-        "priority, kingdom, ",
-        "file_name, function_name, ",
-        "`state`, user_id)",
-        "values (#{ruleName,jdbcType=VARCHAR}, #{patternName,jdbcType=VARCHAR}, ",
-        "#{priority,jdbcType=VARCHAR}, #{kingdom,jdbcType=VARCHAR}, ",
-        "#{fileName,jdbcType=VARCHAR}, #{functionName,jdbcType=VARCHAR}, ",
-        "#{state,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})"
+        "insert into a_rule (rule_id, rule_name, ",
+        "pattern_name, priority, ",
+        "kingdom, file_name, ",
+        "function_name, `state`, ",
+        "user_id)",
+        "values (#{ruleId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, ",
+        "#{patternName,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, ",
+        "#{kingdom,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, ",
+        "#{functionName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, ",
+        "#{userId,jdbcType=INTEGER})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(ARule record);
 
     @InsertProvider(type=ARuleSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(ARule record);
 
     @SelectProvider(type=ARuleSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="rule_id", property="ruleId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="rule_name", property="ruleName", jdbcType=JdbcType.VARCHAR),
         @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
@@ -63,13 +62,13 @@ public interface ARuleMapper {
 
     @Select({
         "select",
-        "id, rule_name, pattern_name, priority, kingdom, file_name, function_name, `state`, ",
-        "user_id",
+        "rule_id, rule_name, pattern_name, priority, kingdom, file_name, function_name, ",
+        "`state`, user_id",
         "from a_rule",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="rule_id", property="ruleId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="rule_name", property="ruleName", jdbcType=JdbcType.VARCHAR),
         @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
@@ -79,7 +78,7 @@ public interface ARuleMapper {
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
-    ARule selectByPrimaryKey(Integer id);
+    ARule selectByPrimaryKey(String ruleId);
 
     @UpdateProvider(type=ARuleSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") ARule record, @Param("example") ARuleExample example);
@@ -100,7 +99,7 @@ public interface ARuleMapper {
           "function_name = #{functionName,jdbcType=VARCHAR},",
           "`state` = #{state,jdbcType=INTEGER},",
           "user_id = #{userId,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(ARule record);
 }

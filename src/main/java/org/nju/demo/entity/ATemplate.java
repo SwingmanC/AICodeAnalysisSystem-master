@@ -1,7 +1,7 @@
 package org.nju.demo.entity;
 
 public class ATemplate {
-    private Integer id;
+    private String templateId;
 
     private String templateName;
 
@@ -11,12 +11,12 @@ public class ATemplate {
 
     private Integer userId;
 
-    public Integer getId() {
-        return id;
+    public String getTemplateId() {
+        return templateId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
     }
 
     public String getTemplateName() {
@@ -57,7 +57,7 @@ public class ATemplate {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", templateId=").append(templateId);
         sb.append(", templateName=").append(templateName);
         sb.append(", filePath=").append(filePath);
         sb.append(", state=").append(state);
@@ -78,7 +78,7 @@ public class ATemplate {
             return false;
         }
         ATemplate other = (ATemplate) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+        return (this.getTemplateId() == null ? other.getTemplateId() == null : this.getTemplateId().equals(other.getTemplateId()))
             && (this.getTemplateName() == null ? other.getTemplateName() == null : this.getTemplateName().equals(other.getTemplateName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
             && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
@@ -89,7 +89,7 @@ public class ATemplate {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getTemplateId() == null) ? 0 : getTemplateId().hashCode());
         result = prime * result + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());

@@ -27,19 +27,19 @@ public class ChartController {
 
     @GetMapping("/view/issues/charts")
     public String viewViolationCharts(){
-        return "violation_charts";
+        return "issue_charts";
     }
 
     @GetMapping("/view/issues/list")
     public String viewViolationList(){
-        return "violation_list";
+        return "issue_list";
     }
 
     @ResponseBody
-    @GetMapping("/issues/pattern")
-    public int[] getIssuesByPattern(){
+    @GetMapping("/issues/category")
+    public int[] countIssuesByCategory(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getId(),"","",0);
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","",0);
         int[] count = {0,0,0,0,0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String kingdom = issueBasic.getKingdom();
@@ -55,9 +55,9 @@ public class ChartController {
 
     @ResponseBody
     @GetMapping("/issues/priority")
-    public int[] getIssuesByPriority(){
+    public int[] countIssuesByPriority(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getId(),"","",0);
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","",0);
         int[] count = {0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String p = issueBasic.getPriority();

@@ -1,7 +1,7 @@
 package org.nju.demo.entity;
 
 public class ARule {
-    private Integer id;
+    private String ruleId;
 
     private String ruleName;
 
@@ -19,12 +19,12 @@ public class ARule {
 
     private Integer userId;
 
-    public Integer getId() {
-        return id;
+    public String getRuleId() {
+        return ruleId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRuleId(String ruleId) {
+        this.ruleId = ruleId;
     }
 
     public String getRuleName() {
@@ -97,7 +97,7 @@ public class ARule {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", ruleId=").append(ruleId);
         sb.append(", ruleName=").append(ruleName);
         sb.append(", patternName=").append(patternName);
         sb.append(", priority=").append(priority);
@@ -122,7 +122,7 @@ public class ARule {
             return false;
         }
         ARule other = (ARule) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+        return (this.getRuleId() == null ? other.getRuleId() == null : this.getRuleId().equals(other.getRuleId()))
             && (this.getRuleName() == null ? other.getRuleName() == null : this.getRuleName().equals(other.getRuleName()))
             && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()))
             && (this.getPriority() == null ? other.getPriority() == null : this.getPriority().equals(other.getPriority()))
@@ -137,7 +137,7 @@ public class ARule {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getRuleId() == null) ? 0 : getRuleId().hashCode());
         result = prime * result + ((getRuleName() == null) ? 0 : getRuleName().hashCode());
         result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
         result = prime * result + ((getPriority() == null) ? 0 : getPriority().hashCode());

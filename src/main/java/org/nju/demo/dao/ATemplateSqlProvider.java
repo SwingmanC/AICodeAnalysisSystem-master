@@ -28,6 +28,10 @@ public class ATemplateSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("a_template");
         
+        if (record.getTemplateId() != null) {
+            sql.VALUES("template_id", "#{templateId,jdbcType=VARCHAR}");
+        }
+        
         if (record.getTemplateName() != null) {
             sql.VALUES("template_name", "#{templateName,jdbcType=VARCHAR}");
         }
@@ -50,9 +54,9 @@ public class ATemplateSqlProvider {
     public String selectByExample(ATemplateExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("template_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("template_id");
         }
         sql.SELECT("template_name");
         sql.SELECT("file_path");
@@ -75,8 +79,8 @@ public class ATemplateSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_template");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getTemplateId() != null) {
+            sql.SET("template_id = #{record.templateId,jdbcType=VARCHAR}");
         }
         
         if (record.getTemplateName() != null) {
@@ -103,7 +107,7 @@ public class ATemplateSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_template");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("template_id = #{record.templateId,jdbcType=VARCHAR}");
         sql.SET("template_name = #{record.templateName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
@@ -134,7 +138,7 @@ public class ATemplateSqlProvider {
             sql.SET("user_id = #{userId,jdbcType=INTEGER}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("template_id = #{templateId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

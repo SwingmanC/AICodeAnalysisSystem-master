@@ -28,12 +28,12 @@ public class PatternInfoSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("pattern_info");
         
-        if (record.getPatternId() != null) {
-            sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
+        if (record.getPatternInfoId() != null) {
+            sql.VALUES("pattern_info_id", "#{patternInfoId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternName() != null) {
-            sql.VALUES("pattern_name", "#{patternName,jdbcType=VARCHAR}");
+        if (record.getPatternLkId() != null) {
+            sql.VALUES("pattern_lk_id", "#{patternLkId,jdbcType=VARCHAR}");
         }
         
         if (record.getExplanation() != null) {
@@ -54,12 +54,11 @@ public class PatternInfoSqlProvider {
     public String selectByExampleWithBLOBs(PatternInfoExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("pattern_info_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("pattern_info_id");
         }
-        sql.SELECT("pattern_id");
-        sql.SELECT("pattern_name");
+        sql.SELECT("pattern_lk_id");
         sql.SELECT("explanation");
         sql.SELECT("recommendation");
         sql.SELECT("tip");
@@ -76,12 +75,11 @@ public class PatternInfoSqlProvider {
     public String selectByExample(PatternInfoExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("pattern_info_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("pattern_info_id");
         }
-        sql.SELECT("pattern_id");
-        sql.SELECT("pattern_name");
+        sql.SELECT("pattern_lk_id");
         sql.FROM("pattern_info");
         applyWhere(sql, example, false);
         
@@ -99,16 +97,12 @@ public class PatternInfoSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_info");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getPatternInfoId() != null) {
+            sql.SET("pattern_info_id = #{record.patternInfoId,jdbcType=VARCHAR}");
         }
         
-        if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getPatternName() != null) {
-            sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        if (record.getPatternLkId() != null) {
+            sql.SET("pattern_lk_id = #{record.patternLkId,jdbcType=VARCHAR}");
         }
         
         if (record.getExplanation() != null) {
@@ -131,9 +125,8 @@ public class PatternInfoSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_info");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
-        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        sql.SET("pattern_info_id = #{record.patternInfoId,jdbcType=VARCHAR}");
+        sql.SET("pattern_lk_id = #{record.patternLkId,jdbcType=VARCHAR}");
         sql.SET("explanation = #{record.explanation,jdbcType=LONGVARCHAR}");
         sql.SET("recommendation = #{record.recommendation,jdbcType=LONGVARCHAR}");
         sql.SET("tip = #{record.tip,jdbcType=LONGVARCHAR}");
@@ -147,9 +140,8 @@ public class PatternInfoSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_info");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
-        sql.SET("pattern_name = #{record.patternName,jdbcType=VARCHAR}");
+        sql.SET("pattern_info_id = #{record.patternInfoId,jdbcType=VARCHAR}");
+        sql.SET("pattern_lk_id = #{record.patternLkId,jdbcType=VARCHAR}");
         
         PatternInfoExample example = (PatternInfoExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -160,12 +152,8 @@ public class PatternInfoSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("pattern_info");
         
-        if (record.getPatternId() != null) {
-            sql.SET("pattern_id = #{patternId,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getPatternName() != null) {
-            sql.SET("pattern_name = #{patternName,jdbcType=VARCHAR}");
+        if (record.getPatternLkId() != null) {
+            sql.SET("pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}");
         }
         
         if (record.getExplanation() != null) {
@@ -180,7 +168,7 @@ public class PatternInfoSqlProvider {
             sql.SET("tip = #{tip,jdbcType=LONGVARCHAR}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("pattern_info_id = #{patternInfoId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

@@ -1,7 +1,6 @@
 package org.nju.demo.pojo.dto;
 
 public class PatternInfo {
-    private Integer id;
     private String patternId;
     private String patternName;
     private String explanation;
@@ -9,14 +8,6 @@ public class PatternInfo {
     private String tip;
     private Integer tNum;
     private Integer fNum;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getPatternId() {
         return patternId;

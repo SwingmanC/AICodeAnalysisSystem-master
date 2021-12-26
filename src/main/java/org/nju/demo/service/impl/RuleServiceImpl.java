@@ -27,8 +27,8 @@ public class RuleServiceImpl implements RuleService {
     }
 
     @Override
-    public ARule getRule(int id) {
-        return ruleMapper.selectByPrimaryKey(id);
+    public ARule getRule(String ruleId) {
+        return ruleMapper.selectByPrimaryKey(ruleId);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class RuleServiceImpl implements RuleService {
     }
 
     @Override
-    public int deleteRule(int id) {
-        return ruleMapper.deleteByPrimaryKey(id);
+    public int deleteRule(String ruleId) {
+        return ruleMapper.deleteByPrimaryKey(ruleId);
     }
 }

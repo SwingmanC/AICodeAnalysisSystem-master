@@ -1,16 +1,16 @@
 package org.nju.demo.pojo.vo;
 
 public class KnowledgeVO {
-    private int id;
+    private String knowledgeId;
     private String knowledgeName;
     private String patternName;
 
-    public int getId() {
-        return id;
+    public String getKnowledgeId() {
+        return knowledgeId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setKnowledgeId(String knowledgeId) {
+        this.knowledgeId = knowledgeId;
     }
 
     public String getKnowledgeName() {

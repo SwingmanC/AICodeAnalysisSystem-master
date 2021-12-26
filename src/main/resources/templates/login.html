@@ -4,7 +4,8 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
 
     <title>源代码误报智能分析</title>
 
@@ -22,7 +23,7 @@
         <div>
             <div>
 
-<!--                <h1 class="logo-name">H+</h1>-->
+                <!--                <h1 class="logo-name">H+</h1>-->
 
             </div>
             <h3>欢迎使用</h3>
@@ -37,7 +38,7 @@
                 <div>
                     <span><font th:if="${session.loginMsg != null}" th:text="${session.loginMsg}" color="red"></font></span>
                 </div>
-                <input type="submit" class="btn btn-primary block full-width m-b" value="登 录"/>
+                <input type="submit" class="btn btn-primary block full-width m-b" value="登 录" />
 
                 <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="/view/register">注册一个新账号</a>
                 </p>
@@ -54,28 +55,29 @@
         function check() {
             let userName = $("#username").val();
             let password = $("#password").val();
-            if (userName === null || password === null){
-                layer.msg("请补全信息",{
-                    time:1500
+            if (userName === null || password === null) {
+                layer.msg("请补全信息", {
+                    time: 1500
                 });
                 return false;
             }
             return true;
         }
+
         function login() {
             $.ajax({
-                url:'/login',
-                type:'post',
-                data:{
-                    'username':$("#username").val(),
-                    'password':$("#password").val()
+                url: '/login',
+                type: 'post',
+                data: {
+                    'username': $("#username").val(),
+                    'password': $("#password").val()
                 },
-                datatype:'json',
-                success:function (msg) {
+                datatype: 'json',
+                success: function(msg) {
                     console.log(msg);
                     if (msg === 0)
-                        layer.msg("账号不存在或密码错误",{
-                            time:1500
+                        layer.msg("账号不存在或密码错误", {
+                            time: 1500
                         });
                     else window.location.href = "/view/projects";
                 }

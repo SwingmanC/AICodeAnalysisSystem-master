@@ -1,34 +1,24 @@
 package org.nju.demo.entity;
 
 public class PatternInfo {
-    private Integer id;
+    private String patternInfoId;
 
-    private String patternId;
+    private String patternLkId;
 
-    private String patternName;
-
-    public Integer getId() {
-        return id;
+    public String getPatternInfoId() {
+        return patternInfoId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPatternInfoId(String patternInfoId) {
+        this.patternInfoId = patternInfoId;
     }
 
-    public String getPatternId() {
-        return patternId;
+    public String getPatternLkId() {
+        return patternLkId;
     }
 
-    public void setPatternId(String patternId) {
-        this.patternId = patternId;
-    }
-
-    public String getPatternName() {
-        return patternName;
-    }
-
-    public void setPatternName(String patternName) {
-        this.patternName = patternName;
+    public void setPatternLkId(String patternLkId) {
+        this.patternLkId = patternLkId;
     }
 
     @Override
@@ -37,9 +27,8 @@ public class PatternInfo {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", patternId=").append(patternId);
-        sb.append(", patternName=").append(patternName);
+        sb.append(", patternInfoId=").append(patternInfoId);
+        sb.append(", patternLkId=").append(patternLkId);
         sb.append("]");
         return sb.toString();
     }
@@ -56,18 +45,16 @@ public class PatternInfo {
             return false;
         }
         PatternInfo other = (PatternInfo) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getPatternId() == null ? other.getPatternId() == null : this.getPatternId().equals(other.getPatternId()))
-            && (this.getPatternName() == null ? other.getPatternName() == null : this.getPatternName().equals(other.getPatternName()));
+        return (this.getPatternInfoId() == null ? other.getPatternInfoId() == null : this.getPatternInfoId().equals(other.getPatternInfoId()))
+            && (this.getPatternLkId() == null ? other.getPatternLkId() == null : this.getPatternLkId().equals(other.getPatternLkId()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
-        result = prime * result + ((getPatternName() == null) ? 0 : getPatternName().hashCode());
+        result = prime * result + ((getPatternInfoId() == null) ? 0 : getPatternInfoId().hashCode());
+        result = prime * result + ((getPatternLkId() == null) ? 0 : getPatternLkId().hashCode());
         return result;
     }
 }

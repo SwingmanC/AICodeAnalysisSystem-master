@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,53 +25,51 @@ public interface KnowledgeMapper {
 
     @Delete({
         "delete from knowledge",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String knowledgeId);
 
     @Insert({
-        "insert into knowledge (knowledge_name, pattern_id, ",
-        "content)",
-        "values (#{knowledgeName,jdbcType=VARCHAR}, #{patternId,jdbcType=INTEGER}, ",
-        "#{content,jdbcType=LONGVARCHAR})"
+        "insert into knowledge (knowledge_id, knowledge_name, ",
+        "pattern_id, content)",
+        "values (#{knowledgeId,jdbcType=VARCHAR}, #{knowledgeName,jdbcType=VARCHAR}, ",
+        "#{patternId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Knowledge record);
 
     @InsertProvider(type=KnowledgeSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(Knowledge record);
 
     @SelectProvider(type=KnowledgeSqlProvider.class, method="selectByExampleWithBLOBs")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
         @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
     List<Knowledge> selectByExampleWithBLOBs(KnowledgeExample example);
 
     @SelectProvider(type=KnowledgeSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER)
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR)
     })
     List<Knowledge> selectByExample(KnowledgeExample example);
 
     @Select({
         "select",
-        "id, knowledge_name, pattern_id, content",
+        "knowledge_id, knowledge_name, pattern_id, content",
         "from knowledge",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.INTEGER),
+        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
         @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
-    Knowledge selectByPrimaryKey(Integer id);
+    Knowledge selectByPrimaryKey(String knowledgeId);
 
     @UpdateProvider(type=KnowledgeSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
@@ -89,17 +86,17 @@ public interface KnowledgeMapper {
     @Update({
         "update knowledge",
         "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
-          "pattern_id = #{patternId,jdbcType=INTEGER},",
+          "pattern_id = #{patternId,jdbcType=VARCHAR},",
           "content = #{content,jdbcType=LONGVARCHAR}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKeyWithBLOBs(Knowledge record);
 
     @Update({
         "update knowledge",
         "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
-          "pattern_id = #{patternId,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+          "pattern_id = #{patternId,jdbcType=VARCHAR}",
+        "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Knowledge record);
 }

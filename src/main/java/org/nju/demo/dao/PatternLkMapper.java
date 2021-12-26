@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,27 +25,25 @@ public interface PatternLkMapper {
 
     @Delete({
         "delete from pattern_lk",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String patternLkId);
 
     @Insert({
-        "insert into pattern_lk (pattern_id, t_num, ",
-        "f_num)",
-        "values (#{patternId,jdbcType=VARCHAR}, #{tNum,jdbcType=INTEGER}, ",
-        "#{fNum,jdbcType=INTEGER})"
+        "insert into pattern_lk (pattern_lk_id, pattern_name, ",
+        "t_num, f_num)",
+        "values (#{patternLkId,jdbcType=VARCHAR}, #{patternName,jdbcType=VARCHAR}, ",
+        "#{tNum,jdbcType=INTEGER}, #{fNum,jdbcType=INTEGER})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(PatternLk record);
 
     @InsertProvider(type=PatternLkSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(PatternLk record);
 
     @SelectProvider(type=PatternLkSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_lk_id", property="patternLkId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="t_num", property="tNum", jdbcType=JdbcType.INTEGER),
         @Result(column="f_num", property="fNum", jdbcType=JdbcType.INTEGER)
     })
@@ -54,17 +51,17 @@ public interface PatternLkMapper {
 
     @Select({
         "select",
-        "id, pattern_id, t_num, f_num",
+        "pattern_lk_id, pattern_name, t_num, f_num",
         "from pattern_lk",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_lk_id", property="patternLkId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
         @Result(column="t_num", property="tNum", jdbcType=JdbcType.INTEGER),
         @Result(column="f_num", property="fNum", jdbcType=JdbcType.INTEGER)
     })
-    PatternLk selectByPrimaryKey(Integer id);
+    PatternLk selectByPrimaryKey(String patternLkId);
 
     @UpdateProvider(type=PatternLkSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") PatternLk record, @Param("example") PatternLkExample example);
@@ -77,10 +74,10 @@ public interface PatternLkMapper {
 
     @Update({
         "update pattern_lk",
-        "set pattern_id = #{patternId,jdbcType=VARCHAR},",
+        "set pattern_name = #{patternName,jdbcType=VARCHAR},",
           "t_num = #{tNum,jdbcType=INTEGER},",
           "f_num = #{fNum,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(PatternLk record);
 }

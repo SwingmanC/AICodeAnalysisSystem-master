@@ -21,7 +21,7 @@ public class IssueServiceImpl implements IssueService {
     private IssueSourceMapper issueSourceMapper;
 
     @Override
-    public List<IssueBasic> getIssueList(int versionId,String priority,String kingdom,int flag) {
+    public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,int flag) {
         IssueBasicExample example = new IssueBasicExample();
         IssueBasicExample.Criteria criteria = example.createCriteria();
 
@@ -34,7 +34,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public List<IssueBasic> getIssueListByPatternId(int versionId, String patternId) {
+    public List<IssueBasic> getIssueListByPatternId(String versionId, String patternId) {
         IssueBasicExample example = new IssueBasicExample();
         IssueBasicExample.Criteria criteria = example.createCriteria();
 
@@ -45,8 +45,8 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public IssueBasic getIssue(int id) {
-        return issueBasicMapper.selectByPrimaryKey(id);
+    public IssueBasic getIssue(String issueId) {
+        return issueBasicMapper.selectByPrimaryKey(issueId);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class IssueServiceImpl implements IssueService {
         IssueSourceExample example = new IssueSourceExample();
         IssueSourceExample.Criteria criteria = example.createCriteria();
 
-        criteria.andIssueIdEqualTo(issueId);
+        criteria.andIssueBasicIdEqualTo(issueId);
 
         List<IssueSource> issueSourceList = issueSourceMapper.selectByExample(example);
         if (issueSourceList.size() > 0) return issueSourceList.get(0);

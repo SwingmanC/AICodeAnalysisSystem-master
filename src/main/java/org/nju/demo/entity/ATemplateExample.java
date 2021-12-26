@@ -104,63 +104,73 @@ public class ATemplateExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andTemplateIdIsNull() {
+            addCriterion("template_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andTemplateIdIsNotNull() {
+            addCriterion("template_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andTemplateIdEqualTo(String value) {
+            addCriterion("template_id =", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andTemplateIdNotEqualTo(String value) {
+            addCriterion("template_id <>", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andTemplateIdGreaterThan(String value) {
+            addCriterion("template_id >", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andTemplateIdGreaterThanOrEqualTo(String value) {
+            addCriterion("template_id >=", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andTemplateIdLessThan(String value) {
+            addCriterion("template_id <", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andTemplateIdLessThanOrEqualTo(String value) {
+            addCriterion("template_id <=", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andTemplateIdLike(String value) {
+            addCriterion("template_id like", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andTemplateIdNotLike(String value) {
+            addCriterion("template_id not like", value, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andTemplateIdIn(List<String> values) {
+            addCriterion("template_id in", values, "templateId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andTemplateIdNotIn(List<String> values) {
+            addCriterion("template_id not in", values, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdBetween(String value1, String value2) {
+            addCriterion("template_id between", value1, value2, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdNotBetween(String value1, String value2) {
+            addCriterion("template_id not between", value1, value2, "templateId");
             return (Criteria) this;
         }
 

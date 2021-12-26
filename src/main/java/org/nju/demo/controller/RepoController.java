@@ -36,8 +36,8 @@ public class RepoController {
     }
 
     @RequestMapping("/view/knowledge/{patternId}")
-    public String viewKnowledge(@PathVariable("patternId") int id){
-        PatternInfo pattern = patternService.getPattern(id);
+    public String viewKnowledge(@PathVariable("patternId") String patternId){
+        PatternLk pattern = patternService.getPatternLk(patternId);
         session.setAttribute("pattern",pattern);
         return "knowledge_list";
     }
@@ -45,17 +45,15 @@ public class RepoController {
     @ResponseBody
     @RequestMapping("/patterns")
     public List<PatternVO> getPatterns(){
-        List<PatternInfo> patternList = patternService.getPatternInfoList();
+        List<PatternLk> patternList = patternService.getPatternLkList();
         List<PatternVO> patternVOList = new ArrayList<>();
-        for(PatternInfo pattern:patternList){
+        for(PatternLk pattern:patternList){
             PatternVO patternVO = new PatternVO();
-            patternVO.setId(pattern.getId());
+            patternVO.setPatternId(pattern.getPatternLkId());
             patternVO.setPatternName(pattern.getPatternName());
 
-            PatternLk patternLk = patternService.getPatternLikelihood(pattern.getPatternId());
-
-            int trueNum = patternLk.gettNum();
-            int falseNum = patternLk.getfNum();
+            int trueNum = pattern.gettNum();
+            int falseNum = pattern.getfNum();
             double likelihood = trueNum*1.0/(trueNum+falseNum);
 
             patternVO.setLikelihood(likelihood);
@@ -67,12 +65,12 @@ public class RepoController {
     @ResponseBody
     @RequestMapping("/knowledgeVOs")
     public List<KnowledgeVO> getKnowledgeVOs(){
-        PatternInfo pattern = (PatternInfo) session.getAttribute("pattern");
-        List<Knowledge> knowledgeList = knowledgeService.getKnowledgeList(pattern.getId());
+        PatternLk pattern = (PatternLk) session.getAttribute("pattern");
+        List<Knowledge> knowledgeList = knowledgeService.getKnowledgeList(pattern.getPatternLkId());
         List<KnowledgeVO> knowledgeVOList = new ArrayList<>();
         for(Knowledge knowledge : knowledgeList){
             KnowledgeVO knowledgeVO = new KnowledgeVO();
-            knowledgeVO.setId(knowledge.getId());
+            knowledgeVO.setKnowledgeId(knowledge.getKnowledgeId());
             knowledgeVO.setKnowledgeName(knowledge.getKnowledgeName());
             knowledgeVO.setPatternName(pattern.getPatternName());
             knowledgeVOList.add(knowledgeVO);
@@ -82,27 +80,27 @@ public class RepoController {
 
     @ResponseBody
     @RequestMapping("/knowledge/{id}")
-    public Knowledge getKnowLedge(@PathVariable("id") int id){
+    public Knowledge getKnowLedge(@PathVariable("id") String id){
         return knowledgeService.getKnowledge(id);
     }
 
     @RequestMapping("/addKnowledge")
     public String addKnowledge(@RequestParam("knowledgeName") String knowledgeName,
                                @RequestParam("content") String content){
-        PatternInfo pattern = (PatternInfo) session.getAttribute("pattern");
+        PatternLk pattern = (PatternLk) session.getAttribute("pattern");
 
         Knowledge knowledge = new Knowledge();
         knowledge.setKnowledgeName(knowledgeName);
         knowledge.setContent(content);
-        knowledge.setPatternId(pattern.getId());
+        knowledge.setPatternId(pattern.getPatternLkId());
 
         knowledgeService.addKnowledge(knowledge);
-        return "redirect:/view/knowledge/"+pattern.getId();
+        return "redirect:/view/knowledge/"+pattern.getPatternLkId();
     }
 
     @ResponseBody
     @RequestMapping("/deleteKnowledge/{id}")
-    public int deleteKnowledge(@PathVariable("id") int id){
+    public int deleteKnowledge(@PathVariable("id") String id){
         return knowledgeService.deleteKnowledge(id);
     }
 

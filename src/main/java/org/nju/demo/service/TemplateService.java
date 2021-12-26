@@ -8,7 +8,7 @@ public interface TemplateService {
 
     List<ATemplate> getTemplateListByUserId(int userId);
 
-    ATemplate getTemplate(int id);
+    ATemplate getTemplate(String templateId);
 
     ATemplate getUsedTemplate(int userId);
 

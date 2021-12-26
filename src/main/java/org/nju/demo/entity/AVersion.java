@@ -1,22 +1,22 @@
 package org.nju.demo.entity;
 
 public class AVersion {
-    private Integer id;
+    private String versionId;
 
     private String versionName;
 
     private String filePath;
 
-    private Integer projectId;
+    private String projectId;
 
-    private Integer lastId;
+    private String lastId;
 
-    public Integer getId() {
-        return id;
+    public String getVersionId() {
+        return versionId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setVersionId(String versionId) {
+        this.versionId = versionId;
     }
 
     public String getVersionName() {
@@ -35,19 +35,19 @@ public class AVersion {
         this.filePath = filePath;
     }
 
-    public Integer getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Integer projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
-    public Integer getLastId() {
+    public String getLastId() {
         return lastId;
     }
 
-    public void setLastId(Integer lastId) {
+    public void setLastId(String lastId) {
         this.lastId = lastId;
     }
 
@@ -57,7 +57,7 @@ public class AVersion {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", versionId=").append(versionId);
         sb.append(", versionName=").append(versionName);
         sb.append(", filePath=").append(filePath);
         sb.append(", projectId=").append(projectId);
@@ -78,7 +78,7 @@ public class AVersion {
             return false;
         }
         AVersion other = (AVersion) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+        return (this.getVersionId() == null ? other.getVersionId() == null : this.getVersionId().equals(other.getVersionId()))
             && (this.getVersionName() == null ? other.getVersionName() == null : this.getVersionName().equals(other.getVersionName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
             && (this.getProjectId() == null ? other.getProjectId() == null : this.getProjectId().equals(other.getProjectId()))
@@ -89,7 +89,7 @@ public class AVersion {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
         result = prime * result + ((getVersionName() == null) ? 0 : getVersionName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
         result = prime * result + ((getProjectId() == null) ? 0 : getProjectId().hashCode());

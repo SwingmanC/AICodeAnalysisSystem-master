@@ -1,11 +1,9 @@
 package org.nju.demo.entity;
 
 public class IssueBasic {
-    private Integer id;
+    private String issueId;
 
     private String patternId;
-
-    private String issueId;
 
     private String priority;
 
@@ -21,26 +19,14 @@ public class IssueBasic {
 
     private String description;
 
-    private Integer versionId;
+    private String versionId;
 
     private String state;
 
     private String snippet;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPatternId() {
-        return patternId;
-    }
-
-    public void setPatternId(String patternId) {
-        this.patternId = patternId;
+    public IssueBasic(){
+        this.state = "Unclassified";
     }
 
     public String getIssueId() {
@@ -49,6 +35,14 @@ public class IssueBasic {
 
     public void setIssueId(String issueId) {
         this.issueId = issueId;
+    }
+
+    public String getPatternId() {
+        return patternId;
+    }
+
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
     }
 
     public String getPriority() {
@@ -107,11 +101,11 @@ public class IssueBasic {
         this.description = description;
     }
 
-    public Integer getVersionId() {
+    public String getVersionId() {
         return versionId;
     }
 
-    public void setVersionId(Integer versionId) {
+    public void setVersionId(String versionId) {
         this.versionId = versionId;
     }
 
@@ -137,9 +131,8 @@ public class IssueBasic {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", patternId=").append(patternId);
         sb.append(", issueId=").append(issueId);
+        sb.append(", patternId=").append(patternId);
         sb.append(", priority=").append(priority);
         sb.append(", kingdom=").append(kingdom);
         sb.append(", fileName=").append(fileName);
@@ -166,9 +159,8 @@ public class IssueBasic {
             return false;
         }
         IssueBasic other = (IssueBasic) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+        return (this.getIssueId() == null ? other.getIssueId() == null : this.getIssueId().equals(other.getIssueId()))
             && (this.getPatternId() == null ? other.getPatternId() == null : this.getPatternId().equals(other.getPatternId()))
-            && (this.getIssueId() == null ? other.getIssueId() == null : this.getIssueId().equals(other.getIssueId()))
             && (this.getPriority() == null ? other.getPriority() == null : this.getPriority().equals(other.getPriority()))
             && (this.getKingdom() == null ? other.getKingdom() == null : this.getKingdom().equals(other.getKingdom()))
             && (this.getFileName() == null ? other.getFileName() == null : this.getFileName().equals(other.getFileName()))
@@ -185,9 +177,8 @@ public class IssueBasic {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
         result = prime * result + ((getIssueId() == null) ? 0 : getIssueId().hashCode());
+        result = prime * result + ((getPatternId() == null) ? 0 : getPatternId().hashCode());
         result = prime * result + ((getPriority() == null) ? 0 : getPriority().hashCode());
         result = prime * result + ((getKingdom() == null) ? 0 : getKingdom().hashCode());
         result = prime * result + ((getFileName() == null) ? 0 : getFileName().hashCode());

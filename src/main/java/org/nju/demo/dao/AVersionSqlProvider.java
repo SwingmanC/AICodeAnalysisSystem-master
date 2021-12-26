@@ -28,6 +28,10 @@ public class AVersionSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("a_version");
         
+        if (record.getVersionId() != null) {
+            sql.VALUES("version_id", "#{versionId,jdbcType=VARCHAR}");
+        }
+        
         if (record.getVersionName() != null) {
             sql.VALUES("version_name", "#{versionName,jdbcType=VARCHAR}");
         }
@@ -37,11 +41,11 @@ public class AVersionSqlProvider {
         }
         
         if (record.getProjectId() != null) {
-            sql.VALUES("project_id", "#{projectId,jdbcType=INTEGER}");
+            sql.VALUES("project_id", "#{projectId,jdbcType=VARCHAR}");
         }
         
         if (record.getLastId() != null) {
-            sql.VALUES("last_id", "#{lastId,jdbcType=INTEGER}");
+            sql.VALUES("last_id", "#{lastId,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
@@ -50,9 +54,9 @@ public class AVersionSqlProvider {
     public String selectByExample(AVersionExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("version_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("version_id");
         }
         sql.SELECT("version_name");
         sql.SELECT("file_path");
@@ -75,8 +79,8 @@ public class AVersionSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_version");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getVersionId() != null) {
+            sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         }
         
         if (record.getVersionName() != null) {
@@ -88,11 +92,11 @@ public class AVersionSqlProvider {
         }
         
         if (record.getProjectId() != null) {
-            sql.SET("project_id = #{record.projectId,jdbcType=INTEGER}");
+            sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         }
         
         if (record.getLastId() != null) {
-            sql.SET("last_id = #{record.lastId,jdbcType=INTEGER}");
+            sql.SET("last_id = #{record.lastId,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -103,11 +107,11 @@ public class AVersionSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("a_version");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("version_name = #{record.versionName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
-        sql.SET("project_id = #{record.projectId,jdbcType=INTEGER}");
-        sql.SET("last_id = #{record.lastId,jdbcType=INTEGER}");
+        sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
+        sql.SET("last_id = #{record.lastId,jdbcType=VARCHAR}");
         
         AVersionExample example = (AVersionExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -127,14 +131,14 @@ public class AVersionSqlProvider {
         }
         
         if (record.getProjectId() != null) {
-            sql.SET("project_id = #{projectId,jdbcType=INTEGER}");
+            sql.SET("project_id = #{projectId,jdbcType=VARCHAR}");
         }
         
         if (record.getLastId() != null) {
-            sql.SET("last_id = #{lastId,jdbcType=INTEGER}");
+            sql.SET("last_id = #{lastId,jdbcType=VARCHAR}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("version_id = #{versionId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

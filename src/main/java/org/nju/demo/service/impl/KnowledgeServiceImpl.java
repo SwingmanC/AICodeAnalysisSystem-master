@@ -16,7 +16,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     private KnowledgeMapper knowledgeMapper;
 
     @Override
-    public List<Knowledge> getKnowledgeList(int patternId) {
+    public List<Knowledge> getKnowledgeList(String patternId) {
         KnowledgeExample example = new KnowledgeExample();
         KnowledgeExample.Criteria criteria = example.createCriteria();
 
@@ -26,8 +26,8 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     }
 
     @Override
-    public Knowledge getKnowledge(int id) {
-        return knowledgeMapper.selectByPrimaryKey(id);
+    public Knowledge getKnowledge(String knowledgeId) {
+        return knowledgeMapper.selectByPrimaryKey(knowledgeId);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     }
 
     @Override
-    public int deleteKnowledge(int id) {
-        return knowledgeMapper.deleteByPrimaryKey(id);
+    public int deleteKnowledge(String knowledgeId) {
+        return knowledgeMapper.deleteByPrimaryKey(knowledgeId);
     }
 }

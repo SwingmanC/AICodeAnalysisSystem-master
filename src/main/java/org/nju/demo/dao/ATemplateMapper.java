@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,26 +25,26 @@ public interface ATemplateMapper {
 
     @Delete({
         "delete from a_template",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where template_id = #{templateId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String templateId);
 
     @Insert({
-        "insert into a_template (template_name, file_path, ",
-        "`state`, user_id)",
-        "values (#{templateName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
-        "#{state,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})"
+        "insert into a_template (template_id, template_name, ",
+        "file_path, `state`, ",
+        "user_id)",
+        "values (#{templateId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, ",
+        "#{filePath,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, ",
+        "#{userId,jdbcType=INTEGER})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(ATemplate record);
 
     @InsertProvider(type=ATemplateSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(ATemplate record);
 
     @SelectProvider(type=ATemplateSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="template_id", property="templateId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="template_name", property="templateName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
@@ -55,18 +54,18 @@ public interface ATemplateMapper {
 
     @Select({
         "select",
-        "id, template_name, file_path, `state`, user_id",
+        "template_id, template_name, file_path, `state`, user_id",
         "from a_template",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where template_id = #{templateId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="template_id", property="templateId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="template_name", property="templateName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
-    ATemplate selectByPrimaryKey(Integer id);
+    ATemplate selectByPrimaryKey(String templateId);
 
     @UpdateProvider(type=ATemplateSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") ATemplate record, @Param("example") ATemplateExample example);
@@ -83,7 +82,7 @@ public interface ATemplateMapper {
           "file_path = #{filePath,jdbcType=VARCHAR},",
           "`state` = #{state,jdbcType=INTEGER},",
           "user_id = #{userId,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where template_id = #{templateId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(ATemplate record);
 }

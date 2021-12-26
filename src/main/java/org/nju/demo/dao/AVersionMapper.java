@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,47 +25,47 @@ public interface AVersionMapper {
 
     @Delete({
         "delete from a_version",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where version_id = #{versionId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String versionId);
 
     @Insert({
-        "insert into a_version (version_name, file_path, ",
-        "project_id, last_id)",
-        "values (#{versionName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
-        "#{projectId,jdbcType=INTEGER}, #{lastId,jdbcType=INTEGER})"
+        "insert into a_version (version_id, version_name, ",
+        "file_path, project_id, ",
+        "last_id)",
+        "values (#{versionId,jdbcType=VARCHAR}, #{versionName,jdbcType=VARCHAR}, ",
+        "#{filePath,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, ",
+        "#{lastId,jdbcType=VARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(AVersion record);
 
     @InsertProvider(type=AVersionSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(AVersion record);
 
     @SelectProvider(type=AVersionSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="version_name", property="versionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
-        @Result(column="project_id", property="projectId", jdbcType=JdbcType.INTEGER),
-        @Result(column="last_id", property="lastId", jdbcType=JdbcType.INTEGER)
+        @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="last_id", property="lastId", jdbcType=JdbcType.VARCHAR)
     })
     List<AVersion> selectByExample(AVersionExample example);
 
     @Select({
         "select",
-        "id, version_name, file_path, project_id, last_id",
+        "version_id, version_name, file_path, project_id, last_id",
         "from a_version",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where version_id = #{versionId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="version_name", property="versionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
-        @Result(column="project_id", property="projectId", jdbcType=JdbcType.INTEGER),
-        @Result(column="last_id", property="lastId", jdbcType=JdbcType.INTEGER)
+        @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="last_id", property="lastId", jdbcType=JdbcType.VARCHAR)
     })
-    AVersion selectByPrimaryKey(Integer id);
+    AVersion selectByPrimaryKey(String versionId);
 
     @UpdateProvider(type=AVersionSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") AVersion record, @Param("example") AVersionExample example);
@@ -81,9 +80,9 @@ public interface AVersionMapper {
         "update a_version",
         "set version_name = #{versionName,jdbcType=VARCHAR},",
           "file_path = #{filePath,jdbcType=VARCHAR},",
-          "project_id = #{projectId,jdbcType=INTEGER},",
-          "last_id = #{lastId,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=INTEGER}"
+          "project_id = #{projectId,jdbcType=VARCHAR},",
+          "last_id = #{lastId,jdbcType=VARCHAR}",
+        "where version_id = #{versionId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(AVersion record);
 }

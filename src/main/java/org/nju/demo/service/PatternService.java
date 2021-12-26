@@ -8,19 +8,13 @@ import java.util.List;
 
 public interface PatternService {
 
-    PatternInfo getPatternInfoByPatternName(String patternName);
+    PatternInfoWithBLOBs getPatternInfoByPatternLkId(String patternLkId);
 
-    PatternInfoWithBLOBs getPatternInfo(String patternId);
+    PatternInfoWithBLOBs getPatternInfo(String patternInfoId);
 
-    PatternLk getPatternLikelihood(String patternId);
-
-    PatternInfoWithBLOBs getPattern(int id);
-
-    PatternLk getPatternLk(int id);
+    PatternLk getPatternLk(String patternLkId);
 
     List<PatternLk> getPatternLkList();
-
-    List<PatternInfo> getPatternInfoList();
 
     int updatePatternLikelihood(PatternLk pattern);
 

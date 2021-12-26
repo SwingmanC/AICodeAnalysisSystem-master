@@ -1,21 +1,12 @@
 package org.nju.demo.pojo.vo;
 
 public class IssueVO {
-    private int id;
     private String issueId;
     private String patternName;
     private String priority;
     private String kingdom;
     private double likelihood;
     private String state;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getIssueId() {
         return issueId;

@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface KnowledgeService {
 
-    List<Knowledge> getKnowledgeList(int patternId);
+    List<Knowledge> getKnowledgeList(String patternId);
 
-    Knowledge getKnowledge(int id);
+    Knowledge getKnowledge(String knowledgeId);
 
     int addKnowledge(Knowledge knowledge);
 
-    int deleteKnowledge(int id);
+    int deleteKnowledge(String knowledgeId);
 
 }

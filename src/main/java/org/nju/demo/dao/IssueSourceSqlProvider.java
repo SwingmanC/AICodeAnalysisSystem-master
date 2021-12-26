@@ -28,8 +28,12 @@ public class IssueSourceSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("issue_source");
         
-        if (record.getIssueId() != null) {
-            sql.VALUES("issue_id", "#{issueId,jdbcType=VARCHAR}");
+        if (record.getIssueSourceId() != null) {
+            sql.VALUES("issue_source_id", "#{issueSourceId,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getIssueBasicId() != null) {
+            sql.VALUES("issue_basic_id", "#{issueBasicId,jdbcType=VARCHAR}");
         }
         
         if (record.getFileName() != null) {
@@ -58,11 +62,11 @@ public class IssueSourceSqlProvider {
     public String selectByExampleWithBLOBs(IssueSourceExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("issue_source_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("issue_source_id");
         }
-        sql.SELECT("issue_id");
+        sql.SELECT("issue_basic_id");
         sql.SELECT("file_name");
         sql.SELECT("file_path");
         sql.SELECT("start_line");
@@ -81,11 +85,11 @@ public class IssueSourceSqlProvider {
     public String selectByExample(IssueSourceExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("issue_source_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("issue_source_id");
         }
-        sql.SELECT("issue_id");
+        sql.SELECT("issue_basic_id");
         sql.SELECT("file_name");
         sql.SELECT("file_path");
         sql.SELECT("start_line");
@@ -107,12 +111,12 @@ public class IssueSourceSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_source");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getIssueSourceId() != null) {
+            sql.SET("issue_source_id = #{record.issueSourceId,jdbcType=VARCHAR}");
         }
         
-        if (record.getIssueId() != null) {
-            sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        if (record.getIssueBasicId() != null) {
+            sql.SET("issue_basic_id = #{record.issueBasicId,jdbcType=VARCHAR}");
         }
         
         if (record.getFileName() != null) {
@@ -143,8 +147,8 @@ public class IssueSourceSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_source");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("issue_source_id = #{record.issueSourceId,jdbcType=VARCHAR}");
+        sql.SET("issue_basic_id = #{record.issueBasicId,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
@@ -160,8 +164,8 @@ public class IssueSourceSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_source");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("issue_id = #{record.issueId,jdbcType=VARCHAR}");
+        sql.SET("issue_source_id = #{record.issueSourceId,jdbcType=VARCHAR}");
+        sql.SET("issue_basic_id = #{record.issueBasicId,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         sql.SET("start_line = #{record.startLine,jdbcType=INTEGER}");
@@ -176,8 +180,8 @@ public class IssueSourceSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("issue_source");
         
-        if (record.getIssueId() != null) {
-            sql.SET("issue_id = #{issueId,jdbcType=VARCHAR}");
+        if (record.getIssueBasicId() != null) {
+            sql.SET("issue_basic_id = #{issueBasicId,jdbcType=VARCHAR}");
         }
         
         if (record.getFileName() != null) {
@@ -200,7 +204,7 @@ public class IssueSourceSqlProvider {
             sql.SET("snippet = #{snippet,jdbcType=LONGVARCHAR}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("issue_source_id = #{issueSourceId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

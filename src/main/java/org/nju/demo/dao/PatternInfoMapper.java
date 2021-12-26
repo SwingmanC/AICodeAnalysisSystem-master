@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -27,30 +26,27 @@ public interface PatternInfoMapper {
 
     @Delete({
         "delete from pattern_info",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_info_id = #{patternInfoId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String patternInfoId);
 
     @Insert({
-        "insert into pattern_info (pattern_id, pattern_name, ",
+        "insert into pattern_info (pattern_info_id, pattern_lk_id, ",
         "explanation, recommendation, ",
         "tip)",
-        "values (#{patternId,jdbcType=VARCHAR}, #{patternName,jdbcType=VARCHAR}, ",
+        "values (#{patternInfoId,jdbcType=VARCHAR}, #{patternLkId,jdbcType=VARCHAR}, ",
         "#{explanation,jdbcType=LONGVARCHAR}, #{recommendation,jdbcType=LONGVARCHAR}, ",
         "#{tip,jdbcType=LONGVARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(PatternInfoWithBLOBs record);
 
     @InsertProvider(type=PatternInfoSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(PatternInfoWithBLOBs record);
 
     @SelectProvider(type=PatternInfoSqlProvider.class, method="selectByExampleWithBLOBs")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_info_id", property="patternInfoId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="pattern_lk_id", property="patternLkId", jdbcType=JdbcType.VARCHAR),
         @Result(column="explanation", property="explanation", jdbcType=JdbcType.LONGVARCHAR),
         @Result(column="recommendation", property="recommendation", jdbcType=JdbcType.LONGVARCHAR),
         @Result(column="tip", property="tip", jdbcType=JdbcType.LONGVARCHAR)
@@ -59,27 +55,25 @@ public interface PatternInfoMapper {
 
     @SelectProvider(type=PatternInfoSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR)
+        @Result(column="pattern_info_id", property="patternInfoId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="pattern_lk_id", property="patternLkId", jdbcType=JdbcType.VARCHAR)
     })
     List<PatternInfo> selectByExample(PatternInfoExample example);
 
     @Select({
         "select",
-        "id, pattern_id, pattern_name, explanation, recommendation, tip",
+        "pattern_info_id, pattern_lk_id, explanation, recommendation, tip",
         "from pattern_info",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_info_id = #{patternInfoId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pattern_info_id", property="patternInfoId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="pattern_lk_id", property="patternLkId", jdbcType=JdbcType.VARCHAR),
         @Result(column="explanation", property="explanation", jdbcType=JdbcType.LONGVARCHAR),
         @Result(column="recommendation", property="recommendation", jdbcType=JdbcType.LONGVARCHAR),
         @Result(column="tip", property="tip", jdbcType=JdbcType.LONGVARCHAR)
     })
-    PatternInfoWithBLOBs selectByPrimaryKey(Integer id);
+    PatternInfoWithBLOBs selectByPrimaryKey(String patternInfoId);
 
     @UpdateProvider(type=PatternInfoSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") PatternInfoWithBLOBs record, @Param("example") PatternInfoExample example);
@@ -95,20 +89,18 @@ public interface PatternInfoMapper {
 
     @Update({
         "update pattern_info",
-        "set pattern_id = #{patternId,jdbcType=VARCHAR},",
-          "pattern_name = #{patternName,jdbcType=VARCHAR},",
+        "set pattern_lk_id = #{patternLkId,jdbcType=VARCHAR},",
           "explanation = #{explanation,jdbcType=LONGVARCHAR},",
           "recommendation = #{recommendation,jdbcType=LONGVARCHAR},",
           "tip = #{tip,jdbcType=LONGVARCHAR}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where pattern_info_id = #{patternInfoId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKeyWithBLOBs(PatternInfoWithBLOBs record);
 
     @Update({
         "update pattern_info",
-        "set pattern_id = #{patternId,jdbcType=VARCHAR},",
-          "pattern_name = #{patternName,jdbcType=VARCHAR}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "set pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}",
+        "where pattern_info_id = #{patternInfoId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(PatternInfo record);
 }

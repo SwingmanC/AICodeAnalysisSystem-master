@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -26,29 +25,29 @@ public interface IssueSourceMapper {
 
     @Delete({
         "delete from issue_source",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where issue_source_id = #{issueSourceId,jdbcType=VARCHAR}"
     })
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String issueSourceId);
 
     @Insert({
-        "insert into issue_source (issue_id, file_name, ",
-        "file_path, start_line, ",
-        "target_function, snippet)",
-        "values (#{issueId,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, ",
-        "#{filePath,jdbcType=VARCHAR}, #{startLine,jdbcType=INTEGER}, ",
-        "#{targetFunction,jdbcType=VARCHAR}, #{snippet,jdbcType=LONGVARCHAR})"
+        "insert into issue_source (issue_source_id, issue_basic_id, ",
+        "file_name, file_path, ",
+        "start_line, target_function, ",
+        "snippet)",
+        "values (#{issueSourceId,jdbcType=VARCHAR}, #{issueBasicId,jdbcType=VARCHAR}, ",
+        "#{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
+        "#{startLine,jdbcType=INTEGER}, #{targetFunction,jdbcType=VARCHAR}, ",
+        "#{snippet,jdbcType=LONGVARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(IssueSource record);
 
     @InsertProvider(type=IssueSourceSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(IssueSource record);
 
     @SelectProvider(type=IssueSourceSqlProvider.class, method="selectByExampleWithBLOBs")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_source_id", property="issueSourceId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="issue_basic_id", property="issueBasicId", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
@@ -59,8 +58,8 @@ public interface IssueSourceMapper {
 
     @SelectProvider(type=IssueSourceSqlProvider.class, method="selectByExample")
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_source_id", property="issueSourceId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="issue_basic_id", property="issueBasicId", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
@@ -70,20 +69,21 @@ public interface IssueSourceMapper {
 
     @Select({
         "select",
-        "id, issue_id, file_name, file_path, start_line, target_function, snippet",
+        "issue_source_id, issue_basic_id, file_name, file_path, start_line, target_function, ",
+        "snippet",
         "from issue_source",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where issue_source_id = #{issueSourceId,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="issue_source_id", property="issueSourceId", jdbcType=JdbcType.VARCHAR, id=true),
+        @Result(column="issue_basic_id", property="issueBasicId", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
         @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
         @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
         @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
     })
-    IssueSource selectByPrimaryKey(Integer id);
+    IssueSource selectByPrimaryKey(String issueSourceId);
 
     @UpdateProvider(type=IssueSourceSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") IssueSource record, @Param("example") IssueSourceExample example);
@@ -99,24 +99,24 @@ public interface IssueSourceMapper {
 
     @Update({
         "update issue_source",
-        "set issue_id = #{issueId,jdbcType=VARCHAR},",
+        "set issue_basic_id = #{issueBasicId,jdbcType=VARCHAR},",
           "file_name = #{fileName,jdbcType=VARCHAR},",
           "file_path = #{filePath,jdbcType=VARCHAR},",
           "start_line = #{startLine,jdbcType=INTEGER},",
           "target_function = #{targetFunction,jdbcType=VARCHAR},",
           "snippet = #{snippet,jdbcType=LONGVARCHAR}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where issue_source_id = #{issueSourceId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKeyWithBLOBs(IssueSource record);
 
     @Update({
         "update issue_source",
-        "set issue_id = #{issueId,jdbcType=VARCHAR},",
+        "set issue_basic_id = #{issueBasicId,jdbcType=VARCHAR},",
           "file_name = #{fileName,jdbcType=VARCHAR},",
           "file_path = #{filePath,jdbcType=VARCHAR},",
           "start_line = #{startLine,jdbcType=INTEGER},",
           "target_function = #{targetFunction,jdbcType=VARCHAR}",
-        "where id = #{id,jdbcType=INTEGER}"
+        "where issue_source_id = #{issueSourceId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(IssueSource record);
 }

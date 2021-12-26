@@ -2,18 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
 
     <title>源代码误报智能分析</title>
 
-    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet"/>
-    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet"/>
-    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
-    <link href="/css/animate.css" rel="stylesheet"/>
-    <link href="/css/style.css?v=2.2.0" rel="stylesheet"/>
-    <link href="/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet">
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet" />
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet" />
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="/css/animate.css" rel="stylesheet" />
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet" />
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
@@ -22,8 +21,6 @@
     <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-    <script src="/js/plugins/jqgrid/i18n/grid.locale-cn.js?0820"></script>
-    <script src="/js/plugins/jqgrid/jquery.jqGrid.min.js?0820"></script>
 
     <!-- Peity -->
     <script src="/js/plugins/peity/jquery.peity.min.js"></script>
@@ -37,148 +34,272 @@
 
     <!-- Peity -->
     <script src="/js/demo/peity-demo.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
 </head>
 
-<body>
-<div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="side-menu">
-                <li class="nav-header">
-                    <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
-                             </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.user.username}"></strong>
-                             </span>  <span class="text-muted text-xs block">南京大学 <b class="caret"></b></span> </span>
-                        </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="#">修改头像</a>
+<body class="gray-bg top-navigation">
+
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom white-bg">
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-header">
+                        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <i class="fa fa-reorder"></i>
+                        </button>
+                        <a href="#" class="navbar-brand">CodeAnalysis</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
                             </li>
-                            <li><a href="/view/modify">个人资料</a>
+                            <li>
+                                <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
                             </li>
-                            <li><a href="#">联系我们</a>
+                            <li>
+                                <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                             </li>
-                            <li><a href="#">信箱</a>
+                            <li>
+                                <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                             </li>
-                            <li class="divider"></li>
-                            <li><a href="/logout">安全退出</a>
+                            <li>
+                                <a href="/view/info"><i class="fa fa-user"></i> <span class="nav-label">个人中心</span></a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <a th:href="@{'/view/versions/'+${session.project.id}}">
+                                    <i class="fa fa-sign-out"></i> 返回
+                                </a>
                             </li>
                         </ul>
                     </div>
-                    <div class="logo-element">
-                        H+
+                </nav>
+            </div>
+            <div class="wrapper wrapper-content">
+                <div class="row wrapper border-bottom white-bg page-heading">
+                    <div class="col-lg-8">
+                        <h2>
+                            <span th:text="${session.project.projectName}"></span>-
+                            <span th:text="${session.version.versionName}"></span>
+                        </h2>
                     </div>
-                </li>
-                <li>
-                    <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
-                </li>
-                <li class="active">
-                    <a href="/view/reports"><i class="fa fa-search"></i> <span class="nav-label">报告分析</span></a>
-                </li>
-                <li>
-                    <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
-                </li>
-                <li>
-                    <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
-                </li>
-                <li>
-                    <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-    <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            </div>
-            <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <a href="/view/reports">
-                        <i class="fa fa-sign-out"></i> 返回
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-    </div>
-    <div id="page-wrapper" class="gray-bg dashbard-1">
-        <div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-8">
-                <h2></h2>
-            </div>
-            <div class="col-lg-4">
-                <h2 style="text-align: right">
-                </h2>
-            </div>
-        </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>分析结果</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
+                    <div class="col-lg-4">
+                        <h2 style="text-align: right">
+                            <span><a class="btn btn-primary" href="#" role="button" onclick="generate()">导出</a></span>
+                            <span><a class="btn btn-warning" href="/view/issues/charts" role="button">统计</a></span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>分析结果</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ibox-content">
-                            <table class="table table-hover" id="issueTable"></table>
+                            <div class="ibox-content">
+                                <a class="btn btn-primary" href="#" role="button" onclick="filter()">过滤误报</a>
+                                <table class="table table-hover" id="issueTable"></table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="footer">
+                <div class="pull-right">
+                </div>
+                <div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<script th:inline="javascript">
-        $(document).ready(function () {
-            $("#issueTable").bootstrapTable({
-                url:"/issues",  //请求地址
-                striped : true, //是否显示行间隔色
-                pageNumber : 1, //初始化加载第一页
-                pagination : true,//是否分页
-                sidePagination : 'client',//server:服务器端分页|client：前端分页
-                pageSize : 10,//单页记录数
-                pageList : [1, 5, 10],//可选择单页记录数
-                showRefresh : true,//刷新按钮
-                columns : [ {
-                    title : '#',
-                    field : 'id',
-                    sortable : true
-                },{
-                    title : '警报类型',
-                    field : 'category',
-                    sortable : true
-                },{
-                    title : '文件名',
-                    field : 'fileName',
-                    sortable : true
-                },{
-                    title : '优先级',
-                    field : 'priority',
-                    sortable : true
-                },{
-                    title : '方法名',
-                    field : 'targetFunction',
-                    sortable : true
-                },{
-                    field: 'operate',
-                    title: '操作',
-                    formatter: f_operateFormatter //自定义方法，添加操作按钮
-                }]
-            })
-        });
-        function f_operateFormatter(value, row, index){
-            let path = '/view/detail/'+row.id;
-            return "<a href=\""+path+"\"><i class='fa fa-eye'></i> </a>";
-        }
-    </script>
 </body>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $("#issueTable").bootstrapTable({
+            url: "/issues/0", //请求地址
+            striped: true, //是否显示行间隔色
+            pageNumber: 1, //初始化加载第一页
+            pagination: true, //是否分页
+            sidePagination: 'client', //server:服务器端分页|client：前端分页
+            pageSize: 10, //单页记录数
+            pageList: [1, 5, 10], //可选择单页记录数
+            showRefresh: true, //刷新按钮
+            sortName: 'likelihood',
+            sortOrder: 'desc',
+            rowStyle: style,
+            columns: [{
+                title: '#',
+                field: 'id',
+                sortable: true
+            }, {
+                title: '漏洞模式',
+                field: 'patternName',
+                sortable: true
+            }, {
+                title: '优先级',
+                field: 'priority',
+                sortable: true
+            }, {
+                title: '漏洞类型',
+                field: 'kingdom',
+                sortable: true
+            }, {
+                title: '置信值',
+                field: 'likelihood',
+                sortable: true,
+                formatter: toFixed
+            }, {
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    });
+
+    function filter() {
+        $("#issueTable").bootstrapTable('refresh', {
+            url: "/issues/1", //请求地址
+            striped: true, //是否显示行间隔色
+            pageNumber: 1, //初始化加载第一页
+            pagination: true, //是否分页
+            sidePagination: 'client', //server:服务器端分页|client：前端分页
+            pageSize: 10, //单页记录数
+            pageList: [1, 5, 10], //可选择单页记录数
+            showRefresh: true, //刷新按钮
+            sortName: 'likelihood',
+            sortOrder: 'desc',
+            rowStyle: style,
+            columns: [{
+                title: '#',
+                field: 'id',
+                sortable: true
+            }, {
+                title: '漏洞模式',
+                field: 'patternName',
+                sortable: true
+            }, {
+                title: '优先级',
+                field: 'priority',
+                sortable: true
+            }, {
+                title: '漏洞类型',
+                field: 'kingdom',
+                sortable: true
+            }, {
+                title: '置信值',
+                field: 'likelihood',
+                sortable: true,
+                formatter: toFixed
+            }, {
+                field: 'operate',
+                title: '操作',
+                formatter: operateFormatter //自定义方法，添加操作按钮
+            }]
+        })
+    }
+
+    function toFixed(value, row, index) {
+        let num = row.likelihood;
+        return num.toFixed(2);
+    }
+
+    function operateFormatter(value, row, index) {
+        if (row.state === "False") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.id + "\")'><i class='fa fa-check'></i></a>";
+        else if (row.state === "True") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.id + "\")'><i class='fa fa-times'></i></a>";
+        else return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.id + "\")'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.id + "\")'><i class='fa fa-times'></i></a>";
+    }
+
+    function style(row, index) {
+        let style = "";
+        if (row.state === 'True') {
+            style = "danger";
+        }
+        return {
+            classes: style
+        };
+    }
+
+    function generate() {
+        $.ajax({
+            url: '/generate',
+            responseType: 'blob',
+            method: 'get',
+            success: function(msg) {
+                if (msg === 'null') layer.msg("请设置报告模版")
+                else {
+                    const blob = new Blob([msg], {
+                        type: 'application/vnd.ms-excel;charset=utf-8'
+                    });
+                    const link = document.createElement('a'); // 创建a链接，用于下载文件
+                    link.download = [
+                        [$ {
+                            session.project.projectName
+                        }]
+                    ] + '-' + [
+                        [$ {
+                            session.version.versionName
+                        }]
+                    ] + '.doc';
+                    link.style.display = 'none';
+                    link.href = URL.createObjectURL(blob);
+                    document.body.appendChild(link);
+                    link.click(); // 触发事件，下载文件
+                    URL.revokeObjectURL(link.href); // 释放掉blob对象
+                    document.body.removeChild(link) // 下载完成移除元素
+                }
+            }
+        })
+    }
+
+    function start(id) {
+        layer.open({
+            title: false,
+            shade: 0.4,
+            content: '确定将此警报标记为正报？',
+            btn: ['确定', '取消'],
+            yes: function(index, layero) {
+                $.ajax({
+                    url: '/start/issue/' + id,
+                    success: function(msg) {
+                        if (msg === 1) location.reload();
+                    }
+                });
+                layer.close(index);
+            },
+            btn2: function(index, layero) {
+                layer.close(index);
+            }
+        });
+    }
+
+    function end(id) {
+        layer.open({
+            title: false,
+            shade: 0.4,
+            content: '确定将此警报标记为误报？',
+            btn: ['确定', '取消'],
+            yes: function(index, layero) {
+                $.ajax({
+                    url: '/end/issue/' + id,
+                    success: function(msg) {
+                        if (msg === 1) location.reload();
+                    }
+                });
+                layer.close(index);
+            },
+            btn2: function(index, layero) {
+                layer.close(index);
+            }
+        });
+    }
+</script>
 
 </html>

@@ -28,6 +28,10 @@ public class ProjectSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("project");
         
+        if (record.getProjectId() != null) {
+            sql.VALUES("project_id", "#{projectId,jdbcType=VARCHAR}");
+        }
+        
         if (record.getProjectName() != null) {
             sql.VALUES("project_name", "#{projectName,jdbcType=VARCHAR}");
         }
@@ -46,9 +50,9 @@ public class ProjectSqlProvider {
     public String selectByExample(ProjectExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("project_id");
         } else {
-            sql.SELECT("id");
+            sql.SELECT("project_id");
         }
         sql.SELECT("project_name");
         sql.SELECT("description");
@@ -70,8 +74,8 @@ public class ProjectSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("project");
         
-        if (record.getId() != null) {
-            sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        if (record.getProjectId() != null) {
+            sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         }
         
         if (record.getProjectName() != null) {
@@ -94,7 +98,7 @@ public class ProjectSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("project");
         
-        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
         sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
@@ -120,7 +124,7 @@ public class ProjectSqlProvider {
             sql.SET("user_id = #{userId,jdbcType=INTEGER}");
         }
         
-        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("project_id = #{projectId,jdbcType=VARCHAR}");
         
         return sql.toString();
     }

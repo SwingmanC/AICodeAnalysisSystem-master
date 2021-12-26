@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface IssueService {
 
-    List<IssueBasic> getIssueList(int versionId,String priority,String kingdom,int flag);
+    List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,int flag);
 
-    List<IssueBasic> getIssueListByPatternId(int versionId,String patternId);
+    List<IssueBasic> getIssueListByPatternId(String versionId,String patternId);
 
-    IssueBasic getIssue(int id);
+    IssueBasic getIssue(String issueId);
 
     IssueSource getSourceInfo(String issueId);
 

@@ -8,7 +8,7 @@ public interface RuleService {
 
     List<ARule> getRules(int userId);
 
-    ARule getRule(int id);
+    ARule getRule(String ruleId);
 
     List<ARule> getUsedRules(int userId);
 
@@ -16,5 +16,5 @@ public interface RuleService {
 
     int updateRule(ARule rule);
 
-    int deleteRule(int id);
+    int deleteRule(String ruleId);
 }
