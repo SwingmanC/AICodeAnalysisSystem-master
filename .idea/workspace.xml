@@ -2,160 +2,109 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/StringUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_charts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user_info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ARuleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ARuleSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ATemplateMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ATemplateSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AUserInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AUserInfoSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AUserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AUserSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AVersionMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/AVersionSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/IssueBasicMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/IssueBasicSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/IssueSourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/IssueSourceSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/KnowledgeMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/KnowledgeSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternInfoSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternLkMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/PatternLkSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ProjectMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/dao/ProjectSqlProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARule.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserExample$Criteria.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserExample$Criterion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserExample$GeneratedCriteria.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserExample.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserInfoExample$Criteria.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserInfoExample$Criterion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserInfoExample$GeneratedCriteria.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AUserInfoExample.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AVersion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueSource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Knowledge.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfoWithBLOBs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLk.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/Project.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/dto/PatternInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueDocVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/KnowledgeVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternDocVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/IssueService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/DocUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/SortUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/StringUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/algorithm/Match.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/algorithm/impl/ExactMatch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/issue_charts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/user_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/test/test.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/xxl-job-1.3.0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/jsfnsc/xxl-job/xxl-job-1.3.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/IssueInfoDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/IssueSourceDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/ChartController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RepoController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARuleExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARuleExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARuleExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARuleExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplateExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplateExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplateExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplateExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AVersionExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AVersionExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AVersionExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/AVersionExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasicExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasicExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasicExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasicExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueSourceExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueSourceExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueSourceExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueSourceExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/KnowledgeExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/KnowledgeExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/KnowledgeExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/KnowledgeExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfoExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfoExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfoExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternInfoExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLkExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLkExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLkExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLkExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ProjectExample$Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ProjectExample$Criterion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ProjectExample$GeneratedCriteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ProjectExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/dto/IssueInfoDO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/dto/IssueSourceDO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/dto/PatternInfoDO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/IssueServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/KnowledgeServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/RuleServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/TemplateServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/XMLUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ARuleSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ATemplateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ATemplateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ATemplateSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ATemplateSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/AVersionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/AVersionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/AVersionSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/AVersionSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueBasicMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueBasicMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueBasicSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueBasicSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueSourceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueSourceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueSourceSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/IssueSourceSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/KnowledgeSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternInfoSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternInfoSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternLkMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternLkMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternLkSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/PatternLkSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ProjectMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ProjectMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ProjectSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/dao/ProjectSqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RuleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/TemplateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/TemplateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARuleExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ARuleExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ATemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ATemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ATemplateExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ATemplateExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/AVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/AVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/AVersionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/AVersionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueBasicExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueBasicExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueSourceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/IssueSourceExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Knowledge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Knowledge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/KnowledgeExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/KnowledgeExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfoExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfoExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfoWithBLOBs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternInfoWithBLOBs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternLk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternLk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternLkExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/PatternLkExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ProjectExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/entity/ProjectExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/PatternInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/PatternInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/KnowledgeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/KnowledgeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/PatternVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/PatternVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/IssueService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/KnowledgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/KnowledgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/PatternInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/dto/PatternInfoDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueDocVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueDocVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/PatternDocVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/PatternDocVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/RuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/RuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/TemplateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/TemplateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/IssueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/IssueServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/KnowledgeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/KnowledgeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/RuleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/RuleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/TemplateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/TemplateServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/XMLUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/visualization.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/algorithm/impl/ExactMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/algorithm/impl/ExactMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modify.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/report_list.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_charts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/violation_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/constant/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/constant/Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/KnowledgeServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/ProjectServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/RuleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/TemplateServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/doc/jsfnsc/lens/2018.5.25.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/doc/jsfnsc/tika/2020.4.15.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/visualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RuleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/TemplateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/TemplateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ARule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/ATemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/IssueBasic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLk.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/entity/PatternLk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/dto/PatternInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueDocVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueDocVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/KnowledgeVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/KnowledgeVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternDocVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternDocVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/PatternVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/IssueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/IssueService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/KnowledgeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/KnowledgeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/ProjectService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/RuleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/RuleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/TemplateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/TemplateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/algorithm/impl/ExactMatch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/knowledge_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/knowledge_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/pattern_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/pattern_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/report_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/report_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/template_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/version_list.html" afterDir="false" />
@@ -214,16 +163,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mypetstore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../english-api-master" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\pojo\vo" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.nju.demo" />
     </key>
@@ -232,8 +178,24 @@
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\entity" />
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\resources\static\img" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\pojo\vo" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.StringUtil">
+  <component name="RunManager" selected="Application.ExactMatch">
+    <configuration name="ExactMatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.nju.demo.utils.algorithm.impl.ExactMatch" />
+      <module name="AICodeAnalysisSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nju.demo.utils.algorithm.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StringUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.nju.demo.utils.StringUtil" />
       <module name="AICodeAnalysisSystem" />
@@ -256,6 +218,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ExactMatch" />
         <item itemvalue="Application.StringUtil" />
       </list>
     </recent_temporary>
@@ -295,7 +258,8 @@
       <workItem from="1640068473556" duration="6790000" />
       <workItem from="1640150244306" duration="20427000" />
       <workItem from="1640321646585" duration="16065000" />
-      <workItem from="1640493855324" duration="15424000" />
+      <workItem from="1640493855324" duration="15571000" />
+      <workItem from="1640579313749" duration="15736000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -332,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640337900860</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="12.26更新">
+      <created>1640511748653</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1640511748653</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,19 +316,20 @@
     <MESSAGE value="11.30更新" />
     <MESSAGE value="12.20专家知识库" />
     <MESSAGE value="12.24更新v2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.24更新v2.0" />
+    <MESSAGE value="12.26更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.26更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637120846956">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120846956" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1640511076262">
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1640594892039">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1638269094825" />
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139315485" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640511076262" />
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640594892039" />
     <state x="532" y="450" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1640325275232">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -379,67 +351,67 @@
     </state>
     <state x="253" y="117" key="CommitChangelistDialog2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141548338" />
     <state x="253" y="117" key="CommitChangelistDialog2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640511741076" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1640330419178">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1640594321185">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1638263872685" />
     <state x="740" y="280" key="FileChooserDialogImpl/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120696087" />
-    <state x="740" y="280" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640330419178" />
-    <state width="1877" height="300" key="GridCell.Tab.0.bottom" timestamp="1640510073322">
+    <state x="740" y="280" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640594321185" />
+    <state width="1877" height="309" key="GridCell.Tab.0.bottom" timestamp="1640597845673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="300" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640510073322" />
+    <state width="1877" height="309" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845673" />
     <state width="1493" height="258" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="300" key="GridCell.Tab.0.center" timestamp="1640510073322">
+    <state width="1877" height="309" key="GridCell.Tab.0.center" timestamp="1640597845673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="300" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640510073322" />
+    <state width="1877" height="309" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845673" />
     <state width="1493" height="258" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="300" key="GridCell.Tab.0.left" timestamp="1640510073322">
+    <state width="1877" height="309" key="GridCell.Tab.0.left" timestamp="1640597845673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="300" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640510073322" />
+    <state width="1877" height="309" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845673" />
     <state width="1493" height="258" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="300" key="GridCell.Tab.0.right" timestamp="1640510073322">
+    <state width="1877" height="309" key="GridCell.Tab.0.right" timestamp="1640597845673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="300" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640510073322" />
+    <state width="1877" height="309" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845673" />
     <state width="1493" height="258" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="191" key="GridCell.Tab.1.bottom" timestamp="1640508242195">
+    <state width="1877" height="309" key="GridCell.Tab.1.bottom" timestamp="1640597845674">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="191" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640508242195" />
+    <state width="1877" height="309" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845674" />
     <state width="1493" height="258" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="191" key="GridCell.Tab.1.center" timestamp="1640508242194">
+    <state width="1877" height="309" key="GridCell.Tab.1.center" timestamp="1640597845674">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="191" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640508242194" />
+    <state width="1877" height="309" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845674" />
     <state width="1493" height="258" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="191" key="GridCell.Tab.1.left" timestamp="1640508242194">
+    <state width="1877" height="309" key="GridCell.Tab.1.left" timestamp="1640597845673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="191" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640508242194" />
+    <state width="1877" height="309" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845673" />
     <state width="1493" height="258" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="191" key="GridCell.Tab.1.right" timestamp="1640508242195">
+    <state width="1877" height="309" key="GridCell.Tab.1.right" timestamp="1640597845674">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="340" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="191" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640508242195" />
+    <state width="1877" height="309" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640597845674" />
     <state width="1493" height="258" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
     <state x="490" y="180" key="Maven.ArtifactSearchDialog" timestamp="1640325201572">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -450,11 +422,11 @@
     </state>
     <state x="461" y="167" key="SettingsEditor/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637126694642" />
     <state x="461" y="167" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638275118379" />
-    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2" timestamp="1640337924889">
+    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2" timestamp="1640511767078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637203196599" />
-    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640337924889" />
+    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640511767078" />
     <state x="690" y="289" key="extract.method.dialog" timestamp="1640153014975">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -463,10 +435,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637213560515" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1638422067579">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1640595787574">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139510978" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1638422067579" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640595787574" />
   </component>
 </project>

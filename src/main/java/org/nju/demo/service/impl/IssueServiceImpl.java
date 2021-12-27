@@ -98,8 +98,8 @@ public class IssueServiceImpl implements IssueService {
                     }
                 }
             }
-            if (flag == 0) lastIssue.setState("Unknown");
-            updateIssue(lastIssue);
+            if (flag == 1) lastIssue.setState("Unknown");
         }
+        for(IssueBasic lastIssue:lastIssueList) updateIssue(lastIssue);
     }
 }

@@ -130,7 +130,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '漏洞模式',
                 field: 'patternName',
@@ -139,7 +142,6 @@
                 title: '置信值',
                 field: 'likelihood',
                 sortable: true,
-                formatter: likelihoodToFixed
             }, {
                 field: 'operate',
                 title: '操作',
@@ -148,18 +150,8 @@
         })
     });
 
-    function likelihoodToFixed(value, row, index) {
-        let num = row.likelihood;
-        return num.toFixed(2);
-    }
-
-    function varianceToFixed(value, row, index) {
-        let num = row.variance;
-        return num.toFixed(2);
-    }
-
     function operateFormatter(value, row, index) {
-        let path = "/view/knowledge/" + row.id;
+        let path = "/view/knowledge/" + row.patternId;
         return "<a href=\"" + path + "\" title='进入知识库'><i class='fa fa-eye'></i></a>";
     }
 </script>

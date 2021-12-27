@@ -3,6 +3,7 @@ package org.nju.demo.controller;
 import org.nju.demo.entity.ARule;
 import org.nju.demo.entity.AUser;
 import org.nju.demo.service.RuleService;
+import org.nju.demo.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +33,9 @@ public class RuleController {
     }
 
     @ResponseBody
-    @RequestMapping("/rule/{id}")
-    public ARule getRule(@PathVariable("id") int id){
-        return ruleService.getRule(id);
+    @RequestMapping("/rule/{ruleId}")
+    public ARule getRule(@PathVariable("ruleId") String ruleId){
+        return ruleService.getRule(ruleId);
     }
 
     @RequestMapping(value = "/addRule",method = RequestMethod.POST)
@@ -46,6 +47,7 @@ public class RuleController {
                           @RequestParam(value = "functionName",required = false) String functionName){
         ARule rule = new ARule();
         AUser user = (AUser) session.getAttribute("user");
+        rule.setRuleId(StringUtil.generateStringId());
         rule.setRuleName(ruleName);
         if (patternName == null) rule.setPatternName("");
         else rule.setPatternName(patternName);
@@ -69,14 +71,14 @@ public class RuleController {
 
     @ResponseBody
     @RequestMapping(value = "/editRule",method = RequestMethod.POST)
-    public int editRule(@RequestParam("id") int id,
+    public int editRule(@RequestParam("ruleId") String ruleId,
                         @RequestParam("ruleName") String ruleName,
                         @RequestParam(value = "patternName",required = false) String patternName,
                         @RequestParam(value = "priority",required = false) String priority,
                         @RequestParam(value = "kingdom",required = false) String kingdom,
                         @RequestParam(value = "fileName",required = false) String fileName,
                         @RequestParam(value = "functionName",required = false) String functionName){
-        ARule rule = ruleService.getRule(id);
+        ARule rule = ruleService.getRule(ruleId);
         rule.setRuleName(ruleName);
         if (patternName == null) rule.setPatternName("");
         else rule.setPatternName(patternName);
@@ -96,17 +98,17 @@ public class RuleController {
         return ruleService.updateRule(rule);
     }
 
-    @RequestMapping("/start/r/{id}")
-    public String startRule(@PathVariable("id") int id){
-        ARule rule = ruleService.getRule(id);
+    @RequestMapping("/start/r/{ruleId}")
+    public String startRule(@PathVariable("ruleId") String ruleId){
+        ARule rule = ruleService.getRule(ruleId);
         rule.setState(1);
         ruleService.updateRule(rule);
         return "redirect:/view/rules";
     }
 
-    @RequestMapping("/end/r/{id}")
-    public String endRule(@PathVariable("id") int id){
-        ARule rule = ruleService.getRule(id);
+    @RequestMapping("/end/r/{ruleId}")
+    public String endRule(@PathVariable("ruleId") String ruleId){
+        ARule rule = ruleService.getRule(ruleId);
         rule.setState(0);
         ruleService.updateRule(rule);
         return "redirect:/view/rules";

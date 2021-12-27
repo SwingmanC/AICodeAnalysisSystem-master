@@ -1,7 +1,6 @@
 package org.nju.demo.pojo.vo;
 
 public class IssueDocVO {
-    private String issueId;
     private String priority;
     private String kingdom;
     private String filePath;
@@ -9,14 +8,6 @@ public class IssueDocVO {
     private String snippet;
     private String description;
     private String state;
-
-    public String getIssueId() {
-        return issueId;
-    }
-
-    public void setIssueId(String issueId) {
-        this.issueId = issueId;
-    }
 
     public String getPriority() {
         return priority;

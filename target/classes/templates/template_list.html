@@ -166,7 +166,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '模版名称',
                 field: 'templateName',
@@ -185,7 +188,7 @@
     });
 
     function operateFormatter(value, row, index) {
-        let path = "/start/t/" + row.id;
+        let path = "/start/t/" + row.templateId;
         return "<a href=\"" + path + "\" title='启用'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='删除'><i class='fa fa-trash'></i></a>";
     }
 

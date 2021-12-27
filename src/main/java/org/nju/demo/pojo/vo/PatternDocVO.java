@@ -3,21 +3,12 @@ package org.nju.demo.pojo.vo;
 import java.util.List;
 
 public class PatternDocVO {
-    private String patternId;
     private String patternName;
     private String explanation;
     private String recommendation;
     private String tip;
     private double likelihood;
     private List<IssueDocVO> issueDocVOList;
-
-    public String getPatternId() {
-        return patternId;
-    }
-
-    public void setPatternId(String patternId) {
-        this.patternId = patternId;
-    }
 
     public String getPatternName() {
         return patternName;

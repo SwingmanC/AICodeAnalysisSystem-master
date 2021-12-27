@@ -14,6 +14,8 @@ public interface PatternService {
 
     PatternLk getPatternLk(String patternLkId);
 
+    PatternLk getPatternByPatternName(String patternName);
+
     List<PatternLk> getPatternLkList();
 
     int updatePatternLikelihood(PatternLk pattern);

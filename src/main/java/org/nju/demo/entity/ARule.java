@@ -19,6 +19,10 @@ public class ARule {
 
     private Integer userId;
 
+    public ARule(){
+        this.state = 0;
+    }
+
     public String getRuleId() {
         return ruleId;
     }

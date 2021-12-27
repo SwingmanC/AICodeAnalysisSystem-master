@@ -3,6 +3,7 @@ package org.nju.demo.controller;
 import org.nju.demo.entity.ATemplate;
 import org.nju.demo.entity.AUser;
 import org.nju.demo.service.TemplateService;
+import org.nju.demo.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,6 +55,7 @@ public class TemplateController {
             file = new File(filePath);
             templateFile.transferTo(file);
         }
+        template.setTemplateId(StringUtil.generateStringId());
         template.setTemplateName(templateName);
         template.setFilePath(user.getUsername()+"/"+templateFile.getOriginalFilename());
         template.setUserId(user.getId());
@@ -61,10 +63,10 @@ public class TemplateController {
         return "redirect:/view/templates";
     }
 
-    @RequestMapping("/start/t/{id}")
-    public String startTemplate(@PathVariable("id") int id){
+    @RequestMapping("/start/t/{templateId}")
+    public String startTemplate(@PathVariable("templateId") String templateId){
         AUser user = (AUser) session.getAttribute("user");
-        ATemplate template = templateService.getTemplate(id);
+        ATemplate template = templateService.getTemplate(templateId);
         ATemplate lastTemplate = templateService.getUsedTemplate(user.getId());
         if (lastTemplate != null){
             lastTemplate.setState(0);

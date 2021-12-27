@@ -1,17 +1,17 @@
 package org.nju.demo.utils;
 
 import org.nju.demo.entity.*;
+import org.nju.demo.pojo.dto.IssueInfoDO;
+import org.nju.demo.pojo.dto.IssueSourceDO;
+import org.nju.demo.pojo.dto.PatternInfoDO;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -47,9 +47,8 @@ public class XMLUtil {
     }
 
     public static Map<String,List> getInfo(InputStream file) throws ParserConfigurationException, IOException, SAXException {
-	    List<IssueBasic> issueBasicList = new ArrayList<>();
-	    List<IssueSource> issueSourceList = new ArrayList<>();
-	    List<PatternInfoWithBLOBs> patternInfoList = new ArrayList<>();
+	    List<IssueInfoDO> issueInfoList = new ArrayList<>();
+	    List<PatternInfoDO> patternInfoList = new ArrayList<>();
 	    Map<String,List> res = new HashMap<>();
 
         Element element = getElement(file);
@@ -60,8 +59,8 @@ public class XMLUtil {
         NodeList groupSection = chart.getElementsByTagName("GroupingSection");
 
         for(int i=0;i<groupSection.getLength();++i){
+            PatternInfoDO patternInfoDO = new PatternInfoDO();
             String explanation,recommendation,tip;
-            String ruleId = "";
             String patternName = "";
 
             Element group = (Element) groupSection.item(i);
@@ -84,10 +83,7 @@ public class XMLUtil {
             NodeList issueList = group.getElementsByTagName("Issue");
             for(int j=0;j<issueList.getLength();++j){
                 Element issue = (Element) issueList.item(j);
-                IssueBasic issueBasic = new IssueBasic();
-                issueBasic.setIssueId(issue.getAttribute("iid"));
-                issueBasic.setPatternId(issue.getAttribute("ruleID"));
-                if (ruleId.equals("")) ruleId = issue.getAttribute("ruleID");
+                IssueInfoDO issueInfoDO = new IssueInfoDO();
                 Element category = (Element) issue.getElementsByTagName("Category").item(0);
                 Element kingdom = (Element) issue.getElementsByTagName("Kingdom").item(0);
                 Element description = (Element) issue.getElementsByTagName("Abstract").item(0);
@@ -99,47 +95,42 @@ public class XMLUtil {
                 Element sinkSnippet = (Element) primary.getElementsByTagName("Snippet").item(0);
                 Element sinkTargetFunction = (Element) primary.getElementsByTagName("TargetFunction").item(0);
                 if (patternName.equals("")) patternName = category.getTextContent();
-                issueBasic.setKingdom(kingdom.getTextContent());
-                issueBasic.setDescription(description.getTextContent());
-                issueBasic.setPriority(priority.getTextContent());
-                issueBasic.setFileName(sinkFileName.getTextContent());
-                issueBasic.setFilePath(sinkFilePath.getTextContent());
-                issueBasic.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
-                issueBasic.setSnippet(sinkSnippet.getTextContent());
-                issueBasic.setTargetFunction(sinkTargetFunction.getTextContent());
+                issueInfoDO.setPatternName(patternName);
+                issueInfoDO.setKingdom(kingdom.getTextContent());
+                issueInfoDO.setDescription(description.getTextContent());
+                issueInfoDO.setPriority(priority.getTextContent());
+                issueInfoDO.setFileName(sinkFileName.getTextContent());
+                issueInfoDO.setFilePath(sinkFilePath.getTextContent());
+                issueInfoDO.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
+                issueInfoDO.setSnippet(sinkSnippet.getTextContent());
+                issueInfoDO.setTargetFunction(sinkTargetFunction.getTextContent());
 
                 Element source = (Element) issue.getElementsByTagName("Source").item(0);
 
                 if(source != null){
-                    IssueSource issueSource = new IssueSource();
-
+                    IssueSourceDO issueSourceDO = new IssueSourceDO();
                     Element sourceFileName = (Element) source.getElementsByTagName("FileName").item(0);
                     Element sourceFilePath = (Element) source.getElementsByTagName("FilePath").item(0);
                     Element sourceStartLine = (Element) source.getElementsByTagName("LineStart").item(0);
                     Element sourceSnippet = (Element) source.getElementsByTagName("Snippet").item(0);
                     Element sourceTargetFunction = (Element) source.getElementsByTagName("TargetFunction").item(0);
-                    issueSource.setIssueId(issueBasic.getIssueId());
-                    issueSource.setFileName(sourceFileName.getTextContent());
-                    issueSource.setFilePath(sourceFilePath.getTextContent());
-                    issueSource.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
-                    issueSource.setSnippet(sourceSnippet.getTextContent());
-                    issueSource.setTargetFunction(sourceTargetFunction.getTextContent());
-                    issueSourceList.add(issueSource);
+                    issueSourceDO.setFileName(sourceFileName.getTextContent());
+                    issueSourceDO.setFilePath(sourceFilePath.getTextContent());
+                    issueSourceDO.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
+                    issueSourceDO.setSnippet(sourceSnippet.getTextContent());
+                    issueSourceDO.setTargetFunction(sourceTargetFunction.getTextContent());
+                    issueInfoDO.setIssueSourceDO(issueSourceDO);
                 }
-
-                issueBasicList.add(issueBasic);
+                issueInfoList.add(issueInfoDO);
             }
-            PatternInfoWithBLOBs patternInfo = new PatternInfoWithBLOBs();
-            patternInfo.setPatternId(ruleId);
-            patternInfo.setPatternName(patternName);
-            patternInfo.setExplanation(explanation);
-            patternInfo.setRecommendation(recommendation);
-            patternInfo.setTip(tip);
-            patternInfoList.add(patternInfo);
+            patternInfoDO.setPatternName(patternName);
+            patternInfoDO.setExplanation(explanation);
+            patternInfoDO.setRecommendation(recommendation);
+            patternInfoDO.setTip(tip);
+            patternInfoList.add(patternInfoDO);
         }
 
-        res.put("issueBasicList",issueBasicList);
-        res.put("issueSourceList",issueSourceList);
+        res.put("issueInfoList",issueInfoList);
         res.put("patternInfoList",patternInfoList);
 	    return res;
     }

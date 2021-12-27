@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -200,7 +200,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '标题',
                 field: 'knowledgeName',
@@ -218,7 +221,7 @@
     });
 
     function operateFormatter(value, row, index) {
-        return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='watch(\"" + row.id + "\")'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='删除' onclick='del(\"" + row.id + "\")'><i class='fa fa-trash'></i></a>";
+        return "<a href='#' data-toggle='modal' data-target='#infoModal' onclick='watch(\"" + row.knowledgeId + "\")'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='删除' onclick='del(\"" + row.knowledgeId + "\")'><i class='fa fa-trash'></i></a>";
     }
 
     function watch(id) {

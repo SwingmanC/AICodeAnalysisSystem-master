@@ -149,11 +149,11 @@
                                         <div id="version_id" hidden></div>
                                         <table>
                                             <tr>
-                                                <td><label for="lastId">对比版本：</label></td>
+                                                <td><label for="last_id">对比版本：</label></td>
                                                 <td style="width: 350px;">
-                                                    <select id="lastId" name="lastId" class="form-control">
-                                                        <option value="0" selected>无</option>
-                                                        <option th:each="version:${versionList}" th:value="${version.id}" th:text="${version.versionName}"></option>
+                                                    <select id="last_id" name="last_id" class="form-control">
+                                                        <option value="First" selected>初始版本</option>
+                                                        <option th:each="version:${versionList}" th:value="${version.versionId}" th:text="${version.versionName}"></option>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -199,7 +199,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '版本名称',
                 field: 'versionName',
@@ -217,13 +220,13 @@
     });
 
     function operateFormatter(value, row, index) {
-        let read_path = "/view/issues/" + row.id;
+        let read_path = "/view/issues/" + row.versionId;
         let edit_path = "#";
         let scan_path = "#";
         let delete_path = "#";
         return "<a class='btn btn-default' href=\"" + read_path + "\">查看</a>" + "  " +
-            "<a class='btn btn-primary' href=\"" + edit_path + "\" role='button' data-toggle='modal' data-target='#editModal' onclick='value(\"" + row.id + "\")'>编辑</a>" + "  " +
-            "<a class='btn btn-warning' href=\"" + scan_path + "\" onclick='scan(\"" + row.id + "\")'>分析</a>" + "  " +
+            "<a class='btn btn-primary' href=\"" + edit_path + "\" role='button' data-toggle='modal' data-target='#editModal' onclick='value(\"" + row.versionId + "\")'>编辑</a>" + "  " +
+            "<a class='btn btn-warning' href=\"" + scan_path + "\" onclick='scan(\"" + row.versionId + "\")'>分析</a>" + "  " +
             "<a class='btn btn-danger' href=\"" + delete_path + "\">删除</a>";
     }
 
@@ -268,8 +271,8 @@
     }
 
     function edit() {
-        let lastId = Number($("#lastId").val());
-        let versionId = Number($("#version_id").val());
+        let lastId = $("#last_id").val();
+        let versionId = $("#version_id").val();
         if (lastId === versionId)
             layer.msg("请重新选择对比版本", {
                 time: 2000

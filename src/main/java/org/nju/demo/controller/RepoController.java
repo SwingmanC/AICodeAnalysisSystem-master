@@ -7,6 +7,7 @@ import org.nju.demo.pojo.vo.KnowledgeVO;
 import org.nju.demo.pojo.vo.PatternVO;
 import org.nju.demo.service.KnowledgeService;
 import org.nju.demo.service.PatternService;
+import org.nju.demo.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -90,6 +91,7 @@ public class RepoController {
         PatternLk pattern = (PatternLk) session.getAttribute("pattern");
 
         Knowledge knowledge = new Knowledge();
+        knowledge.setKnowledgeId(StringUtil.generateStringId());
         knowledge.setKnowledgeName(knowledgeName);
         knowledge.setContent(content);
         knowledge.setPatternId(pattern.getPatternLkId());

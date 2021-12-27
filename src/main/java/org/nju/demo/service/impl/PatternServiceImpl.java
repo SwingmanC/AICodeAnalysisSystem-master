@@ -42,6 +42,19 @@ public class PatternServiceImpl implements PatternService {
     }
 
     @Override
+    public PatternLk getPatternByPatternName(String patternName) {
+        PatternLkExample example = new PatternLkExample();
+        PatternLkExample.Criteria criteria = example.createCriteria();
+
+        criteria.andPatternNameEqualTo(patternName);
+
+        List<PatternLk> patternLkList = patternLkMapper.selectByExample(example);
+        if (patternLkList.size() > 0)
+            return patternLkList.get(0);
+        else return null;
+    }
+
+    @Override
     public List<PatternLk> getPatternLkList() {
         PatternLkExample example = new PatternLkExample();
         return patternLkMapper.selectByExample(example);

@@ -70,7 +70,7 @@
                         </ul>
                         <ul class="nav navbar-top-links navbar-right">
                             <li>
-                                <a th:href="@{'/view/versions/'+${session.project.id}}">
+                                <a th:href="@{'/view/versions/'+${session.project.projectId}}">
                                     <i class="fa fa-sign-out"></i> 返回
                                 </a>
                             </li>
@@ -138,7 +138,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '漏洞模式',
                 field: 'patternName',
@@ -180,7 +183,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '漏洞模式',
                 field: 'patternName',
@@ -212,9 +218,9 @@
     }
 
     function operateFormatter(value, row, index) {
-        if (row.state === "False") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.id + "\")'><i class='fa fa-check'></i></a>";
-        else if (row.state === "True") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.id + "\")'><i class='fa fa-times'></i></a>";
-        else return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.id + "\")'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.id + "\")'><i class='fa fa-times'></i></a>";
+        if (row.state === "False") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.issueId + "\")'><i class='fa fa-check'></i></a>";
+        else if (row.state === "True") return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.issueId + "\")'><i class='fa fa-times'></i></a>";
+        else return "<a href='#'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.issueId + "\")'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.issueId + "\")'><i class='fa fa-times'></i></a>";
     }
 
     function style(row, index) {
@@ -239,15 +245,7 @@
                         type: 'application/vnd.ms-excel;charset=utf-8'
                     });
                     const link = document.createElement('a'); // 创建a链接，用于下载文件
-                    link.download = [
-                        [$ {
-                            session.project.projectName
-                        }]
-                    ] + '-' + [
-                        [$ {
-                            session.version.versionName
-                        }]
-                    ] + '.doc';
+                    link.download = [[${session.project.projectName}]]+'-'+[[${session.version.versionName}]]+'.doc';
                     link.style.display = 'none';
                     link.href = URL.createObjectURL(blob);
                     document.body.appendChild(link);

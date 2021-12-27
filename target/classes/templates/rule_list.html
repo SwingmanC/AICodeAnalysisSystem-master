@@ -236,7 +236,10 @@
             columns: [{
                 title: '#',
                 field: 'id',
-                sortable: true
+                sortable: true,
+                formatter: function(value, row, index) {
+                    return index + 1;
+                }
             }, {
                 title: '规则名称',
                 field: 'ruleName',
@@ -271,10 +274,10 @@
     }
 
     function operateFormatter(value, row, index) {
-        let start_path = "/start/r/" + row.id;
-        let end_path = "/end/r/" + row.id;
-        if (row.state === 1) return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\"" + row.id + "\")'><i class='fa fa-edit'></i></a>" + "  " + "<a href=\"" + end_path + "\" title='禁用'><i class='fa fa-times'></i></a>";
-        else return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\"" + row.id + "\")'><i class='fa fa-edit'></i></a>" + "  " + "<a href=\"" + start_path + "\" title='启用'><i class='fa fa-check'></i></a>";
+        let start_path = "/start/r/" + row.ruleId;
+        let end_path = "/end/r/" + row.ruleId;
+        if (row.state === 1) return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\"" + row.ruleId + "\")'><i class='fa fa-edit'></i></a>" + "  " + "<a href=\"" + end_path + "\" title='禁用'><i class='fa fa-times'></i></a>";
+        else return "<a href='#' title='编辑' data-toggle='modal' data-target='#editModal' onclick='watch(\"" + row.ruleId + "\")'><i class='fa fa-edit'></i></a>" + "  " + "<a href=\"" + start_path + "\" title='启用'><i class='fa fa-check'></i></a>";
     }
 
     function strFormatter(value, row, index) {

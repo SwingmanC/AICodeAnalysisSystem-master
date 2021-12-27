@@ -2,16 +2,14 @@ package org.nju.demo.controller;
 
 import freemarker.template.TemplateException;
 import org.nju.demo.entity.*;
+import org.nju.demo.pojo.dto.IssueInfoDO;
+import org.nju.demo.pojo.dto.IssueSourceDO;
+import org.nju.demo.pojo.dto.PatternInfoDO;
 import org.nju.demo.pojo.vo.IssueDocVO;
 import org.nju.demo.pojo.vo.IssueVO;
 import org.nju.demo.pojo.vo.PatternDocVO;
 import org.nju.demo.service.*;
-import org.nju.demo.utils.CmdUtil;
-import org.nju.demo.utils.DocUtil;
-import org.nju.demo.utils.SortUtil;
-import org.nju.demo.utils.XMLUtil;
-import org.nju.demo.utils.algorithm.Match;
-import org.nju.demo.utils.algorithm.impl.ExactMatch;
+import org.nju.demo.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.xml.sax.SAXException;
 
-import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,17 +45,9 @@ public class MainController {
     private TemplateService templateService;
 
     @Autowired
-    private RuleService ruleService;
-
-    @Autowired
     private HttpSession session;
 
     private static String UPLOADED_FOLDER = System.getProperty("user.dir");
-
-    @RequestMapping("/test")
-    public String test(){
-        return "index";
-    }
 
     @RequestMapping("/view/projects")
     public String viewProjects(){
@@ -66,26 +55,30 @@ public class MainController {
     }
 
     @RequestMapping("/view/versions/{projectId}")
-    public String viewVersions(@PathVariable("projectId") int projectId,
+    public String viewVersions(@PathVariable("projectId") String projectId,
                                Model model){
-        Project project = projectService.getProjectById(projectId);
+        Project project = projectService.getProject(projectId);
         List<AVersion> versionList = versionService.getVersionsByProjectId(projectId);
+        System.out.println(project.getProjectName());
         session.setAttribute("project",project);
-        model.addAttribute("versionList",versionList);
+        if (versionList.size() != 0)
+            model.addAttribute("versionList",versionList);
         return "version_list";
     }
 
     @RequestMapping("/back_versions")
     public String backVersions(Model model){
         Project project = (Project) session.getAttribute("project");
-        List<AVersion> versionList = versionService.getVersionsByProjectId(project.getId());
-        model.addAttribute("versionList",versionList);
+        List<AVersion> versionList = versionService.getVersionsByProjectId(project.getProjectId());
+        if (versionList.size() != 0)
+            model.addAttribute("versionList",versionList);
         return "version_list";
     }
 
     @RequestMapping("/view/issues/{versionId}")
-    public String viewIssues(@PathVariable("versionId") int versionId){
+    public String viewIssues(@PathVariable("versionId") String versionId){
         AVersion version = versionService.getVersion(versionId);
+        System.out.println(version.getVersionName());
         session.setAttribute("version",version);
         return "issue_list";
     }
@@ -101,7 +94,7 @@ public class MainController {
     @RequestMapping("/versions")
     public List<AVersion> getVersions(){
         Project project = (Project) session.getAttribute("project");
-        return versionService.getVersionsByProjectId(project.getId());
+        return versionService.getVersionsByProjectId(project.getProjectId());
     }
 
     @ResponseBody
@@ -112,15 +105,13 @@ public class MainController {
         AVersion version = (AVersion) session.getAttribute("version");
         if (priority == null) priority = "";
         if (kingdom == null) kingdom = "";
-        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getId(),priority,kingdom,flag);
+        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),priority,kingdom,flag);
         List<IssueVO> issueVOList = new ArrayList<>();
         for(IssueBasic issueBasic : issueBasicList){
             IssueVO issueVO = new IssueVO();
-            PatternInfo patternInfo = patternService.getPatternInfo(issueBasic.getPatternId());//可优化
-            PatternLk patternLk = patternService.getPatternLikelihood(issueBasic.getPatternId());
-            issueVO.setId(issueBasic.getId());
+            PatternLk patternLk = patternService.getPatternLk(issueBasic.getPatternId());
             issueVO.setIssueId(issueBasic.getIssueId());
-            issueVO.setPatternName(patternInfo.getPatternName());
+            issueVO.setPatternName(patternLk.getPatternName());
             issueVO.setKingdom(issueBasic.getKingdom());
             issueVO.setPriority(issueBasic.getPriority());
 
@@ -141,10 +132,10 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/start/issue/{id}")
-    public int startViolation(@PathVariable("id") int id){
-        IssueBasic issue = issueService.getIssue(id);
-        PatternLk pattern = patternService.getPatternLikelihood(issue.getPatternId());
+    @RequestMapping("/start/issue/{issueId}")
+    public int startIssue(@PathVariable("issueId") String issueId){
+        IssueBasic issue = issueService.getIssue(issueId);
+        PatternLk pattern = patternService.getPatternLk(issue.getPatternId());
 
         if (issue.getState().equals("False")) pattern.setfNum(pattern.getfNum()-1);
         pattern.settNum(pattern.gettNum()+1);
@@ -155,10 +146,10 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/end/issue/{id}")
-    public int endViolation(@PathVariable("id") int id){
-        IssueBasic issue = issueService.getIssue(id);
-        PatternLk pattern = patternService.getPatternLikelihood(issue.getPatternId());
+    @RequestMapping("/end/issue/{issueId}")
+    public int endIssue(@PathVariable("issueId") String issueId){
+        IssueBasic issue = issueService.getIssue(issueId);
+        PatternLk pattern = patternService.getPatternLk(issue.getPatternId());
 
         if (issue.getState().equals("True")) pattern.settNum(pattern.gettNum()-1);
         pattern.setfNum(pattern.getfNum()+1);
@@ -169,9 +160,9 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/issue/{id}")
-    public IssueBasic getIssueBasic(@PathVariable("id") int id){
-        return issueService.getIssue(id);
+    @RequestMapping("/issue/{issueId}")
+    public IssueBasic getIssueBasic(@PathVariable("issueId") String issueId){
+        return issueService.getIssue(issueId);
     }
 
     @ResponseBody
@@ -187,6 +178,7 @@ public class MainController {
         Project project = new Project();
         AUser user = (AUser) session.getAttribute("user");
 
+        project.setProjectId(StringUtil.generateStringId());
         project.setUserId(user.getId());
         project.setProjectName(projectName);
         project.setDescription(description);
@@ -211,18 +203,19 @@ public class MainController {
             file = new File(filePath);
             reportFile.transferTo(file);
         }
+        aVersion.setVersionId(StringUtil.generateStringId());
         aVersion.setVersionName(versionName);
-        aVersion.setLastId(-1);
+        aVersion.setLastId("Null");
         aVersion.setFilePath("data/"+user.getUsername()+"/"+project.getProjectName()+"/"+fileName);
-        aVersion.setProjectId(project.getId());
+        aVersion.setProjectId(project.getProjectId());
         versionService.addVersion(aVersion);
         return "redirect:/back_versions";
     }
 
     @ResponseBody
     @RequestMapping("/editVersion")
-    public int editVersion(@RequestParam("versionId") int versionId,
-                           @RequestParam(value = "lastId") int lastId){
+    public int editVersion(@RequestParam("versionId") String versionId,
+                           @RequestParam(value = "lastId") String lastId){
         AVersion version = versionService.getVersion(versionId);
         version.setLastId(lastId);
         return versionService.updateVersion(version);
@@ -230,25 +223,72 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/scan")
-    public int scan(@RequestParam("versionId") int versionId){
+    public int scan(@RequestParam("versionId") String versionId){
         if (issueService.getIssueList(versionId,"","",0).size() != 0) return 2;
 
         Project project = (Project) session.getAttribute("project");
         AVersion aVersion = versionService.getVersion(versionId);
-        if (aVersion.getLastId().equals(-1)) return 3;
-        if (!aVersion.getLastId().equals(0) && issueService.getIssueList(aVersion.getLastId(),"","",0).size() == 0) return 4;
+        if (aVersion.getLastId().equals("Null")) return 3;
+        if (!aVersion.getLastId().equals("First") && issueService.getIssueList(aVersion.getLastId(),"","",0).size() == 0) return 4;
 
         try{
             InputStream file = new FileInputStream(UPLOADED_FOLDER+"/"+aVersion.getFilePath());
             Map<String,List> res = XMLUtil.getInfo(file);
 
-            List<IssueBasic> issueBasicList = res.get("issueBasicList");
-            List<IssueSource> issueSourceList = res.get("issueSourceList");
-            List<PatternInfoWithBLOBs> patternInfoList = res.get("patternInfoList");
+            List<IssueInfoDO> issueInfoList = res.get("issueInfoList");
+            List<PatternInfoDO> patternInfoList = res.get("patternInfoList");
 
-            int lastVersionId = aVersion.getLastId();
-            if (lastVersionId != 0){
-                AVersion last_version = versionService.getVersion(lastVersionId);
+            for(PatternInfoDO patternInfoDO : patternInfoList){
+                if (patternService.getPatternByPatternName(patternInfoDO.getPatternName()) == null){
+                    PatternLk patternLk = new PatternLk();
+                    PatternInfoWithBLOBs patternInfo = new PatternInfoWithBLOBs();
+                    patternLk.setPatternLkId(StringUtil.generateStringId());
+                    patternLk.setPatternName(patternInfoDO.getPatternName());
+                    patternInfo.setPatternInfoId(StringUtil.generateStringId());
+                    patternInfo.setPatternLkId(patternLk.getPatternLkId());
+                    patternInfo.setExplanation(patternInfoDO.getExplanation());
+                    patternInfo.setRecommendation(patternInfoDO.getRecommendation());
+                    patternInfo.setTip(patternInfoDO.getTip());
+                    patternService.addPatternLk(patternLk);
+                    patternService.addPatternInfo(patternInfo);
+                }
+            }
+
+            List<IssueBasic> issueBasicList = new ArrayList<>();
+            for(IssueInfoDO issueInfoDO : issueInfoList){
+                PatternLk pattern = patternService.getPatternByPatternName(issueInfoDO.getPatternName());
+
+                IssueBasic issueBasic = new IssueBasic();
+                issueBasic.setIssueId(StringUtil.generateStringId());
+                issueBasic.setPatternId(pattern.getPatternLkId());
+                issueBasic.setKingdom(issueInfoDO.getKingdom());
+                issueBasic.setDescription(issueInfoDO.getDescription());
+                issueBasic.setPriority(issueInfoDO.getPriority());
+                issueBasic.setFileName(issueInfoDO.getFileName());
+                issueBasic.setFilePath(issueInfoDO.getFilePath());
+                issueBasic.setStartLine(issueInfoDO.getStartLine());
+                issueBasic.setSnippet(issueInfoDO.getSnippet());
+                issueBasic.setTargetFunction(issueInfoDO.getTargetFunction());
+                issueBasic.setVersionId(versionId);
+                issueBasicList.add(issueBasic);
+                issueService.addIssue(issueBasic);
+
+                if (issueInfoDO.getIssueSourceDO() != null){
+                    IssueSourceDO issueSourceDO = issueInfoDO.getIssueSourceDO();
+                    IssueSource issueSource = new IssueSource();
+                    issueSource.setIssueSourceId(StringUtil.generateStringId());
+                    issueSource.setIssueBasicId(issueBasic.getIssueId());
+                    issueSource.setFileName(issueSourceDO.getFileName());
+                    issueSource.setFilePath(issueSourceDO.getFilePath());
+                    issueSource.setStartLine(issueSourceDO.getStartLine());
+                    issueSource.setSnippet(issueSourceDO.getSnippet());
+                    issueSource.setTargetFunction(issueSourceDO.getTargetFunction());
+                    issueService.addSourceInfo(issueSource);
+                }
+            }
+
+            String lastVersionId = aVersion.getLastId();
+            if (!lastVersionId.equals("First")){
                 List<IssueBasic> lastIssueList = issueService.getIssueList(lastVersionId,"","",0);
                 issueService.compare(lastIssueList,issueBasicList);
                 Map<String,Integer> tNums = SortUtil.countNum(lastIssueList,"True");
@@ -258,7 +298,7 @@ public class MainController {
                     int trueNum = entry.getValue();
                     int falseNum = 0;
                     if (fNums.containsKey(patternId)) falseNum = fNums.get(patternId);
-                    PatternLk pattern = patternService.getPatternLikelihood(patternId);
+                    PatternLk pattern = patternService.getPatternLk(patternId);
                     pattern.settNum(pattern.gettNum()+trueNum);
                     pattern.setfNum(pattern.getfNum()+falseNum);
                     patternService.updatePatternLikelihood(pattern);
@@ -268,30 +308,11 @@ public class MainController {
                     if (tNums.containsKey(patternId)) continue;
                     else{
                         int falseNum = entry.getValue();
-                        PatternLk pattern = patternService.getPatternLikelihood(patternId);
+                        PatternLk pattern = patternService.getPatternLk(patternId);
                         pattern.setfNum(pattern.getfNum()+falseNum);
                         patternService.updatePatternLikelihood(pattern);
                     }
                 }
-            }
-
-            for (PatternInfoWithBLOBs patternInfo:patternInfoList){
-                if (patternService.getPatternLikelihood(patternInfo.getPatternId()) == null) {
-                    PatternLk patternLk = new PatternLk();
-                    patternLk.setPatternId(patternInfo.getPatternId());
-                    patternService.addPatternInfo(patternInfo);
-                    patternService.addPatternLk(patternLk);
-                }
-            }
-
-            for (IssueBasic issueBasic : issueBasicList){
-                issueBasic.setVersionId(versionId);
-                System.out.println(issueBasic.getIssueId()+" "+issueBasic.getPatternId());
-                issueService.addIssue(issueBasic);
-            }
-
-            for (IssueSource issueSource : issueSourceList){
-                issueService.addSourceInfo(issueSource);
             }
             return 1;
         }catch (Exception e){
@@ -318,12 +339,11 @@ public class MainController {
             List<String> patternNameList = XMLUtil.getSummary(report);
             List<PatternDocVO> patternDocVOList = new ArrayList<>();
             for(String patternName:patternNameList){
-                PatternInfo patternInfo = patternService.getPatternInfoByPatternName(patternName);
-                List<IssueBasic> issueBasicList = issueService.getIssueListByPatternId(version.getId(),patternInfo.getPatternId());
+                PatternLk patternLk = patternService.getPatternByPatternName(patternName);
+                List<IssueBasic> issueBasicList = issueService.getIssueListByPatternId(version.getVersionId(),patternLk.getPatternLkId());
                 List<IssueDocVO> issueDocVOList = new ArrayList<>();
                 for(IssueBasic issueBasic:issueBasicList){
                     IssueDocVO issueDocVO = new IssueDocVO();
-                    issueDocVO.setIssueId(issueBasic.getIssueId());
                     issueDocVO.setPriority(issueBasic.getPriority());
                     issueDocVO.setKingdom(issueBasic.getKingdom());
                     issueDocVO.setFilePath(issueBasic.getFilePath());
@@ -334,16 +354,14 @@ public class MainController {
                     issueDocVOList.add(issueDocVO);
                 }
                 PatternDocVO patternDocVO = new PatternDocVO();
-                PatternInfoWithBLOBs patternInfoWithBLOBs = patternService.getPatternInfo(patternInfo.getPatternId());
-                PatternLk patternLk = patternService.getPatternLikelihood(patternInfo.getPatternId());
+                PatternInfoWithBLOBs patternInfo = patternService.getPatternInfo(patternLk.getPatternLkId());
                 int tNum = patternLk.gettNum();
                 int fNum = patternLk.getfNum();
                 double likelihood = tNum*1.0/(tNum+fNum);
-                patternDocVO.setPatternId(patternInfoWithBLOBs.getPatternId());
-                patternDocVO.setPatternName(patternInfoWithBLOBs.getPatternName());
-                patternDocVO.setExplanation(patternInfoWithBLOBs.getExplanation());
-                patternDocVO.setRecommendation(patternInfoWithBLOBs.getRecommendation());
-                patternDocVO.setTip(patternInfoWithBLOBs.getTip());
+                patternDocVO.setPatternName(patternLk.getPatternName());
+                patternDocVO.setExplanation(patternInfo.getExplanation());
+                patternDocVO.setRecommendation(patternInfo.getRecommendation());
+                patternDocVO.setTip(patternInfo.getTip());
                 patternDocVO.setIssueDocVOList(issueDocVOList);
                 patternDocVO.setLikelihood(likelihood);
                 patternDocVOList.add(patternDocVO);
