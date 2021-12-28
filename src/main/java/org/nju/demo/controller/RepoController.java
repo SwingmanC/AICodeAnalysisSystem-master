@@ -46,7 +46,7 @@ public class RepoController {
     @ResponseBody
     @RequestMapping("/patterns")
     public List<PatternVO> getPatterns(){
-        List<PatternLk> patternList = patternService.getPatternLkList();
+        List<PatternLk> patternList = patternService.getFalsePatternList();
         List<PatternVO> patternVOList = new ArrayList<>();
         for(PatternLk pattern:patternList){
             PatternVO patternVO = new PatternVO();

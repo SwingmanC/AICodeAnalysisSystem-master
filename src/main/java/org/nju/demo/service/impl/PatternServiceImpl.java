@@ -61,6 +61,16 @@ public class PatternServiceImpl implements PatternService {
     }
 
     @Override
+    public List<PatternLk> getFalsePatternList() {
+        PatternLkExample example = new PatternLkExample();
+        PatternLkExample.Criteria criteria = example.createCriteria();
+
+        criteria.andFNumGreaterThan(0);
+
+        return patternLkMapper.selectByExample(example);
+    }
+
+    @Override
     public int updatePatternLikelihood(PatternLk pattern) {
         return patternLkMapper.updateByPrimaryKeySelective(pattern);
     }

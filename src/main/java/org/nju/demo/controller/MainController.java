@@ -6,6 +6,7 @@ import org.nju.demo.pojo.dto.IssueInfoDO;
 import org.nju.demo.pojo.dto.IssueSourceDO;
 import org.nju.demo.pojo.dto.PatternInfoDO;
 import org.nju.demo.pojo.vo.IssueDocVO;
+import org.nju.demo.pojo.vo.IssueInfoVO;
 import org.nju.demo.pojo.vo.IssueVO;
 import org.nju.demo.pojo.vo.PatternDocVO;
 import org.nju.demo.service.*;
@@ -112,7 +113,7 @@ public class MainController {
             PatternLk patternLk = patternService.getPatternLk(issueBasic.getPatternId());
             issueVO.setIssueId(issueBasic.getIssueId());
             issueVO.setPatternName(patternLk.getPatternName());
-            issueVO.setKingdom(issueBasic.getKingdom());
+            issueVO.setFileName(issueBasic.getFileName());
             issueVO.setPriority(issueBasic.getPriority());
 
             int trueNum = patternLk.gettNum();
@@ -322,6 +323,38 @@ public class MainController {
     }
 
     @ResponseBody
+    @RequestMapping("/scanTest/{versionId}")
+    public int test(@PathVariable("versionId") String versionId){
+        AVersion version = versionService.getVersion(versionId);
+        List<IssueBasic> issueBasicList = issueService.getIssueList(versionId,"","",0);
+        List<IssueBasic> lastIssueList = issueService.getIssueList(version.getLastId(),"","",0);
+        issueService.compare(lastIssueList,issueBasicList);
+        Map<String,Integer> tNums = SortUtil.countNum(lastIssueList,"True");
+        Map<String,Integer> fNums = SortUtil.countNum(lastIssueList,"False");
+        for(Map.Entry<String,Integer> entry:tNums.entrySet()){
+            String patternId = entry.getKey();
+            int trueNum = entry.getValue();
+            int falseNum = 0;
+            if (fNums.containsKey(patternId)) falseNum = fNums.get(patternId);
+            PatternLk pattern = patternService.getPatternLk(patternId);
+            pattern.settNum(pattern.gettNum()+trueNum);
+            pattern.setfNum(pattern.getfNum()+falseNum);
+            patternService.updatePatternLikelihood(pattern);
+        }
+        for (Map.Entry<String,Integer> entry:fNums.entrySet()){
+            String patternId = entry.getKey();
+            if (tNums.containsKey(patternId)) continue;
+            else{
+                int falseNum = entry.getValue();
+                PatternLk pattern = patternService.getPatternLk(patternId);
+                pattern.setfNum(pattern.getfNum()+falseNum);
+                patternService.updatePatternLikelihood(pattern);
+            }
+        }
+        return 1;
+    }
+
+    @ResponseBody
     @RequestMapping("/generate")
     public String generate(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateException, ParserConfigurationException, SAXException {
         AUser user = (AUser) session.getAttribute("user");
@@ -386,4 +419,26 @@ public class MainController {
         return sb.toString();
     }
 
+    @ResponseBody
+    @RequestMapping("/issue/info/{issueId}")
+    public IssueInfoVO getIssueInfo(@PathVariable("issueId") String issueId){
+        IssueInfoVO issueInfoVO = new IssueInfoVO();
+        IssueBasic issueBasic = issueService.getIssue(issueId);
+        IssueSource issueSource = issueService.getSourceInfo(issueBasic.getIssueId());
+        PatternLk patternLk = patternService.getPatternLk(issueBasic.getPatternId());
+        PatternInfoWithBLOBs patternInfo = patternService.getPatternInfoByPatternLkId(issueBasic.getPatternId());
+        issueInfoVO.setPatternName(patternLk.getPatternName());
+        issueInfoVO.setKingdom(issueBasic.getKingdom());
+        issueInfoVO.setFileName(issueBasic.getFileName());
+        issueInfoVO.setFilePath(issueBasic.getFilePath());
+        issueInfoVO.setStartLine(issueBasic.getStartLine());
+        issueInfoVO.setSnippet(issueBasic.getSnippet());
+        issueInfoVO.setTargetFunction(issueBasic.getTargetFunction());
+        issueInfoVO.setDescription(issueBasic.getDescription());
+        issueInfoVO.setExplanation(patternInfo.getExplanation());
+        issueInfoVO.setRecommendation(patternInfo.getRecommendation());
+        issueInfoVO.setTip(patternInfo.getTip());
+        if (issueSource != null) issueInfoVO.setIssueSource(issueSource);
+        return issueInfoVO;
+    }
 }

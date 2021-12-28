@@ -4,7 +4,7 @@ public class IssueVO {
     private String issueId;
     private String patternName;
     private String priority;
-    private String kingdom;
+    private String fileName;
     private double likelihood;
     private String state;
 
@@ -32,12 +32,12 @@ public class IssueVO {
         this.priority = priority;
     }
 
-    public String getKingdom() {
-        return kingdom;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setKingdom(String kingdom) {
-        this.kingdom = kingdom;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public double getLikelihood() {

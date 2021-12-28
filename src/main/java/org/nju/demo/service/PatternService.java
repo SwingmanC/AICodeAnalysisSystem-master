@@ -18,6 +18,8 @@ public interface PatternService {
 
     List<PatternLk> getPatternLkList();
 
+    List<PatternLk> getFalsePatternList();
+
     int updatePatternLikelihood(PatternLk pattern);
 
     int addPatternInfo(PatternInfoWithBLOBs patternInfo);
