@@ -17,11 +17,19 @@ public class VersionServiceImpl implements VersionService {
 
     @Override
     public List<AVersion> getVersionsByProjectId(String projectId) {
-
         AVersionExample versionExample = new AVersionExample();
         AVersionExample.Criteria criteria = versionExample.createCriteria();
 
         criteria.andProjectIdEqualTo(projectId);
+        return versionMapper.selectByExample(versionExample);
+    }
+
+    @Override
+    public List<AVersion> getVersionsByVersionName(String versionName) {
+        AVersionExample versionExample = new AVersionExample();
+        AVersionExample.Criteria criteria = versionExample.createCriteria();
+
+        criteria.andVersionNameEqualTo(versionName);
         return versionMapper.selectByExample(versionExample);
     }
 

@@ -9,6 +9,8 @@ public interface VersionService {
 
     List<AVersion> getVersionsByProjectId(String projectId);
 
+    List<AVersion> getVersionsByVersionName(String versionName);
+
     AVersion getVersion(String versionId);
 
     int addVersion(AVersion version);

@@ -13,28 +13,26 @@
     <link href="/css/plugins/iCheck/custom.css" rel="stylesheet" />
     <link href="/css/animate.css" rel="stylesheet" />
     <link href="/css/style.css?v=2.2.0" rel="stylesheet" />
+    <link href="/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js?v=3.4.0"></script>
-    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-    <link href="/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
 
-    <!-- Peity -->
-    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+<!--    &lt;!&ndash; Peity &ndash;&gt;-->
+<!--    <script src="/js/plugins/peity/jquery.peity.min.js"></script>-->
 
-    <!-- Custom and plugin javascript -->
-    <script src="/js/hplus.js?v=2.2.0"></script>
-    <script src="/js/plugins/pace/pace.min.js"></script>
+<!--    &lt;!&ndash; Custom and plugin javascript &ndash;&gt;-->
+<!--    <script src="/js/hplus.js?v=2.2.0"></script>-->
+<!--    <script src="/js/plugins/pace/pace.min.js"></script>-->
 
-    <!-- iCheck -->
-    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+<!--    &lt;!&ndash; iCheck &ndash;&gt;-->
+<!--    <script src="/js/plugins/iCheck/icheck.min.js"></script>-->
 
-    <!-- Peity -->
-    <script src="/js/demo/peity-demo.js"></script>
+<!--    &lt;!&ndash; Peity &ndash;&gt;-->
+<!--    <script src="/js/demo/peity-demo.js"></script>-->
     <script src="/js/layer/layer.js"></script>
 
     <!-- Bootstrap-Treeview plugin javascript -->
@@ -57,8 +55,17 @@
                     </div>
                     <div class="navbar-collapse collapse" id="navbar">
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                            <li>
+                                <a href="#"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks"></i>我的任务 <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li class="active"><a href="/view/projects"><span class="nav-label">项目列表</span></a>
+                                    </li>
+                                    <li><a href="#">统计报表</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
@@ -69,8 +76,14 @@
                             <li>
                                 <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                             </li>
-                            <li>
-                                <a href="/view/info"><i class="fa fa-user"></i> <span class="nav-label">个人中心</span></a>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>个人中心 <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="/view/info"><span class="nav-label">个人资料</span></a>
+                                    </li>
+                                    <li><a href="#"><span class="nav-label">修改密码</span></a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <ul class="nav navbar-top-links navbar-right">
@@ -102,7 +115,7 @@
                     <div class="col-lg-6">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>分析结果</h5>
+                                <h5>问题列表</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -110,25 +123,70 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
-                                <a class="btn btn-primary" href="#" role="button" onclick="filter()">过滤误报</a>
+                                <div class="row">
+                                    <table id="condition">
+                                        <tr>
+                                            <td style="padding-left: 20px;">
+                                                <label>优先级：</label>
+                                            </td>
+                                            <td>
+                                                <select id="prioritySelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
+                                                    <option value="">请选择</option>
+                                                    <option value="Low">低</option>
+                                                    <option value="Medium">中等</option>
+                                                    <option value="High">高</option>
+                                                    <option value="Critical">严重</option>
+                                                </select>
+                                            </td>
+                                            <td style="padding-left: 20px;">
+                                                <label>领域：</label>
+                                            </td>
+                                            <td>
+                                                <select id="kingdomSelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
+                                                    <option value="0">请选择</option>
+                                                    <option value="1">输入验证和表示</option>
+                                                    <option value="2">API滥用</option>
+                                                    <option value="3">安全性</option>
+                                                    <option value="4">时间和状态</option>
+                                                    <option value="5">错误</option>
+                                                    <option value="6">代码质量</option>
+                                                    <option value="7">封装</option>
+                                                    <option value="8">环境</option>
+                                                </select>
+                                            </td>
+                                            <td style="padding-left: 20px;">
+                                                <label>状态：</label>
+                                            </td>
+                                            <td>
+                                                <select id="stateSelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
+                                                    <option value="">请选择</option>
+                                                    <option value="False">误报</option>
+                                                    <option value="True">正报</option>
+                                                    <option value="Unknown">未知</option>
+                                                    <option value="Unclassified">未分类</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                                 <table class="table table-hover" id="issueTable"></table>
+                            </div>
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>问题详情</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div id="evidenceTree"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>信息列表</h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="ibox-content">
-                                <div id="tree"></div>
-                            </div>
-                        </div>
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <h5>代码片段</h5>
@@ -137,22 +195,29 @@
                                 <pre id="codeInfo"></pre>
                             </div>
                         </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>其它信息</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div id="patternTree"></div>
+                            </div>
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>具体描述</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <pre id="longtext"></pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-6">-->
-<!--                        <div class="ibox float-e-margins">-->
-<!--                            <div class="ibox-title">-->
-<!--                                <h5>详细信息</h5>-->
-<!--                            </div>-->
-<!--                            <div class="ibox-content">-->
-<!--                                <textarea id="code1">-->
-<!--                                </textarea>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
             <div class="footer">
                 <div class="pull-right">
                 </div>
@@ -161,17 +226,26 @@
             </div>
         </div>
     </div>
+    </div>
 </body>
 <script th:inline="javascript">
     $(document).ready(function() {
         $("#issueTable").bootstrapTable({
-            url: "/issues/0", //请求地址
+            url: "/issues", //请求地址
+            queryParams:function(params){
+                let data = {
+                    priority:$('#prioritySelect').val(),
+                    kingdom:Number($('#kingdomSelect').val()),
+                    state:$('#stateSelect').val()
+                };
+                return data;
+            },
             striped: true, //是否显示行间隔色
             pageNumber: 1, //初始化加载第一页
             pagination: true, //是否分页
             sidePagination: 'client', //server:服务器端分页|client：前端分页
-            pageSize: 10, //单页记录数
-            pageList: [1, 5, 10], //可选择单页记录数
+            pageSize: 5, //单页记录数
+            pageList: [1, 5, 8], //可选择单页记录数
             showRefresh: true, //刷新按钮
             // sortName: 'likelihood',
             // sortOrder: 'desc',
@@ -213,54 +287,8 @@
         })
     });
 
-    function filter() {
-        $("#issueTable").bootstrapTable('refresh', {
-            url: "/issues/1", //请求地址
-            striped: true, //是否显示行间隔色
-            pageNumber: 1, //初始化加载第一页
-            pagination: true, //是否分页
-            sidePagination: 'client', //server:服务器端分页|client：前端分页
-            pageSize: 10, //单页记录数
-            pageList: [1, 5, 10], //可选择单页记录数
-            showRefresh: true, //刷新按钮
-            // sortName: 'likelihood',
-            // sortOrder: 'desc',
-            rowStyle: style,
-            columns: [{
-                title: '#',
-                field: 'id',
-                sortable: true,
-                formatter: function(value, row, index) {
-                    return index + 1;
-                }
-            }, {
-                title: '漏洞模式',
-                field: 'patternName',
-                sortable: true
-            }, {
-                title: '优先级',
-                field: 'priority',
-                sortable: true
-            }, {
-                title: '文件名称',
-                field: 'fileName',
-                sortable: true
-            }, {
-                title: '置信值',
-                field: 'likelihood',
-                sortable: true,
-                formatter: toFixed
-            }, {
-                field: 'operate',
-                title: '操作',
-                formatter: operateFormatter //自定义方法，添加操作按钮
-            }],
-            onClickRow:function (row, $element) {
-                watch(row.issueId);
-                $('.info').removeClass('info');//移除class
-                $($element).addClass('info');//添加class
-            }
-        })
+    function refresh() {
+        $("#issueTable").bootstrapTable('refresh')
     }
 
     function toFixed(value, row, index) {

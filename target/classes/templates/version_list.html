@@ -17,8 +17,6 @@
     <!-- Mainly scripts -->
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js?v=3.4.0"></script>
-    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 
@@ -52,8 +50,17 @@
                     </div>
                     <div class="navbar-collapse collapse" id="navbar">
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                            <li>
+                                <a href="#"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks"></i>我的任务 <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li class="active"><a href="/view/projects"><span class="nav-label">项目列表</span></a>
+                                    </li>
+                                    <li><a href="#">统计报表</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
@@ -64,8 +71,14 @@
                             <li>
                                 <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
                             </li>
-                            <li>
-                                <a href="/view/info"><i class="fa fa-user"></i> <span class="nav-label">个人中心</span></a>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>个人中心 <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="/view/info"><span class="nav-label">个人资料</span></a>
+                                    </li>
+                                    <li><a href="#"><span class="nav-label">修改密码</span></a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <ul class="nav navbar-top-links navbar-right">
@@ -294,7 +307,21 @@
     }
 
     function isValid() {
-
+        let flag = false;
+        $.ajax({
+            url:'/version',
+            data: {
+                'versionName': $("#versionName").val()
+            },
+            success:function (msg) {
+                if (msg === 1) {
+                    layer.msg("此版本已存在！");
+                    flag = false;
+                }
+                else flag = true;
+            }
+        });
+        return flag;
     }
 </script>
 

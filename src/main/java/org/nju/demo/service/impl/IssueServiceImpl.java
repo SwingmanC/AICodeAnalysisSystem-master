@@ -21,14 +21,14 @@ public class IssueServiceImpl implements IssueService {
     private IssueSourceMapper issueSourceMapper;
 
     @Override
-    public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,int flag) {
+    public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,String state) {
         IssueBasicExample example = new IssueBasicExample();
         IssueBasicExample.Criteria criteria = example.createCriteria();
 
         criteria.andVersionIdEqualTo(versionId);
         if (priority.length() > 0) criteria.andPriorityEqualTo(priority);
         if (kingdom.length() > 0) criteria.andKingdomEqualTo(kingdom);
-        if (flag == 1) criteria.andStateNotEqualTo("False");
+        if (state.length() > 0) criteria.andStateEqualTo(state);
 
         return issueBasicMapper.selectByExample(example);
     }

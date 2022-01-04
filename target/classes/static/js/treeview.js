@@ -3,34 +3,29 @@ $(function () {
         text: '漏洞领域：'
     };
     let sinkInfo = {
-        text:'主要信息',
-        nodes:[
-            {
-                text:'源文件名称：'
-            },
-            {
-                text:'源文件路径：'
-            },
-            {
-                text:'起始行：'
-            },
-            {
-                text:'源方法名称：'
-            },
-            {
-                text:'源代码'
-            }
-        ]
+        text:'主要信息'
     };
     let descriptionInfo = {
-        text:'描述信息'
+        text:'问题描述'
     };
     let patternInfo = {
-        text:'漏洞模式名称',
+        text:'漏洞模式名称'
     };
-    let treeData = [kingdomInfo,sinkInfo,descriptionInfo,patternInfo];
-    $("#tree").treeview({
-        data:treeData,
+    let knowledgeInfo = {
+        text:'知识条目'
+    };
+    let treeData1 = [sinkInfo];
+    let treeData2 = [kingdomInfo,descriptionInfo,patternInfo,knowledgeInfo];
+    $("#evidenceTree").treeview({
+        data:treeData1,
+        color:'#428bca',
+        showBorder: false,
+        expandIcon: 'glyphicon glyphicon-chevron-right',
+        collapseIcon: 'glyphicon glyphicon-chevron-down',
+        nodeIcon: 'glyphicon glyphicon-bookmark',
+    });
+    $("#patternTree").treeview({
+        data:treeData2,
         color:'#428bca',
         showBorder: false,
         expandIcon: 'glyphicon glyphicon-chevron-right',
@@ -49,36 +44,27 @@ function watch(issueId) {
                 text:'主要信息',
                 nodes:[
                     {
-                        text:'源文件名称：'+data.fileName
-                    },
-                    {
                         text:'源文件路径：'+data.filePath
                     },
                     {
-                        text:'起始行：'+data.startLine
-                    },
-                    {
-                        text:'源方法名称：'+data.targetFunction
-                    },
-                    {
-                        text:'源代码'
+                        text:data.fileName+":"+data.startLine+" - "+data.targetFunction
                     }
                 ]
             };
             let descriptionInfo = {
-                text:'漏洞描述信息',
+                text:'问题描述',
                 nodes: [{
                     text:data.description
                 }]
             };
             let patternInfo = {
-                text:data.patternName,
+                text:'漏洞模式：'+data.patternName,
                 nodes:[{
-                        text:'含义'
+                        text:'说明'
                     },{
-                        text:'建议'
+                        text:'修复建议'
                     },{
-                        text:'提示'
+                        text:'小提示'
                     }
                 ]
             };
@@ -88,39 +74,65 @@ function watch(issueId) {
                     text:'底部信息',
                     nodes:[
                         {
-                            text:'源文件名称：'+data.issueSource.fileName
-                        },
-                        {
                             text:'源文件路径：'+data.issueSource.filePath
                         },
                         {
-                            text:'起始行：'+data.issueSource.startLine
-                        },
-                        {
-                            text:'源方法名称：'+data.issueSource.targetFunction
-                        },
-                        {
-                            text:'源代码'
+                            text:data.fileName+":"+data.issueSource.startLine+" - "+data.issueSource.targetFunction
                         }
                     ]
                 }
             }
-            let treeData;
+            let nodeList = [];
+            let knowledgeData = data.knowledgeList;
+            for(let i=0;i<knowledgeData.length;++i){
+                let node = {
+                    text:knowledgeData[i].knowledgeName,
+                    nodes:[{
+                        text:knowledgeData[i].content
+                    }]
+                };
+                nodeList.push(node);
+            }
+            let knowledgeInfo = {
+                text:'知识条目',
+                nodes: nodeList
+            };
+            console.log(knowledgeInfo);
+            let treeData1,treeData2;
             if(sourceInfo.text !== undefined)
-                treeData = [kingdomInfo,sinkInfo,descriptionInfo,sourceInfo,patternInfo];
-            else treeData = [kingdomInfo,sinkInfo,descriptionInfo,patternInfo];
-            $("#tree").treeview({
-                data:treeData,
+                treeData1 = [sinkInfo,sourceInfo];
+            else treeData1 = [sinkInfo];
+            treeData2 = [kingdomInfo,descriptionInfo,patternInfo,knowledgeInfo];
+            $("#evidenceTree").treeview({
+                data:treeData1,
                 color:'#428bca',
                 showBorder: false,
                 expandIcon: 'glyphicon glyphicon-chevron-right',
                 collapseIcon: 'glyphicon glyphicon-chevron-down',
                 nodeIcon: 'glyphicon glyphicon-bookmark',
                 onNodeSelected:function(event,node){
-                    if (node.text === '源代码')
+                    if (node.text === '主要信息')
                         $('#codeInfo').text(data.snippet);
+                    if (node.text === '底部信息')
+                        $("#codeInfo").text(data.issueSource.snippet);
                 }
             });
+            $("#patternTree").treeview({
+                data:treeData2,
+                color:'#428bca',
+                showBorder: false,
+                expandIcon: 'glyphicon glyphicon-chevron-right',
+                collapseIcon: 'glyphicon glyphicon-chevron-down',
+                nodeIcon: 'glyphicon glyphicon-bookmark',
+                onNodeSelected:function(event,node){
+                    if (node.text === '说明')
+                        $('#longtext').text(data.explanation);
+                    if (node.text === '修复建议')
+                        $('#longtext').text(data.recommendation);
+                    if (node.text === '小提示')
+                        $('#longtext').text(data.tip);
+                }
+            })
         }
     })
 }

@@ -18,8 +18,6 @@ public class DocUtil {
 
     public static void generateDoc(List<PatternDocVO> patternList, String projectName, String versionName, String username, String filePath) throws IOException, TemplateException {
         Map<String,Object> dataMap = new HashMap<>();
-        dataMap.put("projectName",projectName);
-        dataMap.put("version",versionName);
         dataMap.put("patternList",patternList);
 
         //Configuration用于读取ftl文件

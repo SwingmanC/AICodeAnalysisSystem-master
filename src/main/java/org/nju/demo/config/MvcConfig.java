@@ -25,7 +25,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/index","/view/register","/login","/register","/logout")
+                .excludePathPatterns("/index","/view/register","/login","/register","/logout","/view/test","/test")
                 .excludePathPatterns("/css/**","/js/**","/font-awesome/**");
     }
 }

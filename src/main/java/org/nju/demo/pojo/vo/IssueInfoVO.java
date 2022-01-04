@@ -1,7 +1,10 @@
 package org.nju.demo.pojo.vo;
 
 import org.nju.demo.entity.IssueSource;
+import org.nju.demo.entity.Knowledge;
 import org.nju.demo.pojo.dto.IssueSourceDO;
+
+import java.util.List;
 
 public class IssueInfoVO {
     private String patternName;
@@ -16,6 +19,7 @@ public class IssueInfoVO {
     private String recommendation;
     private String tip;
     private IssueSource issueSource;
+    private List<Knowledge> knowledgeList;
 
     public String getPatternName() {
         return patternName;
@@ -111,5 +115,13 @@ public class IssueInfoVO {
 
     public void setIssueSource(IssueSource issueSource) {
         this.issueSource = issueSource;
+    }
+
+    public List<Knowledge> getKnowledgeList() {
+        return knowledgeList;
+    }
+
+    public void setKnowledgeList(List<Knowledge> knowledgeList) {
+        this.knowledgeList = knowledgeList;
     }
 }

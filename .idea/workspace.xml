@@ -2,29 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueInfoVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/treeview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ftl/jsfnsc/模板.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/doc/jsfnsc/xxl-job/1.3.0.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftl/jsfnsc/template.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/config/MvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/ChartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/RepoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/PatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/PatternServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/algorithm/impl/ExactMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/algorithm/impl/ExactMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueDocVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueDocVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/pojo/vo/IssueInfoVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/IssueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/VersionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/IssueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/IssueServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/service/impl/VersionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/DocUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/DocUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/treeview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/treeview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/knowledge_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pattern_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/project_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/rule_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user_info.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/version_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/config/MvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/config/MvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/ChartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/ChartController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RepoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/RepoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/PatternService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueDocVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueDocVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueInfoVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/pojo/vo/IssueInfoVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/IssueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/IssueService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/VersionService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/IssueServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/IssueServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/PatternServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/service/impl/VersionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/DocUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/utils/DocUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/doc/jsfnsc/xxl-job/1.3.0.doc" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/doc/jsfnsc/xxl-job/1.3.0.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/treeview.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/treeview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/knowledge_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/knowledge_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/pattern_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/pattern_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/rule_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/rule_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/template_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/template_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/version_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/version_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +59,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -81,13 +105,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../english-api-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../english-manager" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\pojo\vo" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.nju.demo" />
     </key>
@@ -95,9 +122,6 @@
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\dao" />
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\entity" />
       <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\resources\static\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lenovo\IdeaProjects\AICodeAnalysisSystem-master\src\main\java\org\nju\demo\pojo\vo" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MainApplication">
@@ -178,7 +202,10 @@
       <workItem from="1640321646585" duration="16065000" />
       <workItem from="1640493855324" duration="15571000" />
       <workItem from="1640579313749" duration="15905000" />
-      <workItem from="1640675743468" duration="18320000" />
+      <workItem from="1640675743468" duration="18528000" />
+      <workItem from="1640853934083" duration="11866000" />
+      <workItem from="1640930338979" duration="6548000" />
+      <workItem from="1641272792990" duration="12489000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -229,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640598387031</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="12.28更新">
+      <created>1640699115043</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1640699115043</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,19 +278,20 @@
     <MESSAGE value="12.24更新v2.0" />
     <MESSAGE value="12.26更新" />
     <MESSAGE value="12.27更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.27更新" />
+    <MESSAGE value="12.28更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.28更新" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637120846956">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="414" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120846956" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1640691666683">
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1641280892850">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1638269094825" />
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139315485" />
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640691666683" />
+    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641280892850" />
     <state x="532" y="450" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1640325275232">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -273,72 +308,80 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640327280210" />
-    <state x="253" y="117" key="CommitChangelistDialog2" timestamp="1640598381633">
+    <state x="253" y="117" key="CommitChangelistDialog2" timestamp="1640699102060">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="253" y="117" key="CommitChangelistDialog2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637141548338" />
-    <state x="253" y="117" key="CommitChangelistDialog2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640598381633" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1640594321185">
+    <state x="253" y="117" key="CommitChangelistDialog2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699102060" />
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1641283635225">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1638263872685" />
     <state x="740" y="280" key="FileChooserDialogImpl/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637120696087" />
-    <state x="740" y="280" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640594321185" />
-    <state width="1877" height="309" key="GridCell.Tab.0.bottom" timestamp="1640699045645">
+    <state x="740" y="280" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641283635225" />
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.0.center" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.0.left" timestamp="1640699045644">
+    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1641282996472">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835216" />
     <state width="1877" height="222" key="GridCell.Tab.0.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045644" />
+    <state width="1877" height="276" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996472" />
     <state width="1493" height="258" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.0.right" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.0.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.1.bottom" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.1.bottom" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.bottom/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.1.bottom/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.1.center" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.1.center" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.center/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.1.center/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.1.left" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.1.left" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.left/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.1.left/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
-    <state width="1877" height="309" key="GridCell.Tab.1.right" timestamp="1640699045645">
+    <state width="1877" height="276" key="GridCell.Tab.1.right" timestamp="1641282996473">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1493" height="308" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1640863293155" />
     <state width="1877" height="340" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1638270835217" />
     <state width="1877" height="222" key="GridCell.Tab.1.right/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637205939795" />
-    <state width="1877" height="309" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699045645" />
+    <state width="1877" height="276" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1641282996473" />
     <state width="1493" height="258" key="GridCell.Tab.1.right/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1640503899727" />
     <state x="490" y="180" key="Maven.ArtifactSearchDialog" timestamp="1640325201572">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -349,11 +392,11 @@
     </state>
     <state x="461" y="167" key="SettingsEditor/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637126694642" />
     <state x="461" y="167" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640676500330" />
-    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2" timestamp="1640598484118">
+    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2" timestamp="1640699123925">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="258" key="Vcs.Push.Dialog.v2/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637203196599" />
-    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640598484118" />
+    <state x="552" y="258" width="1012" height="534" key="Vcs.Push.Dialog.v2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640699123925" />
     <state x="690" y="289" key="extract.method.dialog" timestamp="1640153014975">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -362,10 +405,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637213560515" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1640691160530">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1640933521300">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.-84.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1637139510978" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640691160530" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1640933521300" />
   </component>
 </project>
