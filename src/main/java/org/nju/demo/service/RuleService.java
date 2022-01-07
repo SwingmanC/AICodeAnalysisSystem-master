@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface RuleService {
 
-    List<ARule> getRules(int userId);
+    List<ARule> getRules(String versionId);
 
     ARule getRule(String ruleId);
-
-    List<ARule> getUsedRules(int userId);
 
     int addRule(ARule rule);
 

@@ -1,7 +1,8 @@
 package org.nju.demo.controller;
 
-import org.nju.demo.entity.ARule;
-import org.nju.demo.entity.AUser;
+import org.nju.demo.entity.*;
+import org.nju.demo.service.IssueService;
+import org.nju.demo.service.PatternService;
 import org.nju.demo.service.RuleService;
 import org.nju.demo.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,19 @@ public class RuleController {
     private RuleService ruleService;
 
     @Autowired
-    private HttpSession session;
+    private IssueService issueService;
 
-    @RequestMapping("/view/rules")
-    public String viewRules(){
-        return "rule_list";
-    }
+    @Autowired
+    private PatternService patternService;
+
+    @Autowired
+    private HttpSession session;
 
     @ResponseBody
     @RequestMapping("/rules")
     public List<ARule> getRules(){
-        AUser user = (AUser) session.getAttribute("user");
-        return ruleService.getRules(user.getId());
+        AVersion version = (AVersion) session.getAttribute("version");
+        return ruleService.getRules(version.getVersionId());
     }
 
     @ResponseBody
@@ -46,7 +48,7 @@ public class RuleController {
                           @RequestParam(value = "fileName",required = false) String fileName,
                           @RequestParam(value = "functionName",required = false) String functionName){
         ARule rule = new ARule();
-        AUser user = (AUser) session.getAttribute("user");
+        AVersion version = (AVersion) session.getAttribute("version");
         rule.setRuleId(StringUtil.generateStringId());
         rule.setRuleName(ruleName);
         if (patternName == null) rule.setPatternName("");
@@ -64,7 +66,7 @@ public class RuleController {
         if (functionName == null) rule.setFunctionName("");
         else rule.setFunctionName(functionName);
 
-        rule.setUserId(user.getId());
+        rule.setVersionId(version.getVersionId());
         ruleService.addRule(rule);
         return "redirect:/view/rules";
     }
@@ -98,19 +100,29 @@ public class RuleController {
         return ruleService.updateRule(rule);
     }
 
-    @RequestMapping("/start/r/{ruleId}")
-    public String startRule(@PathVariable("ruleId") String ruleId){
+    @ResponseBody
+    @RequestMapping("/update/rule/{ruleId}/{flag}")
+    public int updateRule(@PathVariable("ruleId") String ruleId,
+                          @PathVariable("flag") int flag){
         ARule rule = ruleService.getRule(ruleId);
-        rule.setState(1);
-        ruleService.updateRule(rule);
-        return "redirect:/view/rules";
+        rule.setState(flag);
+        int f = flag == 1 ? 0 : 1;
+        List<IssueBasic> issueList = issueService.getIssueList(rule.getVersionId(),"","","",f);
+        for (IssueBasic issueBasic : issueList){
+            PatternLk patternLk = patternService.getPatternByPatternName(rule.getPatternName());
+            String patternId;
+            if(patternLk != null) patternId = patternLk.getPatternLkId();
+            else patternId = "";
+            if(issueBasic.getPatternId().equals(patternId)||
+               issueBasic.getPriority().equals(rule.getPriority())||
+               issueBasic.getKingdom().equals(rule.getKingdom())||
+               issueBasic.getFileName().equals(rule.getFileName())||
+               issueBasic.getTargetFunction().equals(rule.getFunctionName())){
+                issueBasic.setFlag(flag);
+                issueService.updateIssue(issueBasic);
+            }
+        }
+        return ruleService.updateRule(rule);
     }
 
-    @RequestMapping("/end/r/{ruleId}")
-    public String endRule(@PathVariable("ruleId") String ruleId){
-        ARule rule = ruleService.getRule(ruleId);
-        rule.setState(0);
-        ruleService.updateRule(rule);
-        return "redirect:/view/rules";
-    }
 }

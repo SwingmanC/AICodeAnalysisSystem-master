@@ -3,9 +3,9 @@ package org.nju.demo.controller;
 import freemarker.template.TemplateException;
 import org.nju.demo.constant.Type;
 import org.nju.demo.entity.*;
-import org.nju.demo.pojo.dto.IssueInfoDO;
-import org.nju.demo.pojo.dto.IssueSourceDO;
-import org.nju.demo.pojo.dto.PatternInfoDO;
+import org.nju.demo.pojo.dto.IssueInfoDTO;
+import org.nju.demo.pojo.dto.IssueSourceDTO;
+import org.nju.demo.pojo.dto.PatternInfoDTO;
 import org.nju.demo.pojo.vo.IssueDocVO;
 import org.nju.demo.pojo.vo.IssueInfoVO;
 import org.nju.demo.pojo.vo.IssueVO;
@@ -64,7 +64,7 @@ public class MainController {
                                Model model){
         Project project = projectService.getProject(projectId);
         List<AVersion> versionList = versionService.getVersionsByProjectId(projectId);
-        System.out.println(project.getProjectName());
+//        System.out.println(project.getProjectName());
         session.setAttribute("project",project);
         if (versionList.size() != 0)
             model.addAttribute("versionList",versionList);
@@ -83,7 +83,7 @@ public class MainController {
     @RequestMapping("/view/issues/{versionId}")
     public String viewIssues(@PathVariable("versionId") String versionId){
         AVersion version = versionService.getVersion(versionId);
-        System.out.println(version.getVersionName());
+//        System.out.println(version.getVersionName());
         session.setAttribute("version",version);
         return "issue_list";
     }
@@ -111,7 +111,7 @@ public class MainController {
         String kd;
         if (kingdom == 0) kd = "";
         else kd = Type.fortify[kingdom-1];
-        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),priority,kd,state);
+        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),priority,kd,state,0);
         List<IssueVO> issueVOList = new ArrayList<>();
         for(IssueBasic issueBasic : issueBasicList){
             IssueVO issueVO = new IssueVO();
@@ -221,7 +221,8 @@ public class MainController {
     @ResponseBody
     @RequestMapping("/version")
     public int getVersion(@RequestParam("versionName") String versionName){
-        List<AVersion> versionList = versionService.getVersionsByVersionName(versionName);
+        Project project = (Project) session.getAttribute("project");
+        List<AVersion> versionList = versionService.getVersionsByVersionName(project.getProjectId(),versionName);
         if (versionList.size()!=0) return 1;
         else return 0;
     }
@@ -238,72 +239,72 @@ public class MainController {
     @ResponseBody
     @RequestMapping("/scan")
     public int scan(@RequestParam("versionId") String versionId){
-        if (issueService.getIssueList(versionId,"","","").size() != 0) return 2;
+        if (issueService.getIssueList(versionId,"","","",-1).size() != 0) return 2;
 
         Project project = (Project) session.getAttribute("project");
         AVersion aVersion = versionService.getVersion(versionId);
         if (aVersion.getLastId().equals("Null")) return 3;
-        if (!aVersion.getLastId().equals("First") && issueService.getIssueList(aVersion.getLastId(),"","","").size() == 0) return 4;
+        if (!aVersion.getLastId().equals("First") && issueService.getIssueList(aVersion.getLastId(),"","","",-1).size() == 0) return 4;
 
         try{
             InputStream file = new FileInputStream(UPLOADED_FOLDER+"/"+aVersion.getFilePath());
             Map<String,List> res = XMLUtil.getInfo(file);
 
-            List<IssueInfoDO> issueInfoList = res.get("issueInfoList");
-            List<PatternInfoDO> patternInfoList = res.get("patternInfoList");
+            List<IssueInfoDTO> issueInfoList = res.get("issueInfoList");
+            List<PatternInfoDTO> patternInfoList = res.get("patternInfoList");
 
-            for(PatternInfoDO patternInfoDO : patternInfoList){
-                if (patternService.getPatternByPatternName(patternInfoDO.getPatternName()) == null){
+            for(PatternInfoDTO patternInfoDTO : patternInfoList){
+                if (patternService.getPatternByPatternName(patternInfoDTO.getPatternName()) == null){
                     PatternLk patternLk = new PatternLk();
                     PatternInfoWithBLOBs patternInfo = new PatternInfoWithBLOBs();
                     patternLk.setPatternLkId(StringUtil.generateStringId());
-                    patternLk.setPatternName(patternInfoDO.getPatternName());
+                    patternLk.setPatternName(patternInfoDTO.getPatternName());
                     patternInfo.setPatternInfoId(StringUtil.generateStringId());
                     patternInfo.setPatternLkId(patternLk.getPatternLkId());
-                    patternInfo.setExplanation(patternInfoDO.getExplanation());
-                    patternInfo.setRecommendation(patternInfoDO.getRecommendation());
-                    patternInfo.setTip(patternInfoDO.getTip());
+                    patternInfo.setExplanation(patternInfoDTO.getExplanation());
+                    patternInfo.setRecommendation(patternInfoDTO.getRecommendation());
+                    patternInfo.setTip(patternInfoDTO.getTip());
                     patternService.addPatternLk(patternLk);
                     patternService.addPatternInfo(patternInfo);
                 }
             }
 
             List<IssueBasic> issueBasicList = new ArrayList<>();
-            for(IssueInfoDO issueInfoDO : issueInfoList){
-                PatternLk pattern = patternService.getPatternByPatternName(issueInfoDO.getPatternName());
+            for(IssueInfoDTO issueInfoDTO : issueInfoList){
+                PatternLk pattern = patternService.getPatternByPatternName(issueInfoDTO.getPatternName());
 
                 IssueBasic issueBasic = new IssueBasic();
                 issueBasic.setIssueId(StringUtil.generateStringId());
                 issueBasic.setPatternId(pattern.getPatternLkId());
-                issueBasic.setKingdom(issueInfoDO.getKingdom());
-                issueBasic.setDescription(issueInfoDO.getDescription());
-                issueBasic.setPriority(issueInfoDO.getPriority());
-                issueBasic.setFileName(issueInfoDO.getFileName());
-                issueBasic.setFilePath(issueInfoDO.getFilePath());
-                issueBasic.setStartLine(issueInfoDO.getStartLine());
-                issueBasic.setSnippet(issueInfoDO.getSnippet());
-                issueBasic.setTargetFunction(issueInfoDO.getTargetFunction());
+                issueBasic.setKingdom(issueInfoDTO.getKingdom());
+                issueBasic.setDescription(issueInfoDTO.getDescription());
+                issueBasic.setPriority(issueInfoDTO.getPriority());
+                issueBasic.setFileName(issueInfoDTO.getFileName());
+                issueBasic.setFilePath(issueInfoDTO.getFilePath());
+                issueBasic.setStartLine(issueInfoDTO.getStartLine());
+                issueBasic.setSnippet(issueInfoDTO.getSnippet());
+                issueBasic.setTargetFunction(issueInfoDTO.getTargetFunction());
                 issueBasic.setVersionId(versionId);
                 issueBasicList.add(issueBasic);
                 issueService.addIssue(issueBasic);
 
-                if (issueInfoDO.getIssueSourceDO() != null){
-                    IssueSourceDO issueSourceDO = issueInfoDO.getIssueSourceDO();
+                if (issueInfoDTO.getIssueSourceDTO() != null){
+                    IssueSourceDTO issueSourceDTO = issueInfoDTO.getIssueSourceDTO();
                     IssueSource issueSource = new IssueSource();
                     issueSource.setIssueSourceId(StringUtil.generateStringId());
                     issueSource.setIssueBasicId(issueBasic.getIssueId());
-                    issueSource.setFileName(issueSourceDO.getFileName());
-                    issueSource.setFilePath(issueSourceDO.getFilePath());
-                    issueSource.setStartLine(issueSourceDO.getStartLine());
-                    issueSource.setSnippet(issueSourceDO.getSnippet());
-                    issueSource.setTargetFunction(issueSourceDO.getTargetFunction());
+                    issueSource.setFileName(issueSourceDTO.getFileName());
+                    issueSource.setFilePath(issueSourceDTO.getFilePath());
+                    issueSource.setStartLine(issueSourceDTO.getStartLine());
+                    issueSource.setSnippet(issueSourceDTO.getSnippet());
+                    issueSource.setTargetFunction(issueSourceDTO.getTargetFunction());
                     issueService.addSourceInfo(issueSource);
                 }
             }
 
             String lastVersionId = aVersion.getLastId();
             if (!lastVersionId.equals("First")){
-                List<IssueBasic> lastIssueList = issueService.getIssueList(lastVersionId,"","","");
+                List<IssueBasic> lastIssueList = issueService.getIssueList(lastVersionId,"","","",-1);
                 issueService.compare(lastIssueList,issueBasicList);
                 Map<String,Integer> tNums = SortUtil.countNum(lastIssueList,"True");
                 Map<String,Integer> fNums = SortUtil.countNum(lastIssueList,"False");
@@ -434,14 +435,4 @@ public class MainController {
         return issueInfoVO;
     }
 
-    @RequestMapping("/view/test")
-    public String viewTest(){
-        return "test";
-    }
-
-    @RequestMapping("/test")
-    public String test(@RequestParam("versionName") String versionName){
-        System.out.println(versionName);
-        return "redirect:/view/test";
-    }
 }

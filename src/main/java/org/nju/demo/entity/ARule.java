@@ -17,7 +17,7 @@ public class ARule {
 
     private Integer state;
 
-    private Integer userId;
+    private String versionId;
 
     public ARule(){
         this.state = 0;
@@ -87,12 +87,12 @@ public class ARule {
         this.state = state;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getVersionId() {
+        return versionId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setVersionId(String versionId) {
+        this.versionId = versionId;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class ARule {
         sb.append(", fileName=").append(fileName);
         sb.append(", functionName=").append(functionName);
         sb.append(", state=").append(state);
-        sb.append(", userId=").append(userId);
+        sb.append(", versionId=").append(versionId);
         sb.append("]");
         return sb.toString();
     }
@@ -134,7 +134,7 @@ public class ARule {
             && (this.getFileName() == null ? other.getFileName() == null : this.getFileName().equals(other.getFileName()))
             && (this.getFunctionName() == null ? other.getFunctionName() == null : this.getFunctionName().equals(other.getFunctionName()))
             && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()));
+            && (this.getVersionId() == null ? other.getVersionId() == null : this.getVersionId().equals(other.getVersionId()));
     }
 
     @Override
@@ -149,7 +149,7 @@ public class ARule {
         result = prime * result + ((getFileName() == null) ? 0 : getFileName().hashCode());
         result = prime * result + ((getFunctionName() == null) ? 0 : getFunctionName().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
         return result;
     }
 }

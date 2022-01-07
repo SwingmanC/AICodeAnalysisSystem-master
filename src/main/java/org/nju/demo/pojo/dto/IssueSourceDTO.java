@@ -1,6 +1,6 @@
 package org.nju.demo.pojo.dto;
 
-public class IssueSourceDO {
+public class IssueSourceDTO {
     private String fileName;
 
     private String filePath;

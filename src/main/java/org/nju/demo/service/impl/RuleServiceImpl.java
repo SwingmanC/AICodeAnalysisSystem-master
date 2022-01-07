@@ -17,11 +17,11 @@ public class RuleServiceImpl implements RuleService {
     private ARuleMapper ruleMapper;
 
     @Override
-    public List<ARule> getRules(int userId) {
+    public List<ARule> getRules(String versionId) {
         ARuleExample example = new ARuleExample();
         ARuleExample.Criteria criteria = example.createCriteria();
 
-        criteria.andUserIdEqualTo(userId);
+        criteria.andVersionIdEqualTo(versionId);
 
         return ruleMapper.selectByExample(example);
     }
@@ -29,17 +29,6 @@ public class RuleServiceImpl implements RuleService {
     @Override
     public ARule getRule(String ruleId) {
         return ruleMapper.selectByPrimaryKey(ruleId);
-    }
-
-    @Override
-    public List<ARule> getUsedRules(int userId) {
-        ARuleExample example = new ARuleExample();
-        ARuleExample.Criteria criteria = example.createCriteria();
-
-        criteria.andUserIdEqualTo(userId);
-        criteria.andStateEqualTo(1);
-
-        return ruleMapper.selectByExample(example);
     }
 
     @Override

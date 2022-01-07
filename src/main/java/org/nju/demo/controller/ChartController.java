@@ -39,7 +39,7 @@ public class ChartController {
     @GetMapping("/issues/category")
     public int[] countIssuesByCategory(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","");
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","",-1);
         int[] count = {0,0,0,0,0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String kingdom = issueBasic.getKingdom();
@@ -57,7 +57,7 @@ public class ChartController {
     @GetMapping("/issues/priority")
     public int[] countIssuesByPriority(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","");
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","",-1);
         int[] count = {0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String p = issueBasic.getPriority();

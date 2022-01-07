@@ -23,10 +23,13 @@ public class IssueBasic {
 
     private String state;
 
+    private Integer flag;
+
     private String snippet;
 
     public IssueBasic(){
         this.state = "Unclassified";
+        this.flag = 0;
     }
 
     public String getIssueId() {
@@ -117,6 +120,14 @@ public class IssueBasic {
         this.state = state;
     }
 
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
     public String getSnippet() {
         return snippet;
     }
@@ -142,6 +153,7 @@ public class IssueBasic {
         sb.append(", description=").append(description);
         sb.append(", versionId=").append(versionId);
         sb.append(", state=").append(state);
+        sb.append(", flag=").append(flag);
         sb.append(", snippet=").append(snippet);
         sb.append("]");
         return sb.toString();
@@ -170,6 +182,7 @@ public class IssueBasic {
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
             && (this.getVersionId() == null ? other.getVersionId() == null : this.getVersionId().equals(other.getVersionId()))
             && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
+            && (this.getFlag() == null ? other.getFlag() == null : this.getFlag().equals(other.getFlag()))
             && (this.getSnippet() == null ? other.getSnippet() == null : this.getSnippet().equals(other.getSnippet()));
     }
 
@@ -188,6 +201,7 @@ public class IssueBasic {
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
+        result = prime * result + ((getFlag() == null) ? 0 : getFlag().hashCode());
         result = prime * result + ((getSnippet() == null) ? 0 : getSnippet().hashCode());
         return result;
     }

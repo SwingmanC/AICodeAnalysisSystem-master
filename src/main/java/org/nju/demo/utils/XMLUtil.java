@@ -1,9 +1,9 @@
 package org.nju.demo.utils;
 
 import org.nju.demo.entity.*;
-import org.nju.demo.pojo.dto.IssueInfoDO;
-import org.nju.demo.pojo.dto.IssueSourceDO;
-import org.nju.demo.pojo.dto.PatternInfoDO;
+import org.nju.demo.pojo.dto.IssueInfoDTO;
+import org.nju.demo.pojo.dto.IssueSourceDTO;
+import org.nju.demo.pojo.dto.PatternInfoDTO;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -47,8 +47,8 @@ public class XMLUtil {
     }
 
     public static Map<String,List> getInfo(InputStream file) throws ParserConfigurationException, IOException, SAXException {
-	    List<IssueInfoDO> issueInfoList = new ArrayList<>();
-	    List<PatternInfoDO> patternInfoList = new ArrayList<>();
+	    List<IssueInfoDTO> issueInfoList = new ArrayList<>();
+	    List<PatternInfoDTO> patternInfoList = new ArrayList<>();
 	    Map<String,List> res = new HashMap<>();
 
         Element element = getElement(file);
@@ -59,7 +59,7 @@ public class XMLUtil {
         NodeList groupSection = chart.getElementsByTagName("GroupingSection");
 
         for(int i=0;i<groupSection.getLength();++i){
-            PatternInfoDO patternInfoDO = new PatternInfoDO();
+            PatternInfoDTO patternInfoDTO = new PatternInfoDTO();
             String explanation,recommendation,tip;
             String patternName = "";
 
@@ -83,7 +83,7 @@ public class XMLUtil {
             NodeList issueList = group.getElementsByTagName("Issue");
             for(int j=0;j<issueList.getLength();++j){
                 Element issue = (Element) issueList.item(j);
-                IssueInfoDO issueInfoDO = new IssueInfoDO();
+                IssueInfoDTO issueInfoDTO = new IssueInfoDTO();
                 Element category = (Element) issue.getElementsByTagName("Category").item(0);
                 Element kingdom = (Element) issue.getElementsByTagName("Kingdom").item(0);
                 Element description = (Element) issue.getElementsByTagName("Abstract").item(0);
@@ -95,39 +95,39 @@ public class XMLUtil {
                 Element sinkSnippet = (Element) primary.getElementsByTagName("Snippet").item(0);
                 Element sinkTargetFunction = (Element) primary.getElementsByTagName("TargetFunction").item(0);
                 if (patternName.equals("")) patternName = category.getTextContent();
-                issueInfoDO.setPatternName(patternName);
-                issueInfoDO.setKingdom(kingdom.getTextContent());
-                issueInfoDO.setDescription(description.getTextContent());
-                issueInfoDO.setPriority(priority.getTextContent());
-                issueInfoDO.setFileName(sinkFileName.getTextContent());
-                issueInfoDO.setFilePath(sinkFilePath.getTextContent());
-                issueInfoDO.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
-                issueInfoDO.setSnippet(sinkSnippet.getTextContent());
-                issueInfoDO.setTargetFunction(sinkTargetFunction.getTextContent());
+                issueInfoDTO.setPatternName(patternName);
+                issueInfoDTO.setKingdom(kingdom.getTextContent());
+                issueInfoDTO.setDescription(description.getTextContent());
+                issueInfoDTO.setPriority(priority.getTextContent());
+                issueInfoDTO.setFileName(sinkFileName.getTextContent());
+                issueInfoDTO.setFilePath(sinkFilePath.getTextContent());
+                issueInfoDTO.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
+                issueInfoDTO.setSnippet(sinkSnippet.getTextContent());
+                issueInfoDTO.setTargetFunction(sinkTargetFunction.getTextContent());
 
                 Element source = (Element) issue.getElementsByTagName("Source").item(0);
 
                 if(source != null){
-                    IssueSourceDO issueSourceDO = new IssueSourceDO();
+                    IssueSourceDTO issueSourceDTO = new IssueSourceDTO();
                     Element sourceFileName = (Element) source.getElementsByTagName("FileName").item(0);
                     Element sourceFilePath = (Element) source.getElementsByTagName("FilePath").item(0);
                     Element sourceStartLine = (Element) source.getElementsByTagName("LineStart").item(0);
                     Element sourceSnippet = (Element) source.getElementsByTagName("Snippet").item(0);
                     Element sourceTargetFunction = (Element) source.getElementsByTagName("TargetFunction").item(0);
-                    issueSourceDO.setFileName(sourceFileName.getTextContent());
-                    issueSourceDO.setFilePath(sourceFilePath.getTextContent());
-                    issueSourceDO.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
-                    issueSourceDO.setSnippet(sourceSnippet.getTextContent());
-                    issueSourceDO.setTargetFunction(sourceTargetFunction.getTextContent());
-                    issueInfoDO.setIssueSourceDO(issueSourceDO);
+                    issueSourceDTO.setFileName(sourceFileName.getTextContent());
+                    issueSourceDTO.setFilePath(sourceFilePath.getTextContent());
+                    issueSourceDTO.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
+                    issueSourceDTO.setSnippet(sourceSnippet.getTextContent());
+                    issueSourceDTO.setTargetFunction(sourceTargetFunction.getTextContent());
+                    issueInfoDTO.setIssueSourceDTO(issueSourceDTO);
                 }
-                issueInfoList.add(issueInfoDO);
+                issueInfoList.add(issueInfoDTO);
             }
-            patternInfoDO.setPatternName(patternName);
-            patternInfoDO.setExplanation(explanation);
-            patternInfoDO.setRecommendation(recommendation);
-            patternInfoDO.setTip(tip);
-            patternInfoList.add(patternInfoDO);
+            patternInfoDTO.setPatternName(patternName);
+            patternInfoDTO.setExplanation(explanation);
+            patternInfoDTO.setRecommendation(recommendation);
+            patternInfoDTO.setTip(tip);
+            patternInfoList.add(patternInfoDTO);
         }
 
         res.put("issueInfoList",issueInfoList);

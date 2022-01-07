@@ -33,7 +33,7 @@ $(function () {
         nodeIcon: 'glyphicon glyphicon-bookmark',
     });
 });
-function watch(issueId) {
+function watchIssue(issueId) {
     $.ajax({
         url:'/issue/info/'+issueId,
         success:function (data) {

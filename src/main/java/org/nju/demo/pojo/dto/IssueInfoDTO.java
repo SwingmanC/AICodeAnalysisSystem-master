@@ -1,6 +1,6 @@
 package org.nju.demo.pojo.dto;
 
-public class IssueInfoDO {
+public class IssueInfoDTO {
     private String patternName;
 
     private String priority;
@@ -19,10 +19,10 @@ public class IssueInfoDO {
 
     private String snippet;
 
-    private IssueSourceDO issueSourceDO;
+    private IssueSourceDTO issueSourceDTO;
 
-    public IssueInfoDO(){
-        this.issueSourceDO = null;
+    public IssueInfoDTO(){
+        this.issueSourceDTO = null;
     }
 
     public String getPatternName() {
@@ -97,11 +97,11 @@ public class IssueInfoDO {
         this.snippet = snippet;
     }
 
-    public IssueSourceDO getIssueSourceDO() {
-        return issueSourceDO;
+    public IssueSourceDTO getIssueSourceDTO() {
+        return issueSourceDTO;
     }
 
-    public void setIssueSourceDO(IssueSourceDO issueSourceDO) {
-        this.issueSourceDO = issueSourceDO;
+    public void setIssueSourceDTO(IssueSourceDTO issueSourceDTO) {
+        this.issueSourceDTO = issueSourceDTO;
     }
 }

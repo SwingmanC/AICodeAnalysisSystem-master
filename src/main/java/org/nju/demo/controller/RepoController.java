@@ -89,6 +89,7 @@ public class RepoController {
     public String addKnowledge(@RequestParam("knowledgeName") String knowledgeName,
                                @RequestParam("content") String content){
         PatternLk pattern = (PatternLk) session.getAttribute("pattern");
+        System.out.println(content);
 
         Knowledge knowledge = new Knowledge();
         knowledge.setKnowledgeId(StringUtil.generateStringId());

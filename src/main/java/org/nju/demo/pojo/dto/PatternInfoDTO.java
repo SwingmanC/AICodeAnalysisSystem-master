@@ -1,6 +1,6 @@
 package org.nju.demo.pojo.dto;
 
-public class PatternInfoDO {
+public class PatternInfoDTO {
     private String patternName;
     private String explanation;
     private String recommendation;

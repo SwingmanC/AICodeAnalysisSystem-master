@@ -21,7 +21,7 @@ public class IssueServiceImpl implements IssueService {
     private IssueSourceMapper issueSourceMapper;
 
     @Override
-    public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,String state) {
+    public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,String state,int flag) {
         IssueBasicExample example = new IssueBasicExample();
         IssueBasicExample.Criteria criteria = example.createCriteria();
 
@@ -29,6 +29,7 @@ public class IssueServiceImpl implements IssueService {
         if (priority.length() > 0) criteria.andPriorityEqualTo(priority);
         if (kingdom.length() > 0) criteria.andKingdomEqualTo(kingdom);
         if (state.length() > 0) criteria.andStateEqualTo(state);
+        if (flag != -1) criteria.andFlagEqualTo(flag);
 
         return issueBasicMapper.selectByExample(example);
     }
@@ -41,7 +42,7 @@ public class IssueServiceImpl implements IssueService {
         criteria.andVersionIdEqualTo(versionId)
                 .andPatternIdEqualTo(patternId);
 
-        return issueBasicMapper.selectByExample(example);
+        return issueBasicMapper.selectByExampleWithBLOBs(example);
     }
 
     @Override

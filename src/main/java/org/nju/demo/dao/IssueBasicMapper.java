@@ -35,13 +35,13 @@ public interface IssueBasicMapper {
         "file_name, file_path, ",
         "start_line, target_function, ",
         "description, version_id, ",
-        "`state`, snippet)",
+        "`state`, flag, snippet)",
         "values (#{issueId,jdbcType=VARCHAR}, #{patternId,jdbcType=VARCHAR}, ",
         "#{priority,jdbcType=VARCHAR}, #{kingdom,jdbcType=VARCHAR}, ",
         "#{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, ",
         "#{startLine,jdbcType=INTEGER}, #{targetFunction,jdbcType=VARCHAR}, ",
         "#{description,jdbcType=VARCHAR}, #{versionId,jdbcType=VARCHAR}, ",
-        "#{state,jdbcType=VARCHAR}, #{snippet,jdbcType=LONGVARCHAR})"
+        "#{state,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, #{snippet,jdbcType=LONGVARCHAR})"
     })
     int insert(IssueBasic record);
 
@@ -61,6 +61,7 @@ public interface IssueBasicMapper {
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
         @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+        @Result(column="flag", property="flag", jdbcType=JdbcType.INTEGER),
         @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
     })
     List<IssueBasic> selectByExampleWithBLOBs(IssueBasicExample example);
@@ -77,14 +78,15 @@ public interface IssueBasicMapper {
         @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
         @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR)
+        @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+        @Result(column="flag", property="flag", jdbcType=JdbcType.INTEGER)
     })
     List<IssueBasic> selectByExample(IssueBasicExample example);
 
     @Select({
         "select",
         "issue_id, pattern_id, priority, kingdom, file_name, file_path, start_line, target_function, ",
-        "description, version_id, `state`, snippet",
+        "description, version_id, `state`, flag, snippet",
         "from issue_basic",
         "where issue_id = #{issueId,jdbcType=VARCHAR}"
     })
@@ -100,6 +102,7 @@ public interface IssueBasicMapper {
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
         @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+        @Result(column="flag", property="flag", jdbcType=JdbcType.INTEGER),
         @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
     })
     IssueBasic selectByPrimaryKey(String issueId);
@@ -128,6 +131,7 @@ public interface IssueBasicMapper {
           "description = #{description,jdbcType=VARCHAR},",
           "version_id = #{versionId,jdbcType=VARCHAR},",
           "`state` = #{state,jdbcType=VARCHAR},",
+          "flag = #{flag,jdbcType=INTEGER},",
           "snippet = #{snippet,jdbcType=LONGVARCHAR}",
         "where issue_id = #{issueId,jdbcType=VARCHAR}"
     })
@@ -144,7 +148,8 @@ public interface IssueBasicMapper {
           "target_function = #{targetFunction,jdbcType=VARCHAR},",
           "description = #{description,jdbcType=VARCHAR},",
           "version_id = #{versionId,jdbcType=VARCHAR},",
-          "`state` = #{state,jdbcType=VARCHAR}",
+          "`state` = #{state,jdbcType=VARCHAR},",
+          "flag = #{flag,jdbcType=INTEGER}",
         "where issue_id = #{issueId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(IssueBasic record);

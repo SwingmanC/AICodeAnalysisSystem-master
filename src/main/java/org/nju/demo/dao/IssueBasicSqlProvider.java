@@ -72,6 +72,10 @@ public class IssueBasicSqlProvider {
             sql.VALUES("`state`", "#{state,jdbcType=VARCHAR}");
         }
         
+        if (record.getFlag() != null) {
+            sql.VALUES("flag", "#{flag,jdbcType=INTEGER}");
+        }
+        
         if (record.getSnippet() != null) {
             sql.VALUES("snippet", "#{snippet,jdbcType=LONGVARCHAR}");
         }
@@ -96,6 +100,7 @@ public class IssueBasicSqlProvider {
         sql.SELECT("description");
         sql.SELECT("version_id");
         sql.SELECT("`state`");
+        sql.SELECT("flag");
         sql.SELECT("snippet");
         sql.FROM("issue_basic");
         applyWhere(sql, example, false);
@@ -124,6 +129,7 @@ public class IssueBasicSqlProvider {
         sql.SELECT("description");
         sql.SELECT("version_id");
         sql.SELECT("`state`");
+        sql.SELECT("flag");
         sql.FROM("issue_basic");
         applyWhere(sql, example, false);
         
@@ -185,6 +191,10 @@ public class IssueBasicSqlProvider {
             sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
         }
         
+        if (record.getFlag() != null) {
+            sql.SET("flag = #{record.flag,jdbcType=INTEGER}");
+        }
+        
         if (record.getSnippet() != null) {
             sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
         }
@@ -208,6 +218,7 @@ public class IssueBasicSqlProvider {
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
         sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
+        sql.SET("flag = #{record.flag,jdbcType=INTEGER}");
         sql.SET("snippet = #{record.snippet,jdbcType=LONGVARCHAR}");
         
         IssueBasicExample example = (IssueBasicExample) parameter.get("example");
@@ -230,6 +241,7 @@ public class IssueBasicSqlProvider {
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
         sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=VARCHAR}");
+        sql.SET("flag = #{record.flag,jdbcType=INTEGER}");
         
         IssueBasicExample example = (IssueBasicExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -278,6 +290,10 @@ public class IssueBasicSqlProvider {
         
         if (record.getState() != null) {
             sql.SET("`state` = #{state,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getFlag() != null) {
+            sql.SET("flag = #{flag,jdbcType=INTEGER}");
         }
         
         if (record.getSnippet() != null) {

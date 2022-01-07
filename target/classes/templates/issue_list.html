@@ -38,6 +38,7 @@
     <!-- Bootstrap-Treeview plugin javascript -->
     <script src="/js/plugins/treeview/bootstrap-treeview.js"></script>
     <script src="/js/treeview.js"></script>
+    <script src="/js/rule.js"></script>
 
 </head>
 
@@ -69,9 +70,6 @@
                             </li>
                             <li>
                                 <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
-                            </li>
-                            <li>
-                                <a href="/view/rules"><i class="fa fa-tags"></i> <span class="nav-label">规则管理</span></a>
                             </li>
                             <li>
                                 <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
@@ -185,6 +183,19 @@
                                 <div id="evidenceTree"></div>
                             </div>
                         </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">新增规则</a>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <table class="table table-hover" id="ruleTable"></table>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="ibox float-e-margins">
@@ -217,6 +228,111 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">新增规则</h3>
+                            </div>
+                            <form id="add_info" action="#" method="post">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <table>
+                                            <tr>
+                                                <td><label for="ruleName">规则名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="ruleName" name="ruleName" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="patternName">漏洞模式：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="patternName" name="patternName" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="kingdom">漏洞类型：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="kingdom" name="kingdom" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="priority">优先级：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="priority" name="priority" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="fileName">文件名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="fileName" name="fileName" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="functionName">方法名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="functionName" name="functionName" /></td>
+                                            </tr>
+                                        </table>
+                                        <style>
+                                            td {
+                                                padding-bottom: 10px;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary" id="add_submit" onclick="add()">确认</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">编辑规则</h3>
+                            </div>
+                            <form id="edit_info" action="#" method="post">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div id="ruleId" hidden></div>
+                                        <table>
+                                            <tr>
+                                                <td><label for="ruleName">规则名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_ruleName" name="ruleName" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="patternName">漏洞模式：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_patternName" name="patternName" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="kingdom">漏洞类型：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_kingdom" name="kingdom" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="priority">优先级：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_priority" name="priority" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="fileName">文件名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_fileName" name="fileName" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="functionName">方法名称：</label></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="e_functionName" name="functionName" /></td>
+                                            </tr>
+                                        </table>
+                                        <style>
+                                            td {
+                                                padding-bottom: 10px;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary" id="edit_submit" onclick="edit()">确认</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
             <div class="footer">
                 <div class="pull-right">
@@ -277,10 +393,10 @@
             }, {
                 field: 'operate',
                 title: '操作',
-                formatter: operateFormatter //自定义方法，添加操作按钮
+                formatter: IssueOperateFormatter //自定义方法，添加操作按钮
             }],
             onClickRow:function (row, $element) {
-                watch(row.issueId);
+                watchIssue(row.issueId);
                 $('.info').removeClass('info');//移除class
                 $($element).addClass('info');//添加class
             }
@@ -296,7 +412,10 @@
         return num.toFixed(2);
     }
 
-    function operateFormatter(value, row, index) {
+    /**
+     * @return {string}
+     */
+    function IssueOperateFormatter(value, row, index) {
         if (row.state === "False") return "<a href='#' onclick='watch(\"" + row.issueId + "\")'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.issueId + "\")'><i class='fa fa-check'></i></a>";
         else if (row.state === "True") return "<a href='#' onclick='watch(\"" + row.issueId + "\")'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.issueId + "\")'><i class='fa fa-times'></i></a>";
         else return "<a href='#' onclick='watch(\"" + row.issueId + "\")'><i class='fa fa-eye'></i> </a>" + "  " + "<a href='#' title='标记为正报' onclick='start(\"" + row.issueId + "\")'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='标记为误报' onclick='end(\"" + row.issueId + "\")'><i class='fa fa-times'></i></a>";

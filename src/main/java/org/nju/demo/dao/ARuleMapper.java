@@ -34,12 +34,12 @@ public interface ARuleMapper {
         "pattern_name, priority, ",
         "kingdom, file_name, ",
         "function_name, `state`, ",
-        "user_id)",
+        "version_id)",
         "values (#{ruleId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, ",
         "#{patternName,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, ",
         "#{kingdom,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, ",
         "#{functionName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, ",
-        "#{userId,jdbcType=INTEGER})"
+        "#{versionId,jdbcType=VARCHAR})"
     })
     int insert(ARule record);
 
@@ -56,14 +56,14 @@ public interface ARuleMapper {
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR)
     })
     List<ARule> selectByExample(ARuleExample example);
 
     @Select({
         "select",
         "rule_id, rule_name, pattern_name, priority, kingdom, file_name, function_name, ",
-        "`state`, user_id",
+        "`state`, version_id",
         "from a_rule",
         "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
@@ -76,7 +76,7 @@ public interface ARuleMapper {
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
+        @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR)
     })
     ARule selectByPrimaryKey(String ruleId);
 
@@ -98,7 +98,7 @@ public interface ARuleMapper {
           "file_name = #{fileName,jdbcType=VARCHAR},",
           "function_name = #{functionName,jdbcType=VARCHAR},",
           "`state` = #{state,jdbcType=INTEGER},",
-          "user_id = #{userId,jdbcType=INTEGER}",
+          "version_id = #{versionId,jdbcType=VARCHAR}",
         "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(ARule record);

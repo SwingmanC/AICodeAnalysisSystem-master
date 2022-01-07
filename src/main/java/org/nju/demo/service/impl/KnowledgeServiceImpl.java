@@ -22,7 +22,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
 
         criteria.andPatternIdEqualTo(patternId);
 
-        return knowledgeMapper.selectByExample(example);
+        return knowledgeMapper.selectByExampleWithBLOBs(example);
     }
 
     @Override

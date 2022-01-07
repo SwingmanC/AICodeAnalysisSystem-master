@@ -9,7 +9,7 @@ public interface VersionService {
 
     List<AVersion> getVersionsByProjectId(String projectId);
 
-    List<AVersion> getVersionsByVersionName(String versionName);
+    List<AVersion> getVersionsByVersionName(String projectId,String versionName);
 
     AVersion getVersion(String versionId);
 

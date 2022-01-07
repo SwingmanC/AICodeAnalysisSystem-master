@@ -2,7 +2,6 @@ package org.nju.demo.pojo.vo;
 
 import org.nju.demo.entity.IssueSource;
 import org.nju.demo.entity.Knowledge;
-import org.nju.demo.pojo.dto.IssueSourceDO;
 
 import java.util.List;
 

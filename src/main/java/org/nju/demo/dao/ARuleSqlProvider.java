@@ -60,8 +60,8 @@ public class ARuleSqlProvider {
             sql.VALUES("`state`", "#{state,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+        if (record.getVersionId() != null) {
+            sql.VALUES("version_id", "#{versionId,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
@@ -81,7 +81,7 @@ public class ARuleSqlProvider {
         sql.SELECT("file_name");
         sql.SELECT("function_name");
         sql.SELECT("`state`");
-        sql.SELECT("user_id");
+        sql.SELECT("version_id");
         sql.FROM("a_rule");
         applyWhere(sql, example, false);
         
@@ -131,8 +131,8 @@ public class ARuleSqlProvider {
             sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        if (record.getVersionId() != null) {
+            sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -151,7 +151,7 @@ public class ARuleSqlProvider {
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         sql.SET("function_name = #{record.functionName,jdbcType=VARCHAR}");
         sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
-        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         
         ARuleExample example = (ARuleExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -190,8 +190,8 @@ public class ARuleSqlProvider {
             sql.SET("`state` = #{state,jdbcType=INTEGER}");
         }
         
-        if (record.getUserId() != null) {
-            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
+        if (record.getVersionId() != null) {
+            sql.SET("version_id = #{versionId,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("rule_id = #{ruleId,jdbcType=VARCHAR}");
