@@ -37,6 +37,11 @@ public class UserController {
         return "user_info";
     }
 
+    @RequestMapping("/view/password")
+    public String viewPassword(){
+        return "password_modify";
+    }
+
     @RequestMapping("/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password){

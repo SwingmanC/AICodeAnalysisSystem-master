@@ -15,4 +15,6 @@ public interface TemplateService {
     int addTemplate(ATemplate template);
 
     int updateTemplate(ATemplate template);
+
+    int deleteTemplate(String templateId);
 }

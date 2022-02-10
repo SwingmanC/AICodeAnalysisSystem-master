@@ -78,4 +78,9 @@ public class TemplateController {
         return "redirect:/view/templates";
     }
 
+    @ResponseBody
+    @RequestMapping("/delete/template/{id}")
+    public int deleteTemplate(@PathVariable("id") String templateId){
+        return templateService.deleteTemplate(templateId);
+    }
 }

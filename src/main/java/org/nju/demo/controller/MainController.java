@@ -347,10 +347,9 @@ public class MainController {
 
         if (template == null) return "null";
 
-        String filePath = UPLOADED_FOLDER+"/src/main/resources/static/doc/"+user.getUsername()+"/"+project.getProjectName()+"/"+version.getVersionName()+".doc";
+        String filePath = UPLOADED_FOLDER+"/doc/"+user.getUsername()+"/"+project.getProjectName()+"/"+version.getVersionName()+".doc";
         File file = new File(filePath);
         if (!file.exists()){
-            InputStream report = new FileInputStream(UPLOADED_FOLDER+"/"+version.getFilePath());
 //            List<String> patternNameList = XMLUtil.getSummary(report);
             List<PatternLk> patternLkList = patternService.getPatternLkList();
             List<PatternDocVO> patternDocVOList = new ArrayList<>();
@@ -394,7 +393,7 @@ public class MainController {
 
         StringBuilder sb = new StringBuilder();
         try{
-            response.setContentType("application/x-download");
+            response.setContentType("application/x-download;charset=UTF-8");
             response.addHeader("Content-Disposition", "attachment;filename="+version.getVersionName()+".doc");
             FileReader fr = new FileReader(file);
             char[] buffer = new char[23];

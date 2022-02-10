@@ -28,7 +28,7 @@ public class DocUtil {
         configuration.setDirectoryForTemplateLoading(new File(UPLOADED_FOLDER+"/ftl"));
 
         File outFile;// 输出文档路径及名称
-        String path = UPLOADED_FOLDER+"/src/main/resources/static/doc/"+username+"/"+projectName+"/";
+        String path = UPLOADED_FOLDER+"/doc/"+username+"/"+projectName+"/";
         outFile = new File(path);
         if (!outFile.exists()) outFile.mkdirs();
         path += versionName+".doc";

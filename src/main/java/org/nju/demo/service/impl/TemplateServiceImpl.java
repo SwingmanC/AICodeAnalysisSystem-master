@@ -52,4 +52,9 @@ public class TemplateServiceImpl implements TemplateService {
     public int updateTemplate(ATemplate template) {
         return templateMapper.updateByPrimaryKey(template);
     }
+
+    @Override
+    public int deleteTemplate(String templateId) {
+        return templateMapper.deleteByPrimaryKey(templateId);
+    }
 }

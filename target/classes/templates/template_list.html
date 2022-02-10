@@ -73,7 +73,7 @@
                                 <ul role="menu" class="dropdown-menu">
                                     <li><a href="/view/info"><span class="nav-label">个人资料</span></a>
                                     </li>
-                                    <li><a href="#"><span class="nav-label">修改密码</span></a>
+                                    <li><a href="/view/password"><span class="nav-label">修改密码</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -177,6 +177,10 @@
                 field: 'templateName',
                 sortable: true
             }, {
+                title: '文件路径',
+                field: 'filePath',
+                sortable: true
+            }, {
                 title: '是否启用',
                 field: 'state',
                 sortable: true,
@@ -191,7 +195,7 @@
 
     function operateFormatter(value, row, index) {
         let path = "/start/t/" + row.templateId;
-        return "<a href=\"" + path + "\" title='启用'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='删除'><i class='fa fa-trash'></i></a>";
+        return "<a href=\"" + path + "\" title='启用'><i class='fa fa-check'></i></a>" + "  " + "<a href='#' title='删除' onclick='deleteFile(\""+row.templateId+"\")'><i class='fa fa-trash'></i></a>";
     }
 
     function strFormatter(value, row, index) {
@@ -205,6 +209,26 @@
             return false;
         }
         return true;
+    }
+    function deleteFile(id){
+        layer.open({
+            title: false,
+            shade: 0.4,
+            content: '您确定删除此模板？',
+            btn: ['确定', '取消'],
+            yes: function(index, layero) {
+                $.ajax({
+                    url:'/delete/template/'+id,
+                    success:function(msg){
+                        if (msg === 1) $("#templateTable").bootstrapTable('refresh');
+                    }
+                });
+                layer.close(index);
+            },
+            btn2: function(index, layero) {
+                layer.close(index);
+            }
+        });
     }
 </script>
 
