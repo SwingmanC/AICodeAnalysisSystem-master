@@ -19,19 +19,6 @@
     <script src="/js/bootstrap.min.js?v=3.4.0"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-
-    <!-- Peity -->
-    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="/js/hplus.js?v=2.2.0"></script>
-    <script src="/js/plugins/pace/pace.min.js"></script>
-
-    <!-- iCheck -->
-    <script src="/js/plugins/iCheck/icheck.min.js"></script>
-
-    <!-- Peity -->
-    <script src="/js/demo/peity-demo.js"></script>
     <script src="/js/layer/layer.js"></script>
 
 </head>
@@ -53,14 +40,8 @@
                             <li>
                                 <a href="#"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                             </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks"></i>我的任务 <span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li class="active"><a href="/view/projects"><span class="nav-label">项目列表</span></a>
-                                    </li>
-                                    <li><a href="#">统计报表</a>
-                                    </li>
-                                </ul>
+                            <li class="active">
+                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
                             </li>
                             <li>
                                 <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
@@ -120,7 +101,7 @@
                                         <table>
                                             <tr>
                                                 <td><label for="versionName">版本名称：</label></td>
-                                                <td style="width: 350px;"><input type="text" class="form-control" id="versionName" name="versionName" required/></td>
+                                                <td style="width: 350px;"><input type="text" class="form-control" id="versionName" name="versionName" onchange="isValid()" required/></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="reportFile">附件上传：</label></td>
@@ -136,7 +117,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <input type="submit" class="btn btn-primary" id="add_submit" value="提交" onclick="return isValid()" />
+                                    <input type="submit" class="btn btn-primary" id="add_submit" value="提交"/>
                                 </div>
                             </form>
                         </div>
@@ -231,10 +212,10 @@
         let edit_path = "#";
         let scan_path = "#";
         let delete_path = "#";
-        return "<a class='btn btn-default' href=\"" + read_path + "\">查看</a>" + "  " +
-            "<a class='btn btn-primary' href=\"" + edit_path + "\" role='button' data-toggle='modal' data-target='#editModal' onclick='value(\"" + row.versionId + "\")'>编辑</a>" + "  " +
-            "<a class='btn btn-warning' href=\"" + scan_path + "\" onclick='scan(\"" + row.versionId + "\")'>分析</a>" + "  " +
-            "<a class='btn btn-danger' href=\"" + delete_path + "\">删除</a>";
+        return "<a href=\"" + read_path + "\" title='查看'><i class='fa fa-eye'></i></a>" + "  " +
+            "<a href=\"" + edit_path + "\" role='button' data-toggle='modal' data-target='#editModal' onclick='value(\"" + row.versionId + "\")' title='编辑'><i class='fa fa-edit'></i></a>" + "  " +
+            "<a href=\"" + scan_path + "\" onclick='scan(\"" + row.versionId + "\")' title='扫描'><i class='fa fa-code'></i></a>" + "  " +
+            "<a href=\"" + delete_path + "\" title='删除'><i class='fa fa-trash'></i></a>";
     }
 
     function scan(versionId) {
@@ -303,30 +284,19 @@
         }
     }
     function isValid() {
-        let flag = false;
         $.ajax({
             url:'/version',
             data: {
                 'versionName': $("#versionName").val()
             },
             success:function (msg) {
-                if (msg === 1) {
-                    layer.msg("此版本已存在！");
-                    flag = false;
-                }
-                else flag = true;
+                if (msg === 1) layer.msg("此版本已存在！");
             }
         });
-        console.log(flag);
-        return true;
     }
     function getFileForm(obj) {
         let form = obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase();
-        if (form !== '.xml'){
-            layer.msg("请上传xml文件");
-            return false;
-        }
-        return true;
+        if (form !== '.xml') layer.msg("请上传xml文件");
     }
 </script>
 

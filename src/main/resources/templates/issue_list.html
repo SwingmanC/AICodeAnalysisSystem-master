@@ -20,24 +20,11 @@
     <script src="/js/bootstrap.min.js?v=3.4.0"></script>
     <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-
-<!--    &lt;!&ndash; Peity &ndash;&gt;-->
-<!--    <script src="/js/plugins/peity/jquery.peity.min.js"></script>-->
-
-<!--    &lt;!&ndash; Custom and plugin javascript &ndash;&gt;-->
-<!--    <script src="/js/hplus.js?v=2.2.0"></script>-->
-<!--    <script src="/js/plugins/pace/pace.min.js"></script>-->
-
-<!--    &lt;!&ndash; iCheck &ndash;&gt;-->
-<!--    <script src="/js/plugins/iCheck/icheck.min.js"></script>-->
-
-<!--    &lt;!&ndash; Peity &ndash;&gt;-->
-<!--    <script src="/js/demo/peity-demo.js"></script>-->
     <script src="/js/layer/layer.js"></script>
 
     <!-- Bootstrap-Treeview plugin javascript -->
     <script src="/js/plugins/treeview/bootstrap-treeview.js"></script>
-    <script src="/js/treeview.js"></script>
+    <script src="/js/issueinfo.js"></script>
     <script src="/js/rule.js"></script>
 
 </head>
@@ -59,14 +46,8 @@
                             <li>
                                 <a href="#"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                             </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks"></i>我的任务 <span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li class="active"><a href="/view/projects"><span class="nav-label">项目列表</span></a>
-                                    </li>
-                                    <li><a href="#">统计报表</a>
-                                    </li>
-                                </ul>
+                            <li class="active">
+                                <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
                             </li>
                             <li>
                                 <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
@@ -206,25 +187,50 @@
                                 <pre id="codeInfo"></pre>
                             </div>
                         </div>
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>其它信息</h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
+                        <div class="panel blank-panel">
+                            <div class="panel-heading">
+                                <div class="panel-title m-b-md">
+                                    <h4>其它信息</h4>
+                                </div>
+                                <div class="panel-options">
+                                    <ul class="nav nav-tabs">
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-1">问题描述</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-2">漏洞模式</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-3">专家知识</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="ibox-content">
-                                <div id="patternTree"></div>
-                            </div>
-                        </div>
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>具体描述</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <pre id="longtext"></pre>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div id="tab-1" class="tab-pane active">
+                                        <pre id="descriptionArea"></pre>
+                                    </div>
+                                    <div id="tab-2" class="tab-pane">
+                                        <strong id="patternNameLabel"></strong>
+                                        <p>说明：</p>
+                                        <pre id="explanationArea"></pre>
+                                        <p>修复建议：</p>
+                                        <pre id="recommendationArea"></pre>
+                                        <p>小提示：</p>
+                                        <pre id="tipArea"></pre>
+                                    </div>
+                                    <div id="tab-3" class="tab-pane">
+<!--                                        <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addKnowledgeModal">添加知识</a>-->
+<!--                                        <table class="table table-hover" id="knowledgeTable"></table>-->
+                                        <div>
+                                            <button class="btn btn-primary" onclick="toViewKnowledge()">添加知识</button>
+                                            <div id="patternIdDiv" hidden></div>
+                                        </div>
+                                        <hr>
+                                        <div id="knowledgeTree"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -437,7 +443,7 @@
             responseType: 'blob',
             method: 'get',
             success: function(msg) {
-                if (msg === 'null') layer.msg("请设置报告模版")
+                if (msg === 'null') layer.msg("请设置报告模版");
                 else {
                     const blob = new Blob([msg], {
                         type: 'application/vnd.ms-excel;charset=utf-8'
@@ -475,7 +481,6 @@
             }
         });
     }
-
     function end(id) {
         layer.open({
             title: false,
@@ -495,6 +500,11 @@
                 layer.close(index);
             }
         });
+    }
+    function toViewKnowledge(){
+        let patternId = $("#patternIdDiv").text();
+        console.log(patternId);
+        if(patternId !== '') window.location.href = '/view/knowledge/'+patternId;
     }
 </script>
 

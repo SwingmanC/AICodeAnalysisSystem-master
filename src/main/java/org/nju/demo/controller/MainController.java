@@ -6,10 +6,7 @@ import org.nju.demo.entity.*;
 import org.nju.demo.pojo.dto.IssueInfoDTO;
 import org.nju.demo.pojo.dto.IssueSourceDTO;
 import org.nju.demo.pojo.dto.PatternInfoDTO;
-import org.nju.demo.pojo.vo.IssueDocVO;
-import org.nju.demo.pojo.vo.IssueInfoVO;
-import org.nju.demo.pojo.vo.IssueVO;
-import org.nju.demo.pojo.vo.PatternDocVO;
+import org.nju.demo.pojo.vo.*;
 import org.nju.demo.service.*;
 import org.nju.demo.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -199,9 +196,14 @@ public class MainController {
         AUser user = (AUser) session.getAttribute("user");
         Project project = (Project) session.getAttribute("project");
 
+        List<AVersion> versionList = versionService.getVersionsByVersionName(project.getProjectId(),versionName);
+        if (versionList.size()!=0) return "redirect:/back_versions";
+
         String fileName = "default.xml";
         if (reportFile != null){
             fileName = reportFile.getOriginalFilename();
+            int index = fileName.indexOf('.');
+            if (!fileName.substring(index+1).equals("xml")) return "redirect:/back_versions";
             String filePath = UPLOADED_FOLDER + "\\data\\"+user.getUsername()+"\\"+project.getProjectName()+"\\";
             File file = new File(filePath);
             if (!file.exists()) file.mkdirs();
@@ -417,7 +419,7 @@ public class MainController {
         PatternLk patternLk = patternService.getPatternLk(issueBasic.getPatternId());
         PatternInfoWithBLOBs patternInfo = patternService.getPatternInfoByPatternLkId(issueBasic.getPatternId());
         List<Knowledge> knowledgeList = knowledgeService.getKnowledgeList(patternLk.getPatternLkId());
-        for(Knowledge knowledge : knowledgeList) System.out.println(knowledge.getContent());
+        issueInfoVO.setPatternId(patternLk.getPatternLkId());
         issueInfoVO.setPatternName(patternLk.getPatternName());
         issueInfoVO.setKingdom(issueBasic.getKingdom());
         issueInfoVO.setFileName(issueBasic.getFileName());

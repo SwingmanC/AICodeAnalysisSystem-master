@@ -48,6 +48,8 @@ public class TemplateController {
 
         if (!templateFile.isEmpty()){
             String fileName = templateFile.getOriginalFilename();
+            int index = fileName.indexOf('.');
+            if (!fileName.substring(index+1).equals("ftl")) return "redirect:/view/templates";
             String filePath = UPLOADED_FOLDER+"/ftl/"+user.getUsername()+"/";
             File file =  new File(filePath);
             if (!file.exists()) file.mkdirs();

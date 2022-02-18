@@ -15,12 +15,16 @@
             </table>
         </div>
     </div>
-        <input type="submit" class="btn btn-primary" id="add_submit" value="提交" onclick="return f()" />
+        <input type="submit" class="btn btn-primary" id="add_submit" value="提交"/>
 </form>
 </body>
 <script>
+    $("#version_info").submit(function(e){
+        e.preventDefault();
+        alert("form已经禁止提交");
+    });
     function f() {
-        return true;
+        return false;
     }
 </script>
 </html>

@@ -1,6 +1,6 @@
 package org.nju.demo.config;
 
-import org.nju.demo.Interceptor.LoginInterceptor;
+import org.nju.demo.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,7 +25,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/index","/view/register","/login","/register","/logout")
+                .excludePathPatterns("/index","/view/register","/login","/register","/logout","/test","/view/test")
                 .excludePathPatterns("/css/**","/js/**","/font-awesome/**");
     }
 }

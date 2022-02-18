@@ -1,5 +1,6 @@
 package org.nju.demo.controller;
 
+import org.nju.demo.entity.IssueBasic;
 import org.nju.demo.entity.Knowledge;
 import org.nju.demo.entity.PatternInfo;
 import org.nju.demo.entity.PatternLk;
@@ -89,7 +90,6 @@ public class RepoController {
     public String addKnowledge(@RequestParam("knowledgeName") String knowledgeName,
                                @RequestParam("content") String content){
         PatternLk pattern = (PatternLk) session.getAttribute("pattern");
-        System.out.println(content);
 
         Knowledge knowledge = new Knowledge();
         knowledge.setKnowledgeId(StringUtil.generateStringId());

@@ -6,6 +6,7 @@ import org.nju.demo.entity.Knowledge;
 import java.util.List;
 
 public class IssueInfoVO {
+    private String patternId;
     private String patternName;
     private String kingdom;
     private String fileName;
@@ -19,6 +20,14 @@ public class IssueInfoVO {
     private String tip;
     private IssueSource issueSource;
     private List<Knowledge> knowledgeList;
+
+    public String getPatternId() {
+        return patternId;
+    }
+
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
+    }
 
     public String getPatternName() {
         return patternName;
