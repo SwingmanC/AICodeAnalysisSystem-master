@@ -1,7 +1,9 @@
 package org.nju.demo.service.impl;
 
+import org.nju.demo.constant.Constant;
 import org.nju.demo.dao.IssueBasicMapper;
 import org.nju.demo.dao.IssueSourceMapper;
+import org.nju.demo.dao.VersionPatternRelMapper;
 import org.nju.demo.entity.*;
 import org.nju.demo.service.IssueService;
 import org.nju.demo.utils.algorithm.Match;
@@ -19,6 +21,9 @@ public class IssueServiceImpl implements IssueService {
 
     @Autowired
     private IssueSourceMapper issueSourceMapper;
+
+    @Autowired
+    private VersionPatternRelMapper versionPatternRelMapper;
 
     @Override
     public List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,String state,int flag) {
@@ -63,6 +68,30 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public int countTrueIssueByPriority(String versionId, String priority) {
+        IssueBasicExample example = new IssueBasicExample();
+        IssueBasicExample.Criteria criteria = example.createCriteria();
+
+        criteria.andVersionIdEqualTo(versionId)
+                .andPriorityEqualTo(priority)
+                .andStateEqualTo(Constant.IssueState.TRUE);
+
+        return (int)issueBasicMapper.countByExample(example);
+    }
+
+    @Override
+    public int countTrueIssueByPattern(String versionId, String patternId) {
+        IssueBasicExample example = new IssueBasicExample();
+        IssueBasicExample.Criteria criteria = example.createCriteria();
+
+        criteria.andVersionIdEqualTo(versionId)
+                .andPatternIdEqualTo(patternId)
+                .andStateEqualTo(Constant.IssueState.TRUE);
+
+        return (int)issueBasicMapper.countByExample(example);
+    }
+
+    @Override
     public int addIssue(IssueBasic issueBasic) {
         return issueBasicMapper.insert(issueBasic);
     }
@@ -70,6 +99,15 @@ public class IssueServiceImpl implements IssueService {
     @Override
     public int addSourceInfo(IssueSource issueSource) {
         return issueSourceMapper.insert(issueSource);
+    }
+
+    @Override
+    public int addRelation(VersionPatternRel versionPatternRel) {
+        VersionPatternRel last = versionPatternRelMapper.selectLastRecord();
+        if(last==null) versionPatternRel.setId(1);
+        else versionPatternRel.setId(last.getId()+1);
+        versionPatternRelMapper.insert(versionPatternRel);
+        return versionPatternRel.getId();
     }
 
     @Override
@@ -85,7 +123,7 @@ public class IssueServiceImpl implements IssueService {
             for (IssueBasic issueBasic:issueBasicList){
                 if (match.mark(issueBasic,lastIssue) == 0){
                     flag--;
-                    lastIssue.setState("False");
+                    lastIssue.setState(Constant.IssueState.FALSE);
                     break;
                 }
             }
@@ -94,12 +132,12 @@ public class IssueServiceImpl implements IssueService {
                 for(IssueBasic issueBasic:issueBasicList){
                     if (lastIssue.getFilePath().equals(issueBasic.getFilePath())){
                         flag--;
-                        lastIssue.setState("True");
+                        lastIssue.setState(Constant.IssueState.TRUE);
                         break;
                     }
                 }
             }
-            if (flag == 1) lastIssue.setState("Unknown");
+            if (flag == 1) lastIssue.setState(Constant.IssueState.UNKNOWN);
         }
         for(IssueBasic lastIssue:lastIssueList) updateIssue(lastIssue);
     }

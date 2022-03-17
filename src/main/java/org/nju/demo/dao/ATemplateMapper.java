@@ -31,11 +31,11 @@ public interface ATemplateMapper {
 
     @Insert({
         "insert into a_template (template_id, template_name, ",
-        "file_path, `state`, ",
-        "user_id)",
+        "file_path, create_time, ",
+        "`state`, user_id)",
         "values (#{templateId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, ",
-        "#{filePath,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, ",
-        "#{userId,jdbcType=INTEGER})"
+        "#{filePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "#{state,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})"
     })
     int insert(ATemplate record);
 
@@ -47,6 +47,7 @@ public interface ATemplateMapper {
         @Result(column="template_id", property="templateId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="template_name", property="templateName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
@@ -54,7 +55,7 @@ public interface ATemplateMapper {
 
     @Select({
         "select",
-        "template_id, template_name, file_path, `state`, user_id",
+        "template_id, template_name, file_path, create_time, `state`, user_id",
         "from a_template",
         "where template_id = #{templateId,jdbcType=VARCHAR}"
     })
@@ -62,6 +63,7 @@ public interface ATemplateMapper {
         @Result(column="template_id", property="templateId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="template_name", property="templateName", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
@@ -80,6 +82,7 @@ public interface ATemplateMapper {
         "update a_template",
         "set template_name = #{templateName,jdbcType=VARCHAR},",
           "file_path = #{filePath,jdbcType=VARCHAR},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "`state` = #{state,jdbcType=INTEGER},",
           "user_id = #{userId,jdbcType=INTEGER}",
         "where template_id = #{templateId,jdbcType=VARCHAR}"

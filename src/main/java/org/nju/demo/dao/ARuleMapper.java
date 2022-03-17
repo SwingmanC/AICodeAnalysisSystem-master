@@ -33,13 +33,13 @@ public interface ARuleMapper {
         "insert into a_rule (rule_id, rule_name, ",
         "pattern_name, priority, ",
         "kingdom, file_name, ",
-        "function_name, `state`, ",
-        "version_id)",
+        "function_name, create_time, ",
+        "`state`, version_id)",
         "values (#{ruleId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, ",
         "#{patternName,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, ",
         "#{kingdom,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, ",
-        "#{functionName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, ",
-        "#{versionId,jdbcType=VARCHAR})"
+        "#{functionName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "#{state,jdbcType=INTEGER}, #{versionId,jdbcType=VARCHAR})"
     })
     int insert(ARule record);
 
@@ -55,6 +55,7 @@ public interface ARuleMapper {
         @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR)
     })
@@ -63,7 +64,7 @@ public interface ARuleMapper {
     @Select({
         "select",
         "rule_id, rule_name, pattern_name, priority, kingdom, file_name, function_name, ",
-        "`state`, version_id",
+        "create_time, `state`, version_id",
         "from a_rule",
         "where rule_id = #{ruleId,jdbcType=VARCHAR}"
     })
@@ -75,6 +76,7 @@ public interface ARuleMapper {
         @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
         @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
         @Result(column="function_name", property="functionName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="state", property="state", jdbcType=JdbcType.INTEGER),
         @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR)
     })
@@ -97,6 +99,7 @@ public interface ARuleMapper {
           "kingdom = #{kingdom,jdbcType=VARCHAR},",
           "file_name = #{fileName,jdbcType=VARCHAR},",
           "function_name = #{functionName,jdbcType=VARCHAR},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "`state` = #{state,jdbcType=INTEGER},",
           "version_id = #{versionId,jdbcType=VARCHAR}",
         "where rule_id = #{ruleId,jdbcType=VARCHAR}"

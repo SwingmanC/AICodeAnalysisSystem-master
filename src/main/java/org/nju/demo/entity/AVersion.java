@@ -1,11 +1,15 @@
 package org.nju.demo.entity;
 
+import java.util.Date;
+
 public class AVersion {
     private String versionId;
 
     private String versionName;
 
     private String filePath;
+
+    private Date createTime;
 
     private String projectId;
 
@@ -35,6 +39,14 @@ public class AVersion {
         this.filePath = filePath;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public String getProjectId() {
         return projectId;
     }
@@ -60,6 +72,7 @@ public class AVersion {
         sb.append(", versionId=").append(versionId);
         sb.append(", versionName=").append(versionName);
         sb.append(", filePath=").append(filePath);
+        sb.append(", createTime=").append(createTime);
         sb.append(", projectId=").append(projectId);
         sb.append(", lastId=").append(lastId);
         sb.append("]");
@@ -81,6 +94,7 @@ public class AVersion {
         return (this.getVersionId() == null ? other.getVersionId() == null : this.getVersionId().equals(other.getVersionId()))
             && (this.getVersionName() == null ? other.getVersionName() == null : this.getVersionName().equals(other.getVersionName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getProjectId() == null ? other.getProjectId() == null : this.getProjectId().equals(other.getProjectId()))
             && (this.getLastId() == null ? other.getLastId() == null : this.getLastId().equals(other.getLastId()));
     }
@@ -92,6 +106,7 @@ public class AVersion {
         result = prime * result + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
         result = prime * result + ((getVersionName() == null) ? 0 : getVersionName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getProjectId() == null) ? 0 : getProjectId().hashCode());
         result = prime * result + ((getLastId() == null) ? 0 : getLastId().hashCode());
         return result;

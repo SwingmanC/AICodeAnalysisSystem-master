@@ -56,6 +56,10 @@ public class ARuleSqlProvider {
             sql.VALUES("function_name", "#{functionName,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getState() != null) {
             sql.VALUES("`state`", "#{state,jdbcType=INTEGER}");
         }
@@ -80,6 +84,7 @@ public class ARuleSqlProvider {
         sql.SELECT("kingdom");
         sql.SELECT("file_name");
         sql.SELECT("function_name");
+        sql.SELECT("create_time");
         sql.SELECT("`state`");
         sql.SELECT("version_id");
         sql.FROM("a_rule");
@@ -127,6 +132,10 @@ public class ARuleSqlProvider {
             sql.SET("function_name = #{record.functionName,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getState() != null) {
             sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
         }
@@ -150,6 +159,7 @@ public class ARuleSqlProvider {
         sql.SET("kingdom = #{record.kingdom,jdbcType=VARCHAR}");
         sql.SET("file_name = #{record.fileName,jdbcType=VARCHAR}");
         sql.SET("function_name = #{record.functionName,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
         sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         
@@ -184,6 +194,10 @@ public class ARuleSqlProvider {
         
         if (record.getFunctionName() != null) {
             sql.SET("function_name = #{functionName,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getState() != null) {

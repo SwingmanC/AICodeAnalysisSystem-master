@@ -20,6 +20,11 @@ $(function () {
             field: 'ruleName',
             sortable: true
         }, {
+            title: '创建时间',
+            field: 'createTime',
+            sortable: true,
+            formatter: dateFormatter
+        }, {
             title: '是否启用',
             field: 'state',
             sortable: true,
@@ -56,6 +61,26 @@ function RuleOperateFormatter(value, row, index) {
 function strFormatter(value, row, index) {
     if (value === 0) return "否";
     else return "是";
+}
+/**
+ * @return {string}
+ */
+function dateFormatter(date) {
+    let dateTime = new Date(date);
+    let year = dateTime.getFullYear();
+    let month = dateTime.getMonth()+1;
+    let day = dateTime.getDate();
+    let hour = dateTime.getHours();
+    let minute = dateTime.getMinutes();
+    let second = dateTime.getSeconds();
+
+    if (month<10) month = '0'+month;
+    if (day<10) day = '0'+day;
+    if (hour<10) hour = '0'+hour;
+    if (minute<10) minute = '0'+minute;
+    if (second<10) second = '0'+second;
+
+    return year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
 }
 function add() {
     let ruleName = $('#ruleName').val();

@@ -6,6 +6,7 @@ public class IssueDocVO {
     private String kingdom;
     private String filePath;
     private String targetFunction;
+    private int startLine;
     private String snippet;
     private String description;
     private String state;
@@ -48,6 +49,14 @@ public class IssueDocVO {
 
     public void setTargetFunction(String targetFunction) {
         this.targetFunction = targetFunction;
+    }
+
+    public int getStartLine() {
+        return startLine;
+    }
+
+    public void setStartLine(int startLine) {
+        this.startLine = startLine;
     }
 
     public String getSnippet() {

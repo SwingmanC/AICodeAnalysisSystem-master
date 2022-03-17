@@ -391,6 +391,62 @@
                                 </w:p>
                             </w:tc>
                         </w:tr>
+                            <w:tr w:rsidR="002A5550" w14:paraId="71A165BC" w14:textId="77777777" w:rsidTr="002A5550">
+                                <w:tc>
+                                    <w:tcPr>
+                                        <w:tcW w:w="1104" w:type="dxa"/>
+                                        <w:vMerge/>
+                                    </w:tcPr>
+                                    <w:p w14:paraId="17471A05" w14:textId="77777777" w:rsidR="002A5550" w:rsidRDefault="002A5550" w:rsidP="00D360CC">
+                                        <w:pPr>
+                                            <w:rPr>
+                                                <w:rFonts w:hint="eastAsia"/>
+                                            </w:rPr>
+                                        </w:pPr>
+                                    </w:p>
+                                </w:tc>
+                                <w:tc>
+                                    <w:tcPr>
+                                        <w:tcW w:w="1159" w:type="dxa"/>
+                                    </w:tcPr>
+                                    <w:p w14:paraId="1DBDF721" w14:textId="787A1C73" w:rsidR="002A5550" w:rsidRPr="002A5550" w:rsidRDefault="002A5550" w:rsidP="00D360CC">
+                                        <w:pPr>
+                                            <w:rPr>
+                                                <w:rFonts w:hint="eastAsia"/>
+                                                <w:b/>
+                                                <w:bCs/>
+                                            </w:rPr>
+                                        </w:pPr>
+                                        <w:r>
+                                            <w:rPr>
+                                                <w:rFonts w:hint="eastAsia"/>
+                                                <w:b/>
+                                                <w:bCs/>
+                                            </w:rPr>
+                                            <w:t>起始代码行</w:t>
+                                        </w:r>
+                                    </w:p>
+                                </w:tc>
+                                <w:tc>
+                                    <w:tcPr>
+                                        <w:tcW w:w="6033" w:type="dxa"/>
+                                    </w:tcPr>
+                                    <w:p w14:paraId="1BBE6124" w14:textId="4E060FF8" w:rsidR="002A5550" w:rsidRDefault="002A5550" w:rsidP="00D360CC">
+                                        <w:pPr>
+                                            <w:rPr>
+                                                <w:rFonts w:hint="eastAsia"/>
+                                            </w:rPr>
+                                        </w:pPr>
+                                        <w:proofErr w:type="spellStart"/>
+                                        <w:proofErr w:type="gramStart"/>
+                                        <w:r>
+                                            <w:t>${issue.startLine}</w:t>
+                                        </w:r>
+                                        <w:proofErr w:type="spellEnd"/>
+                                        <w:proofErr w:type="gramEnd"/>
+                                    </w:p>
+                                </w:tc>
+                            </w:tr>
                         <w:tr w:rsidR="002A5550" w14:paraId="0B79D51E" w14:textId="77777777" w:rsidTr="002A5550">
                             <w:tc>
                                 <w:tcPr>

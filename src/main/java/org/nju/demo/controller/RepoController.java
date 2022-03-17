@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -46,17 +47,20 @@ public class RepoController {
 
     @ResponseBody
     @RequestMapping("/patterns")
-    public List<PatternVO> getPatterns(){
-        List<PatternLk> patternList = patternService.getFalsePatternList();
+    public List<PatternVO> getPatterns(@RequestParam(value = "keyword",required = false) String keyword){
+        if (keyword==null) keyword = "";
+        List<PatternLk> patternList = patternService.getPatternListByKeyword(keyword);
         List<PatternVO> patternVOList = new ArrayList<>();
         for(PatternLk pattern:patternList){
             PatternVO patternVO = new PatternVO();
             patternVO.setPatternId(pattern.getPatternLkId());
             patternVO.setPatternName(pattern.getPatternName());
 
+            double likelihood;
             int trueNum = pattern.gettNum();
             int falseNum = pattern.getfNum();
-            double likelihood = trueNum*1.0/(trueNum+falseNum);
+            if (trueNum==0&&falseNum==0) likelihood = 0;
+            else likelihood = trueNum*1.0/(trueNum+falseNum);
 
             patternVO.setLikelihood(likelihood);
             patternVOList.add(patternVO);
@@ -95,6 +99,7 @@ public class RepoController {
         knowledge.setKnowledgeId(StringUtil.generateStringId());
         knowledge.setKnowledgeName(knowledgeName);
         knowledge.setContent(content);
+        knowledge.setCreateTime(new Date());
         knowledge.setPatternId(pattern.getPatternLkId());
 
         knowledgeService.addKnowledge(knowledge);

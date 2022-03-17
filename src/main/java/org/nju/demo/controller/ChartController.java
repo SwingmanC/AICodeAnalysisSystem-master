@@ -1,10 +1,14 @@
 package org.nju.demo.controller;
 
-import org.nju.demo.constant.Type;
+import org.nju.demo.constant.Constant;
 import org.nju.demo.entity.AVersion;
-import net.sf.json.JSONArray;
 import org.nju.demo.entity.IssueBasic;
+import org.nju.demo.entity.PatternStatistics;
+import org.nju.demo.entity.PriorityStatistics;
+import org.nju.demo.pojo.dto.PatternStatisticsDTO;
+import org.nju.demo.pojo.vo.PatternStatisticsVO;
 import org.nju.demo.service.IssueService;
+import org.nju.demo.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 @Controller
 public class ChartController {
@@ -24,6 +28,9 @@ public class ChartController {
 
     @Autowired
     private IssueService issueService;
+
+    @Autowired
+    private StatisticsService statisticsService;
 
     @GetMapping("/view/issues/charts")
     public String viewViolationCharts(){
@@ -43,8 +50,8 @@ public class ChartController {
         int[] count = {0,0,0,0,0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String kingdom = issueBasic.getKingdom();
-            for(int i=0;i<Type.fortify.length;++i){
-                if (kingdom.equals(Type.fortify[i])){
+            for(int i=0;i<Constant.Type.fortify.length;++i){
+                if (kingdom.equals(Constant.Type.fortify[i])){
                     count[i]++;
                     break;
                 }
@@ -55,17 +62,44 @@ public class ChartController {
 
     @ResponseBody
     @GetMapping("/issues/priority")
-    public int[] countIssuesByPriority(){
+    public int[][] countIssuesByPriority(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","",-1);
-        int[] count = {0,0,0,0};
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","",Constant.IssueState.TRUE,Constant.IsFilter.IGNORE);
+        int[][] res = new int[2][4];
+        int[] initCounts = new int[4];
+        int[] nowCounts = {0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String p = issueBasic.getPriority();
-            if (p.equals("Low")) count[0]++;
-            else if (p.equals("Medium")) count[1]++;
-            else if (p.equals("High")) count[2]++;
-            else count[3]++;
+            if (p.equals(Constant.Priority.LOW)) nowCounts[0]++;
+            else if (p.equals(Constant.Priority.MEDIUM)) nowCounts[1]++;
+            else if (p.equals(Constant.Priority.HIGH)) nowCounts[2]++;
+            else nowCounts[3]++;
         }
-        return count;
+        PriorityStatistics priorityStatistics = statisticsService.getPriorityStatisticsByVersionId(version.getVersionId());
+        initCounts[0] = priorityStatistics.getLowNum();
+        initCounts[1] = priorityStatistics.getMediumNum();
+        initCounts[2] = priorityStatistics.getHighNum();
+        initCounts[3] = priorityStatistics.getCriticalNum();
+        res[0]=initCounts;
+        res[1]=nowCounts;
+        return res;
     }
+
+    @ResponseBody
+    @GetMapping("/issues/pattern")
+    public List<PatternStatisticsVO> countIssuesByPattern(){
+        AVersion version = (AVersion) session.getAttribute("version");
+        List<PatternStatisticsVO> patternStatisticsVOList = new ArrayList<>();
+        List<PatternStatisticsDTO> patternStatisticsDTOList = statisticsService.getPatternStatisticsByVersionId(version.getVersionId());
+        for(PatternStatisticsDTO data : patternStatisticsDTOList){
+            PatternStatisticsVO patternStatisticsVO = new PatternStatisticsVO();
+            patternStatisticsVO.setPatternName(data.getPatternName());
+            patternStatisticsVO.setPreIssueNum(data.getIssueNum());
+            int nowNum = issueService.countTrueIssueByPattern(data.getVersionId(),data.getPatternId());
+            patternStatisticsVO.setNowIssueNum(nowNum);
+            patternStatisticsVOList.add(patternStatisticsVO);
+        }
+        return patternStatisticsVOList;
+    }
+
 }

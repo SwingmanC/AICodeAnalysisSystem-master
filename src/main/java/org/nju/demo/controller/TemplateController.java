@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -48,7 +49,7 @@ public class TemplateController {
 
         if (!templateFile.isEmpty()){
             String fileName = templateFile.getOriginalFilename();
-            int index = fileName.indexOf('.');
+            int index = fileName.lastIndexOf('.');
             if (!fileName.substring(index+1).equals("ftl")) return "redirect:/view/templates";
             String filePath = UPLOADED_FOLDER+"/ftl/"+user.getUsername()+"/";
             File file =  new File(filePath);
@@ -61,6 +62,7 @@ public class TemplateController {
         template.setTemplateName(templateName);
         template.setFilePath(user.getUsername()+"/"+templateFile.getOriginalFilename());
         template.setUserId(user.getId());
+        template.setCreateTime(new Date());
         templateService.addTemplate(template);
         return "redirect:/view/templates";
     }

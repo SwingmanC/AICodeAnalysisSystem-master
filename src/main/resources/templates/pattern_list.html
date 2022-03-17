@@ -81,6 +81,13 @@
                                     </div>
                                 </div>
                                 <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-9"></div>
+                                        <div class="input-group col-lg-3">
+                                            <input type="text" placeholder="请输入关键词" class="input-sm form-control" id="keyword"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="search()"> 搜索</button> </span>
+                                        </div>
+                                    </div>
                                     <table class="table table-hover" id="patternTable"></table>
                                 </div>
                             </div>
@@ -101,6 +108,12 @@
     $(document).ready(function() {
         $("#patternTable").bootstrapTable({
             url: "/patterns", //请求地址
+            queryParams:function(params){
+                let data = {
+                    keyword:$('#keyword').val(),
+                };
+                return data;
+            },
             striped: true, //是否显示行间隔色
             pageNumber: 1, //初始化加载第一页
             pagination: true, //是否分页
@@ -136,6 +149,10 @@
     function operateFormatter(value, row, index) {
         let path = "/view/knowledge/" + row.patternId;
         return "<a href=\"" + path + "\" title='进入知识库'><i class='fa fa-eye'></i></a>";
+    }
+
+    function search() {
+        $("#patternTable").bootstrapTable('refresh');
     }
 </script>
 

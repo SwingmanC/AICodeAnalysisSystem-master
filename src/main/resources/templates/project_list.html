@@ -160,6 +160,11 @@
                 field: 'description',
                 sortable: true
             }, {
+                title: '创建时间',
+                field: 'createTime',
+                sortable: true,
+                formatter: dateFormatter
+            }, {
                 field: 'operate',
                 title: '操作',
                 formatter: operateFormatter //自定义方法，添加操作按钮
@@ -170,6 +175,27 @@
     function operateFormatter(value, row, index) {
         let path = "/view/versions/" + row.projectId;
         return "<a href=\"" + path + "\" onclick='test(\"" + row.projectId + "\")'><i class='fa fa-eye'></i></a>" + "  " + "<a href='#' title='删除' onclick='del(\"" + row.projectId + "\")'><i class='fa fa-trash'></i></a>";
+    }
+
+    /**
+     * @return {string}
+     */
+    function dateFormatter(date) {
+        let dateTime = new Date(date);
+        let year = dateTime.getFullYear();
+        let month = dateTime.getMonth()+1;
+        let day = dateTime.getDate();
+        let hour = dateTime.getHours();
+        let minute = dateTime.getMinutes();
+        let second = dateTime.getSeconds();
+
+        if (month<10) month = '0'+month;
+        if (day<10) day = '0'+day;
+        if (hour<10) hour = '0'+hour;
+        if (minute<10) minute = '0'+minute;
+        if (second<10) second = '0'+second;
+
+        return year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
     }
 
     function test(id) {

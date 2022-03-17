@@ -31,9 +31,11 @@ public interface ProjectMapper {
 
     @Insert({
         "insert into project (project_id, project_name, ",
-        "description, user_id)",
+        "description, create_time, ",
+        "user_id)",
         "values (#{projectId,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, ",
-        "#{description,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})"
+        "#{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "#{userId,jdbcType=INTEGER})"
     })
     int insert(Project record);
 
@@ -45,13 +47,14 @@ public interface ProjectMapper {
         @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="project_name", property="projectName", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
     List<Project> selectByExample(ProjectExample example);
 
     @Select({
         "select",
-        "project_id, project_name, description, user_id",
+        "project_id, project_name, description, create_time, user_id",
         "from project",
         "where project_id = #{projectId,jdbcType=VARCHAR}"
     })
@@ -59,6 +62,7 @@ public interface ProjectMapper {
         @Result(column="project_id", property="projectId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="project_name", property="projectName", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER)
     })
     Project selectByPrimaryKey(String projectId);
@@ -76,6 +80,7 @@ public interface ProjectMapper {
         "update project",
         "set project_name = #{projectName,jdbcType=VARCHAR},",
           "description = #{description,jdbcType=VARCHAR},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "user_id = #{userId,jdbcType=INTEGER}",
         "where project_id = #{projectId,jdbcType=VARCHAR}"
     })

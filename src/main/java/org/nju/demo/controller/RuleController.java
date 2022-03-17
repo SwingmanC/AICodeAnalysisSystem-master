@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -67,6 +68,7 @@ public class RuleController {
         else rule.setFunctionName(functionName);
 
         rule.setVersionId(version.getVersionId());
+        rule.setCreateTime(new Date());
         ruleService.addRule(rule);
         return "redirect:/view/rules";
     }

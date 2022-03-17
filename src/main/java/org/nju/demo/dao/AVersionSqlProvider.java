@@ -40,6 +40,10 @@ public class AVersionSqlProvider {
             sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getProjectId() != null) {
             sql.VALUES("project_id", "#{projectId,jdbcType=VARCHAR}");
         }
@@ -60,6 +64,7 @@ public class AVersionSqlProvider {
         }
         sql.SELECT("version_name");
         sql.SELECT("file_path");
+        sql.SELECT("create_time");
         sql.SELECT("project_id");
         sql.SELECT("last_id");
         sql.FROM("a_version");
@@ -91,6 +96,10 @@ public class AVersionSqlProvider {
             sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getProjectId() != null) {
             sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         }
@@ -110,6 +119,7 @@ public class AVersionSqlProvider {
         sql.SET("version_id = #{record.versionId,jdbcType=VARCHAR}");
         sql.SET("version_name = #{record.versionName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         sql.SET("last_id = #{record.lastId,jdbcType=VARCHAR}");
         
@@ -128,6 +138,10 @@ public class AVersionSqlProvider {
         
         if (record.getFilePath() != null) {
             sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getProjectId() != null) {

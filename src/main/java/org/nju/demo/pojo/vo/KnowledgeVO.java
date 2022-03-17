@@ -1,9 +1,12 @@
 package org.nju.demo.pojo.vo;
 
+import java.util.Date;
+
 public class KnowledgeVO {
     private String knowledgeId;
     private String knowledgeName;
     private String patternName;
+    private Date createTime;
 
     public String getKnowledgeId() {
         return knowledgeId;
@@ -27,5 +30,13 @@ public class KnowledgeVO {
 
     public void setPatternName(String patternName) {
         this.patternName = patternName;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

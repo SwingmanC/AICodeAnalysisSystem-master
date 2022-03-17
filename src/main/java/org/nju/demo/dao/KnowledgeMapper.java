@@ -31,9 +31,11 @@ public interface KnowledgeMapper {
 
     @Insert({
         "insert into knowledge (knowledge_id, knowledge_name, ",
-        "pattern_id, content)",
+        "create_time, pattern_id, ",
+        "content)",
         "values (#{knowledgeId,jdbcType=VARCHAR}, #{knowledgeName,jdbcType=VARCHAR}, ",
-        "#{patternId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})"
+        "#{createTime,jdbcType=TIMESTAMP}, #{patternId,jdbcType=VARCHAR}, ",
+        "#{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Knowledge record);
 
@@ -44,6 +46,7 @@ public interface KnowledgeMapper {
     @Results({
         @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
         @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
@@ -53,19 +56,21 @@ public interface KnowledgeMapper {
     @Results({
         @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR)
     })
     List<Knowledge> selectByExample(KnowledgeExample example);
 
     @Select({
         "select",
-        "knowledge_id, knowledge_name, pattern_id, content",
+        "knowledge_id, knowledge_name, create_time, pattern_id, content",
         "from knowledge",
         "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })
     @Results({
         @Result(column="knowledge_id", property="knowledgeId", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="knowledge_name", property="knowledgeName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
         @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
@@ -86,6 +91,7 @@ public interface KnowledgeMapper {
     @Update({
         "update knowledge",
         "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "pattern_id = #{patternId,jdbcType=VARCHAR},",
           "content = #{content,jdbcType=LONGVARCHAR}",
         "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
@@ -95,6 +101,7 @@ public interface KnowledgeMapper {
     @Update({
         "update knowledge",
         "set knowledge_name = #{knowledgeName,jdbcType=VARCHAR},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "pattern_id = #{patternId,jdbcType=VARCHAR}",
         "where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}"
     })

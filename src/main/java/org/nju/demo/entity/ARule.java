@@ -1,5 +1,7 @@
 package org.nju.demo.entity;
 
+import java.util.Date;
+
 public class ARule {
     private String ruleId;
 
@@ -15,13 +17,11 @@ public class ARule {
 
     private String functionName;
 
+    private Date createTime;
+
     private Integer state;
 
     private String versionId;
-
-    public ARule(){
-        this.state = 0;
-    }
 
     public String getRuleId() {
         return ruleId;
@@ -79,6 +79,14 @@ public class ARule {
         this.functionName = functionName;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public Integer getState() {
         return state;
     }
@@ -108,6 +116,7 @@ public class ARule {
         sb.append(", kingdom=").append(kingdom);
         sb.append(", fileName=").append(fileName);
         sb.append(", functionName=").append(functionName);
+        sb.append(", createTime=").append(createTime);
         sb.append(", state=").append(state);
         sb.append(", versionId=").append(versionId);
         sb.append("]");
@@ -133,6 +142,7 @@ public class ARule {
             && (this.getKingdom() == null ? other.getKingdom() == null : this.getKingdom().equals(other.getKingdom()))
             && (this.getFileName() == null ? other.getFileName() == null : this.getFileName().equals(other.getFileName()))
             && (this.getFunctionName() == null ? other.getFunctionName() == null : this.getFunctionName().equals(other.getFunctionName()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
             && (this.getVersionId() == null ? other.getVersionId() == null : this.getVersionId().equals(other.getVersionId()));
     }
@@ -148,6 +158,7 @@ public class ARule {
         result = prime * result + ((getKingdom() == null) ? 0 : getKingdom().hashCode());
         result = prime * result + ((getFileName() == null) ? 0 : getFileName().hashCode());
         result = prime * result + ((getFunctionName() == null) ? 0 : getFunctionName().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         result = prime * result + ((getVersionId() == null) ? 0 : getVersionId().hashCode());
         return result;

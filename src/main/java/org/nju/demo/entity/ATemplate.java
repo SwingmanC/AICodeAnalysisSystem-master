@@ -1,5 +1,7 @@
 package org.nju.demo.entity;
 
+import java.util.Date;
+
 public class ATemplate {
     private String templateId;
 
@@ -7,13 +9,11 @@ public class ATemplate {
 
     private String filePath;
 
+    private Date createTime;
+
     private Integer state;
 
     private Integer userId;
-
-    public ATemplate(){
-        this.state = 0;
-    }
 
     public String getTemplateId() {
         return templateId;
@@ -37,6 +37,14 @@ public class ATemplate {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Integer getState() {
@@ -64,6 +72,7 @@ public class ATemplate {
         sb.append(", templateId=").append(templateId);
         sb.append(", templateName=").append(templateName);
         sb.append(", filePath=").append(filePath);
+        sb.append(", createTime=").append(createTime);
         sb.append(", state=").append(state);
         sb.append(", userId=").append(userId);
         sb.append("]");
@@ -85,6 +94,7 @@ public class ATemplate {
         return (this.getTemplateId() == null ? other.getTemplateId() == null : this.getTemplateId().equals(other.getTemplateId()))
             && (this.getTemplateName() == null ? other.getTemplateName() == null : this.getTemplateName().equals(other.getTemplateName()))
             && (this.getFilePath() == null ? other.getFilePath() == null : this.getFilePath().equals(other.getFilePath()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()));
     }
@@ -96,6 +106,7 @@ public class ATemplate {
         result = prime * result + ((getTemplateId() == null) ? 0 : getTemplateId().hashCode());
         result = prime * result + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode());
         result = prime * result + ((getFilePath() == null) ? 0 : getFilePath().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         return result;

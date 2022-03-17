@@ -2,7 +2,11 @@ package org.nju.demo.service.impl;
 
 import org.nju.demo.dao.PatternInfoMapper;
 import org.nju.demo.dao.PatternLkMapper;
+import org.nju.demo.dao.PatternStatisticsMapper;
+import org.nju.demo.dao.VersionPatternRelMapper;
 import org.nju.demo.entity.*;
+import org.nju.demo.pojo.dto.PatternStatisticsDTO;
+import org.nju.demo.pojo.vo.PatternItem;
 import org.nju.demo.service.PatternService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,9 @@ public class PatternServiceImpl implements PatternService {
 
     @Autowired
     private PatternLkMapper patternLkMapper;
+
+    @Autowired
+    private VersionPatternRelMapper versionPatternRelMapper;
 
     @Override
     public PatternInfoWithBLOBs getPatternInfoByPatternLkId(String patternLkId) {
@@ -61,6 +68,16 @@ public class PatternServiceImpl implements PatternService {
     }
 
     @Override
+    public List<PatternLk> getPatternListByKeyword(String keyword) {
+        PatternLkExample example = new PatternLkExample();
+        PatternLkExample.Criteria criteria = example.createCriteria();
+
+        if (!keyword.equals("")) criteria.andPatternNameLike(keyword);
+
+        return patternLkMapper.selectByExample(example);
+    }
+
+    @Override
     public List<PatternLk> getFalsePatternList() {
         PatternLkExample example = new PatternLkExample();
         PatternLkExample.Criteria criteria = example.createCriteria();
@@ -68,6 +85,16 @@ public class PatternServiceImpl implements PatternService {
         criteria.andFNumGreaterThan(0);
 
         return patternLkMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<PatternItem> getPatternItemListByVersionId(String versionId) {
+        return patternLkMapper.selectPatternItemListByVersionId(versionId);
+    }
+
+    @Override
+    public int addRelation(VersionPatternRel versionPatternRel) {
+        return versionPatternRelMapper.insert(versionPatternRel);
     }
 
     @Override

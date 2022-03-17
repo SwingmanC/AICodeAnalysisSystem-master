@@ -40,6 +40,10 @@ public class ProjectSqlProvider {
             sql.VALUES("description", "#{description,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getUserId() != null) {
             sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
         }
@@ -56,6 +60,7 @@ public class ProjectSqlProvider {
         }
         sql.SELECT("project_name");
         sql.SELECT("description");
+        sql.SELECT("create_time");
         sql.SELECT("user_id");
         sql.FROM("project");
         applyWhere(sql, example, false);
@@ -86,6 +91,10 @@ public class ProjectSqlProvider {
             sql.SET("description = #{record.description,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getUserId() != null) {
             sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         }
@@ -101,6 +110,7 @@ public class ProjectSqlProvider {
         sql.SET("project_id = #{record.projectId,jdbcType=VARCHAR}");
         sql.SET("project_name = #{record.projectName,jdbcType=VARCHAR}");
         sql.SET("description = #{record.description,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         
         ProjectExample example = (ProjectExample) parameter.get("example");
@@ -118,6 +128,10 @@ public class ProjectSqlProvider {
         
         if (record.getDescription() != null) {
             sql.SET("description = #{description,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getUserId() != null) {

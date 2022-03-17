@@ -15,6 +15,7 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.PatternLk;
 import org.nju.demo.entity.PatternLkExample;
+import org.nju.demo.pojo.vo.PatternItem;
 
 public interface PatternLkMapper {
     @SelectProvider(type=PatternLkSqlProvider.class, method="countByExample")
@@ -80,4 +81,15 @@ public interface PatternLkMapper {
         "where pattern_lk_id = #{patternLkId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(PatternLk record);
+
+    @Select({
+            "select pl.pattern_lk_id,pl.pattern_name",
+            "from pattern_lk as pl,version_pattern_rel as vp",
+            "where vp.version_id = #{versionId,jdbcType=VARCHAR} and pl.pattern_lk_id = vp.pattern_id"
+    })
+    @Results({
+            @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="pattern_name", property="patternName", jdbcType=JdbcType.VARCHAR),
+    })
+    List<PatternItem> selectPatternItemListByVersionId(String versionId);
 }

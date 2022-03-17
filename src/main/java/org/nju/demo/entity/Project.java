@@ -1,11 +1,15 @@
 package org.nju.demo.entity;
 
+import java.util.Date;
+
 public class Project {
     private String projectId;
 
     private String projectName;
 
     private String description;
+
+    private Date createTime;
 
     private Integer userId;
 
@@ -33,6 +37,14 @@ public class Project {
         this.description = description;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -50,6 +62,7 @@ public class Project {
         sb.append(", projectId=").append(projectId);
         sb.append(", projectName=").append(projectName);
         sb.append(", description=").append(description);
+        sb.append(", createTime=").append(createTime);
         sb.append(", userId=").append(userId);
         sb.append("]");
         return sb.toString();
@@ -70,6 +83,7 @@ public class Project {
         return (this.getProjectId() == null ? other.getProjectId() == null : this.getProjectId().equals(other.getProjectId()))
             && (this.getProjectName() == null ? other.getProjectName() == null : this.getProjectName().equals(other.getProjectName()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()));
     }
 
@@ -80,6 +94,7 @@ public class Project {
         result = prime * result + ((getProjectId() == null) ? 0 : getProjectId().hashCode());
         result = prime * result + ((getProjectName() == null) ? 0 : getProjectName().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         return result;
     }

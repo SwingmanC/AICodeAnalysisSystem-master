@@ -36,6 +36,10 @@ public class KnowledgeSqlProvider {
             sql.VALUES("knowledge_name", "#{knowledgeName,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getPatternId() != null) {
             sql.VALUES("pattern_id", "#{patternId,jdbcType=VARCHAR}");
         }
@@ -55,6 +59,7 @@ public class KnowledgeSqlProvider {
             sql.SELECT("knowledge_id");
         }
         sql.SELECT("knowledge_name");
+        sql.SELECT("create_time");
         sql.SELECT("pattern_id");
         sql.SELECT("content");
         sql.FROM("knowledge");
@@ -75,6 +80,7 @@ public class KnowledgeSqlProvider {
             sql.SELECT("knowledge_id");
         }
         sql.SELECT("knowledge_name");
+        sql.SELECT("create_time");
         sql.SELECT("pattern_id");
         sql.FROM("knowledge");
         applyWhere(sql, example, false);
@@ -101,6 +107,10 @@ public class KnowledgeSqlProvider {
             sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getPatternId() != null) {
             sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         }
@@ -119,6 +129,7 @@ public class KnowledgeSqlProvider {
         
         sql.SET("knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR}");
         sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
         
@@ -133,6 +144,7 @@ public class KnowledgeSqlProvider {
         
         sql.SET("knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR}");
         sql.SET("knowledge_name = #{record.knowledgeName,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("pattern_id = #{record.patternId,jdbcType=VARCHAR}");
         
         KnowledgeExample example = (KnowledgeExample) parameter.get("example");
@@ -146,6 +158,10 @@ public class KnowledgeSqlProvider {
         
         if (record.getKnowledgeName() != null) {
             sql.SET("knowledge_name = #{knowledgeName,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getPatternId() != null) {

@@ -40,6 +40,10 @@ public class ATemplateSqlProvider {
             sql.VALUES("file_path", "#{filePath,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getState() != null) {
             sql.VALUES("`state`", "#{state,jdbcType=INTEGER}");
         }
@@ -60,6 +64,7 @@ public class ATemplateSqlProvider {
         }
         sql.SELECT("template_name");
         sql.SELECT("file_path");
+        sql.SELECT("create_time");
         sql.SELECT("`state`");
         sql.SELECT("user_id");
         sql.FROM("a_template");
@@ -91,6 +96,10 @@ public class ATemplateSqlProvider {
             sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        }
+        
         if (record.getState() != null) {
             sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
         }
@@ -110,6 +119,7 @@ public class ATemplateSqlProvider {
         sql.SET("template_id = #{record.templateId,jdbcType=VARCHAR}");
         sql.SET("template_name = #{record.templateName,jdbcType=VARCHAR}");
         sql.SET("file_path = #{record.filePath,jdbcType=VARCHAR}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         sql.SET("`state` = #{record.state,jdbcType=INTEGER}");
         sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         
@@ -128,6 +138,10 @@ public class ATemplateSqlProvider {
         
         if (record.getFilePath() != null) {
             sql.SET("file_path = #{filePath,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreateTime() != null) {
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
         if (record.getState() != null) {

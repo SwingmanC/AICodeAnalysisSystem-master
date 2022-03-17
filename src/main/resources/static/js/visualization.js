@@ -22,6 +22,7 @@ $(function() {
     }, 'json');
     let issue_priority = echarts.init(document.getElementById('issue_priority'));
     $.get('/issues/priority', function(data) {
+        console.log(data);
         issue_priority.resize({
             width: 800,
             height: 400
@@ -39,9 +40,13 @@ $(function() {
             }],
             calculable: true,
             series: [{
-                name: '优先级',
+                name: '修正前',
                 type: 'bar',
-                data: data
+                data: data[0]
+            },{
+                name: '修正后',
+                type: 'bar',
+                data: data[1]
             }]
         })
     }, 'json');

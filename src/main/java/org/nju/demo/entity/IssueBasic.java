@@ -1,5 +1,7 @@
 package org.nju.demo.entity;
 
+import org.nju.demo.constant.Constant;
+
 public class IssueBasic {
     private String issueId;
 
@@ -28,7 +30,7 @@ public class IssueBasic {
     private String snippet;
 
     public IssueBasic(){
-        this.state = "Unclassified";
+        this.state = Constant.IssueState.UNCLASSIFIED;
         this.flag = 0;
     }
 
