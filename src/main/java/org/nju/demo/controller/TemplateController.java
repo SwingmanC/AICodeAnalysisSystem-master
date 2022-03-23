@@ -1,5 +1,6 @@
 package org.nju.demo.controller;
 
+import org.nju.demo.config.Constants;
 import org.nju.demo.entity.ATemplate;
 import org.nju.demo.entity.AUser;
 import org.nju.demo.service.TemplateService;
@@ -73,10 +74,10 @@ public class TemplateController {
         ATemplate template = templateService.getTemplate(templateId);
         ATemplate lastTemplate = templateService.getUsedTemplate(user.getId());
         if (lastTemplate != null){
-            lastTemplate.setState(0);
+            lastTemplate.setState(Constants.TemplateState.DISABLE);
             templateService.updateTemplate(lastTemplate);
         }
-        template.setState(1);
+        template.setState(Constants.TemplateState.ENABLE);
         templateService.updateTemplate(template);
 
         return "redirect:/view/templates";

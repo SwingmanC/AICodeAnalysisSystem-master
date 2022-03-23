@@ -1,6 +1,6 @@
 package org.nju.demo.entity;
 
-import org.nju.demo.constant.Constant;
+import org.nju.demo.config.Constants;
 
 public class IssueBasic {
     private String issueId;
@@ -30,7 +30,7 @@ public class IssueBasic {
     private String snippet;
 
     public IssueBasic(){
-        this.state = Constant.IssueState.UNCLASSIFIED;
+        this.state = Constants.IssueState.UNCLASSIFIED;
         this.flag = 0;
     }
 

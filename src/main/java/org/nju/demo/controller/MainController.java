@@ -1,11 +1,12 @@
 package org.nju.demo.controller;
 
 import freemarker.template.TemplateException;
-import org.nju.demo.constant.Constant;
+import org.nju.demo.config.Constants;
 import org.nju.demo.entity.*;
 import org.nju.demo.pojo.dto.IssueInfoDTO;
 import org.nju.demo.pojo.dto.IssueSourceDTO;
 import org.nju.demo.pojo.dto.PatternInfoDTO;
+import org.nju.demo.pojo.dto.PatternStatisticsDTO;
 import org.nju.demo.pojo.vo.*;
 import org.nju.demo.service.*;
 import org.nju.demo.utils.*;
@@ -84,7 +85,16 @@ public class MainController {
     public String viewIssues(@PathVariable("versionId") String versionId,
                              Model model){
         AVersion version = versionService.getVersion(versionId);
-        List<PatternItem> patternItemList = patternService.getPatternItemListByVersionId(versionId);
+        List<PatternStatisticsDTO> patternStatisticsList = statisticsService.getPatternStatisticsByVersionId(versionId);
+        List<PatternItem> patternItemList = new ArrayList<>();
+
+        for(PatternStatisticsDTO patternStatistics : patternStatisticsList){
+            PatternItem patternItem = new PatternItem();
+            patternItem.setPatternId(patternStatistics.getPatternId());
+            patternItem.setPatternName(patternStatistics.getPatternName());
+            patternItem.setIssueNum(patternStatistics.getIssueNum());
+            patternItemList.add(patternItem);
+        }
 
         model.addAttribute("patternItemList",patternItemList);
         session.setAttribute("version",version);
@@ -108,13 +118,10 @@ public class MainController {
     @ResponseBody
     @RequestMapping("/issues")
     public List<IssueVO> getIssueList(@RequestParam(value = "priority",required = false) String priority,
-                                      @RequestParam(value = "kingdom",required = false) int kingdom,
+                                      @RequestParam(value = "patternId",required = false) String patternId,
                                       @RequestParam(value = "state",required = false) String state){
         AVersion version = (AVersion) session.getAttribute("version");
-        String kd;
-        if (kingdom == 0) kd = "";
-        else kd = Constant.Type.fortify[kingdom-1];
-        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),priority,kd,state,0);
+        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),priority,patternId,state,Constants.IsFilter.DISABLE);
         List<IssueVO> issueVOList = new ArrayList<>();
         for(IssueBasic issueBasic : issueBasicList){
             IssueVO issueVO = new IssueVO();
@@ -146,11 +153,11 @@ public class MainController {
         IssueBasic issue = issueService.getIssue(issueId);
         PatternLk pattern = patternService.getPatternLk(issue.getPatternId());
 
-        if (issue.getState().equals("False")) pattern.setfNum(pattern.getfNum()-1);
+        if (issue.getState().equals(Constants.IssueState.FALSE)) pattern.setfNum(pattern.getfNum()-1);
         pattern.settNum(pattern.gettNum()+1);
         patternService.updatePatternLikelihood(pattern);
 
-        issue.setState("True");
+        issue.setState(Constants.IssueState.TRUE);
         return issueService.updateIssue(issue);
     }
 
@@ -160,11 +167,11 @@ public class MainController {
         IssueBasic issue = issueService.getIssue(issueId);
         PatternLk pattern = patternService.getPatternLk(issue.getPatternId());
 
-        if (issue.getState().equals("True")) pattern.settNum(pattern.gettNum()-1);
+        if (issue.getState().equals(Constants.IssueState.TRUE)) pattern.settNum(pattern.gettNum()-1);
         pattern.setfNum(pattern.getfNum()+1);
         patternService.updatePatternLikelihood(pattern);
 
-        issue.setState("False");
+        issue.setState(Constants.IssueState.FALSE);
         return issueService.updateIssue(issue);
     }
 
@@ -220,7 +227,7 @@ public class MainController {
         }
         aVersion.setVersionId(StringUtil.generateStringId());
         aVersion.setVersionName(versionName);
-        aVersion.setLastId("Null");
+        aVersion.setLastId(Constants.VersionState.INIT);
         aVersion.setFilePath("data/"+user.getUsername()+"/"+project.getProjectName()+"/"+fileName);
         aVersion.setProjectId(project.getProjectId());
         aVersion.setCreateTime(new Date());
@@ -249,12 +256,12 @@ public class MainController {
     @ResponseBody
     @RequestMapping("/scan")
     public int scan(@RequestParam("versionId") String versionId){
-        if (issueService.getIssueList(versionId,"","","",-1).size() != 0) return 2;
+        if (issueService.getIssueList(versionId,"","","",Constants.IsFilter.IGNORE).size() != 0) return 2;
 
         Project project = (Project) session.getAttribute("project");
         AVersion aVersion = versionService.getVersion(versionId);
-        if (aVersion.getLastId().equals(Constant.VersionState.INIT)) return 3;
-        if (!aVersion.getLastId().equals(Constant.VersionState.FIRST) && issueService.getIssueList(aVersion.getLastId(),"","","",Constant.IsFilter.IGNORE).size() == 0) return 4;
+        if (aVersion.getLastId().equals(Constants.VersionState.INIT)) return 3;
+        if (!aVersion.getLastId().equals(Constants.VersionState.FIRST) && issueService.getIssueList(aVersion.getLastId(),"","","", Constants.IsFilter.IGNORE).size() == 0) return 4;
 
         try{
             InputStream file = new FileInputStream(UPLOADED_FOLDER+"/"+aVersion.getFilePath());
@@ -332,11 +339,11 @@ public class MainController {
             }
 
             String lastVersionId = aVersion.getLastId();
-            if (!lastVersionId.equals(Constant.VersionState.FIRST)){
-                List<IssueBasic> lastIssueList = issueService.getIssueList(lastVersionId,"","","",Constant.IsFilter.IGNORE);
+            if (!lastVersionId.equals(Constants.VersionState.FIRST)){
+                List<IssueBasic> lastIssueList = issueService.getIssueList(lastVersionId,"","","", Constants.IsFilter.IGNORE);
                 issueService.compare(lastIssueList,issueBasicList);
-                Map<String,Integer> tNums = SortUtil.countNum(lastIssueList,Constant.IssueState.TRUE);
-                Map<String,Integer> fNums = SortUtil.countNum(lastIssueList,Constant.IssueState.FALSE);
+                Map<String,Integer> tNums = SortUtil.countNum(lastIssueList, Constants.IssueState.TRUE);
+                Map<String,Integer> fNums = SortUtil.countNum(lastIssueList, Constants.IssueState.FALSE);
                 for(Map.Entry<String,Integer> entry:tNums.entrySet()){
                     String patternId = entry.getKey();
                     int trueNum = entry.getValue();

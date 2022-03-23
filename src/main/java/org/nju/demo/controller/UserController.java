@@ -1,5 +1,6 @@
 package org.nju.demo.controller;
 
+import org.nju.demo.config.Constants;
 import org.nju.demo.entity.AUser;
 import org.nju.demo.entity.AUserInfo;
 import org.nju.demo.service.UserService;
@@ -74,8 +75,8 @@ public class UserController {
         AUser res = userService.getUserByUsername(username);
         AUserInfo userInfo = new AUserInfo();
         userInfo.setUserId(res.getId());
-        userInfo.setTelephone("10000");
-        userInfo.setEmail("123@nju.edu.cn");
+        userInfo.setTelephone(Constants.UserInfo.TELEPHONE);
+        userInfo.setEmail(Constants.UserInfo.EMAIL);
         userService.addUserInfo(userInfo);
 
         session.removeAttribute("RegisterMsg");

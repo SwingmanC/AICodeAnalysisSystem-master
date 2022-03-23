@@ -30,7 +30,6 @@
 </head>
 
 <body class="gray-bg top-navigation">
-
     <div id="wrapper">
         <div id="page-wrapper" class="gray-bg">
             <div class="row border-bottom white-bg">
@@ -118,19 +117,12 @@
                                                 </select>
                                             </td>
                                             <td style="padding-left: 20px;">
-                                                <label>领域：</label>
+                                                <label>漏洞类型：</label>
                                             </td>
                                             <td>
-                                                <select id="kingdomSelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
-                                                    <option value="0">请选择</option>
-                                                    <option value="1">输入验证和表示</option>
-                                                    <option value="2">API滥用</option>
-                                                    <option value="3">安全性</option>
-                                                    <option value="4">时间和状态</option>
-                                                    <option value="5">错误</option>
-                                                    <option value="6">代码质量</option>
-                                                    <option value="7">封装</option>
-                                                    <option value="8">环境</option>
+                                                <select id="patternSelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
+                                                    <option value="" selected>请选择</option>
+                                                    <option th:each="patternItem:${patternItemList}" th:value="${patternItem.patternId}" th:text="${patternItem.patternName}+'('+${patternItem.issueNum}+')'"></option>
                                                 </select>
                                             </td>
                                             <td style="padding-left: 20px;">
@@ -209,8 +201,10 @@
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div id="tab-1" class="tab-pane active">
+                                        <div></div>
                                         <pre id="descriptionArea"></pre>
                                     </div>
+                                    <hr>
                                     <div id="tab-2" class="tab-pane">
                                         <strong id="patternNameLabel"></strong>
                                         <p>说明：</p>
@@ -357,7 +351,7 @@
             queryParams:function(params){
                 let data = {
                     priority:$('#prioritySelect').val(),
-                    kingdom:Number($('#kingdomSelect').val()),
+                    patternId:$('#patternSelect').val(),
                     state:$('#stateSelect').val()
                 };
                 return data;

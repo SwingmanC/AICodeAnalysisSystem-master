@@ -92,4 +92,11 @@ public interface PatternStatisticsMapper {
             @Result(column="issue_num", property="issueNum", jdbcType=JdbcType.INTEGER)
     })
     List<PatternStatisticsDTO> selectPatternStatisticsByVersionId(String versionId);
+
+    @Select({
+            "select issue_num",
+            "from pattern_statistics as ps,version_pattern_rel as vp",
+            "where vp.version_id = #{versionId,jdbcType=VARCHAR} and vp.pattern_id = #{patternId,jdbcType=VARCHAR} and vp.id = ps.v_p_id"
+    })
+    int selectIssueNumByRelation(String versionId,String patternId);
 }

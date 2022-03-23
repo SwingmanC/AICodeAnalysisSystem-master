@@ -1,9 +1,6 @@
 package org.nju.demo.controller;
 
-import org.nju.demo.entity.IssueBasic;
-import org.nju.demo.entity.Knowledge;
-import org.nju.demo.entity.PatternInfo;
-import org.nju.demo.entity.PatternLk;
+import org.nju.demo.entity.*;
 import org.nju.demo.pojo.vo.KnowledgeVO;
 import org.nju.demo.pojo.vo.PatternVO;
 import org.nju.demo.service.KnowledgeService;
@@ -69,6 +66,19 @@ public class RepoController {
     }
 
     @ResponseBody
+    @RequestMapping("/editPattern")
+    public int editPattern(@RequestParam("patternId") String patternId,
+                           @RequestParam(value = "explanation",required = false) String explanation,
+                           @RequestParam(value = "recommendation",required = false) String recommendation,
+                           @RequestParam(value = "tip",required = false) String tip){
+        PatternInfoWithBLOBs patternInfo = patternService.getPatternInfoByPatternLkId(patternId);
+        if (explanation != null && !explanation.equals("")) patternInfo.setExplanation(explanation);
+        if (recommendation != null && !recommendation.equals("")) patternInfo.setRecommendation(recommendation);
+        if (tip != null && !tip.equals("")) patternInfo.setTip(tip);
+        return patternService.updatePatternInfo(patternInfo);
+    }
+
+    @ResponseBody
     @RequestMapping("/knowledgeVOs")
     public List<KnowledgeVO> getKnowledgeVOs(){
         PatternLk pattern = (PatternLk) session.getAttribute("pattern");
@@ -79,6 +89,7 @@ public class RepoController {
             knowledgeVO.setKnowledgeId(knowledge.getKnowledgeId());
             knowledgeVO.setKnowledgeName(knowledge.getKnowledgeName());
             knowledgeVO.setPatternName(pattern.getPatternName());
+            knowledgeVO.setCreateTime(knowledge.getCreateTime());
             knowledgeVOList.add(knowledgeVO);
         }
         return knowledgeVOList;

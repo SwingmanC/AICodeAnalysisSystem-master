@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>源代码误报智能分析</title>
+
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet" />
+    <link href="/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet" />
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="/css/animate.css" rel="stylesheet" />
+    <link href="/css/style.css?v=2.2.0" rel="stylesheet" />
+    <link href="/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
+    <!-- Bootstrap-Treeview plugin javascript -->
+    <script src="/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="/js/issueinfo.js"></script>
+    <script src="/js/rule.js"></script>
+
+    <!-- Nestable List -->
+    <script src="js/plugins/nestable/jquery.nestable.js"></script>
+</head>
+
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="#" class="navbar-brand">CodeAnalysis</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#"><i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="/view/projects"><i class="fa fa-tasks"></i> <span class="nav-label">我的任务</span></a>
+                        </li>
+                        <li>
+                            <a href="/view/templates"><i class="fa fa-file-text"></i> <span class="nav-label">模版管理</span></a>
+                        </li>
+                        <li>
+                            <a href="/view/repo"><i class="fa fa-book"></i> <span class="nav-label">专家知识库</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>个人中心 <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="/view/info"><span class="nav-label">个人资料</span></a>
+                                </li>
+                                <li><a href="/view/password"><span class="nav-label">修改密码</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a th:href="@{'/view/versions/'+${session.project.projectId}}">
+                                <i class="fa fa-sign-out"></i> 返回
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>
+                        <span th:text="${session.project.projectName}"></span>:
+                        <span th:text="${session.version.versionName}"></span>
+                    </h2>
+                </div>
+                <div class="col-lg-4">
+                    <h2 style="text-align: right">
+                        <span><a class="btn btn-primary" href="#" role="button" onclick="generate()">导出</a></span>
+                        <span><a class="btn btn-warning" href="/view/issues/charts" role="button">统计</a></span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="panel blank-panel">
+                            <div class="panel-heading">
+                                <div class="panel-title m-b-md">
+                                    <h4>问题列表</h4>
+                                </div>
+                                <div class="panel-options">
+                                    <ul class="nav nav-tabs">
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-low">Low</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-medium">Medium</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-high">High</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="issue_list.html#tab-critical">Critical</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div id="tab-low" class="tab-pane active">
+                                        <div class="dd" id="lowTable" style="width:800px; height:500px; overflow-y: auto">
+                                            <ol class="dd-list">
+                                                <li class="dd-item"></li>
+                                                <li class="dd-item" data-id="1">
+                                                    <div class="dd-handle">1 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="2">
+                                                    <div class="dd-handle">2 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="3">
+                                                            <div class="dd-handle">3 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="4">
+                                                            <div class="dd-handle">4 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="5">
+                                                    <div class="dd-handle">5 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="6">
+                                                            <div class="dd-handle">6 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="7">
+                                                            <div class="dd-handle">7 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="8">
+                                                    <div class="dd-handle">8 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="9">
+                                                    <div class="dd-handle">9 - 列表</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div id="tab-medium" class="tab-pane">
+                                        <div class="dd" id="mediumTable" style="width:800px; height:500px; overflow-y: auto">
+                                            <ol class="dd-list">
+                                                <li class="dd-item"></li>
+                                                <li class="dd-item" data-id="1">
+                                                    <div class="dd-handle">1 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="2">
+                                                    <div class="dd-handle">2 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="3">
+                                                            <div class="dd-handle">3 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="4">
+                                                            <div class="dd-handle">4 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="5">
+                                                    <div class="dd-handle">5 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="6">
+                                                            <div class="dd-handle">6 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="7">
+                                                            <div class="dd-handle">7 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="8">
+                                                    <div class="dd-handle">8 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="9">
+                                                    <div class="dd-handle">9 - 列表</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+
+                                    </div>
+                                    <div id="tab-high" class="tab-pane">
+                                        <div class="dd" id="highTable" style="width:800px; height:500px; overflow-y: auto">
+                                            <ol class="dd-list">
+                                                <li class="dd-item"></li>
+                                                <li class="dd-item" data-id="1">
+                                                    <div class="dd-handle">1 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="2">
+                                                    <div class="dd-handle">2 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="3">
+                                                            <div class="dd-handle">3 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="4">
+                                                            <div class="dd-handle">4 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="5">
+                                                    <div class="dd-handle">5 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="6">
+                                                            <div class="dd-handle">6 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="7">
+                                                            <div class="dd-handle">7 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="8">
+                                                    <div class="dd-handle">8 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="9">
+                                                    <div class="dd-handle">9 - 列表</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+
+                                    </div>
+                                    <div id="tab-critical" class="tab-pane">
+                                        <div class="dd" id="criticalTable" style="width:800px; height:500px; overflow-y: auto">
+                                            <ol class="dd-list">
+                                                <li class="dd-item"></li>
+                                                <li class="dd-item" data-id="1">
+                                                    <div class="dd-handle">1 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="2">
+                                                    <div class="dd-handle">2 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="3">
+                                                            <div class="dd-handle">3 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="4">
+                                                            <div class="dd-handle">4 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="5">
+                                                    <div class="dd-handle">5 - 列表</div>
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="6">
+                                                            <div class="dd-handle">6 - 列表</div>
+                                                        </li>
+                                                        <li class="dd-item" data-id="7">
+                                                            <div class="dd-handle">7 - 列表</div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li class="dd-item" data-id="8">
+                                                    <div class="dd-handle">8 - 列表</div>
+                                                </li>
+                                                <li class="dd-item" data-id="9">
+                                                    <div class="dd-handle">9 - 列表</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">新增规则</a>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-hover" id="ruleTable"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>代码片段</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <pre id="codeInfo"></pre>
+                        </div>
+                    </div>
+                    <div class="panel blank-panel">
+                        <div class="panel-heading">
+                            <div class="panel-title m-b-md">
+                                <h4>其它信息</h4>
+                            </div>
+                            <div class="panel-options">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a data-toggle="tab" href="issue_list.html#tab-1">问题描述</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="issue_list.html#tab-2">漏洞模式</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="issue_list.html#tab-3">专家知识</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    <pre id="descriptionArea"></pre>
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                    <strong id="patternNameLabel"></strong>
+                                    <p>说明：</p>
+                                    <pre id="explanationArea"></pre>
+                                    <p>修复建议：</p>
+                                    <pre id="recommendationArea"></pre>
+                                    <p>小提示：</p>
+                                    <pre id="tipArea"></pre>
+                                </div>
+                                <div id="tab-3" class="tab-pane">
+                                    <div>
+                                        <button class="btn btn-primary" onclick="toViewKnowledge()">添加知识</button>
+                                        <div id="patternIdDiv" hidden></div>
+                                    </div>
+                                    <hr>
+                                    <div id="knowledgeTree"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">新增规则</h3>
+                        </div>
+                        <form id="add_info" action="#" method="post">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <table>
+                                        <tr>
+                                            <td><label for="ruleName">规则名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="ruleName" name="ruleName" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="patternName">漏洞模式：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="patternName" name="patternName" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="kingdom">漏洞类型：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="kingdom" name="kingdom" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="priority">优先级：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="priority" name="priority" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="fileName">文件名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="fileName" name="fileName" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="functionName">方法名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="functionName" name="functionName" /></td>
+                                        </tr>
+                                    </table>
+                                    <style>
+                                        td {
+                                            padding-bottom: 10px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary" id="add_submit" onclick="add()">确认</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">编辑规则</h3>
+                        </div>
+                        <form id="edit_info" action="#" method="post">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div id="ruleId" hidden></div>
+                                    <table>
+                                        <tr>
+                                            <td><label for="ruleName">规则名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_ruleName" name="ruleName" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="patternName">漏洞模式：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_patternName" name="patternName" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="kingdom">漏洞类型：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_kingdom" name="kingdom" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="priority">优先级：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_priority" name="priority" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="fileName">文件名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_fileName" name="fileName" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="functionName">方法名称：</label></td>
+                                            <td style="width: 350px;"><input type="text" class="form-control" id="e_functionName" name="functionName" /></td>
+                                        </tr>
+                                    </table>
+                                    <style>
+                                        td {
+                                            padding-bottom: 10px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary" id="edit_submit" onclick="edit()">确认</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

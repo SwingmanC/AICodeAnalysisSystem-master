@@ -1,9 +1,8 @@
 package org.nju.demo.controller;
 
-import org.nju.demo.constant.Constant;
+import org.nju.demo.config.Constants;
 import org.nju.demo.entity.AVersion;
 import org.nju.demo.entity.IssueBasic;
-import org.nju.demo.entity.PatternStatistics;
 import org.nju.demo.entity.PriorityStatistics;
 import org.nju.demo.pojo.dto.PatternStatisticsDTO;
 import org.nju.demo.pojo.vo.PatternStatisticsVO;
@@ -16,9 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ChartController {
@@ -50,8 +47,8 @@ public class ChartController {
         int[] count = {0,0,0,0,0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String kingdom = issueBasic.getKingdom();
-            for(int i=0;i<Constant.Type.fortify.length;++i){
-                if (kingdom.equals(Constant.Type.fortify[i])){
+            for(int i = 0; i< Constants.Type.fortify.length; ++i){
+                if (kingdom.equals(Constants.Type.fortify[i])){
                     count[i]++;
                     break;
                 }
@@ -64,15 +61,15 @@ public class ChartController {
     @GetMapping("/issues/priority")
     public int[][] countIssuesByPriority(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","",Constant.IssueState.TRUE,Constant.IsFilter.IGNORE);
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","", Constants.IssueState.TRUE, Constants.IsFilter.IGNORE);
         int[][] res = new int[2][4];
         int[] initCounts = new int[4];
         int[] nowCounts = {0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String p = issueBasic.getPriority();
-            if (p.equals(Constant.Priority.LOW)) nowCounts[0]++;
-            else if (p.equals(Constant.Priority.MEDIUM)) nowCounts[1]++;
-            else if (p.equals(Constant.Priority.HIGH)) nowCounts[2]++;
+            if (p.equals(Constants.Priority.LOW)) nowCounts[0]++;
+            else if (p.equals(Constants.Priority.MEDIUM)) nowCounts[1]++;
+            else if (p.equals(Constants.Priority.HIGH)) nowCounts[2]++;
             else nowCounts[3]++;
         }
         PriorityStatistics priorityStatistics = statisticsService.getPriorityStatisticsByVersionId(version.getVersionId());

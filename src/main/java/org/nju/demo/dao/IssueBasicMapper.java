@@ -15,6 +15,7 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.IssueBasic;
 import org.nju.demo.entity.IssueBasicExample;
+import org.nju.demo.pojo.dto.IssueDTO;
 
 public interface IssueBasicMapper {
     @SelectProvider(type=IssueBasicSqlProvider.class, method="countByExample")
@@ -153,4 +154,24 @@ public interface IssueBasicMapper {
         "where issue_id = #{issueId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(IssueBasic record);
+
+    @Select({
+            "select v.issue_id,v.kingdom,v.file_name,v.target_function,v.start_line,v.state,v.pattern_id,p.pattern_name",
+            "from issue_basic as i,pattern_lk as p",
+            "where i.version_id = #{versionId,jdbcType=VARCHAR} and i.priority = #{priority,jdbcType=VARCHAR} and i.flag = #{flag,jdbcType=INTEGER} and i.pattern_id = p.pattern_lk_id"
+    })
+    @Results({
+            @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR, id=true),
+            @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
+            @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
+            @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="file_path", property="filePath", jdbcType=JdbcType.VARCHAR),
+            @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
+            @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
+            @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+            @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+    })
+    List<IssueDTO> selectIssueByVersionIdAndPriority(String versionId,String priority,int flag);
 }

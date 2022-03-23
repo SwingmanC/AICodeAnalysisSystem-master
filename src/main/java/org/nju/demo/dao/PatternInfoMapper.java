@@ -16,7 +16,6 @@ import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.PatternInfo;
 import org.nju.demo.entity.PatternInfoExample;
 import org.nju.demo.entity.PatternInfoWithBLOBs;
-import org.nju.demo.pojo.vo.PatternItem;
 
 public interface PatternInfoMapper {
     @SelectProvider(type=PatternInfoSqlProvider.class, method="countByExample")

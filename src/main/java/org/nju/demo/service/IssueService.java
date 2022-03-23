@@ -3,12 +3,16 @@ package org.nju.demo.service;
 import org.nju.demo.entity.IssueBasic;
 import org.nju.demo.entity.IssueSource;
 import org.nju.demo.entity.VersionPatternRel;
+import org.nju.demo.pojo.dto.IssueDTO;
+import org.nju.demo.pojo.vo.ProblemItem;
 
 import java.util.List;
 
 public interface IssueService {
 
-    List<IssueBasic> getIssueList(String versionId,String priority,String kingdom,String state,int flag);
+    List<IssueBasic> getIssueList(String versionId,String priority,String patternId,String state,int flag);
+
+    List<IssueDTO> getIssueItemList(String versionId, String priority, int flag);
 
     List<IssueBasic> getIssueListByPatternId(String versionId,String patternId);
 
@@ -29,4 +33,6 @@ public interface IssueService {
     int updateIssue(IssueBasic issueBasic);
 
     void compare(List<IssueBasic> lastIssueList,List<IssueBasic> issueBasicList);
+
+    List<ProblemItem> getProblemItemList(List<IssueDTO> issueList);
 }

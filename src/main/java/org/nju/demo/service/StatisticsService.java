@@ -14,6 +14,8 @@ public interface StatisticsService {
 
     List<PatternStatisticsDTO> getPatternStatisticsByVersionId(String versionId);
 
+    int getIssueNumByRelation(String versionId,String patternId);
+
     PriorityStatistics getPriorityStatisticsByVersionId(String versionId);
 
     int addPatternStatistics(PatternStatistics patternStatistics);
