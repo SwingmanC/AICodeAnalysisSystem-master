@@ -105,6 +105,12 @@
             <version>RELEASE</version>
             <classifier>jdk15</classifier>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/weka/weka -->
+        <dependency>
+            <groupId>weka</groupId>
+            <artifactId>weka</artifactId>
+            <version>3.6.2</version>
+        </dependency>
     </dependencies>
 
     <build>

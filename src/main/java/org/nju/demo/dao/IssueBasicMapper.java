@@ -16,6 +16,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.nju.demo.entity.IssueBasic;
 import org.nju.demo.entity.IssueBasicExample;
 import org.nju.demo.pojo.dto.IssueDTO;
+import org.nju.demo.pojo.vo.IssueFeature;
 
 public interface IssueBasicMapper {
     @SelectProvider(type=IssueBasicSqlProvider.class, method="countByExample")
@@ -174,4 +175,23 @@ public interface IssueBasicMapper {
             @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
     })
     List<IssueDTO> selectIssueByVersionIdAndPriority(String versionId,String priority,int flag);
+
+    @Select({
+            "select issue_id,pattern_id,priority,kingdom,file_name,start_line,snippet,target_function,version_id,state",
+            "from issue_basic",
+            "where state = 'False' or state = 'True'"
+    })
+    @Results({
+            @Result(column="issue_id", property="issueId", jdbcType=JdbcType.VARCHAR, id=true),
+            @Result(column="pattern_id", property="patternId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="priority", property="priority", jdbcType=JdbcType.VARCHAR),
+            @Result(column="kingdom", property="kingdom", jdbcType=JdbcType.VARCHAR),
+            @Result(column="file_name", property="fileName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="start_line", property="startLine", jdbcType=JdbcType.INTEGER),
+            @Result(column="target_function", property="targetFunction", jdbcType=JdbcType.VARCHAR),
+            @Result(column="version_id", property="versionId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="state", property="state", jdbcType=JdbcType.VARCHAR),
+            @Result(column="snippet", property="snippet", jdbcType=JdbcType.LONGVARCHAR)
+    })
+    List<IssueBasic> selectClassifiedIssueList();
 }

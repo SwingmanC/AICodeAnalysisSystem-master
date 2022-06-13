@@ -75,6 +75,7 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">添加任务</a>
+                                <a class="btn btn-warning" href="#" onclick="extract()">特征提取</a>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -216,6 +217,31 @@
             success: function(msg) {
                 layer.msg("上传成功");
                 window.location.href = "/view/projects";
+            }
+        })
+    }
+
+    function extract(){
+        layer.open({
+            title: false,
+            content: '特征提取中，请等待',
+            anim: 3,
+            btn: [],
+            yes: function(index, layero) {
+
+            },
+            cancel: function() {
+                return false
+            }
+        });
+        $.ajax({
+            url:'/feature',
+            type:'get',
+            success:function (msg){
+                layer.msg("特征提取成功");
+                setTimeout(function() {
+                    location.reload();
+                }, 3000);
             }
         })
     }

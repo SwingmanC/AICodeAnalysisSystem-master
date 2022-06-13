@@ -52,6 +52,9 @@ public class MainController {
     private StatisticsService statisticsService;
 
     @Autowired
+    private FeatureService featureService;
+
+    @Autowired
     private HttpSession session;
 
     private static String UPLOADED_FOLDER = System.getProperty("user.dir");
@@ -373,8 +376,8 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/generate")
-    public String generate(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateException, ParserConfigurationException, SAXException {
+    @RequestMapping("/generateReport")
+    public String generateReport(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateException, ParserConfigurationException, SAXException {
         AUser user = (AUser) session.getAttribute("user");
         Project project = (Project) session.getAttribute("project");
         AVersion version = (AVersion) session.getAttribute("version");
@@ -471,4 +474,27 @@ public class MainController {
         return issueInfoVO;
     }
 
+    @ResponseBody
+    @RequestMapping("/feature")
+    public int extractFeature(){
+        AUser user = (AUser) session.getAttribute("user");
+        FileUtil.generateTrainArff(user.getUsername(),featureService.getIssueFeature(issueService.getClassifiedIssueList()));
+        return 1;
+    }
+
+    @ResponseBody
+    @RequestMapping("/predict")
+    public int predict(){
+        AVersion version = (AVersion) session.getAttribute("version");
+        AUser user = (AUser) session.getAttribute("user");
+        List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),Constants.IssueState.UNCLASSIFIED,Constants.IsFilter.IGNORE);
+        FileUtil.generateTestArff(user.getUsername(),featureService.getIssueFeature(issueBasicList));
+        File trainFile = new File(UPLOADED_FOLDER+"/data/"+user.getUsername()+"/train.arff");
+        File testFile = new File(UPLOADED_FOLDER+"/data/"+user.getUsername()+"/test.arff");
+        double[] res = WekaUtil.predict(trainFile,testFile);
+        for (double d : res){
+            System.out.println(d);
+        }
+        return 1;
+    }
 }

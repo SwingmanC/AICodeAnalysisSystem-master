@@ -80,6 +80,7 @@
                         <h2>
                             <span th:text="${session.project.projectName}"></span>:
                             <span th:text="${session.version.versionName}"></span>
+                            <span><a class="btn btn-primary" href="#" role="button" onclick="predict()">预测</a></span>
                         </h2>
                     </div>
                     <div class="col-lg-4">
@@ -433,7 +434,7 @@
 
     function generate() {
         $.ajax({
-            url: '/generate',
+            url: '/generateReport',
             responseType: 'blob',
             method: 'get',
             success: function(msg) {
@@ -498,6 +499,15 @@
     function toViewKnowledge(){
         let patternId = $("#patternIdDiv").text();
         if(patternId !== '') window.location.href = '/view/knowledge/'+patternId;
+    }
+    function predict(){
+        $.ajax({
+            url: '/predict',
+            method: 'get',
+            success: function(msg) {
+
+            }
+        })
     }
 </script>
 

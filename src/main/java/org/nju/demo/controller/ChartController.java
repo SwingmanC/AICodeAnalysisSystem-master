@@ -43,7 +43,7 @@ public class ChartController {
     @GetMapping("/issues/category")
     public int[] countIssuesByCategory(){
         AVersion version = (AVersion) session.getAttribute("version");
-        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","",-1);
+        List<IssueBasic> issueList = issueService.getIssueList(version.getVersionId(),"","","",Constants.IsFilter.IGNORE);
         int[] count = {0,0,0,0,0,0,0,0};
         for(IssueBasic issueBasic:issueList){
             String kingdom = issueBasic.getKingdom();

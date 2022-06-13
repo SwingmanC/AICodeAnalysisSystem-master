@@ -6,6 +6,7 @@ import org.nju.demo.dao.IssueSourceMapper;
 import org.nju.demo.dao.VersionPatternRelMapper;
 import org.nju.demo.entity.*;
 import org.nju.demo.pojo.dto.IssueDTO;
+import org.nju.demo.pojo.vo.IssueFeature;
 import org.nju.demo.pojo.vo.IssueItem;
 import org.nju.demo.pojo.vo.ProblemItem;
 import org.nju.demo.service.IssueService;
@@ -46,6 +47,18 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public List<IssueBasic> getIssueList(String versionId, String state, int flag) {
+        IssueBasicExample example = new IssueBasicExample();
+        IssueBasicExample.Criteria criteria = example.createCriteria();
+
+        criteria.andVersionIdEqualTo(versionId);
+        if (state.length() > 0) criteria.andStateEqualTo(state);
+        if (flag != Constants.IsFilter.IGNORE) criteria.andFlagEqualTo(flag);
+
+        return issueBasicMapper.selectByExampleWithBLOBs(example);
+    }
+
+    @Override
     public List<IssueDTO> getIssueItemList(String versionId, String priority,int flag) {
         return issueBasicMapper.selectIssueByVersionIdAndPriority(versionId,priority,flag);
     }
@@ -59,6 +72,11 @@ public class IssueServiceImpl implements IssueService {
                 .andPatternIdEqualTo(patternId);
 
         return issueBasicMapper.selectByExampleWithBLOBs(example);
+    }
+
+    @Override
+    public List<IssueBasic> getClassifiedIssueList() {
+        return issueBasicMapper.selectClassifiedIssueList();
     }
 
     @Override
