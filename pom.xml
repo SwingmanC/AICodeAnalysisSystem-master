@@ -99,18 +99,19 @@
             <version>2.3.28</version>
         </dependency>
         <!--json-lib-->
-        <dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>RELEASE</version>
-            <classifier>jdk15</classifier>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.sf.json-lib</groupId>-->
+<!--            <artifactId>json-lib</artifactId>-->
+<!--            <version>RELEASE</version>-->
+<!--            <classifier>jdk15</classifier>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/weka/weka -->
         <dependency>
             <groupId>weka</groupId>
             <artifactId>weka</artifactId>
             <version>3.6.2</version>
         </dependency>
+
     </dependencies>
 
     <build>

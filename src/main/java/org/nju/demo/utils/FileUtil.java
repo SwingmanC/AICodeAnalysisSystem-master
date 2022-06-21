@@ -12,6 +12,7 @@ public class FileUtil {
     private static String UPLOADED_FOLDER = System.getProperty("user.dir");
     public static void generateArff(List<IssueFeature> issueFeatureList,File file){
         try{
+            if(!file.exists()) file.createNewFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write("@relation feature");
             bufferedWriter.newLine();

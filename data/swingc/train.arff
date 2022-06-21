@@ -1,0 +1,14 @@
+@relation feature
+@attribute priority numeric
+@attribute kingdom numeric
+@attribute issue_num_method numeric
+@attribute issue_num_class numeric
+@attribute start_line numeric
+@attribute line_length numeric
+@attribute pattern_likelihood numeric
+@attribute for_count numeric
+@attribute label {0,1}
+@data
+1,7,3,3,28,5,1.0,0,1
+1,7,3,3,39,5,1.0,0,1
+1,7,3,3,27,5,1.0,0,1

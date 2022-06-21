@@ -484,7 +484,7 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/predict")
-    public int predict(){
+    public List<IssueVO> predict(){
         AVersion version = (AVersion) session.getAttribute("version");
         AUser user = (AUser) session.getAttribute("user");
         List<IssueBasic> issueBasicList = issueService.getIssueList(version.getVersionId(),Constants.IssueState.UNCLASSIFIED,Constants.IsFilter.IGNORE);
@@ -492,9 +492,46 @@ public class MainController {
         File trainFile = new File(UPLOADED_FOLDER+"/data/"+user.getUsername()+"/train.arff");
         File testFile = new File(UPLOADED_FOLDER+"/data/"+user.getUsername()+"/test.arff");
         double[] res = WekaUtil.predict(trainFile,testFile);
-        for (double d : res){
-            System.out.println(d);
+        List<IssueVO> issueVOList = new ArrayList<>();
+        int index = 0;
+
+        for(IssueBasic issueBasic : issueBasicList){
+            String fileName = issueBasic.getFileName();
+            if (!fileName.endsWith("java")) continue;
+            IssueVO issueVO = new IssueVO();
+            PatternLk patternLk = patternService.getPatternLk(issueBasic.getPatternId());
+            issueVO.setIssueId(issueBasic.getIssueId());
+            issueVO.setPatternName(patternLk.getPatternName());
+            issueVO.setFileName(issueBasic.getFileName());
+            issueVO.setPriority(issueBasic.getPriority());
+            if (res[index]==0.0) issueVO.setState(Constants.IssueState.FALSE);
+            else issueVO.setState(Constants.IssueState.TRUE);
+            index++;
+            issueVOList.add(issueVO);
         }
-        return 1;
+
+//        for (double d : res){
+//            System.out.println(d);
+//        }
+        return issueVOList;
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateState/{issueId}/{state}")
+    public int updateState(@PathVariable("issueId") String issueId,
+                           @PathVariable("state") int state){
+        IssueBasic issue = issueService.getIssue(issueId);
+        PatternLk patternLk = patternService.getPatternLk(issue.getPatternId());
+
+        if (state==0){
+            issue.setState(Constants.IssueState.FALSE);
+            patternLk.setfNum(patternLk.getfNum()+1);
+        }
+        else{
+            issue.setState(Constants.IssueState.TRUE);
+            patternLk.settNum(patternLk.gettNum()+1);
+        }
+        patternService.updatePatternLikelihood(patternLk);
+        return issueService.updateIssue(issue);
     }
 }

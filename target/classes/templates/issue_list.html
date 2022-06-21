@@ -26,6 +26,7 @@
     <script src="/js/plugins/treeview/bootstrap-treeview.js"></script>
     <script src="/js/issueinfo.js"></script>
     <script src="/js/rule.js"></script>
+    <script src="/js/predict.js"></script>
 
 </head>
 
@@ -80,7 +81,7 @@
                         <h2>
                             <span th:text="${session.project.projectName}"></span>:
                             <span th:text="${session.version.versionName}"></span>
-                            <span><a class="btn btn-primary" href="#" role="button" onclick="predict()">预测</a></span>
+                            <span><a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#resultModal" onclick="predict()">预测</a></span>
                         </h2>
                     </div>
                     <div class="col-lg-4">
@@ -88,6 +89,25 @@
                             <span><a class="btn btn-primary" href="#" role="button" onclick="generate()">导出</a></span>
                             <span><a class="btn btn-warning" href="/view/issues/charts" role="button">统计</a></span>
                         </h2>
+                    </div>
+                    <div class="modal fade" tabindex="-1" role="dialog" id="resultModal">
+                        <div class="modal-dialog" role="document" style="margin-left: 100px">
+                            <div class="modal-content" style="width: 1250px;">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">预测结果</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <table class="table table-hover" id="resultTable"></table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="refresh()">确认</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
                     </div>
                 </div>
                 <div class="row">
@@ -499,15 +519,6 @@
     function toViewKnowledge(){
         let patternId = $("#patternIdDiv").text();
         if(patternId !== '') window.location.href = '/view/knowledge/'+patternId;
-    }
-    function predict(){
-        $.ajax({
-            url: '/predict',
-            method: 'get',
-            success: function(msg) {
-
-            }
-        })
     }
 </script>
 
