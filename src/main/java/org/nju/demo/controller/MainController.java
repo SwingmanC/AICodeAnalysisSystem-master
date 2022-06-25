@@ -504,7 +504,9 @@ public class MainController {
             issueVO.setPatternName(patternLk.getPatternName());
             issueVO.setFileName(issueBasic.getFileName());
             issueVO.setPriority(issueBasic.getPriority());
-            if (res[index]==0.0) issueVO.setState(Constants.IssueState.FALSE);
+//            System.out.println(res[index]);
+            issueVO.setLikelihood(res[index]);
+            if (res[index]<0.5) issueVO.setState(Constants.IssueState.FALSE);
             else issueVO.setState(Constants.IssueState.TRUE);
             index++;
             issueVOList.add(issueVO);

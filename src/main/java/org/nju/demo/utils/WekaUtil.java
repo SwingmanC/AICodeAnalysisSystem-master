@@ -8,6 +8,7 @@ import weka.core.converters.ArffLoader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.Random;
 
 public class WekaUtil {
@@ -34,7 +35,9 @@ public class WekaUtil {
             j48Classifier.buildClassifier(trainInstances);
 
             for (int i=0;i<sum;++i){
-                res[i] = j48Classifier.classifyInstance(testInstances.instance(i));
+//                System.out.println(j48Classifier.classifyInstance(testInstances.instance(i))+" "+j48Classifier.distributionForInstance(testInstances.instance(i))[1]);
+//                res[i] = j48Classifier.classifyInstance(testInstances.instance(i));
+                res[i] = j48Classifier.distributionForInstance(testInstances.instance(i))[1];
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -63,6 +66,7 @@ public class WekaUtil {
 
             for (int i=0;i<sum;++i){
                 System.out.println(j48Classifier.classifyInstance(testInstances.instance(i)));
+                System.out.println(Arrays.toString(j48Classifier.distributionForInstance(testInstances.instance(i))));
                 if (j48Classifier.classifyInstance(testInstances.instance(i))==testInstances.instance(i).classValue()) right++;
             }
             System.out.println("J48 classification precision:"+(right*1.0/sum));

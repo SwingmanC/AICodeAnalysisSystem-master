@@ -28,6 +28,10 @@ function predict(){
             field: 'fileName',
             sortable: true,
         }, {
+            title: '正报概率',
+            field: 'likelihood',
+            sortable: true,
+        }, {
             title: '预测结果',
             field: 'state',
             sortable: true,
