@@ -1,4 +1,4 @@
-# AICodeAnalysisSystem-master
+# 源代码误报智能化诊断分析系统
 ### 部署环境：centos7
 ### 数据库：mysql>=5
 ### jdk>=1.8
