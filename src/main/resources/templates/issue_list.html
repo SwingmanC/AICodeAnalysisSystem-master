@@ -125,10 +125,10 @@
                                 <div class="row">
                                     <table id="condition">
                                         <tr>
-                                            <td style="padding-left: 20px;">
+                                            <td style="padding-left: 20px;width:80px">
                                                 <label>优先级：</label>
                                             </td>
-                                            <td>
+                                            <td style="width: 100px">
                                                 <select id="prioritySelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
                                                     <option value="">请选择</option>
                                                     <option value="Low">低</option>
@@ -137,7 +137,7 @@
                                                     <option value="Critical">严重</option>
                                                 </select>
                                             </td>
-                                            <td style="padding-left: 20px;">
+                                            <td style="padding-left: 20px;width: 100px">
                                                 <label>漏洞类型：</label>
                                             </td>
                                             <td>
@@ -146,10 +146,10 @@
                                                     <option th:each="patternItem:${patternItemList}" th:value="${patternItem.patternId}" th:text="${patternItem.patternName}+'('+${patternItem.issueNum}+')'"></option>
                                                 </select>
                                             </td>
-                                            <td style="padding-left: 20px;">
+                                            <td style="padding-left: 20px;width: 60px">
                                                 <label>状态：</label>
                                             </td>
-                                            <td>
+                                            <td style="width: 100px">
                                                 <select id="stateSelect" class="input-sm form-control input-s-sm inline" onchange="refresh()">
                                                     <option value="">请选择</option>
                                                     <option value="False">误报</option>

@@ -9,14 +9,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="6.21更新">
+    <list default="true" id="80e3a188-b098-4856-ba17-143d1b03e532" name="Default Changelist" comment="6.25更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/jsfnsc/test.arff" beforeDir="false" afterPath="$PROJECT_DIR$/data/jsfnsc/test.arff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/jsfnsc/train.arff" beforeDir="false" afterPath="$PROJECT_DIR$/data/jsfnsc/train.arff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/WekaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nju/demo/utils/WekaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/predict.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/predict.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/nju/demo/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/issue_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/issue_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/issue_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,10 +88,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.195" />
     <property name="project.structure.side.proportion" value="0.34059098" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -260,7 +256,10 @@
       <workItem from="1655793344833" duration="7292000" />
       <workItem from="1655800791857" duration="4311000" />
       <workItem from="1655946563643" duration="3035000" />
-      <workItem from="1656133945028" duration="2396000" />
+      <workItem from="1656133945028" duration="2648000" />
+      <workItem from="1656407028305" duration="657000" />
+      <workItem from="1660291680475" duration="672000" />
+      <workItem from="1661216893831" duration="3166000" />
     </task>
     <task id="LOCAL-00001" summary="11.17规则库更新">
       <created>1637141559251</created>
@@ -367,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655800933357</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="6.25更新">
+      <created>1656137902849</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1656137902849</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +408,8 @@
     <MESSAGE value="3.17更新" />
     <MESSAGE value="3.23更新" />
     <MESSAGE value="6.21更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="6.21更新" />
+    <MESSAGE value="6.25更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.25更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

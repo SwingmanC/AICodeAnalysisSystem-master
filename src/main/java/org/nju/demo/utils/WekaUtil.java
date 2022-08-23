@@ -45,33 +45,33 @@ public class WekaUtil {
         return res;
     }
 
-    public static void main(String[] args) {
-        try {
-            J48 j48Classifier = new J48();
-
-            File trainFile = new File(UPLOADED_FOLDER+"/data/feature.arff");
-            ArffLoader arffLoader = new ArffLoader();
-            arffLoader.setFile(trainFile);
-            Instances trainInstances = arffLoader.getDataSet();
-
-            File testFile = new File(UPLOADED_FOLDER+"/data/test.arff");
-            arffLoader.setFile(testFile);
-            Instances testInstances = arffLoader.getDataSet();
-
-            testInstances.setClassIndex(testInstances.numAttributes()-1);
-            double sum = testInstances.numInstances();
-            int right = 0;
-            trainInstances.setClassIndex(trainInstances.numAttributes()-1);
-            j48Classifier.buildClassifier(trainInstances);
-
-            for (int i=0;i<sum;++i){
-                System.out.println(j48Classifier.classifyInstance(testInstances.instance(i)));
-                System.out.println(Arrays.toString(j48Classifier.distributionForInstance(testInstances.instance(i))));
-                if (j48Classifier.classifyInstance(testInstances.instance(i))==testInstances.instance(i).classValue()) right++;
-            }
-            System.out.println("J48 classification precision:"+(right*1.0/sum));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            J48 j48Classifier = new J48();
+//
+//            File trainFile = new File(UPLOADED_FOLDER+"/data/feature.arff");
+//            ArffLoader arffLoader = new ArffLoader();
+//            arffLoader.setFile(trainFile);
+//            Instances trainInstances = arffLoader.getDataSet();
+//
+//            File testFile = new File(UPLOADED_FOLDER+"/data/test.arff");
+//            arffLoader.setFile(testFile);
+//            Instances testInstances = arffLoader.getDataSet();
+//
+//            testInstances.setClassIndex(testInstances.numAttributes()-1);
+//            double sum = testInstances.numInstances();
+//            int right = 0;
+//            trainInstances.setClassIndex(trainInstances.numAttributes()-1);
+//            j48Classifier.buildClassifier(trainInstances);
+//
+//            for (int i=0;i<sum;++i){
+//                System.out.println(j48Classifier.classifyInstance(testInstances.instance(i)));
+//                System.out.println(Arrays.toString(j48Classifier.distributionForInstance(testInstances.instance(i))));
+//                if (j48Classifier.classifyInstance(testInstances.instance(i))==testInstances.instance(i).classValue()) right++;
+//            }
+//            System.out.println("J48 classification precision:"+(right*1.0/sum));
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 }
