@@ -1,6 +1,10 @@
 package org.nju.demo.utils;
 
-import org.nju.demo.entity.*;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import org.nju.demo.pojo.dto.IssueInfoDTO;
 import org.nju.demo.pojo.dto.IssueSourceDTO;
 import org.nju.demo.pojo.dto.PatternInfoDTO;
@@ -12,14 +16,13 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class XMLUtil {
+public class ExcelUtil {
 
     public static Element getElement(InputStream file) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -28,30 +31,23 @@ public class XMLUtil {
         return document.getDocumentElement();
     }
 
-    public static List<String> getSummary(InputStream file) throws ParserConfigurationException, IOException, SAXException {
-        List<String> res = new ArrayList<>();
-        Element element = getElement(file);
-        Element reportSection = (Element) element.getElementsByTagName("ReportSection").item(1);
-        Element subSection = (Element) reportSection.getElementsByTagName("SubSection").item(1);
-        Element issueListing = (Element) subSection.getElementsByTagName("IssueListing").item(0);
-        Element chart = (Element) issueListing.getElementsByTagName("Chart").item(0);
-        NodeList groupSection = chart.getElementsByTagName("GroupingSection");
-
-        for (int i=0;i<groupSection.getLength();++i){
-            Element group = (Element) groupSection.item(i);
-            Element title = (Element) group.getElementsByTagName("groupTitle").item(0);
-            res.add(title.getTextContent());
+    public static void parseXmlFile(InputStream xmlFile,String excelFile) throws ParserConfigurationException, IOException, SAXException, WriteException {
+        String[] title = {"iid","rule_id","pattern_name","priority","kingdom","file_name","file_path","start_line","target_function","description","snippet","source_file_name","source_file_path","source_start_line","source_target_function","source_snippet","pattern_description"};
+        File file = new File(excelFile);
+        if(file.exists()){
+            file.delete();
+        }
+        file.createNewFile();
+        WritableWorkbook workbook = Workbook.createWorkbook(file);
+        WritableSheet sheet = workbook.createSheet("sheet1", 0);
+        Label label=null;
+        //设置列名
+        for (int i=0; i<title.length;i++) {
+            label = new Label(i, 0, title[i]);
+            sheet.addCell(label);
         }
 
-        return res;
-    }
-
-    public static Map<String,List> getInfo(InputStream file) throws ParserConfigurationException, IOException, SAXException {
-	    List<IssueInfoDTO> issueInfoList = new ArrayList<>();
-	    List<PatternInfoDTO> patternInfoList = new ArrayList<>();
-	    Map<String,List> res = new HashMap<>();
-
-        Element element = getElement(file);
+        Element element = getElement(xmlFile);
         Element reportSection = (Element) element.getElementsByTagName("ReportSection").item(2);
         Element subSection = (Element) reportSection.getElementsByTagName("SubSection").item(0);
 
@@ -63,8 +59,9 @@ public class XMLUtil {
         Element chart = (Element) issueListing.getElementsByTagName("Chart").item(0);
         NodeList groupSection = chart.getElementsByTagName("GroupingSection");
 
+        int count = 1;
+//        System.out.println(groupSection.getLength());
         for(int i=0;i<groupSection.getLength();++i){
-            PatternInfoDTO patternInfoDTO = new PatternInfoDTO();
             String explanation,recommendation,tip;
             String patternName = "";
 
@@ -86,9 +83,11 @@ public class XMLUtil {
             }
             else tip = "";
             NodeList issueList = group.getElementsByTagName("Issue");
+//            System.out.println(issueList.getLength());
             for(int j=0;j<issueList.getLength();++j){
                 Element issue = (Element) issueList.item(j);
-                IssueInfoDTO issueInfoDTO = new IssueInfoDTO();
+                String iid = issue.getAttribute("iid");
+                String ruleId = issue.getAttribute("ruleID");
                 Element category = (Element) issue.getElementsByTagName("Category").item(0);
                 Element kingdom = (Element) issue.getElementsByTagName("Kingdom").item(0);
                 Element description = (Element) issue.getElementsByTagName("Abstract").item(0);
@@ -100,43 +99,61 @@ public class XMLUtil {
                 Element sinkSnippet = (Element) primary.getElementsByTagName("Snippet").item(0);
                 Element sinkTargetFunction = (Element) primary.getElementsByTagName("TargetFunction").item(0);
                 if (patternName.equals("")) patternName = category.getTextContent();
-                issueInfoDTO.setPatternName(patternName);
-                issueInfoDTO.setKingdom(kingdom.getTextContent());
-                issueInfoDTO.setDescription(description.getTextContent());
-                issueInfoDTO.setPriority(priority.getTextContent());
-                issueInfoDTO.setFileName(sinkFileName.getTextContent());
-                issueInfoDTO.setFilePath(sinkFilePath.getTextContent());
-                issueInfoDTO.setStartLine(Integer.parseInt(sinkStartLine.getTextContent()));
-                issueInfoDTO.setSnippet(sinkSnippet.getTextContent());
-                issueInfoDTO.setTargetFunction(sinkTargetFunction.getTextContent());
+                label = new Label(0,count,iid);
+                sheet.addCell(label);
+                label = new Label(1,count,ruleId);
+                sheet.addCell(label);
+                label = new Label(2,count,category.getTextContent());
+                sheet.addCell(label);
+                label = new Label(3,count,priority.getTextContent());
+                sheet.addCell(label);
+                label = new Label(4,count,kingdom.getTextContent());
+                sheet.addCell(label);
+                label = new Label(5,count,sinkFileName.getTextContent());
+                sheet.addCell(label);
+                label = new Label(6,count,sinkFilePath.getTextContent());
+                sheet.addCell(label);
+                label = new Label(7,count,sinkStartLine.getTextContent());
+                sheet.addCell(label);
+                label = new Label(8,count,sinkTargetFunction.getTextContent());
+                sheet.addCell(label);
+                label = new Label(9,count,description.getTextContent());
+                sheet.addCell(label);
+                label = new Label(10,count,sinkSnippet.getTextContent());
+                sheet.addCell(label);
+
 
                 Element source = (Element) issue.getElementsByTagName("Source").item(0);
 
                 if(source != null){
-                    IssueSourceDTO issueSourceDTO = new IssueSourceDTO();
                     Element sourceFileName = (Element) source.getElementsByTagName("FileName").item(0);
                     Element sourceFilePath = (Element) source.getElementsByTagName("FilePath").item(0);
                     Element sourceStartLine = (Element) source.getElementsByTagName("LineStart").item(0);
                     Element sourceSnippet = (Element) source.getElementsByTagName("Snippet").item(0);
                     Element sourceTargetFunction = (Element) source.getElementsByTagName("TargetFunction").item(0);
-                    issueSourceDTO.setFileName(sourceFileName.getTextContent());
-                    issueSourceDTO.setFilePath(sourceFilePath.getTextContent());
-                    issueSourceDTO.setStartLine(Integer.parseInt(sourceStartLine.getTextContent()));
-                    issueSourceDTO.setSnippet(sourceSnippet.getTextContent());
-                    issueSourceDTO.setTargetFunction(sourceTargetFunction.getTextContent());
-                    issueInfoDTO.setIssueSourceDTO(issueSourceDTO);
+                    label = new Label(11,count,sourceFileName.getTextContent());
+                    sheet.addCell(label);
+                    label = new Label(12,count,sourceFilePath.getTextContent());
+                    sheet.addCell(label);
+                    label = new Label(13,count,sourceStartLine.getTextContent());
+                    sheet.addCell(label);
+                    label = new Label(14,count,sourceTargetFunction.getTextContent());
+                    sheet.addCell(label);
+                    label = new Label(15,count,sourceSnippet.getTextContent());
+                    sheet.addCell(label);
                 }
-                issueInfoList.add(issueInfoDTO);
+                label = new Label(16,count,explanation);
+                sheet.addCell(label);
+                count++;
             }
-            patternInfoDTO.setPatternName(patternName);
-            patternInfoDTO.setExplanation(explanation);
-            patternInfoDTO.setRecommendation(recommendation);
-            patternInfoDTO.setTip(tip);
-            patternInfoList.add(patternInfoDTO);
         }
+        workbook.write();
+        workbook.close();
+    }
 
-        res.put("issueInfoList",issueInfoList);
-        res.put("patternInfoList",patternInfoList);
-	    return res;
+    public static void main(String[] args) throws IOException, WriteException, ParserConfigurationException, SAXException {
+        InputStream xmlFile = new FileInputStream("/Users/sunchen/Documents/源代码误报智能分析系统/评估数据/third.xml");
+        String excelFile = "/Users/sunchen/Documents/源代码误报智能分析系统/评估数据/导出数据/third.xls";
+        parseXmlFile(xmlFile,excelFile);
     }
 }

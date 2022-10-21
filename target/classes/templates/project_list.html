@@ -206,6 +206,10 @@
     function add() {
         let projectName = $("#projectName").val();
         let description = $("#description").val();
+        if(projectName === ''){
+            layer.msg("请输入项目名称");
+            return;
+        }
         $.ajax({
             url: '/addProject',
             type: 'post',
@@ -215,8 +219,13 @@
             },
             dateType: 'json',
             success: function(msg) {
-                layer.msg("上传成功");
-                window.location.href = "/view/projects";
+                if(msg === -1){
+                    layer.msg("该项目已存在");
+                }
+                else{
+                    layer.msg("上传成功");
+                    window.location.href = "/view/projects";
+                }
             }
         })
     }

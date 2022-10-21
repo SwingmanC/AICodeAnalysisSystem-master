@@ -197,6 +197,9 @@ public class MainController {
         Project project = new Project();
         AUser user = (AUser) session.getAttribute("user");
 
+        List<Project> projectList = projectService.getProjectsByProjectName(user.getId(),projectName);
+        if(projectList.size()>0) return -1;
+
         project.setProjectId(StringUtil.generateStringId());
         project.setUserId(user.getId());
         project.setProjectName(projectName);
@@ -511,10 +514,6 @@ public class MainController {
             index++;
             issueVOList.add(issueVO);
         }
-
-//        for (double d : res){
-//            System.out.println(d);
-//        }
         return issueVOList;
     }
 

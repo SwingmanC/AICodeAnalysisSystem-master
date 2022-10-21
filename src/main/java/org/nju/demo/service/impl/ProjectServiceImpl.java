@@ -22,10 +22,19 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getProjects(int userId) {
-
         ProjectExample projectExample = new ProjectExample();
         ProjectExample.Criteria criteria = projectExample.createCriteria();
 
+        criteria.andUserIdEqualTo(userId);
+        return projectMapper.selectByExample(projectExample);
+    }
+
+    @Override
+    public List<Project> getProjectsByProjectName(int userId,String projectName) {
+        ProjectExample projectExample = new ProjectExample();
+        ProjectExample.Criteria criteria = projectExample.createCriteria();
+
+        criteria.andProjectNameEqualTo(projectName);
         criteria.andUserIdEqualTo(userId);
         return projectMapper.selectByExample(projectExample);
     }
