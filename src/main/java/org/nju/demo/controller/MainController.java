@@ -57,7 +57,7 @@ public class MainController {
     @Autowired
     private HttpSession session;
 
-    private static String UPLOADED_FOLDER = System.getProperty("user.dir");
+    private static final String UPLOADED_FOLDER = System.getProperty("user.dir");
 
     @RequestMapping("/view/projects")
     public String viewProjects(){
