@@ -36,7 +36,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="dependency" level="project" />
     <orderEntry type="library" name="weka" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.4" level="project" />
@@ -130,7 +129,7 @@
     <orderEntry type="module-library">
       <library name="Maven: weka:weka:1.0">
         <CLASSES>
-          <root url="jar://src/main/lib/weka.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/main/lib/weka.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

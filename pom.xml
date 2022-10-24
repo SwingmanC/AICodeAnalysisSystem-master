@@ -109,7 +109,7 @@
             <artifactId>weka</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>src/main/lib/weka.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/lib/weka.jar</systemPath>
         </dependency>
     </dependencies>
 
